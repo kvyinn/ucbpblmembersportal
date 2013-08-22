@@ -15,7 +15,7 @@
           <% if current_member %>
             <li><%= link_to "Sign out", signout_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
+            <li><%= link_to "Sign in", root_path %></li>
           <% end %>
         </ul>
       </div>
