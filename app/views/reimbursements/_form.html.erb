@@ -1,0 +1,11 @@
+<%= form_for reimbursement do |f| %>
+  <%= f.hidden_field :member_id %>
+
+  <%= f.label :amount %>
+  $<%= f.text_field :amount %>
+
+  <%= f.label :for %>
+  <%= f.text_field :details %>
+
+  <%= f.submit "Add" %>
+<% end %>

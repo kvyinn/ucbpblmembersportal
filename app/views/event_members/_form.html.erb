@@ -1,0 +1,13 @@
+<%= form_for current_member.event_members.build(event_id: event.id), html: { class: "form-inline" } do |f| %>
+  <%= f.hidden_field :event_id %>
+  <%= f.label event.summary %>
+  <ul>
+    <% Member.all.each do |member| %>
+      <li>
+        <%= label_tag member.name %>
+        <%= check_box_tag "member_ids[]", member.id, member.attended?(event) %>
+      </li>
+    <% end %>
+  </ul>
+  <%= f.submit "Submit" %>
+<% end %>

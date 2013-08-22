@@ -1,0 +1,19 @@
+@import "bootstrap";
+
+body {
+  padding-top: 60px;
+}
+
+.old_member {
+  padding-left: 10px;
+  border-left: 1px solid lightGray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.old_member:hover {
+  border-left: 3px solid red;
+  padding-left: 8px;
+  background-color: #EEE;
+}

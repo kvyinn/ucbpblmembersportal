@@ -1,0 +1,6 @@
+<h1>Upcoming Events</h1>
+<ul>
+  <% @events.each do |event| %>
+    <%= render "events/event", event: event %>
+  <% end %>
+</ul>

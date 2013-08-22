@@ -1,0 +1,22 @@
+<% if @member %>
+  <h1>New Reimbursement</h1>
+  <%= render "reimbursements/form", reimbursement: @reimbursement %>
+<% elsif @committee %>
+  <h1>Choose a committee member</h1>
+  <ul>
+    <% @committee.members.each do |member| %>
+      <li>
+        <%= link_to member.name, new_member_reimbursement_url(member) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h1>Choose a committee</h1>
+  <ul>
+    <% Committee.all.each do |committee| %>
+      <li>
+        <%= link_to committee.name.capitalize, new_committee_reimbursement_url(committee) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

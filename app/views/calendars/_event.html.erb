@@ -1,0 +1,3 @@
+<div class="event" id="<%= encrypt_id(event[:id]) %>">
+  <b><%= link_to event[:title], calendar_event_url(@calendar_id, event[:id]) %></b>
+</div>

@@ -1,0 +1,3 @@
+<% @calendars.each do |calendar| %>
+  <p><%= link_to calendar.summary, calendar_url(format_google_calendar_id(calendar.id)) %></p>
+<% end %>

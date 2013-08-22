@@ -1,0 +1,6 @@
+<ul>
+  <%= tabling_slot.start_time.to_s %> to <%= tabling_slot.end_time.to_s %>
+  <ul>
+    <%= render tabling_slot.members %>
+  </ul>
+</ul>

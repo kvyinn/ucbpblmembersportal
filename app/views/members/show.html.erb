@@ -1,0 +1,8 @@
+<% if current_member %>
+  Welcome <%= current_member.name %>!
+  <%= link_to "Sign Out", signout_path %>
+  <p>Is this you?</p>
+  <%= render @old_member %>
+<% else %>
+  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+<% end %>

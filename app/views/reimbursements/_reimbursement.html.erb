@@ -1,0 +1,8 @@
+<b><%= reimbursement.member.name %></b>
+<p>Amount: $<%= reimbursement.amount %></p>
+<p>For: <%= reimbursement.details %></p>
+<% if !reimbursement.new_record? %>
+  <%= form_for reimbursement, method: "delete" do |f| %>
+    <%= f.submit "Delete" %>
+  <% end %>
+<% end %>

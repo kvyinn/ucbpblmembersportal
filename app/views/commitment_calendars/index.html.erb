@@ -1,0 +1,11 @@
+<h2>Commitment Calendars In Use:</h2>
+<%= render @commitment_calendars %>
+
+<h3>Mark for use?</h3>
+<% @unsaved_calendars.each do |calendar| %>
+  <%= form_for current_member.commitment_calendars.build(calendar_id: calendar.id), html: { class: "form-inline" } do |f|%>
+    <%= f.hidden_field :calendar_id %>
+    <%= f.label :summary, calendar.summary %>
+    <%= f.submit "Mark" %>
+  <% end %>
+<% end %>

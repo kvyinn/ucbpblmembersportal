@@ -1,0 +1,2 @@
+class OldMembersController < ApplicationController
+end
