@@ -30,6 +30,14 @@ class Member < ActiveRecord::Base
 
   has_many :reimbursements, dependent: :destroy
 
+  def position(committee)
+    committee_member = self.committee_members.where(
+      committee_id: committee.id
+    ).first
+
+    committee_member.committee_member_type.name if committee_member
+  end
+
   def self.initialize_with_omniauth(provider, uid)
     Member.where(provider: provider, uid: uid).first_or_initialize
   end

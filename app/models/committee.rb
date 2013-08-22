@@ -10,7 +10,7 @@
 #
 
 class Committee < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :committee_type_id
 
   belongs_to :committee_type
 

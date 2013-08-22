@@ -3,6 +3,8 @@ Ucbpblmembersportal::Application.routes.draw do
 
   match "/auth/:provider/callback", to: "sessions#create"
   match "/signout", to: "sessions#destroy", :as => :signout
+  match "/update/:old_member_id", to: "members#update", as: :update_with_old_member
+
 
   resources :calendars, only: [ :index, :show ] do
     member do

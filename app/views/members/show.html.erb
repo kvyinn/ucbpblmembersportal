@@ -1,8 +1,10 @@
 <% if current_member %>
-  Welcome <%= current_member.name %>!
-  <%= link_to "Sign Out", signout_path %>
-  <p>Is this you?</p>
-  <%= render @old_member %>
-<% else %>
-  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+  <h1>Welcome <%= current_member.name %>!</h1>
+  <% if current_member.committees.empty? %>
+    <p>Is this you?</p>
+    <%= render @old_members %>
+  <% else %>
+    <p><b>Committee: </b><%= current_member.committees.first.name %></p>
+    <p><b>Position: </b><%= current_member.position(current_member.committees.first) %></p>
+  <% end %>
 <% end %>
