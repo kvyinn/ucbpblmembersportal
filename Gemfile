@@ -46,6 +46,8 @@ gem 'jquery-rails'
 gem 'therubyracer'
 
 gem 'rjb'
+heroku_java_home = '/usr/lib/jvm/java-6-openjdk'
+ENV['JAVA_HOME'] = heroku_java_home if Dir.exist?(heroku_java_home)
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
