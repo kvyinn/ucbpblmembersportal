@@ -30,6 +30,19 @@ namespace :tabling do
     end
   end
 
+  desc "View the members and schedules csv files"
+  task view: do
+    p "========= members.csv ============"
+    CSV.foreach(File.join(tabling_dir, 'members.csv')) do |row|
+      p row
+    end
+
+    p "========= schedules.csv ============"
+    CSV.foreach(File.join(tabling_dir, 'schedules.csv')) do |row|
+      p row
+    end
+  end
+
   desc "Assign and view the initial schedule"
   task initial: :environment do
     TablingAssigner = Rjb::import("tablingassigner.TablingAssigner")
