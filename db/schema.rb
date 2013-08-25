@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20130822163313) do
   create_table "commitment_calendars", :force => true do |t|
     t.integer  "member_id"
     t.string   "calendar_id"
+    t.string   "acl_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -57,11 +58,13 @@ ActiveRecord::Schema.define(:version => 20130822163313) do
 
   create_table "committees", :force => true do |t|
     t.string   "name"
+    t.string   "abbr"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "committee_type_id"
   end
 
+  add_index "committees", ["abbr"], :name => "index_committees_on_abbr"
   add_index "committees", ["committee_type_id"], :name => "index_committees_on_committee_type_id"
 
   create_table "event_members", :force => true do |t|

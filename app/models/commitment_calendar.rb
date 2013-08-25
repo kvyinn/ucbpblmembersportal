@@ -1,5 +1,5 @@
 class CommitmentCalendar < ActiveRecord::Base
-  attr_accessible :calendar_id, :member_id
+  attr_accessible :calendar_id, :member_id, :acl_id
 
   belongs_to :member
 
