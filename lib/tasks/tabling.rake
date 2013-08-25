@@ -31,7 +31,7 @@ namespace :tabling do
   end
 
   desc "View the members and schedules csv files"
-  task view: do
+  task :view do
     p "========= members.csv ============"
     CSV.foreach(File.join(tabling_dir, 'members.csv')) do |row|
       p row
