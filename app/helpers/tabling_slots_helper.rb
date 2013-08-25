@@ -15,7 +15,7 @@ module TablingSlotsHelper
 
     # Clear files if exists
     File.open('members.csv', 'w') {|file| file.truncate(0) }
-    File.open('schedules_2.csv', 'w') {|file| file.truncate(0) }
+    File.open('schedules.csv', 'w') {|file| file.truncate(0) }
 
     Member.all.each do |member|
       p member.name
@@ -53,7 +53,7 @@ module TablingSlotsHelper
           start_time = event.start.dateTime.strftime("%H%M")
           end_time = event.end.dateTime.strftime("%H%M")
 
-          CSV.open("schedules_2.csv", "ab") do |csv|
+          CSV.open("schedules.csv", "ab") do |csv|
             csv << [member.id, day, start_date, end_date, start_time, end_time]
           end
         end
@@ -65,7 +65,7 @@ module TablingSlotsHelper
     @tabling_dir = File.join(Rails.root, "lib/tabling")
 
     Dir.chdir(@tabling_dir)
-    TablingAssignerTemp.run
+    # TablingAssignerTemp.run
 
     TablingAssigner.run
 
