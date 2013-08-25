@@ -18,7 +18,6 @@ module TablingSlotsHelper
     File.open(File.join(@@tabling_dir, 'schedules.csv'), 'w') {|file| file.truncate(0) }
 
     Member.all.each do |member|
-      p member.name
       CSV.open(File.join(@@tabling_dir, 'members.csv'), "ab") { |csv| csv << [member.id, member.name, rand(4..5)] }
 
       # Dummy lines (still doesn't work)
@@ -54,6 +53,7 @@ module TablingSlotsHelper
           end_time = event.end.dateTime.strftime("%H%M")
 
           CSV.open(File.join(@@tabling_dir, 'schedules.csv'), "ab") do |csv|
+            p [member.id, day, start_date, end_date, start_time, end_time]
             csv << [member.id, day, start_date, end_date, start_time, end_time]
           end
         end
