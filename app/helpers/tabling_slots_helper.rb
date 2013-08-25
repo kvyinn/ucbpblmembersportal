@@ -14,12 +14,12 @@ module TablingSlotsHelper
     Dir.chdir(@@tabling_dir)
 
     # Clear files if exists
-    File.open('members.csv', 'w') {|file| file.truncate(0) }
-    File.open('schedules.csv', 'w') {|file| file.truncate(0) }
+    File.open(File.join(@@tabling_dir, 'members.csv'), 'w') {|file| file.truncate(0) }
+    File.open(File.join(@@tabling_dir, 'schedules.csv'), 'w') {|file| file.truncate(0) }
 
     Member.all.each do |member|
       p member.name
-      CSV.open("members.csv", "ab") { |csv| csv << [member.id, member.name, rand(4..5)] }
+      CSV.open(File.join(@@tabling_dir, 'members.csv'), "ab") { |csv| csv << [member.id, member.name, rand(4..5)] }
 
       # Dummy lines (still doesn't work)
 =begin
@@ -53,7 +53,7 @@ module TablingSlotsHelper
           start_time = event.start.dateTime.strftime("%H%M")
           end_time = event.end.dateTime.strftime("%H%M")
 
-          CSV.open("schedules.csv", "ab") do |csv|
+          CSV.open(File.join(@@tabling_dir, 'schedules.csv'), "ab") do |csv|
             csv << [member.id, day, start_date, end_date, start_time, end_time]
           end
         end
