@@ -30,6 +30,7 @@ module TablingSlotsHelper
 =end
 
       member.commitment_calendars.each do |commitment_calendar|
+        p commitment_calendar.calendar_id
         events = google_api_request(
           "calendar", "v3", "events", "list",
           {
@@ -39,6 +40,8 @@ module TablingSlotsHelper
             q: "pbl"
           }
         ).data.items
+
+        p items
 
         events.each do |event|
           day = "-----"
