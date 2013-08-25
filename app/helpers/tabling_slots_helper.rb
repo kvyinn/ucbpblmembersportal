@@ -41,13 +41,12 @@ module TablingSlotsHelper
           }
         ).data.items
 
-        p items
+        p events
 
         events.each do |event|
           day = "-----"
           start_time = event.start.dateTime.to_datetime
           day[start_time.cwday-1] = start_time.strftime("%a").upcase[0]
-          p day
 
           end_date = event.end.dateTime.strftime("%Y%m%d")
           start_date = event.start.dateTime.strftime("%Y%m%d")
