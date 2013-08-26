@@ -12,8 +12,7 @@ class CommitmentCalendarsController < ApplicationController
   end
 
   def write
-    write_init_files
-    redirect_to commitment_calendars_path
+    @list = write_init_files
   end
 
   def create

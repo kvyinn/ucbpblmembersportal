@@ -11,6 +11,7 @@ module TablingSlotsHelper
 
   # Write necessary files for the tabling assigner
   def write_init_files
+    list = []
     Dir.chdir(@@tabling_dir)
 
     # Clear files if exists
@@ -57,10 +58,13 @@ module TablingSlotsHelper
           CSV.open(File.join(@@tabling_dir, 'schedules.csv'), "ab") do |csv|
             p [member.id, day, start_date, end_date, start_time, end_time]
             csv << [member.id, day, start_date, end_date, start_time, end_time]
+            list << [member.id, day, start_date, end_date, start_time, end_time]
           end
         end
       end
     end
+
+    return list
   end
 
   def generate_schedule
