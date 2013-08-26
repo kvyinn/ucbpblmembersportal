@@ -31,7 +31,6 @@ module TablingSlotsHelper
 =end
 
       member.commitment_calendars.each do |commitment_calendar|
-        p commitment_calendar.calendar_id
         events = google_api_request(
           "calendar", "v3", "events", "list",
           {
@@ -41,8 +40,6 @@ module TablingSlotsHelper
             q: "pbl"
           }
         ).data.items
-
-        p events
 
         events.each do |event|
           day = "-----"
@@ -55,10 +52,11 @@ module TablingSlotsHelper
           start_time = event.start.dateTime.strftime("%H%M")
           end_time = event.end.dateTime.strftime("%H%M")
 
+          list << [member.id, day, start_date, end_date, start_time, end_time]
+
           CSV.open(File.join(@@tabling_dir, 'schedules.csv'), "ab") do |csv|
             p [member.id, day, start_date, end_date, start_time, end_time]
             csv << [member.id, day, start_date, end_date, start_time, end_time]
-            list << [member.id, day, start_date, end_date, start_time, end_time]
           end
         end
       end
