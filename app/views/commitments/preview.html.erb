@@ -1,0 +1,7 @@
+<h1>Your Tracked Commitments</h1>
+<ul>
+  <% @events.each do |event| %>
+    <%= render "commitments/event", event: event %>
+  <% end %>
+</ul>
+<p><%= link_to "Update", update_all_commitments_url %></p>

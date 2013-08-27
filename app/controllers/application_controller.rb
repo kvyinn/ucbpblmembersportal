@@ -7,4 +7,5 @@ class ApplicationController < ActionController::Base
   include CommitmentCalendarsHelper
   include MembersHelper
   include TablingSlotsHelper
+  include CommitmentsHelper
 end

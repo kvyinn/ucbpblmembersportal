@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130822163313) do
+ActiveRecord::Schema.define(:version => 20130827223617) do
 
   create_table "commitment_calendars", :force => true do |t|
     t.integer  "member_id"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(:version => 20130822163313) do
   add_index "commitment_calendars", ["calendar_id"], :name => "index_commitment_calendars_on_calendar_id"
   add_index "commitment_calendars", ["member_id", "calendar_id"], :name => "index_commitment_calendars_on_member_id_and_calendar_id", :unique => true
   add_index "commitment_calendars", ["member_id"], :name => "index_commitment_calendars_on_member_id"
+
+  create_table "commitments", :force => true do |t|
+    t.integer  "member_id"
+    t.string   "summary"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "commitments", ["member_id"], :name => "index_commitments_on_member_id"
 
   create_table "committee_member_types", :force => true do |t|
     t.string   "name"

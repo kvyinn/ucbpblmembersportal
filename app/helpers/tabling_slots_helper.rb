@@ -4,6 +4,7 @@ require 'csv'
 module TablingSlotsHelper
 
   @@tabling_dir = File.join(Rails.root, "lib/tabling")
+  @@write_dir = File.join(Rails.root, "tmp")
   system "cd #{@@tabling_dir} && javac -d . *.java"
   Rjb::load(classpath = @@tabling_dir)
   TablingAssignerTemp = Rjb::import("tablingassigner.TablingAssignerTemp")
@@ -15,11 +16,11 @@ module TablingSlotsHelper
     Dir.chdir(@@tabling_dir)
 
     # Clear files if exists
-    File.open(File.join(@@tabling_dir, 'members.csv'), 'w') {|file| file.truncate(0) }
-    File.open(File.join(@@tabling_dir, 'schedules.csv'), 'w') {|file| file.truncate(0) }
+    File.open(File.join(@@write_dir, 'members.csv'), 'w') {|file| file.truncate(0) }
+    File.open(File.join(@@write_dir, 'schedules.csv'), 'w') {|file| file.truncate(0) }
 
     Member.all.each do |member|
-      CSV.open(File.join(@@tabling_dir, 'members.csv'), "ab") { |csv| csv << [member.id, member.name, rand(4..5)] }
+      CSV.open(File.join(@@write_dir, 'members.csv'), "ab") { |csv| csv << [member.id, member.name, rand(4..5)] }
 
       # Dummy lines (still doesn't work)
 =begin
@@ -54,7 +55,7 @@ module TablingSlotsHelper
 
           list << [member.id, day, start_date, end_date, start_time, end_time]
 
-          CSV.open(File.join(@@tabling_dir, 'schedules.csv'), "ab") do |csv|
+          CSV.open(File.join(@@write_dir, 'schedules.csv'), "ab") do |csv|
             p [member.id, day, start_date, end_date, start_time, end_time]
             csv << [member.id, day, start_date, end_date, start_time, end_time]
           end
@@ -65,13 +66,14 @@ module TablingSlotsHelper
     return list
   end
 
+
   def generate_schedule
     @tabling_dir = File.join(Rails.root, "lib/tabling")
 
     Dir.chdir(@tabling_dir)
-    # TablingAssignerTemp.run
+    TablingAssignerTemp.run(@@write_dir)
 
-    TablingAssigner.run
+    TablingAssigner.run(@@write_dir)
 
     TablingSlot.destroy_all
 

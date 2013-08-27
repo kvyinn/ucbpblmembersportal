@@ -39,4 +39,12 @@ Ucbpblmembersportal::Application.routes.draw do
   end
 
   resources :reimbursements, only: [ :index, :show, :new, :create, :destroy ]
+
+  resources :commitments, only: [ :index ] do
+    collection do
+      get :update_all
+      get :preview
+    end
+  end
+
 end

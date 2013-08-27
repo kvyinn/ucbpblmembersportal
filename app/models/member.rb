@@ -30,6 +30,8 @@ class Member < ActiveRecord::Base
 
   has_many :reimbursements, dependent: :destroy
 
+  has_many :commitments, dependent: :destroy
+
   def position(committee)
     committee_member = self.committee_members.where(
       committee_id: committee.id
