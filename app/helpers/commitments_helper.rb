@@ -1,6 +1,8 @@
 module CommitmentsHelper
 
   def update_commitments
+    current_member.commitments.destroy_all
+
     current_member.commitment_calendars.each do |commitment_calendar|
       events = google_api_request(
         "calendar", "v3", "events", "list",
