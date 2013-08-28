@@ -8,4 +8,10 @@ class ApplicationController < ActionController::Base
   include MembersHelper
   include TablingSlotsHelper
   include CommitmentsHelper
+
+  before_filter :signed_on_to_google
+
+  def signed_on_to_google
+    redirect_to google_signin_url if current_member.nil?
+  end
 end

@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  skip_before_filter :signed_on_to_google
+
   def new
   end
 

@@ -1,10 +1,19 @@
 <div class="row">
   <h1>Your Tracked Commitments</h1>
-  <ul>
-    <% @events.each do |event| %>
-      <%= render "commitments/event", event: event %>
-    <% end %>
-  </ul>
+  <div class="span8">
+    <ul>
+      <% @events.each do |event| %>
+        <%= render "commitments/event", event: event %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="span4">
+    <p>
+    These are the events that are/will be saved to as your commitments. If your commitments
+    aren't showing up, check to make sure they are on the right calendar and that they have
+    the word pbl in either the title or descriptions.
+    </p>
+  </div>
   <div class="span12">
     <p><%= link_to "Update", update_all_commitments_url, class: "btn btn-primary" %></p>
   </div>

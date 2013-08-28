@@ -21,7 +21,7 @@ class EventsController < ApplicationController
       {
         calendarId: @calendar_id,
         timeMin: DateTime.now,
-        timeMax: DateTime.now + 1.week,
+        timeMax: DateTime.now + 1.month,
         q: "pbl"
       }
     ).data.items

@@ -1,6 +1,7 @@
 Ucbpblmembersportal::Application.routes.draw do
   root to: "sessions#new"
 
+  get "/auth/google_oauth2", as: :google_signin
   match "/auth/:provider/callback", to: "sessions#create", as: :signin
   match "/signout", to: "sessions#destroy", :as => :signout
   match "/update/:old_member_id", to: "members#update", as: :update_with_old_member
