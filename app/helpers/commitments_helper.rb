@@ -14,10 +14,12 @@ module CommitmentsHelper
         }
       ).data.items
 
+      events = process_google_events(events)
+
       events.each do |event|
-        summary = event.summary
-        start_time = event.start.date_time
-        end_time = event.end.date_time
+        summary = event[:summary]
+        start_time = event[:start_time]
+        end_time = event[:end_time]
 
         current_member.commitments.where(
           summary: summary,
