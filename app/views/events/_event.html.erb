@@ -1,1 +1,4 @@
-<li><%= link_to event.summary, calendar_event_url(format_google_calendar_id(@calendar_id), event.id) %></li>
+<li>
+  <%= event.start.date_time ? event.start.date_time.strftime("%D") : DateTime.parse(event.start.date).strftime("%D") %>:
+  <%= link_to event.summary, calendar_event_url(format_google_calendar_id(@calendar_id), event.id) %></li>
+</li>

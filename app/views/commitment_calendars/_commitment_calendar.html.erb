@@ -1,5 +1,7 @@
-<%= form_for commitment_calendar, method: "delete", html: { class: "form-inline" } do |f|%>
-  <%= f.hidden_field :calendar_id %>
-  <%= f.label :summary, commitment_calendar.summary %>
-  <%= f.submit "Unmark" %>
-<% end %>
+<li>
+  <%= form_for commitment_calendar, method: "delete", html: { class: "form-inline" } do |f|%>
+    <%= f.hidden_field :calendar_id %>
+    <%= f.label :summary, commitment_calendar.summary %>
+    <%= f.submit "Unmark", class: "btn btn-small" %>
+  <% end %>
+</li>

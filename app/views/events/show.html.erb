@@ -1,2 +1,6 @@
-<h1><%= @event.summary %></h1>
-<%= render "event_members/form", event: @event %>
+<div class="row">
+  <h1><%= @event.summary %></h1>
+  <div class="span12">
+    <%= render "event_members/form", event: @event %>
+  </div>
+</div>

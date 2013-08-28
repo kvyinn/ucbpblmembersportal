@@ -4,6 +4,72 @@ body {
   padding-top: 60px;
 }
 
+.row {
+  padding-bottom: 30px;
+  // border-bottom: 1px solid lightGray;
+}
+
+form {
+  padding: 5px 5px 5px 0px;
+  margin: 2px 0 2px 0;
+}
+
+.row h1 {
+  margin-left: 20px;
+}
+
+label {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.row h1 {
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.row ul {
+  list-style-type: none;
+  margin-left: 22px;
+}
+
+.row li {
+  padding: 20px 0px 20px 10px;
+  margin: 5px 0px 5px 0px;
+  border-left: 2px solid lightBlue;
+  font-size: 14pt;
+  color: gray;
+}
+
+.row li:hover {
+  background-color: #EEE;
+}
+
+li .btn {
+  float: right;
+}
+
+[class*="span"] ul {
+  margin-left: 2px;
+}
+
+[class*="span"] li {
+  padding: 5px 0px 5px 10px;
+  margin: 5px 0 5px 0;
+}
+
+.hero-unit h1 {
+  text-align: center;
+}
+
+.hero-unit .google-button {
+  margin-left: 175px;
+}
+
 .old_member {
   padding-left: 10px;
   border-left: 1px solid lightGray;
@@ -16,4 +82,8 @@ body {
   border-left: 3px solid red;
   padding-left: 8px;
   background-color: #EEE;
+}
+
+li.checked {
+  background-color: #FFD;
 }

@@ -3,11 +3,21 @@
   <%= f.label event.summary %>
   <ul>
     <% Member.all.each do |member| %>
-      <li>
-        <%= label_tag member.name %>
+      <li class="<%= "checked" if member.attended?(event) %>">
+      <%= label_tag :name, member.name, class: "check" %>
         <%= check_box_tag "member_ids[]", member.id, member.attended?(event) %>
       </li>
     <% end %>
   </ul>
-  <%= f.submit "Submit" %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
+
+<script>
+  $(".check").click(function() {
+    var checkbox;
+    console.log(this);
+    checkbox = $(this).siblings('input');
+    checkbox.attr("checked", !checkbox.attr("checked"));
+    $(this).parent().toggleClass('checked');
+  });
+</script>

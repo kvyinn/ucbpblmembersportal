@@ -1,14 +1,30 @@
-<h2>Commitment Calendars In Use:</h2>
-<%= render @commitment_calendars %>
+<div class="row">
+  <h1>Commitment Calendars</h1>
+  <div class="span5">
+    <h2>In Use:</h2>
+    <ul>
+      <%= render @commitment_calendars %>
+    </ul>
 
-<p><%= link_to "Tracked commitments", preview_commitments_url %></p>
-<p><%= link_to "Saved commitments", commitments_url %></p>
+    <hr>
+    <p><%= link_to "View tracked commitments", preview_commitments_url %></p>
+    <p><%= link_to "View saved commitments", commitments_url %></p>
 
-<h3>Mark for use?</h3>
-<% @unsaved_calendars.each do |calendar| %>
-  <%= form_for current_member.commitment_calendars.build(calendar_id: calendar.id), html: { class: "form-inline" } do |f|%>
-    <%= f.hidden_field :calendar_id %>
-    <%= f.label :summary, calendar.summary %>
-    <%= f.submit "Mark" %>
-  <% end %>
-<% end %>
+  </div>
+
+  <div class="span1"></div>
+  <div class="span6">
+    <h3>Mark for use?</h3>
+    <ul>
+      <% @unsaved_calendars.each do |calendar| %>
+        <li>
+          <%= form_for current_member.commitment_calendars.build(calendar_id: calendar.id), html: { class: "form-inline" } do |f|%>
+            <%= f.hidden_field :calendar_id %>
+            <%= f.label :summary, calendar.summary %>
+            <%= f.submit "Mark", class: "btn btn-small btn-primary" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

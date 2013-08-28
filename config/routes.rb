@@ -1,7 +1,7 @@
 Ucbpblmembersportal::Application.routes.draw do
   root to: "sessions#new"
 
-  match "/auth/:provider/callback", to: "sessions#create"
+  match "/auth/:provider/callback", to: "sessions#create", as: :signin
   match "/signout", to: "sessions#destroy", :as => :signout
   match "/update/:old_member_id", to: "members#update", as: :update_with_old_member
 

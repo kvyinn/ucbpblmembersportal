@@ -1,10 +1,14 @@
-<% if current_member %>
-  <h1>Welcome <%= current_member.name %>!</h1>
-  <% if current_member.committees.empty? %>
-    <p>Is this you?</p>
-    <%= render @old_members %>
-  <% else %>
-    <p><b>Committee: </b><%= current_member.committees.first.name %></p>
-    <p><b>Position: </b><%= current_member.position(current_member.committees.first) %></p>
+<div class=row>
+  <% if current_member %>
+    <h1>Welcome <%= current_member.name %>!</h1>
+    <div class="span12">
+      <% if current_member.committees.empty? %>
+        <p>Is this you?</p>
+        <%= render @old_members %>
+      <% else %>
+        <p><b>Committee: </b><%= current_member.committees.first.name %></p>
+        <p><b>Position: </b><%= current_member.position(current_member.committees.first) %></p>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+</div>

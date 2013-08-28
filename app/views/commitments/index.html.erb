@@ -1,5 +1,9 @@
-<h1>Your Saved Commitments</h1>
-<ul>
-  <%= render @commitments %>
-</ul>
-<p><%= link_to "View all", preview_commitments_url %></p>
+<div class="row">
+  <h1>Your Saved Commitments</h1>
+  <ul>
+    <%= render @commitments %>
+  </ul>
+  <div class="span12">
+    <p><%= link_to "View all", preview_commitments_url, class: "btn btn-primary" %></p>
+  </div>
+</div>

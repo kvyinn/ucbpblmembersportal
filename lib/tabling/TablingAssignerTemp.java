@@ -13,7 +13,7 @@ import java.util.*;
  */
 
 public class TablingAssignerTemp {
-    public static void run(dir) {
+    public static void run(String dir) {
         ScheduleReader reader = new ScheduleReader();
         String studentFile = dir + "members.csv";
         HashSet<Student> studentSet = null;

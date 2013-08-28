@@ -1,11 +1,11 @@
-<%= form_for reimbursement do |f| %>
+<%= form_for reimbursement, html: { class: "form" } do |f| %>
   <%= f.hidden_field :member_id %>
 
-  <%= f.label :amount %>
-  $<%= f.text_field :amount %>
+  <%= f.label :amount, "Amount: $" %>
+  <%= f.text_field :amount %>
 
   <%= f.label :for %>
   <%= f.text_field :details %>
 
-  <%= f.submit "Add" %>
+  <p><%= f.submit "Add", class: "btn btn-primary" %></p>
 <% end %>

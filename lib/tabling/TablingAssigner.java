@@ -42,7 +42,7 @@ public class TablingAssigner {
         run();
     }
 
-    public static void run(dir) {
+    public static void run(String dir) {
         HashSet<Student> students = ScheduleReader.processStudents(dir + "members.csv");
         
         HashMap<Integer, HashSet<TimeConflict>> tcMap = ScheduleReader.processTimeConflicts(dir + "schedules.csv");
