@@ -54,6 +54,6 @@ public class TablingAssignerTemp {
 
     }
     public static void main(String[] args) {
-        run();
+        run("");
     }
 }

@@ -39,7 +39,7 @@ public class TablingAssigner {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        run();
+        run("");
     }
 
     public static void run(String dir) {
