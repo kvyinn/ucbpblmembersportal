@@ -1,4 +1,4 @@
 <li>
-  <b><%= event.summary %></b>
-  <p><%= [event.start.date_time.strftime("%D %r"), event.end.date_time.strftime("%D %r")].join(" to ") %><p>
+  <b><%= event[:summary] %></b>
+  <p><%= [event[:start_time].strftime("%D %r"), event[:end_time].strftime("%D %r")].join(" to ") %><p>
 </li>

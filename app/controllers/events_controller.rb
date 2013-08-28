@@ -25,6 +25,8 @@ class EventsController < ApplicationController
         q: "pbl"
       }
     ).data.items
+
+    @events = process_google_events(@events)
   end
 
 end
