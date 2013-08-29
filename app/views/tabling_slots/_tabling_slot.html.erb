@@ -1,5 +1,5 @@
 <li>
-  <%= tabling_slot.start_time.to_s %> to <%= tabling_slot.end_time.to_s %>
+  <b><%= tabling_slot.start_time.strftime("%D %r") %> to <%= tabling_slot.end_time.strftime("%D %r") %></b>
   <ul>
     <ul>
       <%= render tabling_slot.members %>
