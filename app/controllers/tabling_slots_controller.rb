@@ -1,7 +1,17 @@
 class TablingSlotsController < ApplicationController
 
   def index
-    @tabling_slots = TablingSlot.order(:start_time)
+    tabling_slots = TablingSlot.order(:start_time)
+
+    earliest_time = DateTime.now + 1.month;
+    tabling_slots.each { |slot| earliest_time = slot.start_time if earliest_time > slot.start_time }
+
+    @tabling_slot_hash = Hash.new
+    tabling_slots.each do |slot|
+      @tabling_slot_hash[slot.start_time] = slot
+    end
+
+
 
     # NOTE: change to right ID
     @members_calendar_id = "pjnj2vfdlcui8n9244teaekvds@group.calendar.google.com"

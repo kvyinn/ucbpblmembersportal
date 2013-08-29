@@ -23,8 +23,8 @@ public class TablingAssigner {
     
     public static final int PREF_LEVEL = 0;
     public static final int CM_REQ_TABLING = 3;
-    public static final int CHAIR_REQ_TABLING = 1;
-    public static final int EXEC_REQ_TABLING = 2;
+    public static final int CHAIR_REQ_TABLING = 4;
+    public static final int EXEC_REQ_TABLING = 4;
     
 
     /** The number of times an assignment has to force someone out of their 
