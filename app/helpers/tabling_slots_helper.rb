@@ -33,21 +33,24 @@ module TablingSlotsHelper
 
       member.commitments.each do |commitment|
 
-        day = "-----"
-        start_time = commitment.start_time.to_datetime
-        day[start_time.cwday-1] = start_time.strftime("%a").upcase[0]
+        if commitment.start_time and commitment.end_time
 
-        end_date = commitment.end_time.strftime("%Y%m%d")
-        start_date = commitment.start_time.strftime("%Y%m%d")
+          day = "-----"
+          start_time = commitment.start_time.to_datetime
+          day[start_time.cwday-1] = start_time.strftime("%a").upcase[0]
 
-        start_time = commitment.start_time.strftime("%H%M")
-        end_time = commitment.end_time.strftime("%H%M")
+          end_date = commitment.end_time.strftime("%Y%m%d")
+          start_date = commitment.start_time.strftime("%Y%m%d")
 
-        list << [member.id, day, start_date, end_date, start_time, end_time]
+          start_time = commitment.start_time.strftime("%H%M")
+          end_time = commitment.end_time.strftime("%H%M")
 
-        CSV.open(File.join(@@write_dir, 'schedules.csv'), "ab") do |csv|
-          p [member.id, day, start_date, end_date, start_time, end_time]
-          csv << [member.id, day, start_date, end_date, start_time, end_time]
+          list << [member.id, day, start_date, end_date, start_time, end_time]
+
+          CSV.open(File.join(@@write_dir, 'schedules.csv'), "ab") do |csv|
+            p [member.id, day, start_date, end_date, start_time, end_time]
+            csv << [member.id, day, start_date, end_date, start_time, end_time]
+          end
         end
       end
     end
