@@ -13,6 +13,8 @@ class CommitmentCalendarsController < ApplicationController
 
   def write
     @list = write_init_files
+    generate_schedule
+    redirect_to tabling_slots_path
   end
 
   def create
