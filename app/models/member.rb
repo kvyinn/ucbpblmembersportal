@@ -32,12 +32,22 @@ class Member < ActiveRecord::Base
 
   has_many :commitments, dependent: :destroy
 
-  def position(committee)
+  def position(committee=nil)
+    committee = self.committees.first if !committee
     committee_member = self.committee_members.where(
       committee_id: committee.id
     ).first
 
     committee_member.committee_member_type.name if committee_member
+  end
+
+  def tier(committee=nil)
+    committee = self.committees.first if !committee
+    committee_member = self.committee_members.where(
+      committee_id: committee.id
+    ).first
+
+    committee_member.committee_member_type.tier if committee_member
   end
 
   def self.initialize_with_omniauth(provider, uid)

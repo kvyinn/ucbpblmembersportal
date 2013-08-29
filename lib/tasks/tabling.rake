@@ -2,6 +2,7 @@ require 'rjb'
 require 'csv'
 
 tabling_dir = File.join(Rails.root, "lib/tabling")
+write_dir = File.join(Rails.root, "tmp")
 Rjb::load(classpath = tabling_dir)
 
 namespace :tabling do
@@ -33,12 +34,12 @@ namespace :tabling do
   desc "View the members and schedules csv files"
   task :view do
     p "========= members.csv ============"
-    CSV.foreach(File.join(tabling_dir, 'members.csv')) do |row|
+    CSV.foreach(File.join(write_dir, 'members.csv')) do |row|
       p row
     end
 
     p "========= schedules.csv ============"
-    CSV.foreach(File.join(tabling_dir, 'schedules.csv')) do |row|
+    CSV.foreach(File.join(write_dir, 'schedules.csv')) do |row|
       p row
     end
   end

@@ -20,36 +20,29 @@ module TablingSlotsHelper
     File.open(File.join(@@write_dir, 'schedules.csv'), 'w') {|file| file.truncate(0) }
 
     Member.all.each do |member|
-      CSV.open(File.join(@@write_dir, 'members.csv'), "ab") { |csv| csv << [member.id, member.name, rand(4..5)] }
+      if member.commitments.count > 0 and member.tier > 2
+        CSV.open(File.join(@@write_dir, 'members.csv'), "ab") { |csv| csv << [member.id, member.name, member.tier+2] }
 
-      # Dummy lines (still doesn't work)
-=begin
-      if member.commitment_calendars.empty?
-        CSV.open("schedules.csv", "ab") do |csv|
-          csv << [member.id, "M----", 20130826, 20130826, 2000, 2100]
-        end
-      end
-=end
+        member.commitments.each do |commitment|
 
-      member.commitments.each do |commitment|
+          if commitment.start_time and commitment.end_time
 
-        if commitment.start_time and commitment.end_time
+            day = "-----"
+            start_time = commitment.start_time.to_datetime
+            day[start_time.cwday-1] = start_time.strftime("%a").upcase[0]
 
-          day = "-----"
-          start_time = commitment.start_time.to_datetime
-          day[start_time.cwday-1] = start_time.strftime("%a").upcase[0]
+            end_date = commitment.end_time.strftime("%Y%m%d")
+            start_date = commitment.start_time.strftime("%Y%m%d")
 
-          end_date = commitment.end_time.strftime("%Y%m%d")
-          start_date = commitment.start_time.strftime("%Y%m%d")
+            start_time = commitment.start_time.strftime("%H%M")
+            end_time = commitment.end_time.strftime("%H%M")
 
-          start_time = commitment.start_time.strftime("%H%M")
-          end_time = commitment.end_time.strftime("%H%M")
+            list << [member.id, day, start_date, end_date, start_time, end_time]
 
-          list << [member.id, day, start_date, end_date, start_time, end_time]
-
-          CSV.open(File.join(@@write_dir, 'schedules.csv'), "ab") do |csv|
-            p [member.id, day, start_date, end_date, start_time, end_time]
-            csv << [member.id, day, start_date, end_date, start_time, end_time]
+            CSV.open(File.join(@@write_dir, 'schedules.csv'), "ab") do |csv|
+              p [member.id, day, start_date, end_date, start_time, end_time]
+              csv << [member.id, day, start_date, end_date, start_time, end_time]
+            end
           end
         end
       end
