@@ -6,6 +6,10 @@ module GoogleApiHelper
 
     @client.authorization.access_token = cookies[:access_token] || auth_info["credentials"]["token"]
 
+    if @client.authorization.expired?
+      @client.authorization.fetch_access_token!(cookies[:refresh_token])
+    end
+
     return @client
   end
 
@@ -32,6 +36,5 @@ module GoogleApiHelper
   def auth_info
     request.env["omniauth.auth"]
   end
-
 
 end

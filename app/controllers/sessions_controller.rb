@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   def create
     @result = google_api_request('plus', 'v1', 'people', 'get', { userId: auth_info["uid"] } )
     cookies[:access_token] = auth_info["credentials"]["token"]
+    cookies[:refresh_token] = auth_info["credentials"]["refresh_token"]
 
     member = Member.initialize_with_omniauth(auth_info["provider"], auth_info["uid"])
     member.name = @result.data.display_name

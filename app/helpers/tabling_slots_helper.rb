@@ -31,34 +31,23 @@ module TablingSlotsHelper
       end
 =end
 
-      member.commitment_calendars.each do |commitment_calendar|
-        events = google_api_request(
-          "calendar", "v3", "events", "list",
-          {
-            calendarId: commitment_calendar.calendar_id,
-            timeMin: DateTime.now,
-            timeMax: DateTime.now + 1.week,
-            q: "pbl"
-          }
-        ).data.items
+      member.commitments.each do |commitment|
 
-        events.each do |event|
-          day = "-----"
-          start_time = event.start.date_time.to_datetime
-          day[start_time.cwday-1] = start_time.strftime("%a").upcase[0]
+        day = "-----"
+        start_time = commitment.start_time.to_datetime
+        day[start_time.cwday-1] = start_time.strftime("%a").upcase[0]
 
-          end_date = event.end.date_time.strftime("%Y%m%d")
-          start_date = event.start.date_time.strftime("%Y%m%d")
+        end_date = commitment.end_time.strftime("%Y%m%d")
+        start_date = commitment.start_time.strftime("%Y%m%d")
 
-          start_time = event.start.dateTime.strftime("%H%M")
-          end_time = event.end.dateTime.strftime("%H%M")
+        start_time = commitment.start_time.strftime("%H%M")
+        end_time = commitment.end_time.strftime("%H%M")
 
-          list << [member.id, day, start_date, end_date, start_time, end_time]
+        list << [member.id, day, start_date, end_date, start_time, end_time]
 
-          CSV.open(File.join(@@write_dir, 'schedules.csv'), "ab") do |csv|
-            p [member.id, day, start_date, end_date, start_time, end_time]
-            csv << [member.id, day, start_date, end_date, start_time, end_time]
-          end
+        CSV.open(File.join(@@write_dir, 'schedules.csv'), "ab") do |csv|
+          p [member.id, day, start_date, end_date, start_time, end_time]
+          csv << [member.id, day, start_date, end_date, start_time, end_time]
         end
       end
     end
@@ -77,7 +66,7 @@ module TablingSlotsHelper
 
     TablingSlot.destroy_all
 
-    CSV.foreach(File.join(@tabling_dir, 'initial_schedule.csv')) do |row|
+    CSV.foreach(File.join(@@write_dir, 'initial_schedule.csv')) do |row|
       member = Member.find(row[0] % Member.count)
       tabling_slot = member.tabling_slots << TablingSlot.where(
         start_time: to_datetime(row[1], row[2]),
