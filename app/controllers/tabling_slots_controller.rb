@@ -6,9 +6,7 @@ class TablingSlotsController < ApplicationController
     earliest_time = DateTime.now + 1.month;
     tabling_slots.each { |slot| earliest_time = slot.start_time if earliest_time > slot.start_time }
 
-    @tabling_slot_hash = Hash.new
-    tabling_slots.each do |slot|
-      @tabling_slot_hash[slot.start_time] = slot
+    @tabling_days = Hash.new
     end
 
 
