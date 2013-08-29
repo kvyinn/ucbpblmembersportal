@@ -20,8 +20,9 @@ module TablingSlotsHelper
     File.open(File.join(@@write_dir, 'schedules.csv'), 'w') {|file| file.truncate(0) }
 
     Member.all.each do |member|
-      if member.commitments.count > 0 and member.tier and member.tier > 2
+      if member.commitments.count > 0 and member.tier
         CSV.open(File.join(@@write_dir, 'members.csv'), "ab") { |csv| csv << [member.id, member.name, member.tier+2] }
+        p [member.id, member.name, member.tier+2]
 
         member.commitments.each do |commitment|
 
