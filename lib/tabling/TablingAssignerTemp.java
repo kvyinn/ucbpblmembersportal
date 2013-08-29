@@ -15,20 +15,20 @@ import java.util.*;
 public class TablingAssignerTemp {
     public static void run(String dir) {
         ScheduleReader reader = new ScheduleReader();
-        String studentFile = dir + "members.csv";
+        String studentFile = dir + "/members.csv";
         HashSet<Student> studentSet = null;
 
         System.out.println("Deserializing file " + studentFile + ":");
         studentSet = reader.processStudents(studentFile);
 
-        String tcFile = dir + "schedules.csv";
+        String tcFile = dir + "/schedules.csv";
         System.out.println("Deserializing file " + tcFile + ":");
         HashMap tcMap = null;
         tcMap = reader.processTimeConflicts(tcFile);
 
 
         try {
-            String outputFileName = dir + "available_slots.csv";
+            String outputFileName = dir + "/available_slots.csv";
             BufferedWriter tsWriter = new BufferedWriter(new FileWriter(new File(outputFileName)));
 
             System.out.println("Reading time conflicts for each student and writing to file");

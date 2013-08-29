@@ -43,9 +43,9 @@ public class TablingAssigner {
     }
 
     public static void run(String dir) {
-        HashSet<Student> students = ScheduleReader.processStudents(dir + "members.csv");
+        HashSet<Student> students = ScheduleReader.processStudents(dir + "/members.csv");
         
-        HashMap<Integer, HashSet<TimeConflict>> tcMap = ScheduleReader.processTimeConflicts(dir + "schedules.csv");
+        HashMap<Integer, HashSet<TimeConflict>> tcMap = ScheduleReader.processTimeConflicts(dir + "/schedules.csv");
         
         for (Student student : students) {
             student.getTimeConflicts(tcMap);
@@ -102,7 +102,7 @@ public class TablingAssigner {
         }
         
         try {
-            String outputFileName = dir + "initial_schedule.csv";
+            String outputFileName = dir + "/initial_schedule.csv";
             BufferedWriter tsWriter = new BufferedWriter(new FileWriter(new File(outputFileName)));
 
             System.out.println("Writing initial schedule to file");
