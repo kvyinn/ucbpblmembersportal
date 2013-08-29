@@ -34,20 +34,24 @@ class Member < ActiveRecord::Base
 
   def position(committee=nil)
     committee = self.committees.first if !committee
-    committee_member = self.committee_members.where(
-      committee_id: committee.id
-    ).first
+    if committee
+      committee_member = self.committee_members.where(
+        committee_id: committee.id
+      ).first
 
-    committee_member.committee_member_type.name if committee_member
+      committee_member.committee_member_type.position if committee_member
+    end
   end
 
   def tier(committee=nil)
     committee = self.committees.first if !committee
-    committee_member = self.committee_members.where(
-      committee_id: committee.id
-    ).first
+    if committee
+      committee_member = self.committee_members.where(
+        committee_id: committee.id
+      ).first
 
-    committee_member.committee_member_type.tier if committee_member
+      committee_member.committee_member_type.tier if committee_member
+    end
   end
 
   def self.initialize_with_omniauth(provider, uid)

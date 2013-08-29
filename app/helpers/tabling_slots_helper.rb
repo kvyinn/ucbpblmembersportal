@@ -29,7 +29,7 @@ module TablingSlotsHelper
 
             day = "-----"
             start_time = commitment.start_time.to_datetime
-            day[start_time.cwday-1] = start_time.strftime("%a").upcase[0]
+            day[start_time.cwday-1] = start_time.strftime("%a").upcase[0] if start_time.cwday <= 5
 
             end_date = commitment.end_time.strftime("%Y%m%d")
             start_date = commitment.start_time.strftime("%Y%m%d")
