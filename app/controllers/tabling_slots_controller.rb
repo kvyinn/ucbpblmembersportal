@@ -1,10 +1,10 @@
 class TablingSlotsController < ApplicationController
 
   def index
-    tabling_slots = TablingSlot.order(:start_time)
+    @tabling_slots = TablingSlot.order(:start_time)
 
     earliest_time = DateTime.now + 1.month;
-    tabling_slots.each { |slot| earliest_time = slot.start_time if earliest_time > slot.start_time }
+    @tabling_slots.each { |slot| earliest_time = slot.start_time if earliest_time > slot.start_time }
 
     @tabling_days = Hash.new
 
