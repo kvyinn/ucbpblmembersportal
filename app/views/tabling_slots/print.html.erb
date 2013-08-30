@@ -1,0 +1,16 @@
+<h1>Tabling for the week of <%= @earliest_time.strftime("%D") %></h1>
+<% @tabling_days.each do |day, slots| %>
+  <div>
+    <h3><%= day.strftime("%A, %D") %></h3>
+    <ul>
+      <% slots.each do |slot| %>
+        <li><b><%= slot.start_time.strftime("%r") %></b></li>
+        <ul>
+          <% slot.members.each do |member| %>
+            <li><%= member.name %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
