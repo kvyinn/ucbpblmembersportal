@@ -40,7 +40,7 @@ function addMember(ev) {
   var tsm_id = ev.dataTransfer.getData("tsm_id");
   var tabling_slot_id = $(ev.target).parent().parent().attr("id");
   $.ajax({
-    url: "tabling_slot_members/" + tsm_id,
+    url: "/tabling_slot_members/" + tsm_id,
     type: "PUT",
     data: { "tabling_slot_id": tabling_slot_id },
   }).done(function(data) {
