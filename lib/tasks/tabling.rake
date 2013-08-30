@@ -60,9 +60,11 @@ namespace :tabling do
     @tabling_dir = File.join(Rails.root, "lib/tabling")
 
     Dir.chdir(@tabling_dir)
-    TablingAssignerTemp.run
+    TablingAssignerTemp = Rjb::import("tablingassigner.TablingAssignerTemp")
+    TablingAssigner = Rjb::import("tablingassigner.TablingAssigner")
+    TablingAssignerTemp.run(@tabling_dir)
 
-    TablingAssigner.run
+    TablingAssigner.run(@tabling_dir)
 
     TablingSlot.destroy_all
 
@@ -101,16 +103,10 @@ namespace :members do
 end
 
 def to_datetime(day, time)
-  hour = 0
-  min = 0
-  if time.length == 3
-    hour = time[0,1]
-  else
-    hour = time[0,2]
-  end
+  hour = time.to_i/100
 
-  min = time[-2,2]
-  DateTime.parse("#{day} #{hour}:#{min}") + 1.week
+  datetime = date_of_next(day).change(offset: "-0700") + hour.hours
+  return datetime
 end
 
 def date_of_next(day)

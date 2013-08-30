@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
   def signed_on_to_google
     redirect_to google_signin_url if current_member.nil?
   end
+
+  def admin_member
+    redirect_to root_path, notice: "You are not authorized to do that" if !current_member.admin?
+  end
 end

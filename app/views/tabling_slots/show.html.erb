@@ -1,0 +1,25 @@
+<div class="row">
+  <h1>Tabling Slot <%= "#{@tabling_slot.start_time.strftime("%A, %D")}" %></h1>
+  <h2><%= "#{@tabling_slot.start_time.strftime("%l:%M%p")} to #{@tabling_slot.end_time.strftime("%l:%M%p")}" %></h2>
+
+  <div class="span6">
+    <ul>
+      <% @tabling_slot.members.each do |member| %>
+        <%= render "tabling_slots/member", member: member, tabling_slot: @tabling_slot %>
+      <% end %>
+      <% if current_member.admin? %>
+        <li class="delete" ondrop="deleteMember(event)" ondragover="allowDrop(event)">Drop here to delete</li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="span6">
+    <h2>Add a member to this slot</h2>
+    <%= form_for @tabling_slot.tabling_slot_members.build, html: { class: "form-inline" } do |f| %>
+      <%= render "layouts/member_autocomp_form" %>
+      <%= f.hidden_field :tabling_slot_id %>
+
+      <%= f.submit "Add", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

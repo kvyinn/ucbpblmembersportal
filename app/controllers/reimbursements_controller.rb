@@ -1,5 +1,7 @@
 class ReimbursementsController < ApplicationController
 
+  before_filter :admin_member, only: [ :new, :create, :destroy ]
+
   def index
     @reimbursements = Reimbursement.all
   end
@@ -9,18 +11,27 @@ class ReimbursementsController < ApplicationController
   end
 
   def new
-    @member = Member.find(params[:member_id]) if params[:member_id]
-    @committee = Committee.find(params[:committee_id]) if params[:committee_id]
-    @reimbursement = Reimbursement.new(member_id: params[:member_id])
+    @reimbursement = Reimbursement.new
   end
 
   def create
-    Member.find(params[:reimbursement][:member_id]).reimbursements << Reimbursement.create(params[:reimbursement])
-    redirect_to reimbursements_path
+    params[:reimbursement].delete :member
+    @reimbursement = Reimbursement.new(params[:reimbursement])
+
+    if !params[:member_id].blank? and @reimbursement.save
+      Member.find(params[:member_id]).reimbursements << @reimbursement
+
+      flash[:success] = "You've added a reimbursement!"
+      redirect_to reimbursements_path
+    else
+      render 'new'
+    end
   end
 
   def destroy
     reimbursement = Reimbursement.find(params[:id]).destroy
+
+    flash[:success] = "You've cleared a reimbursement!"
     redirect_to reimbursements_path
   end
 

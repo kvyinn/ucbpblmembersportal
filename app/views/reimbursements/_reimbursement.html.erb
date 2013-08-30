@@ -1,8 +1,12 @@
 <li>
   <% if !reimbursement.new_record? %>
-    <%= form_for reimbursement, method: "delete", html: { class: "form-inline" } do |f| %>
-      <%= f.label :details, "#{reimbursement.member.name}: #{number_to_currency(reimbursement.amount)} for #{reimbursement.details}" %>
-      <%= f.submit "Delete", class: "btn btn-danger" %>
+    <% if current_member.admin? %>
+      <%= form_for reimbursement, method: "delete", html: { class: "form-inline" } do |f| %>
+        <%= f.label :details, "#{reimbursement.member.name}: #{number_to_currency(reimbursement.amount)} for #{reimbursement.details}" %>
+        <%= f.submit "Delete", class: "btn btn-danger" %>
+      <% end %>
+    <% else %>
+      <%= "#{reimbursement.member.name}: #{number_to_currency(reimbursement.amount)} for #{reimbursement.details}" %>
     <% end %>
   <% end %>
 </li>

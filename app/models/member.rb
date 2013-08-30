@@ -39,7 +39,7 @@ class Member < ActiveRecord::Base
         committee_id: committee.id
       ).first
 
-      committee_member.committee_member_type.position if committee_member
+      committee_member.committee_member_type.name if committee_member
     end
   end
 
@@ -52,6 +52,14 @@ class Member < ActiveRecord::Base
 
       committee_member.committee_member_type.tier if committee_member
     end
+  end
+
+  def admin?
+    self.name == "Keien Ohta" or self.committees.include?(Committee.where(name: "Executive").first)
+  end
+
+  def tabling_slot_member(tabling_slot)
+    self.tabling_slot_members.where(tabling_slot_id: tabling_slot.id).first
   end
 
   def self.initialize_with_omniauth(provider, uid)
@@ -68,6 +76,12 @@ class Member < ActiveRecord::Base
 
   def attended?(event)
     !self.event_members.where(event_id: event.id).empty?
+  end
+
+  def autocomplete_display
+    committee_name = self.committees.first ? self.committees.first.name : "N/A"
+
+    "#{self.name}; #{committee_name}: #{self.position || "Member"}"
   end
 
   private

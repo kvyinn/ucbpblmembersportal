@@ -1,5 +1,7 @@
 class CommitmentCalendarsController < ApplicationController
 
+  before_filter :admin_member, only: [ :write ]
+
   def index
     @commitment_calendars = current_member.commitment_calendars
 

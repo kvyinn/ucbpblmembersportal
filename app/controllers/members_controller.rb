@@ -1,10 +1,24 @@
 class MembersController < ApplicationController
 
+  def index
+    if params[:term]
+      @members = Member.where('lower(name) LIKE lower(?)', "%#{params[:term]}%")
+      @members = @members.map { |member| { label: member.autocomplete_display, value: member.name, id: member.id } }
+    else
+      @members = Member.all
+    end
+
+    respond_to do |format|
+      format.json { render :json => @members.to_json }
+      end
+  end
+
   def show
     @old_members = OldMember.where(last_name: current_member.name.split[-1])
   end
 
   def update
+    # TODO Move to model
     if params[:old_member_id]
       old_member = OldMember.find(params[:old_member_id])
       if old_member.tier_id == 3

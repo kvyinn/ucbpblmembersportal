@@ -1,0 +1,30 @@
+<%= label_tag :member, "Member" %>
+<%= text_field_tag :member, nil, id: "member"%>
+<%= hidden_field_tag :member_id, nil, id: "member_id" %>
+
+<script type="text/javascript">
+  $(function() {
+
+      // Below is the name of the textfield that will be autocomplete
+      $('#member').autocomplete({
+          // This shows the min length of charcters that must be typed before the autocomplete looks for a match.
+          minLength: 2,
+          // This is the source of the auocomplete suggestions. In this case a list of names from the people controller, in JSON format.
+          source: '<%= members_path(:json) %>',
+          // Once a value in the drop down list is selected, do the following:
+          select: function(event, ui) {
+              // and place the person.id into the hidden textfield called 'link_origin_id'. 
+              $('#member_id').val(ui.item.id);
+              return false;
+          }
+      })
+      // // The below code is straight from the jQuery example. It formats what data is displayed in the dropdown box, and can be customized.
+      // .data( "autocomplete" )._renderItem = function( ul, item ) {
+      //     return $( "<li></li>" )
+      //       .data( "item.autocomplete", item )
+      //       // For now which just want to show the person.given_name in the list.
+      //       .append( "<a>" + item.member.name + "</a>" )
+      //       .appendTo( ul );
+      // };
+  });
+</script>

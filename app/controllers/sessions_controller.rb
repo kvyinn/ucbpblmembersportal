@@ -22,8 +22,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:remember_token] = nil
-    redirect_to root_url, :notice => "Signed out!"
+    cookies[:remember_token] = nil
+    current_member = nil;
+    redirect_to "https://accounts.google.com/logout"
   end
 
 end

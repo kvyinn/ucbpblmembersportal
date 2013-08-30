@@ -27,9 +27,9 @@ Ucbpblmembersportal::Application.routes.draw do
     resources :reimbursements, only: [ :new ]
   end
 
-  resources :tabling_slots, only: [ :index ] do
-    get :generate, on: :collection
-  end
+  resources :tabling_slots, only: [ :index, :show ]
+
+  resources :tabling_slot_members, only: [ :create, :destroy, :update ]
 
   resources :commitment_calendars, only: [ :index, :create, :destroy ] do
     get :write, on: :collection

@@ -1,5 +1,5 @@
 <%= form_for reimbursement, html: { class: "form" } do |f| %>
-  <%= f.hidden_field :member_id %>
+  <%= render "layouts/member_autocomp_form" %>
 
   <%= f.label :amount, "Amount: $" %>
   <%= f.text_field :amount %>

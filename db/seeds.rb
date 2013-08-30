@@ -5,15 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-100.times { FactoryGirl.create(:member) }
-10.times { FactoryGirl.create(:committee) }
-5.times { FactoryGirl.create(:committee_member_type) }
+if Rails.env.development?
+  100.times { FactoryGirl.create(:member) }
+  10.times { FactoryGirl.create(:committee) }
+  5.times { FactoryGirl.create(:committee_member_type) }
 
-Member.all.each do |member|
-  committee_member = member.committee_members.create!(
-    committee_id: Committee.first(offset: rand(Committee.count)).id,
-    committee_member_type_id: CommitteeMemberType.first(offset: rand(CommitteeMemberType.count)).id,
-  )
+  Member.all.each do |member|
+    committee_member = member.committee_members.create!(
+      committee_id: Committee.first(offset: rand(Committee.count)).id,
+      committee_member_type_id: CommitteeMemberType.first(offset: rand(CommitteeMemberType.count)).id,
+    )
+  end
 end
 
 statuses = [:available, :attending, :attended, :late, :missed, :make_up]

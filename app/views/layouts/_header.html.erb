@@ -13,6 +13,7 @@
         </ul>
         <ul class="nav pull-right">
           <% if current_member %>
+            <li><%= link_to current_member.name, "#" %></li>
             <li><%= link_to "Sign out", signout_path, method: :delete %></li>
           <% else %>
             <li><%= link_to "Sign in", root_path %></li>

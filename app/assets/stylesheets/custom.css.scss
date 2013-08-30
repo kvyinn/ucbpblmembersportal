@@ -14,10 +14,6 @@ form {
   margin: 2px 0 2px 0;
 }
 
-.row h1 {
-  margin-left: 20px;
-}
-
 label {
   font-size: 18px;
   margin-bottom: 0;
@@ -34,15 +30,41 @@ input[type="checkbox"] {
 
 .row ul {
   list-style-type: none;
-  margin-left: 22px;
+  margin-left: 2px;
 }
 
 .row li {
+  background-color: white;
   padding: 20px 0px 20px 10px;
   margin: 5px 0px 5px 0px;
   border-left: 2px solid lightBlue;
   font-size: 14pt;
   color: gray;
+}
+
+.row li.no-border {
+  border-left: none;
+  padding-left: 0;
+}
+
+.row li.no-border:hover {
+  background-color: white;
+}
+
+.row li.current_member {
+  color: blue;
+}
+
+.row li.delete {
+  border-left: 2px solid #F55;
+  color: #DDD;
+  display: none;
+}
+
+.row li.add {
+  border-left: 2px solid #2A2;
+  color: #DDD;
+  display: none;
 }
 
 .row li:hover {
@@ -51,10 +73,6 @@ input[type="checkbox"] {
 
 li .btn {
   float: right;
-}
-
-[class*="span"] ul {
-  margin-left: 2px;
 }
 
 [class*="span"] li {

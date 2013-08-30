@@ -83,7 +83,6 @@ module TablingSlotsHelper
     hour = time.to_i/100
 
     datetime = date_of_next(day).change(offset: "-0700") + hour.hours
-    p datetime
     return datetime
   end
 
