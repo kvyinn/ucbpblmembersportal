@@ -105,3 +105,11 @@ li .btn {
 li.checked {
   background-color: #FFD;
 }
+
+@media print {
+  div {
+    float: left;
+    font-size: 10pt;
+    height: 800px;
+  }
+}
