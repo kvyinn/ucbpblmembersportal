@@ -27,7 +27,7 @@ function deleteMember(ev) {
   ev.preventDefault();
   var tsm_id = ev.dataTransfer.getData("tsm_id");
   $.ajax({
-    url: location.hostname + "/tabling_slot_members/" + tsm_id,
+    url: "/tabling_slot_members/" + tsm_id,
     type: "DELETE",
   }).done(function(data) {
     $(ev.target).parent().children("#"+tsm_id).remove();
@@ -41,7 +41,7 @@ function addMember(ev) {
   var tabling_slot_id = $(ev.target).parent().parent().attr("id");
   console.log(location.hostname);
   $.ajax({
-    url: location.hostname + "/tabling_slot_members/" + tsm_id,
+    url: "/tabling_slot_members/" + tsm_id,
     type: "PUT",
     data: { "tabling_slot_id": tabling_slot_id },
   }).done(function(data) {
