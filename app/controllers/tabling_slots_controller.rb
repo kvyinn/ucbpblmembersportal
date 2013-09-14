@@ -4,9 +4,9 @@ class TablingSlotsController < ApplicationController
 
   def index
     @tabling_slots = TablingSlot.where(
-      "start_time >= :last_monday and start_time < :next_monday",
-      last_monday: DateTime.parse("Monday"),
-      next_monday: date_of_next("Monday"),
+      "start_time >= :tabling_start and start_time <= :tabling_end",
+      tabling_start: tabling_start,
+      tabling_end: tabling_end,
     ).order(:start_time)
 
     if !@tabling_slots.empty?
