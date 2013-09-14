@@ -15,7 +15,7 @@ module EventsHelper
       }
     end
 
-    return results
+    return results.sort_by {|event| event[:start_time]}
   end
 
   def google_datetime_fix(datetime)

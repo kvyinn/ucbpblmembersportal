@@ -44,6 +44,7 @@ gem 'jquery-rails'
 gem 'therubyracer'
 gem 'factory_girl_rails', '~> 4.0.0'
 gem 'faker'
+gem 'chronic'
 
 gem 'rjb'
 heroku_java_home = '/usr/lib/jvm/java-6-openjdk'

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20130827223617) do
     t.integer  "member_id"
     t.string   "calendar_id"
     t.string   "acl_id"
+    t.string   "tag"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

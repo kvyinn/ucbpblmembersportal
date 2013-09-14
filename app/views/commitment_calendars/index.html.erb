@@ -16,17 +16,18 @@
   <div class="span6">
     <h3>Mark for use?</h3>
     <p>
-      This will allow the Portal to track all events in the calendar that are "tagged" with pbl
-      (i.e. have the word "pbl" either in the title or the description). You can view all currently
-      tracked events <%= link_to "here", preview_commitments_url %>.
+      This will allow the Portal to track either all events in the calendar or events that are
+      "tagged" with pbl (i.e. have the word "pbl" either in the title or the description). You can
+      view all currently tracked events <%= link_to "here", preview_commitments_url %>.
     </p>
     <ul>
       <% @unsaved_calendars.each do |calendar| %>
         <li>
           <%= form_for current_member.commitment_calendars.build(calendar_id: calendar.id), html: { class: "form-inline" } do |f|%>
             <%= f.hidden_field :calendar_id %>
-            <%= f.label :summary, calendar.summary %>
-            <%= f.submit "Mark", class: "btn btn-small btn-primary" %>
+            <%= f.label :summary, truncate(calendar.summary, length: 25) %>
+            <%= f.submit "Mark Tagged", class: "btn btn-small btn-mark" %>
+            <%= f.submit "Mark All", class: "btn btn-small btn-primary btn-mark" %>
           <% end %>
         </li>
       <% end %>

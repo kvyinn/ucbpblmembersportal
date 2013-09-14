@@ -4,6 +4,7 @@ class CreateCommitmentCalendars < ActiveRecord::Migration
       t.integer :member_id
       t.string :calendar_id
       t.string :acl_id
+      t.string :tag
 
       t.timestamps
     end

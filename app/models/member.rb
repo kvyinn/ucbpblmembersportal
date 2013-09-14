@@ -58,12 +58,23 @@ class Member < ActiveRecord::Base
     self.name == "Keien Ohta" or self.committees.include?(Committee.where(name: "Executive").first)
   end
 
+  def officer?
+    self.admin? or
+    self.position == "chair"
+  end
+
   def tabling_slot_member(tabling_slot)
     self.tabling_slot_members.where(tabling_slot_id: tabling_slot.id).first
   end
 
   def self.initialize_with_omniauth(provider, uid)
     Member.where(provider: provider, uid: uid).first_or_initialize
+  end
+
+  def cms
+    self.committees.map do |committee|
+      committee.members
+    end.flatten
   end
 
   def Member.new_remember_token

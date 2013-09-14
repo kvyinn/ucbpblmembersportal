@@ -3,19 +3,23 @@ class TablingSlotsController < ApplicationController
   before_filter :admin_member, only: [ :generate, :add_to_google_calendar ]
 
   def index
-    @tabling_slots = TablingSlot.order(:start_time)
+    @tabling_slots = TablingSlot.where(
+      "start_time >= :last_monday and start_time < :next_monday",
+      last_monday: DateTime.parse("Monday"),
+      next_monday: date_of_next("Monday"),
+    ).order(:start_time)
 
-    @earliest_time = @tabling_slots.first.start_time
+    if !@tabling_slots.empty?
+      @earliest_time = @tabling_slots.first.start_time
 
-    @tabling_days = Hash.new
-    @tabling_slots.each do |tabling_slot|
-      @tabling_days[tabling_slot.start_time.to_date] ||= Array.new
-      tabling_day = @tabling_days[tabling_slot.start_time.to_date]
+      @tabling_days = Hash.new
+      @tabling_slots.each do |tabling_slot|
+        @tabling_days[tabling_slot.start_time.to_date] ||= Array.new
+        tabling_day = @tabling_days[tabling_slot.start_time.to_date]
 
-      tabling_day << tabling_slot
+        tabling_day << tabling_slot
+      end
     end
-
-
 
     # NOTE: change to right ID
     @members_calendar_id = "pjnj2vfdlcui8n9244teaekvds@group.calendar.google.com"

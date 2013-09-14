@@ -20,7 +20,7 @@ module TablingSlotsHelper
     File.open(File.join(@@write_dir, 'schedules.csv'), 'w') {|file| file.truncate(0) }
 
     Member.all.each do |member|
-      if member.commitments.count > 0 and member.tier and member != Member.find(111)
+      if member.commitments.count > 0 and member.tier and member != Member.where(name: "Keien Ohta").first
         CSV.open(File.join(@@write_dir, 'members.csv'), "ab") { |csv| csv << [member.id, member.name, member.tier+2] }
         p [member.id, member.name, member.tier+2]
 
@@ -73,17 +73,5 @@ module TablingSlotsHelper
     end
   end
 
-  def date_of_next(day)
-    date  = Date.parse(day)
-    delta = date > Date.today ? 0 : 7
-    date + delta
-  end
-
-  def to_datetime(day, time)
-    hour = time.to_i/100
-
-    datetime = date_of_next(day).change(offset: "-0700") + hour.hours
-    return datetime
-  end
 
 end

@@ -21,6 +21,7 @@ class CommitmentCalendarsController < ApplicationController
 
   def create
     commitment_calendar = CommitmentCalendar.new(params[:commitment_calendar])
+    commitment_calendar.tag = "pbl" if params[:commit] == "Mark Tagged" # NOTE: dynamic tags?
     current_member.commitment_calendars << commitment_calendar
 
     rule = { scope: { type: "user", value: "keien.is.testing@gmail.com" }, role: "reader" }

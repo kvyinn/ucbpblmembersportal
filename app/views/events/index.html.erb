@@ -1,7 +1,15 @@
 <div class="row">
+  <h1>Past Events</h1>
+  <ul>
+    <% @past_events.each do |event| %>
+      <%= render "events/event", event: event %>
+    <% end %>
+  </ul>
+</div>
+<div class="row">
   <h1>Upcoming Events</h1>
   <ul>
-    <% @events.each do |event| %>
+    <% @upcoming_events.each do |event| %>
       <%= render "events/event", event: event %>
     <% end %>
   </ul>
