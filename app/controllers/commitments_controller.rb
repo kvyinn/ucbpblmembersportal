@@ -2,6 +2,11 @@ class CommitmentsController < ApplicationController
 
   def index
     @commitments = current_member.commitments
+    if current_member.admin?
+      @submitted_members = Commitment.all.map do |commitment|
+        commitment.member
+      end.uniq.map { |member| member.name }
+    end
   end
 
   def update_all
