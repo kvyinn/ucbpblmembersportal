@@ -26,16 +26,22 @@ class TablingSlotsController < ApplicationController
   end
 
   def print
-    @tabling_slots = TablingSlot.order(:start_time)
+    @tabling_slots = TablingSlot.where(
+      "start_time >= :tabling_start and start_time <= :tabling_end",
+      tabling_start: tabling_start,
+      tabling_end: tabling_end,
+    ).order(:start_time)
 
-    @earliest_time = @tabling_slots.first.start_time
+    if !@tabling_slots.empty?
+      @earliest_time = @tabling_slots.first.start_time
 
-    @tabling_days = Hash.new
-    @tabling_slots.each do |tabling_slot|
-      @tabling_days[tabling_slot.start_time.to_date] ||= Array.new
-      tabling_day = @tabling_days[tabling_slot.start_time.to_date]
+      @tabling_days = Hash.new
+      @tabling_slots.each do |tabling_slot|
+        @tabling_days[tabling_slot.start_time.to_date] ||= Array.new
+        tabling_day = @tabling_days[tabling_slot.start_time.to_date]
 
-      tabling_day << tabling_slot
+        tabling_day << tabling_slot
+      end
     end
 
     render layout: "print"
