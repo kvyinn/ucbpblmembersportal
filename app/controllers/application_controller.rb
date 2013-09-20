@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
     date  = Date.parse(day)
     delta = date > Date.today ? 0 : 7
     date + delta
-    Chronic.parse("next #{day}").to_datetime
+    Chronic.parse("0 next #{day}").to_datetime
   end
 
   # Date of the tabling start day
