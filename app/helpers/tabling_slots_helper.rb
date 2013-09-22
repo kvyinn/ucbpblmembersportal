@@ -61,7 +61,11 @@ module TablingSlotsHelper
 
     TablingAssigner.run(@@write_dir)
 
-    TablingSlot.destroy_all
+    TablingSlot.where(
+      "start_time >= :tabling_start and start_time <= :tabling_end",
+      tabling_start: tabling_start,
+      tabling_end: tabling_end,
+    ).destroy_all
 
     CSV.foreach(File.join(@@write_dir, 'initial_schedule.csv')) do |row|
       member = Member.find(row[0] % Member.count)
