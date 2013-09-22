@@ -24,6 +24,10 @@ module GoogleApiHelper
       api_resource = api_resource.send(resources)
     end
 
+    if resources == 'events'
+      parameters[:singleEvents] = true
+    end
+
     result = google_api_client.execute(
       api_method: api_resource.send(method),
       parameters: parameters,

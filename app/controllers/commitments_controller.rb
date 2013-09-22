@@ -24,7 +24,6 @@ class CommitmentsController < ApplicationController
           calendarId: commitment_calendar.calendar_id,
           timeMin: DateTime.now,
           timeMax: DateTime.now + 1.week,
-          singleEvents: true,
           q: commitment_calendar.tag
         }
       ).data.items
