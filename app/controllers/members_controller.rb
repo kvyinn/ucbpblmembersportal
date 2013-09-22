@@ -69,7 +69,7 @@ class MembersController < ApplicationController
 
     end
 
-    redirect_to current_member
+    redirect_to commitment_calendars_path
   end
 
 end

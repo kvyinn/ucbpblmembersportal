@@ -95,6 +95,10 @@ class Member < ActiveRecord::Base
     "#{self.name}; #{committee_name}: #{self.position || "Member"}"
   end
 
+  # Update using old member information
+  def self.update_with_old_member
+  end
+
   private
 
     def create_remember_token
