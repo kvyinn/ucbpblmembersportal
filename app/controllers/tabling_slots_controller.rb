@@ -53,6 +53,7 @@ class TablingSlotsController < ApplicationController
   end
 
   def generate
+    write_init_files
     generate_schedule
     redirect_to tabling_slots_path
   end

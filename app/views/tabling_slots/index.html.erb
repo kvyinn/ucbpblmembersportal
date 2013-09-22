@@ -1,8 +1,14 @@
 <div class="row">
   <% if @tabling_days.nil? %>
     <h1>No tabling slots yet!</h1>
+    <% if current_member.admin? %>
+      <%= link_to "Generate", generate_tabling_slots_url, class: "btn btn-primary btn-large" %>
+    <% end %>
   <% else %>
     <h1>Tabling for the week of <%= @earliest_time.strftime("%D") %></h1>
+    <% if current_member.admin? %>
+      <%= link_to "Reroll", generate_tabling_slots_url, class: "btn btn-primary btn-large" %>
+    <% end %>
     <p><%= link_to "Print view", print_tabling_slots_url %></p>
     <% @tabling_days.each do |day, slots| %>
       <div class=<%= day === Date.today ? "span4" : "span2" %>>

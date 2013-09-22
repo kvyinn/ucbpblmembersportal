@@ -29,13 +29,12 @@ Ucbpblmembersportal::Application.routes.draw do
 
   resources :tabling_slots, only: [ :index, :show ] do
     get :print, on: :collection
+    get :generate, on: :collection
   end
 
   resources :tabling_slot_members, only: [ :create, :destroy, :update ]
 
-  resources :commitment_calendars, only: [ :index, :create, :destroy ] do
-    get :write, on: :collection
-  end
+  resources :commitment_calendars, only: [ :index, :create, :destroy ]
 
   resources :committees, only: [ :show ] do
     resources :reimbursements, only: [ :new ]
