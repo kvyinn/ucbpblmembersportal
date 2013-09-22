@@ -28,15 +28,17 @@ module TablingSlotsHelper
 
           if commitment.start_time and commitment.end_time
 
+            start_time = this_week(commitment.start_time)
+            end_time = this_week(commitment.end_time)
+
             day = "-----"
-            start_time = commitment.start_time.to_datetime
             day[start_time.cwday-1] = start_time.strftime("%a").upcase[0] if start_time.cwday <= 5
 
-            end_date = commitment.end_time.strftime("%Y%m%d")
-            start_date = commitment.start_time.strftime("%Y%m%d")
+            end_date = end_time.strftime("%Y%m%d")
+            start_date = start_time.strftime("%Y%m%d")
 
-            start_time = commitment.start_time.strftime("%H%M")
-            end_time = commitment.end_time.strftime("%H%M")
+            start_time = start_time.strftime("%H%M")
+            end_time = end_time.strftime("%H%M")
 
             list << [member.id, day, start_date, end_date, start_time, end_time]
 

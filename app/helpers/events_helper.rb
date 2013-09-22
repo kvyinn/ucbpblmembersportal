@@ -4,14 +4,22 @@ module EventsHelper
     '8bo2rpf4joem2kq9q2n940p1ss@group.calendar.google.com'
   end
 
-  def process_google_events(events)
+  def process_google_events(events, options={})
     results = []
     events.each do |event|
+      start_time = google_datetime_fix(event.start)
+      end_time = google_datetime_fix(event.end)
+
+      if options[:this_week]
+        start_time = this_week(start_time)
+        end_time = this_week(end_time)
+      end
+
       results << {
         id: event.id,
         summary: event.summary,
-        start_time: google_datetime_fix(event.start),
-        end_time: google_datetime_fix(event.end),
+        start_time: start_time,
+        end_time: end_time,
       }
     end
 

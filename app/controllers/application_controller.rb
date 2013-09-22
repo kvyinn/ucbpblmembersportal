@@ -75,4 +75,8 @@ class ApplicationController < ActionController::Base
     return datetime
   end
 
+  # TEMPORARY fix for all day events
+  def this_week(datetime)
+    Chronic.parse("#{datetime.strftime("%H:%M")} this #{datetime.strftime("%A")}").to_datetime
+  end
 end

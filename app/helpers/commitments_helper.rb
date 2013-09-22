@@ -14,7 +14,7 @@ module CommitmentsHelper
         }
       ).data.items
 
-      events = process_google_events(events)
+      events = process_google_events(events, this_week: true)
 
       events.each do |event|
         summary = event[:summary]

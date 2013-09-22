@@ -29,7 +29,7 @@ class CommitmentsController < ApplicationController
       ).data.items
     end
 
-    @events = process_google_events(@events.flatten)
+    @events = process_google_events(@events.flatten, this_week: true)
 
     @events = @events.flatten.sort_by {|event| event[:start_time]}
   end
