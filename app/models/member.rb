@@ -12,7 +12,7 @@
 #
 
 class Member < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :provider, :uid
 
   validates :provider, :uid, :name, presence: true
 

@@ -15,7 +15,9 @@ class SessionsController < ApplicationController
 
     if member.save
       cookies[:remember_token] = member.remember_token
-      redirect_to member
+
+      @old_members = OldMember.where(last_name: current_member.name.split[-1])
+      redirect_to update_with_old_member_path(member)
     else
       redirect_to root_path
     end
