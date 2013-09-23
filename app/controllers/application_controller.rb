@@ -56,8 +56,10 @@ class ApplicationController < ActionController::Base
 
   # Date of the tabling start day
   def tabling_start
-    if DateTime.now.cwday < 5 # If past Friday
+    if DateTime.now.cwday > 5 # If past Friday
       Chronic.parse("0 last monday")
+    elsif DateTime.cwday == 1 # If Monday
+      Chronic.parse("0 today")
     else
       Chronic.parse("0 next monday")
     end
