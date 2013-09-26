@@ -147,6 +147,9 @@ class Member < ActiveRecord::Base
 
       self.add_to_committee(name, committee_type, cm_type)
 
+      # Remove from any general committees unless the member belongs there
+      self.remove_from_general unless old_member.tier_id == 2
+
     end
   end
 
@@ -174,6 +177,22 @@ class Member < ActiveRecord::Base
     # Set the committee_member type
     committee_member.committee_member_type = cm_type
     committee_member.save!
+  end
+
+  # Remove from the general committee, if put in a regular committee.
+  # Done by default when adding to a regular committee.
+  def remove_from_general
+    # Get general committees (may be more than one)
+    general = Committee.where(
+      committee_type_id: CommitteeType.general.id
+    )
+
+    # If this member is in the general members group (tested using set difference)
+    if (general - self.committees).empty?
+      general.each do |committee|
+        self.committees.delete(general)
+      end
+    end
   end
 
   private
