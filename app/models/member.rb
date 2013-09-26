@@ -32,6 +32,8 @@ class Member < ActiveRecord::Base
 
   has_many :commitments, dependent: :destroy
 
+  belongs_to :old_member
+
   def position(committee=nil)
     committee = self.committees.first if !committee
     if committee
@@ -95,8 +97,83 @@ class Member < ActiveRecord::Base
     "#{self.name}; #{committee_name}: #{self.position || "Member"}"
   end
 
-  # Update using old member information
-  def self.update_with_old_member
+  # Find matches on the main site using last name and email
+  def find_old_members
+    old_members = OldMember.where(
+      "lower(last_name) = :last_name",
+      last_name: self.name.split[-1].downcase,
+    )
+
+    return old_members
+  end
+
+  # Update member information through the main site
+  def update_from_old_member
+    if self.old_member
+      old_member = self.old_member
+
+      # If this member is a committee member
+      if old_member.tier_id == 3
+
+        name = old_member.position.chomp("Committee Member").strip
+        committee_type = CommitteeType.committee
+        cm_type = CommitteeMemberType.cm
+
+      # If this member is a committee chair
+      elsif old_member.tier_id == 4
+
+        name = old_member.position.chomp("Chair").strip
+        committee_type = CommitteeType.committee
+        cm_type = CommitteeMemberType.chair
+
+      # If this member is an executive
+      elsif old_member.tier_id == 5
+
+        name = "Executive"
+        committee_type = CommitteeType.admin
+        cm_type = CommitteeMemberType.exec(old_member.position)
+
+        # Exit with nil if the correct cm_type was not found
+        return nil if cm_type.nil?
+
+      # If this member is a general member
+      elsif old_member.tier_id == 2
+
+        name = "General Members"
+        committee_type = CommitteeType.general
+        cm_type = CommitteeMemberType.gm
+
+      end
+
+      self.add_to_committee(name, committee_type, cm_type)
+
+    end
+  end
+
+
+  # Add member to the committee (creating the committee if it doesn't exist) as the given
+  # committee member type, if he isn't part of the committee already
+  def add_to_committee(committee_name, committee_type, cm_type)
+    p cm_type
+    # Find or create committee
+    committee = Committee.where(
+      name: committee_name,
+    ).first_or_create!
+
+    p cm_type
+    # Set the committee type
+    committee.committee_type = committee_type
+    committee.save!
+
+    p cm_type
+    # Add member to committee if not already
+    committee_member = self.committee_members.where(
+      committee_id: committee.id,
+    ).first_or_create!
+
+    # Set the committee_member type
+    committee_member.committee_member_type = cm_type
+    committee_member.save!
   end
 
   private
@@ -104,4 +181,5 @@ class Member < ActiveRecord::Base
     def create_remember_token
       self.remember_token = Member.encrypt(Member.new_remember_token)
     end
+
 end

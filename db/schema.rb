@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130827223617) do
+ActiveRecord::Schema.define(:version => 20130926192049) do
 
   create_table "commitment_calendars", :force => true do |t|
     t.integer  "member_id"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20130827223617) do
     t.string   "remember_token"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "old_member_id"
   end
 
   add_index "members", ["name"], :name => "index_members_on_name"

@@ -13,4 +13,29 @@ class CommitteeType < ActiveRecord::Base
   attr_accessible :name, :tier
 
   has_many :committees
+
+  # Get or create the default committee type
+  def self.committee
+    CommitteeType.where(
+      name: "committee",
+      tier: 1,
+    ).first_or_create!
+  end
+
+  # Get or create the admin committee type
+  def self.admin
+    CommitteeType.where(
+      name: "admin",
+      tier: 2,
+    ).first_or_create!
+  end
+
+  # Get or create the general members committee type
+  def self.general
+    CommitteeType.where(
+      name: "general",
+      tier: 0,
+    ).first_or_create!
+  end
+
 end
