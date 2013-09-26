@@ -43,8 +43,8 @@ class CommitteeMemberType < ActiveRecord::Base
   # Get the Executive position with the given name (with some typo room)
   def self.exec(position)
     exec_type = CommitteeMemberType.where(
-      "lower(name) like '%:position%' and tier = 3",
-      position: position.downcase
+      "lower(name) like :position and tier = 3",
+      position: "%#{position.downcase}%"
     ).first
   end
 
