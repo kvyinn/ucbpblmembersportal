@@ -150,6 +150,7 @@ class Member < ActiveRecord::Base
       # Remove from any general committees unless the member belongs there
       self.remove_from_general unless old_member.tier_id == 2
 
+      return self.save
     end
   end
 
