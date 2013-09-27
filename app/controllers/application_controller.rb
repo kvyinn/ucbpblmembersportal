@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
       result = google_api_request( 'plus', 'v1', 'people', 'get', { userId: current_member.uid })
       if result.status != 200
         sign_out
+        session[:return_to] = request.url if request.get?
         redirect_to google_signin_url, notice: "Your session has timed out"
       else
         current_member.name = result.data.display_name
@@ -28,6 +29,10 @@ class ApplicationController < ActionController::Base
 
   def admin_member
     redirect_to root_path, notice: "You are not authorized to do that" if !current_member.admin?
+  end
+
+  def officer
+    redirect_to root_path, notice: "You are not authorized to do that" if !current_member.officer?
   end
 
   # Controller Helpers

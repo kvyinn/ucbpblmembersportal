@@ -1,7 +1,7 @@
-<div class="row">
+<section>
   <h1>Reimbursements</h1>
   <ul>
     <%= render @reimbursements %>
   </ul>
   <%= link_to "Add New Reimbursement", new_reimbursement_url if current_member.admin? %>
-</div>
+</section>

@@ -78,6 +78,4 @@ module TablingSlotsHelper
       member.tabling_slot_members.where(tabling_slot_id: tabling_slot).first.set_status_to :available
     end
   end
-
-
 end

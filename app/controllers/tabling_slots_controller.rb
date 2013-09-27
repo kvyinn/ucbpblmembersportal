@@ -53,9 +53,13 @@ class TablingSlotsController < ApplicationController
   end
 
   def generate
-    write_init_files
-    generate_schedule
-    redirect_to tabling_slots_path
+    if DateTime.now.cwday > 5 # If later than Friday
+      write_init_files
+      generate_schedule
+      redirect_to tabling_slots_path
+    else
+      redirect_to tabling_slots_path, notice: "You cannot do that until after Friday"
+    end
   end
 
   def add_to_google_calendar

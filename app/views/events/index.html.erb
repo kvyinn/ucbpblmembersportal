@@ -1,16 +1,16 @@
-<div class="row">
+<section>
   <h1>Past Events</h1>
   <ul>
     <% @past_events.each do |event| %>
       <%= render "events/event", event: event %>
     <% end %>
   </ul>
-</div>
-<div class="row">
+</section>
+<section>
   <h1>Upcoming Events</h1>
   <ul>
     <% @upcoming_events.each do |event| %>
       <%= render "events/event", event: event %>
     <% end %>
   </ul>
-</div>
+</section>

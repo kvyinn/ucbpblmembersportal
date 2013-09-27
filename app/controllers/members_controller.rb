@@ -18,58 +18,13 @@ class MembersController < ApplicationController
   end
 
   def update
-    # TODO Move to model
+
     if params[:old_member_id]
-      old_member = OldMember.find(params[:old_member_id])
-      if old_member.tier_id == 3
-
-        name = old_member.position.chomp("Committee Member").strip
-        committee = Committee.where(
-          name: name,
-          committee_type_id: CommitteeType.where(name: "committee", tier: 1).first_or_create!.id,
-        ).first_or_create!
-        current_member.committee_members.where(
-          committee_id: committee.id,
-          committee_member_type_id: CommitteeMemberType.where(name: "cm", tier: 1).first_or_create!.id,
-        ).first_or_create!
-      elsif old_member.tier_id == 4
-
-        name = old_member.position.chomp("Chair").strip
-        committee = Committee.where(
-          name: name,
-          committee_type_id: CommitteeType.where(name: "committee", tier: 1).first_or_create!.id,
-        ).first_or_create!
-        current_member.committee_members.where(
-          committee_id: committee.id,
-          committee_member_type_id: CommitteeMemberType.where(name: "chair", tier: 2).first_or_create!.id,
-        ).first_or_create!
-      elsif old_member.tier_id == 5
-
-        name = "Executive"
-        committee = Committee.where(
-          name: name,
-          committee_type_id: CommitteeType.where(name: "admin", tier: 1).first_or_create!.id,
-        ).first_or_create!
-        current_member.committee_members.where(
-          committee_id: committee.id,
-          committee_member_type_id: CommitteeMemberType.where(name: old_member.position, tier: 3).first_or_create!.id,
-        ).first_or_create!
-      elsif old_member.tier_id == 2
-
-        name = "General Members"
-        committee = Committee.where(
-          name: name,
-          committee_type_id: CommitteeType.where(name: "general", tier: 0).first_or_create!.id,
-        ).first_or_create!
-        current_member.committee_members.where(
-          committee_id: committee.id,
-          committee_member_type_id: CommitteeMemberType.where(name: "general member", tier: 0).first_or_create!.id,
-        ).first_or_create!
-      end
-
+      current_member.old_member = OldMember.find(params[:old_member_id])
+      current_member.update_from_old_member
     end
 
-    redirect_to commitment_calendars_path
+    redirect_to root_path, notice: "You've updated your information!"
   end
 
 end

@@ -1,0 +1,8 @@
+<% if current_member.nil? %>
+  <section class="signin">
+    <h1>Welcome to the Berkeley PBL Member's Portal</h1>
+    <%= render "layouts/google_button" %>
+  </section>
+<% else %>
+  <%= render "layouts/profile" %>
+<% end %>

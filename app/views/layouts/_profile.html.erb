@@ -1,0 +1,28 @@
+<% if current_member.old_member.nil? %>
+  <section>
+    <p>Is this you?</p>
+    <ul>
+      <%= render current_member.find_old_members %>
+    </ul>
+  </section>
+<% else %>
+
+  <section>
+    <h1><%= current_member.name %></h1>
+    <p><%= "#{current_member.primary_committee.name}, #{current_member.position}" %></p>
+  </section>
+
+  <% if @tabling_slots and not @tabling_slots.empty? %>
+    <section>
+      <h2>Your tabling slots for this week</h2>
+      <% @tabling_slots.each do |slot| %>
+        <ul><%= slot.start_time.strftime("%A, %D - %l:%M%p") %>
+          <% slot.members.each do |member| %>
+            <li><%= member.name %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </section>
+  <% end %>
+
+<% end %>

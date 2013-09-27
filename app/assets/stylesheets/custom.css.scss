@@ -1,112 +1,247 @@
+/* General and resets*/
+
 body {
-  padding-top: 60px;
+  background-color: #EEE;
+  margin: 0;
 }
 
-.row {
-  padding-bottom: 30px;
-  // border-bottom: 1px solid lightGray;
+.main {
+  background-color: #EEE;
+  clear: both;
+  margin: 1%;
 }
 
-form {
-  padding: 5px 5px 5px 0px;
-  margin: 2px 0 2px 0;
+section {
+  margin: 20px;
+  padding: 20px;
+
+  clear: both;
+
+  background-color: white;
+
+  border-bottom: 2px solid #AAA;
+}
+
+.pull-right {
+  float: right;
 }
 
 label {
-  font-size: 18px;
-  margin-bottom: 0;
 }
+
+.btn {
+  background-color: #DDD;
+  border: 1px solid maroon;
+  padding: 0.5em;
+  margin: 0;
+  color: maroon;
+}
+
+.btn:hover {
+  background-color: #CCC;
+}
+
+/* Typography */
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+p {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+a {
+  color: maroon;
+  text-decoration: none;
+}
+
+/* Header */
+
+.logo {
+  background-color: maroon;
+}
+
+.logo a {
+  color: white;
+}
+
+.logo:hover {
+  background-color: maroon;
+}
+
+header ul {
+  background-color: white;
+
+  float: left;
+  width: 100%;
+
+  padding: 0;
+  margin: 0 0 1em 0;
+  border-bottom: 1px solid maroon;
+}
+
+header li {
+  float: left;
+  clear: none;
+  width: auto;
+
+  padding: 10px 20px 10px 20px;
+  margin: 0;
+  border: 0;
+  border-right: 1px solid maroon;
+
+  font-size: 16px;
+  font-weight: 300;
+  color: maroon;
+}
+
+header li.pull-right {
+  border-left: 1px solid maroon;
+  border-right: none;
+}
+
+/* Pretty lists */
+
+ul {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+  list-style: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+li {
+  display: inline-block;
+  width: 97%;
+
+  background-color: white;
+
+  padding: 1%;
+  margin: 5px 0.5% 5px 0px;
+  border-left: 2px solid lightBlue;
+
+  font-size: 16px;
+  font-weight: 400;
+}
+
+li.half {
+  width: 47%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li.thirds {
+  width: 30%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+li.no-border {
+  border-left: none;
+  padding-left: 0;
+}
+
+li.no-border:hover {
+  background-color: white;
+}
+
+li:hover {
+  background-color: #FFB;
+}
+
+/* Pretty checkboxes */
 
 input[type="checkbox"] {
   display: none;
 }
 
-.row h1 {
-  margin-bottom: 20px;
-  color: #111;
+.checked, .checked:hover {
+  background-color: #FF9;
 }
 
-.row ul {
-  list-style-type: none;
-  margin-left: 2px;
-}
 
-.row li {
-  background-color: white;
-  padding: 20px 0px 20px 10px;
-  margin: 5px 0px 5px 0px;
-  border-left: 2px solid lightBlue;
-  font-size: 14pt;
-  color: gray;
-}
+/* Drag and drop lists */
 
-.row li.no-border {
-  border-left: none;
-  padding-left: 0;
-}
-
-.row li.no-border:hover {
-  background-color: white;
-}
-
-.row li.current_member {
-  color: blue;
-}
-
-.row li.delete {
+li.delete {
   border-left: 2px solid #F55;
   color: #DDD;
   display: none;
 }
 
-.row li.add {
+li.add {
   border-left: 2px solid #2A2;
   color: #DDD;
   display: none;
 }
 
-.row li:hover {
-  background-color: #EEE;
+/* Content-specific styling */
+
+.current_member {
+  color: blue;
 }
 
-li .btn {
-  float: right;
-}
-
-[class*="span"] li {
-  padding: 5px 0px 5px 10px;
-  margin: 5px 0 5px 0;
-}
-
-.hero-unit h1 {
+.signin {
   text-align: center;
 }
 
-.hero-unit .google-button {
-  margin-left: 175px;
+.signin h1 {
+  font-size: 72px;
 }
 
-.old_member {
-  padding-left: 10px;
-  border-left: 1px solid lightGray;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
+.ui-menu-item {
+  border: none;
 }
 
-.old_member:hover {
-  border-left: 3px solid red;
-  padding-left: 8px;
-  background-color: #EEE;
+.flash {
+  padding: 5px;
+  width: 100%;
+  margin: 0;
 }
 
-li.checked {
-  background-color: #FFD;
+.flash ul {
+  margin: 0;
+  padding: 0;
 }
 
-.btn-mark {
-  margin-left: 10px;
+.flash li {
+  border: 0;
 }
+
+.flash li:hover {
+  background-color: auto;
+}
+
+ul.tabling {
+  width: 18%;
+  padding-right: 1%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Print view */
 
 @media print {
   div {

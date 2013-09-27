@@ -1,36 +1,37 @@
-<div class="row">
+<section>
   <h1>Commitment Calendars</h1>
-  <div class="span5">
-    <h2>In Use:</h2>
-    <ul>
-      <%= render @commitment_calendars %>
-    </ul>
+  <p><%= "#{@commitment_calendars.count} used; #{@unsaved_calendars.count} unused" %></p>
+</section>
 
-    <hr>
-    <p><%= link_to "View tracked commitments", preview_commitments_url %></p>
-    <p><%= link_to "View saved commitments", commitments_url %></p>
+<section>
+  <h2>In Use:</h2>
+  <ul>
+    <%= render @commitment_calendars %>
+  </ul>
 
-  </div>
+  <hr>
+  <p><%= link_to "View tracked commitments", preview_commitments_url %></p>
+  <p><%= link_to "View saved commitments", commitments_url %></p>
+</section>
 
-  <div class="span1"></div>
-  <div class="span6">
-    <h3>Mark for use?</h3>
-    <p>
-      This will allow the Portal to track either all events in the calendar or events that are
-      "tagged" with pbl (i.e. have the word "pbl" either in the title or the description). You can
-      view all currently tracked events <%= link_to "here", preview_commitments_url %>.
-    </p>
-    <ul>
-      <% @unsaved_calendars.each do |calendar| %>
-        <li>
-          <%= form_for current_member.commitment_calendars.build(calendar_id: calendar.id), html: { class: "form-inline" } do |f|%>
-            <%= f.hidden_field :calendar_id %>
-            <%= f.label :summary, truncate(calendar.summary, length: 25) %>
-            <%= f.submit "Mark Tagged", class: "btn btn-small btn-mark" %>
-            <%= f.submit "Mark All", class: "btn btn-small btn-primary btn-mark" %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<section>
+
+  <h2>Unused:</h2>
+  <p>
+    Marking a calendar will allow the Portal to track either all events in the calendar or events
+    that are "tagged" with pbl (i.e. have the word "pbl" either in the title or the description).
+    You can view all currently tracked events <%= link_to "here", preview_commitments_url %>.
+  </p>
+  <ul>
+    <% @unsaved_calendars.each do |calendar| %>
+      <li>
+        <%= form_for current_member.commitment_calendars.build(calendar_id: calendar.id), html: { class: "form-inline" } do |f|%>
+          <%= f.hidden_field :calendar_id %>
+          <%= f.label :summary, calendar.summary %>
+          <%= f.submit "Mark Tagged", class: "btn" %>
+          <%= f.submit "Mark All", class: "btn" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</section>

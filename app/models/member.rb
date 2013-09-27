@@ -34,8 +34,13 @@ class Member < ActiveRecord::Base
 
   belongs_to :old_member
 
+  # TODO: store in DB
+  def primary_committee
+    self.committees.first
+  end
+
   def position(committee=nil)
-    committee = self.committees.first if !committee
+    committee = self.primary_committee if !committee
     if committee
       committee_member = self.committee_members.where(
         committee_id: committee.id
@@ -46,7 +51,7 @@ class Member < ActiveRecord::Base
   end
 
   def tier(committee=nil)
-    committee = self.committees.first if !committee
+    committee = self.primary_committee if !committee
     if committee
       committee_member = self.committee_members.where(
         committee_id: committee.id

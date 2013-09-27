@@ -15,7 +15,12 @@ class SessionsController < ApplicationController
 
     if member.save
       cookies[:remember_token] = member.remember_token
-      redirect_to commitment_calendars_path
+      if session[:return_to]
+        redirect_to session[:return_to]
+        session.delete(:return_to)
+      else
+        redirect_to root_path
+      end
     else
       redirect_to root_path
     end

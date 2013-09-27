@@ -1,6 +1,6 @@
-<div class="old_member" id='<%= encrypt_id(old_member.id) %>'>
+<li>
   <b><%= old_member.full_name %></b>
   <p>Email: <%= old_member.email %></p>
   <p>Phone: <%= old_member.phone %></p>
-  <%= link_to "Yes", update_with_old_member_url(old_member.id) %>
-</div>
+  <%= link_to "Yes", update_from_old_member_url(old_member.id) %>
+</li>

@@ -1,4 +1,4 @@
-<li>
+<li class="thirds">
   <%= event[:start_time].strftime("%D %r") %>:
   <%= link_to event[:summary], calendar_event_url(format_google_calendar_id(@calendar_id), event[:id]) %></li>
 </li>

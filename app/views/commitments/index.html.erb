@@ -1,38 +1,33 @@
-<div class="row">
+<section>
   <h1>Your Saved Commitments</h1>
-  <div class="span8">
-    <ul>
-      <%= render @commitments %>
-    </ul>
-  </div>
-  <div class="span4">
-    <p>
-      If all your events show up here, you're good!
-    </p>
-  </div>
-  <div class="span12">
-    <p><%= link_to "View all", preview_commitments_url, class: "btn btn-primary" %></p>
-  </div>
-</div>
-<% if current_member.admin? %>
-  <hr>
-  <h1>Committee Submissions</h1>
   <p>
-    The members who have submitted their commitments this week are
-    <%= @submitted_members.to_sentence %>.
+    If all your events show up here, you're good!
   </p>
-  <div class="row">
+  <ul>
+    <%= render @commitments %>
+  </ul>
+  <p><%= link_to "View all", preview_commitments_url, class: "btn btn-primary" %></p>
+</section>
+
+<% if current_member.admin? %>
+  <section>
+    <h1>Committee Submissions</h1>
+    <p>
+      The members who have submitted their commitments this week are
+      <%= @submitted_members.to_sentence %>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Submissions by committee</h2>
     <% Committee.all.each do |committee| %>
-      <div class="span6">
-        <h2><%= committee.name %></h2>
-        <ul>
-          <% committee.members.each do |member| %>
-            <li>
-              <%= "#{member.name}: #{member.commitments.count} commitments" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+      <ul><%= committee.name %>
+        <% committee.members.each do |member| %>
+          <li>
+            <%= "#{member.name}: #{member.commitments.count} commitments" %>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
-  </div>
+  </section>
 <% end %>
