@@ -44,7 +44,7 @@ class CommitteeMemberType < ActiveRecord::Base
   def self.exec(position)
     exec_type = CommitteeMemberType.where(
       "lower(name) = :position and tier = 3",
-      position: "%#{position.downcase}%"
+      position: position.downcase
     ).first
   end
 
