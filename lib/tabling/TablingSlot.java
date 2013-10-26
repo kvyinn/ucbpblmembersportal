@@ -181,7 +181,7 @@ public class TablingSlot {
     // Tabling slot configuration
     public static String DOW = "MTWTF";
     private static Time _START_OF_DAY = new Time(10, 0);
-    private static Time _END_OF_DAY = new Time(15, 0);
+    private static Time _END_OF_DAY = new Time(14, 0);
     private static Time _SLOT_LENGTH = new Time(0, 60);
     private static Time _SLOT_INTERVAL = new Time(0, 60);
     private static ArrayList<DayOfWeek> _tablingDays = new ArrayList<DayOfWeek>(5);
