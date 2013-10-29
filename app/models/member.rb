@@ -260,7 +260,7 @@ class Member < ActiveRecord::Base
 
     # Calculate points from events
     self.event_members.each do |event_member|
-      sum += event_member.event_points.value
+      sum += event_member.event_points.value if event_member.event_points
     end
 
     # Calculate points from tabling

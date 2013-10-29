@@ -6,3 +6,13 @@
     <% end %>
   </ul>
 </section>
+
+<section>
+  <h2>Your committee's rating: <%= current_member.primary_committee.rating %></h2>
+  <p>Your committee's rating is a normalized value based on each of the committee member's points. This is the value used in committee rankings</p>
+  <ul>
+    <% current_member.primary_committee.cms.each do |cm| %>
+      <li><%= "#{cm.member.name}: #{pluralize(cm.member.total_points, "point")}" %></li>
+    <% end %>
+  </ul>
+</section>

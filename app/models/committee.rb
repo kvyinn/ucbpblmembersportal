@@ -36,17 +36,27 @@ class Committee < ActiveRecord::Base
   has_many :committee_members, dependent: :destroy
   has_many :members, through: :committee_members
 
-  # Show the committee's total points.
-  def points
-    sum = 0
-    self.committee_members.each do |committee_member|
-      if committee_member.committee_member_type == CommitteeMemberType.cm or
-          committee_member.committee_member_type == CommitteeMemberType.chair
+  # Show the committee's rating.
+  def rating
+    sum = 0.0
 
-        sum += committee_member.member.total_points
-      end
+    self.cms.each do |committee_member|
+      sum += committee_member.member.total_points
     end
 
-    return sum
+    return (sum / self.cms.count).round(2)
+  end
+
+  # Only the chairs and CMs of the committee
+  def cms
+    if self.committee_type == CommitteeType.general
+      self.committee_members.where(committee_member_type_id: CommitteeMemberType.where(
+        "lower(name) = 'general member' or lower(name) = 'gm'"
+      ))
+    else
+      self.committee_members.where(committee_member_type_id: CommitteeMemberType.where(
+        "lower(name) = 'cm' or lower(name) = 'chair'"
+      ))
+    end
   end
 end

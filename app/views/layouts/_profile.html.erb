@@ -27,8 +27,8 @@
 
   <section>
     <h2>Your Committee Points: <%= current_member.total_points %></h2>
-    <p>Committee total: <%= current_member.primary_committee.points %> (<%= link_to "details", points_url %>)</p>
-    <p><%= link_to "View Rankings", "#" %></p>
+    <p>Committee rating: <%= current_member.primary_committee.rating %></p>
+    <p><%= link_to "View details", points_url %></p>
   </section>
 
 <% end %>
