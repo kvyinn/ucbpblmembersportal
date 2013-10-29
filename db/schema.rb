@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130926192049) do
+ActiveRecord::Schema.define(:version => 20131029125646) do
 
   create_table "commitment_calendars", :force => true do |t|
     t.integer  "member_id"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(:version => 20130926192049) do
   add_index "committees", ["committee_type_id"], :name => "index_committees_on_committee_type_id"
 
   create_table "event_members", :force => true do |t|
-    t.integer  "event_id"
+    t.string   "event_id"
     t.integer  "member_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -89,6 +89,15 @@ ActiveRecord::Schema.define(:version => 20130926192049) do
   add_index "event_members", ["event_id", "member_id"], :name => "index_event_members_on_event_id_and_member_id", :unique => true
   add_index "event_members", ["event_id"], :name => "index_event_members_on_event_id"
   add_index "event_members", ["member_id"], :name => "index_event_members_on_member_id"
+
+  create_table "event_points", :force => true do |t|
+    t.string   "event_id",                  :null => false
+    t.integer  "value",      :default => 0, :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "event_points", ["event_id"], :name => "index_event_points_on_event_id", :unique => true
 
   create_table "members", :force => true do |t|
     t.string   "provider"
@@ -103,6 +112,16 @@ ActiveRecord::Schema.define(:version => 20130926192049) do
   add_index "members", ["name"], :name => "index_members_on_name"
   add_index "members", ["provider", "uid"], :name => "index_members_on_provider_and_uid"
   add_index "members", ["remember_token"], :name => "index_members_on_remember_token"
+
+  create_table "points", :force => true do |t|
+    t.integer  "member_id",  :null => false
+    t.integer  "value",      :null => false
+    t.string   "details"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "points", ["member_id"], :name => "index_points_on_member_id"
 
   create_table "reimbursements", :force => true do |t|
     t.integer  "member_id"

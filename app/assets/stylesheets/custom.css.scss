@@ -241,6 +241,22 @@ ul.tabling {
   vertical-align: top;
 }
 
+.tsm-status {
+  font-size: 0.8em;
+  color: #DDD;
+  margin-left: 0.5em;
+}
+
+.right-align {
+  display: block;
+  float: right;
+  text-align: right;
+}
+
+.tsm-status-set:hover {
+  text-decoration: underline;
+}
+
 /* Print view */
 
 @media print {

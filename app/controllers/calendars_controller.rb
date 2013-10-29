@@ -15,7 +15,6 @@ class CalendarsController < ApplicationController
         q: "",
       }
     )
-    p results
     @events = results.data.items.map do |item|
       { title: item.summary,
         # starts_at: item.start.date,

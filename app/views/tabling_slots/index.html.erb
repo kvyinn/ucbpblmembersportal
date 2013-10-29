@@ -6,6 +6,13 @@
     <% end %>
   <% else %>
     <h1>Tabling for the week of <%= @earliest_time.strftime("%D") %></h1>
+
+    <div class="right-align">
+      <span><%= link_to "Previous week", tabling_slots_url(prev: @prev - 1) %></span>
+      <% if @prev < 0 %>
+        --- <span><%= link_to "Next week", tabling_slots_url(prev: @prev + 1) %></span>
+      <% end %>
+    </div>
     <% if current_member.admin? %>
       <%= link_to "Reroll", generate_tabling_slots_url, class: "btn" %>
     <% end %>

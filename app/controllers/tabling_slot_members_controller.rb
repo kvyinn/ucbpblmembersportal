@@ -33,4 +33,17 @@ class TablingSlotMembersController < ApplicationController
       format.js
     end
   end
+
+  def set_status_for
+    tsm = TablingSlotMember.find(params[:id])
+    tsm.status_id = params[:status_id]
+    tsm.save
+
+    respond_to do |format|
+      format.html do
+        notice = "You have updated #{tsm.member.name}'s tabling slot status to #{tsm.status.name}."
+        redirect_to tsm.tabling_slot, notice: notice
+      end
+    end
+  end
 end

@@ -3,9 +3,7 @@
   <h2><%= "#{@tabling_slot.start_time.strftime("%l:%M%p")} to #{@tabling_slot.end_time.strftime("%l:%M%p")}" %></h2>
 
   <ul>
-    <% @tabling_slot.members.each do |member| %>
-      <%= render "tabling_slots/member", member: member, tabling_slot: @tabling_slot %>
-    <% end %>
+    <%= render @tabling_slot.tabling_slot_members %>
     <% if current_member.admin? %>
       <li class="delete" ondrop="deleteMember(event)" ondragover="allowDrop(event)">Drop here to delete</li>
     <% end %>

@@ -1,0 +1,8 @@
+<section>
+  <h1>You have earned <%= pluralize(current_member.total_points, "point") %>!</h1>
+  <ul>
+    <% @recently_earned.each do |item| %>
+      <li><%= "#{item[:title]}: #{pluralize(item[:points].to_i, "point")}" %></li>
+    <% end %>
+  </ul>
+</section>

@@ -9,6 +9,18 @@
 #  updated_at :datetime         not null
 #
 
+# == Description
+#
+# A type of Committee.
+#
+# == Fields
+# - name: the name of the type
+# - tier: the tier of the type
+#
+# == Associations
+#
+# === Has many:
+# - Committee
 class CommitteeType < ActiveRecord::Base
   attr_accessible :name, :tier
 

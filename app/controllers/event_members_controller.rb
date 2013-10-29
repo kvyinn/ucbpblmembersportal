@@ -2,6 +2,11 @@ class EventMembersController < ApplicationController
 
   before_filter :officer
 
+  # Mark attendance
+  #
+  # NOTE: for some reason, on the form, when a selection is submitted as checked after being marked
+  # as checked more than once (check, uncheck, check, etc.), then that selection will not be
+  # submitted in the request.
   def create
     @members = []
     @members = params[:member_ids].map { |id| Member.find(id) } if params[:member_ids]
@@ -14,6 +19,7 @@ class EventMembersController < ApplicationController
     end
     @members.each do |member|
       if current_member.primary_committee == member.primary_committee
+        p params[:event_member]
         member.event_members.create!(params[:event_member])
       end
     end

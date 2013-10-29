@@ -3,10 +3,12 @@ class TablingSlotsController < ApplicationController
   before_filter :admin_member, only: [ :generate, :add_to_google_calendar ]
 
   def index
+    @prev = params[:prev].to_i
+
     @tabling_slots = TablingSlot.where(
       "start_time >= :tabling_start and start_time <= :tabling_end",
-      tabling_start: tabling_start,
-      tabling_end: tabling_end,
+      tabling_start: tabling_start + @prev.weeks,
+      tabling_end: tabling_end + @prev.weeks,
     ).order(:start_time)
 
     if !@tabling_slots.empty?

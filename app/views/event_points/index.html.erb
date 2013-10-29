@@ -1,0 +1,16 @@
+<section>
+  <h1>Set event points</h1>
+  <ul>
+    <%= form_tag update_all_event_points_url, method: "post" do %>
+      <% @event_points.each do |item| %>
+        <li>
+          <%= label_tag item[:event].summary %>
+          <%= hidden_field_tag "event_ids[]", item[:event].id %>
+          <%= text_field_tag "points[]", item[:points] %>
+        </li>
+      <% end %>
+
+      <%= submit_tag "Update", class: "btn" %>
+    <% end %>
+  </ul>
+</section>

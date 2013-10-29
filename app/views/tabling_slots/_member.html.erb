@@ -1,3 +1,3 @@
-<li <%= "class=current_member" if member == current_member %> <%= "draggable=true ondragstart=drag(event) ondragend=hideAll(event) id=#{member.tabling_slot_member(tabling_slot).id}" if current_member.admin? %>>
-  <%= member.name %>
+<li <%= "class=current_member" if member == current_member %> <%= "draggable=true ondragstart=drag(event) ondragend=hideAll(event) id=#{tsm.id}" if current_member.admin? %>>
+  <span><%= member.name %></span>
 </li>

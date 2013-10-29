@@ -1,5 +1,8 @@
 <section>
   <h1>Past Events</h1>
+  <% if current_member.admin? %>
+    <p><%= link_to "Edit event points", event_points_url %></p>
+  <% end %>
   <ul>
     <% @past_events.each do |event| %>
       <%= render "events/event", event: event %>

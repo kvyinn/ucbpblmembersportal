@@ -9,6 +9,7 @@
 #  remember_token :string(255)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  old_member_id  :integer
 #
 
 require 'spec_helper'

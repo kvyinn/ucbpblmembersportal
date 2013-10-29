@@ -9,8 +9,33 @@
 #  remember_token :string(255)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  old_member_id  :integer
 #
 
+# == Description
+#
+# A member of the Portal
+#
+# == Fields
+# - provider: the authorization provider
+# - uid: ID of member for the provider
+# - name: name of member
+# - remember_token: session token
+#
+# == Associations
+#
+# === Belongs to:
+# - OldMember
+#
+# === Has Many:
+# - CommitteeMember
+# - Committee
+# - TablingSlotMember
+# - TablingSlot
+# - Commitment
+# - CommitmentCalendar
+# - EventMember
+# - Reimbursement
 class Member < ActiveRecord::Base
   attr_accessible :name, :provider, :uid
 
@@ -32,6 +57,8 @@ class Member < ActiveRecord::Base
 
   has_many :commitments, dependent: :destroy
 
+  has_many :points, dependent: :destroy
+
   belongs_to :old_member
 
   # TODO: store in DB
@@ -39,8 +66,13 @@ class Member < ActiveRecord::Base
     self.committees.first
   end
 
-  def position(committee=nil)
-    committee = self.primary_committee if !committee
+  # Position of the member.
+  # If no committee is given, returns the position for its #primary_committee.
+  # Returns nil if the member does not belong to the committee, or it does not have a committee.
+  #
+  # === Parameters
+  # - committee: the Committee to look up the position under; defaults to #primary_committee
+  def position(committee=self.primary_committee)
     if committee
       committee_member = self.committee_members.where(
         committee_id: committee.id
@@ -50,8 +82,13 @@ class Member < ActiveRecord::Base
     end
   end
 
-  def tier(committee=nil)
-    committee = self.primary_committee if !committee
+  # Tier of the member
+  # If no committee is given, returns the tier for its #primary_committee.
+  # Returns nil if the member does not belong to the committee, or it does not have a committee.
+  #
+  # === Parameters
+  # - committee: the Committee to look up the tier under; defaults to #primary_committee
+  def tier(committee=primary_committee)
     if committee
       committee_member = self.committee_members.where(
         committee_id: committee.id
@@ -61,41 +98,60 @@ class Member < ActiveRecord::Base
     end
   end
 
+  # Admin status of the member.
   def admin?
     self.name == "Keien Ohta" or self.committees.include?(Committee.where(name: "Executive").first)
   end
 
+  # Officer status of the member.
   def officer?
     self.admin? or
     self.position == "chair"
   end
 
+  # Returns the relationships between itself and a given TablingSlot.
+  #
+  # === Parameters
+  # - tabling_slot: a TablingSlot
   def tabling_slot_member(tabling_slot)
     self.tabling_slot_members.where(tabling_slot_id: tabling_slot.id).first
   end
 
+  # Ininialize itself with some OmniAuth information
+  #
+  # === Parameters
+  # - provider: the authentication service provider
+  # - uid: the ID of the member under the provider
   def self.initialize_with_omniauth(provider, uid)
     Member.where(provider: provider, uid: uid).first_or_initialize
   end
 
+  # The other Members that are part of this member's committees
   def cms
     self.committees.map do |committee|
       committee.members
     end.flatten
   end
 
+  # Create a new session token.
   def Member.new_remember_token
     SecureRandom.urlsafe_base64
   end
 
+  # Encrypt the token.
   def Member.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  # Checks attendance for an event.
+  #
+  # === Parameters
+  # - event: an event with an id
   def attended?(event)
     !self.event_members.where(event_id: event.id).empty?
   end
 
+  # Helper for displaying itself in autocomplete forms.
   def autocomplete_display
     committee_name = self.committees.first ? self.committees.first.name : "N/A"
 
@@ -163,18 +219,15 @@ class Member < ActiveRecord::Base
   # Add member to the committee (creating the committee if it doesn't exist) as the given
   # committee member type, if he isn't part of the committee already
   def add_to_committee(committee_name, committee_type, cm_type)
-    p cm_type
     # Find or create committee
     committee = Committee.where(
       name: committee_name,
     ).first_or_create!
 
-    p cm_type
     # Set the committee type
     committee.committee_type = committee_type
     committee.save!
 
-    p cm_type
     # Add member to committee if not already
     committee_member = self.committee_members.where(
       committee_id: committee.id,
@@ -198,6 +251,32 @@ class Member < ActiveRecord::Base
       general.each do |committee|
         self.committees.delete(general)
       end
+    end
+  end
+
+  # Calculate the total number of points this member has
+  def total_points
+    sum = 0
+
+    # Calculate points from events
+    self.event_members.each do |event_member|
+      sum += event_member.event_points.value
+    end
+
+    # Calculate points from tabling
+    self.tabling_slot_members.where(
+      status_id: Status.where(name: :attended).first
+    ).each do |tsm|
+      sum += TablingSlot::POINTS
+    end
+
+    return sum
+  end
+
+  # Return all attended tabling slots
+  def attended_slots
+    self.tabling_slot_members.where(status_id: Status.where(name: :attended).first).map do |tsm|
+      tsm.tabling_slot
     end
   end
 

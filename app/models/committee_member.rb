@@ -10,6 +10,19 @@
 #  committee_member_type_id :integer
 #
 
+# == Description
+#
+# A relationship between Committee and Member.
+#
+# Has a type that acts as a classification/tiering between each committee member.
+#
+# == Associations
+#
+# === Belongs to:
+# - Member
+# - Committee
+# - CommitteeMemberType
+# - TODO: Semester
 class CommitteeMember < ActiveRecord::Base
   attr_accessible :committee_id, :committee_member_type_id, :member_id
 

@@ -32,7 +32,9 @@ Ucbpblmembersportal::Application.routes.draw do
     get :generate, on: :collection
   end
 
-  resources :tabling_slot_members, only: [ :create, :destroy, :update ]
+  resources :tabling_slot_members, only: [ :create, :destroy, :update ] do
+    put :set_status_for, on: :member
+  end
 
   resources :commitment_calendars, only: [ :index, :create, :destroy ]
 
@@ -49,4 +51,8 @@ Ucbpblmembersportal::Application.routes.draw do
     end
   end
 
+  resources :points, only: [ :index ]
+  resources :event_points, only: [ :index ] do
+    post :update_all, on: :collection
+  end
 end

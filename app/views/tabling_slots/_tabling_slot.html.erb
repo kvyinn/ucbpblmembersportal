@@ -1,8 +1,8 @@
 <li class="no-border" <%= "ondragover=showAdd(event) id=#{tabling_slot.id}" if current_member.admin? %>> <b><%= link_to "#{tabling_slot.start_time.strftime("%l:%M%p")} to #{tabling_slot.end_time.strftime("%l:%M%p")}", tabling_slot %></b>
 
   <ul>
-    <% tabling_slot.members.each do |member| %>
-      <%= render "tabling_slots/member", member: member, tabling_slot: tabling_slot %>
+    <% tabling_slot.tabling_slot_members.each do |tsm| %>
+      <%= render "tabling_slots/member", member: tsm.member, tabling_slot: tabling_slot, tsm: tsm %>
     <% end %>
     <% if current_member.admin? %>
       <li class="delete" ondrop="deleteMember(event)" ondragover="allowDrop(event)">Drop here to delete</li>

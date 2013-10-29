@@ -11,6 +11,9 @@ class ApplicationController < ActionController::Base
 
   before_filter :signed_on_to_google
 
+  # Filters
+
+  # App-wide filter for checking if a user is signed in via Google
   def signed_on_to_google
     if current_member
       result = google_api_request( 'plus', 'v1', 'people', 'get', { userId: current_member.uid })
@@ -27,10 +30,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Redirect to home if attempting an admin-only action.
   def admin_member
     redirect_to root_path, notice: "You are not authorized to do that" if !current_member.admin?
   end
 
+  # Redirect to home if attempting an officer-only action.
   def officer
     redirect_to root_path, notice: "You are not authorized to do that" if !current_member.officer?
   end

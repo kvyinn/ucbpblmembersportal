@@ -8,6 +8,14 @@
 #  updated_at :datetime         not null
 #
 
+# == Description
+# A tabling status.
+# See db/seeds.rb for the default values
+#
+# == Associations
+#
+# === Has many:
+# - TablingSlotMember
 class Status < ActiveRecord::Base
   attr_accessible :name
 

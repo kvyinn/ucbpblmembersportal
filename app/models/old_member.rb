@@ -42,6 +42,9 @@
 
 require 'digest/sha1'
 
+# == Description
+#
+# A member record in the main PBL site.
 class OldMember < ActiveRecord::Base
   include ::Authentication
   include ::Authentication::ByPassword
@@ -61,9 +64,6 @@ class OldMember < ActiveRecord::Base
   # has_secure_password
   before_save :create_remember_token
 
-  has_many :tabling_slots, foreign_key: "ssid", dependent: :destroy
-  has_many :commitments, foreign_key: "member_id", dependent: :destroy
-
   def has_password?(submitted_password)
     crypted_password == encrypt(submitted_password)
   end
@@ -73,6 +73,8 @@ class OldMember < ActiveRecord::Base
     return nil  if user.nil?
     return user if user.has_password?(submitted_password)
   end
+
+  # NOTE: Don't know if these are even used....
 
   def full_name
     self.first_name + " " + self.last_name

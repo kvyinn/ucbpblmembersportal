@@ -9,6 +9,20 @@
 #  updated_at :datetime         not null
 #
 
+# == Description
+#
+# A type of CommitteeMember.
+#
+# == Fields
+# - name: the name of the type
+# - tier: the tier of the type
+#
+# == Associations
+#
+# === Has many:
+# - CommitteeMember
+# - Committee
+# - Member
 class CommitteeMemberType < ActiveRecord::Base
   attr_accessible :name, :tier
 
@@ -40,7 +54,7 @@ class CommitteeMemberType < ActiveRecord::Base
     ).first_or_create!
   end
 
-  # Get the Executive position with the given name (with some typo room)
+  # Get the Executive position with the given name
   def self.exec(position)
     exec_type = CommitteeMemberType.where(
       "lower(name) = :position and tier = 3",

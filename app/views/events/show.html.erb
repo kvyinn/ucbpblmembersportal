@@ -1,5 +1,6 @@
 <section>
   <h1><%= @event.summary %></h1>
+  <p><%= link_to "Back to events", events_url %></p>
   <% if current_member.officer? %>
     <%= render "event_members/form", event: @event %>
   <% else %>

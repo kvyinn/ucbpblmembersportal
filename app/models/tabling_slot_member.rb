@@ -10,6 +10,16 @@
 #  updated_at      :datetime         not null
 #
 
+# == Description
+# A relationship between a Member and a TablingSlot.
+# Has a status that describes the relationship.
+#
+# == Associations
+#
+# === Belongs to:
+# - Member
+# - TablingSlot
+# - Status
 class TablingSlotMember < ActiveRecord::Base
   attr_accessible
 
@@ -17,7 +27,18 @@ class TablingSlotMember < ActiveRecord::Base
   belongs_to :tabling_slot
   belongs_to :status
 
+  # Set itself's status to the Status with the given name.
+  # Returns false if the status was not found
+  #
+  # === Parameters
+  # - status: the name of the status
   def set_status_to(status)
-    self.status = Status.where(name: status).first
+    status = Status.where(name: status).first
+    if status
+      self.status = status
+      self.save
+    else
+      false
+    end
   end
 end

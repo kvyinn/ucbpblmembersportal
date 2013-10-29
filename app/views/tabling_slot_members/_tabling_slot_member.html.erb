@@ -1,0 +1,17 @@
+<li <%= "class=current_member" if tabling_slot_member.member == current_member %> <%= "draggable=true ondragstart=drag(event) ondragend=hideAll(event) id=#{tabling_slot_member.id}" if current_member.admin? %>>
+  <span><%= tabling_slot_member.member.name %></span>
+
+  <% if tabling_slot_member.status %>
+    <span class="tsm-status"><%= tabling_slot_member.status.name %></span>
+  <% end %>
+
+  <% if current_member.admin? %>
+    <div class="right-align">Set to
+    <% Status.all.each do |status| %>
+      <span class="tsm-status-set">
+        <%= link_to status.name, set_status_for_tabling_slot_member_url(tabling_slot_member.id, { status_id: status.id }), method: "put" %>
+      </span>
+    <% end %>
+    </div>
+  <% end %>
+</li>
