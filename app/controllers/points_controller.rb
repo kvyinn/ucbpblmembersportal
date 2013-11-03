@@ -40,4 +40,12 @@ class PointsController < ApplicationController
       }
     end
   end
+
+  # Show rankings of committees
+  #
+  # == Variables
+  # - ranked_committees: list of committees, sorted by their rating.
+  def rankings
+    @ranked_committees = Committee.all.sort_by { |committee| committee.rating }.reverse
+  end
 end

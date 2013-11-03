@@ -268,6 +268,8 @@ class Member < ActiveRecord::Base
       status_id: Status.where(name: :attended).first
     ).each do |tsm|
       sum += TablingSlot::POINTS
+
+      # TODO: points for other statuses
     end
 
     return sum

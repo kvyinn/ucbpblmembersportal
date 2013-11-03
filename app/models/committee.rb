@@ -38,13 +38,19 @@ class Committee < ActiveRecord::Base
 
   # Show the committee's rating.
   def rating
-    sum = 0.0
+    if self.cms.count > 0
+      sum = 0.0
 
-    self.cms.each do |committee_member|
-      sum += committee_member.member.total_points
+      self.cms.each do |committee_member|
+        sum += committee_member.member.total_points
+      end
+
+      rating = (sum / self.cms.count).round(2)
+    else
+      rating = 0.0
     end
 
-    return (sum / self.cms.count).round(2)
+    return rating
   end
 
   # Only the chairs and CMs of the committee
@@ -54,9 +60,13 @@ class Committee < ActiveRecord::Base
         "lower(name) = 'general member' or lower(name) = 'gm'"
       ))
     else
-      self.committee_members.where(committee_member_type_id: CommitteeMemberType.where(
-        "lower(name) = 'cm' or lower(name) = 'chair'"
-      ))
+      if self.name == "Executive"
+        self.committee_members
+      else
+        self.committee_members.where(committee_member_type_id: CommitteeMemberType.where(
+          "lower(name) = 'cm' or lower(name) = 'chair'"
+        ))
+      end
     end
   end
 end

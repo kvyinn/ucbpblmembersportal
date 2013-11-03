@@ -1,0 +1,14 @@
+<section>
+  <h1>Committee Rankings</h1>
+  <h2>Top Committee: <%= @ranked_committees[0].name %></h2>
+</section>
+<section>
+  <ul>
+    <% @ranked_committees.each do |committee| %>
+      <li>
+        <span><%= committee.name %></span>
+        <div class="pull-right"><span><%= committee.rating %></span></div>
+      </li>
+    <% end %>
+  </ul>
+</section>

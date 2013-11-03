@@ -56,7 +56,6 @@ module TablingSlotsHelper
 
 
   def generate_schedule
-    Rjb::load(classpath = @@tabling_dir)
     @tabling_dir = File.join(Rails.root, "lib/tabling")
 
     Dir.chdir(@tabling_dir)
@@ -83,8 +82,8 @@ module TablingSlotsHelper
       TablingAssignerTemp.run(@@write_dir)
 
       TablingAssigner.run(@@write_dir)
-    rescue RuntimeError => e
-      p e
+    rescue IllegalArgumentException => e
+      p e.class
       return false
     end
 
@@ -102,5 +101,7 @@ module TablingSlotsHelper
       end
 
     end
+
+    return true
   end
 end
