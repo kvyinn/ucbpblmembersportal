@@ -34,6 +34,10 @@ class CommitmentCalendar < ActiveRecord::Base
     @summary
   end
 
+  def summary=(str)
+    @summary = str
+  end
+
   # Tag display helper for views
   def tag_string
     self.tag ? "tag: #{self.tag}" : "All"
