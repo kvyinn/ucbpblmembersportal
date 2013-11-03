@@ -6,4 +6,4 @@ curl -o latest.dump "$BACKUP_URL"
 
 rake db:drop
 rake db:create
-pg_restore -d ucbpblmembersportal_development -e -h localhost -w latest.dump
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -U keien -d ucbpblmembersportal_development latest.dump

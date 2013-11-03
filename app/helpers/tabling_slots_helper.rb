@@ -9,6 +9,8 @@ module TablingSlotsHelper
   Rjb::load(classpath = @@tabling_dir)
   TablingAssignerTemp = Rjb::import("tablingassigner.TablingAssignerTemp")
   TablingAssigner = Rjb::import("tablingassigner.TablingAssigner")
+  TablingSlotJava = Rjb::import("tablingassigner.TablingSlot")
+  TimeJava = Rjb::import("tablingassigner.Time")
 
   # Write necessary files for the tabling assigner
   def write_init_files
@@ -22,7 +24,6 @@ module TablingSlotsHelper
     Member.all.each do |member|
       if member.commitments.count > 0 and member.tier and member.tier >= 1 and member != Member.where(name: "Keien Ohta").first
         CSV.open(File.join(@@write_dir, 'members.csv'), "ab") { |csv| csv << [member.id, member.name, member.tier+2] }
-        p [member.id, member.name, member.tier+2]
 
         member.commitments.each do |commitment|
 
@@ -43,7 +44,6 @@ module TablingSlotsHelper
             list << [member.id, day, start_date, end_date, start_time, end_time]
 
             CSV.open(File.join(@@write_dir, 'schedules.csv'), "ab") do |csv|
-              p [member.id, day, start_date, end_date, start_time, end_time]
               csv << [member.id, day, start_date, end_date, start_time, end_time]
             end
           end
@@ -59,9 +59,9 @@ module TablingSlotsHelper
     @tabling_dir = File.join(Rails.root, "lib/tabling")
 
     Dir.chdir(@tabling_dir)
-    TablingAssignerTemp.run(@@write_dir)
 
-    TablingAssigner.run(@@write_dir)
+    start_time = TablingSlotJava.startOfDay().toString()[0..1].to_i
+    end_time = TablingSlotJava.endOfDay().toString()[0..1].to_i
 
     TablingSlot.where(
       "start_time >= :tabling_start and start_time <= :tabling_end",
@@ -69,13 +69,39 @@ module TablingSlotsHelper
       tabling_end: tabling_end,
     ).destroy_all
 
-    CSV.foreach(File.join(@@write_dir, 'initial_schedule.csv')) do |row|
-      member = Member.find(row[0] % Member.count)
-      tabling_slot = member.tabling_slots << TablingSlot.where(
-        start_time: to_datetime(row[1], row[2]),
-        end_time: to_datetime(row[1], row[3]),
-      ).first_or_create!
-      member.tabling_slot_members.where(tabling_slot_id: tabling_slot).first.set_status_to :available
+    Date::DAYNAMES[1..5].each do |day|
+      (start_time..end_time-1).each do |hour|
+        TablingSlot.where(
+          start_time: Chronic.parse("#{hour} this #{day}"),
+          end_time: Chronic.parse("#{hour + 1} this #{day}")
+        ).first_or_create!
+      end
     end
+
+    begin
+      TablingAssignerTemp.run(@@write_dir)
+
+      TablingAssigner.run(@@write_dir)
+    rescue IllegalArgumentException => e
+      p e.class
+      return false
+    end
+
+    CSV.foreach(File.join(@@write_dir, 'initial_schedule.csv')) do |row|
+      member = Member.find(row[0])
+      tabling_slot = TablingSlot.where(
+        start_time: to_datetime(row[1], row[2]),
+      ).first
+
+      if tabling_slot
+        member.tabling_slots << (tabling_slot)
+        member.tabling_slot_member(tabling_slot).set_status_to :attending
+      else
+        p "Tabling slot not found for #{row[1]}, #{row[2]}"
+      end
+
+    end
+
+    return true
   end
 end

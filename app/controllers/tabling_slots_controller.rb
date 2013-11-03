@@ -57,8 +57,11 @@ class TablingSlotsController < ApplicationController
   def generate
     if DateTime.now.cwday > 5 # If later than Friday
       write_init_files
-      generate_schedule
-      redirect_to tabling_slots_path
+      if generate_schedule
+        redirect_to tabling_slots_path
+      else
+        redirect_to tabling_slots_path, notice: "Tabling generation has failed. Try running 'heroku restart --app ucbpblmembersportal' to refresh the Java objects and try again."
+      end
     else
       redirect_to tabling_slots_path, notice: "You cannot do that until after Friday"
     end
