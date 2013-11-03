@@ -83,8 +83,9 @@ module TablingSlotsHelper
       TablingAssignerTemp.run(@@write_dir)
 
       TablingAssigner.run(@@write_dir)
-    rescue RuntimeError => e
-      p e
+
+    rescue IllegalArgumentException => e
+      p e.class
       return false
     end
 
@@ -102,5 +103,7 @@ module TablingSlotsHelper
       end
 
     end
+
+    return true
   end
 end
