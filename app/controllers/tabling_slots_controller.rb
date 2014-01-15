@@ -106,25 +106,8 @@ class TablingSlotsController < ApplicationController
     puts timeslots
     puts "THAT WAS TIMESLOTS"
     @slots = Array.new
-    # start_time = 9
-    # end_time = 14
-    # days = Array.new
-    # included_days = params[:days]
-    # included_days = [1,2,3,4,5]
-    # for d in included_days
-    #   day = d
-    #   days << Date::DAYNAMES[day]
-    # end
+    # TODO: destroy all tablings slots?
     TablingSlot.destroy_all
-
-    # days.each do |day|
-    #   (start_time..end_time-1).each do |hour|
-    #     @slots << TablingSlot.where(
-    #       start_time: Chronic.parse("#{hour} this #{day}"),
-    #       end_time: Chronic.parse("#{hour + 1} this #{day}")
-    #     ).first_or_create!
-    #   end
-    # end
     timeslots.keys.each do |key|
       day = Date::DAYNAMES[key.to_i]
       if timeslots[key].length > 0
@@ -138,7 +121,6 @@ class TablingSlotsController < ApplicationController
       end
     end
     generate_tabling_schedule(@slots)
-
     render json: "your thing worked and i added tabling slots for you homie"
   end
 
@@ -248,14 +230,17 @@ class TablingSlotsController < ApplicationController
       if not slot == "manual"
         conflicts = false
         for c in member.commitments
-          # following lines were too slow
-          # start = this_week(c.start_time)
-          # endt = this_week(c.end_time)
-          start = c.start_time
-          endt = c.end_time
-          if conflicts(start, endt, slot.start_time, slot.end_time)
-            conflicts = true
-            break
+          d = c.day
+          s = c.start_hour
+          e = c.end_hour
+          if d
+            day = Date::DAYNAMES[d]
+            start = Chronic.parse("#{s} this #{day}")
+            endt =  Chronic.parse("#{e} this #{day}")
+            if day and conflicts(start, endt, slot.start_time, slot.end_time)
+              conflicts = true
+              break
+            end
           end
         end
       end

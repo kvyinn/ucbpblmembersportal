@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115082838) do
+ActiveRecord::Schema.define(:version => 20140115162431) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -155,6 +155,9 @@ ActiveRecord::Schema.define(:version => 20140115082838) do
     t.datetime "end_time"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "day"
+    t.integer  "start_hour"
+    t.integer  "end_hour"
   end
 
   add_index "commitments", ["member_id"], :name => "index_commitments_on_member_id"

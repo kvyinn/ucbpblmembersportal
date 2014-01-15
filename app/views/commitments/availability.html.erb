@@ -1,0 +1,59 @@
+<%= javascript_include_tag "commitments/availability.js" %>
+<style type = "text/css">
+#times {
+	margin-left: 25px;
+}
+.day {
+	.background-color: white;
+	border: 1px solid black;
+	float: left;
+	width: 100px;
+	text-align: center;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.day:hover {
+	cursor: pointer;
+}
+.day div {
+	border: 1px solid black;
+	padding: 3px;
+}
+.header {
+	background-color: maroon;
+	color: rgb(255, 213, 213);
+}
+.hour:hover {
+	cursor: pointer;
+}
+
+#current_member{
+	background-color: white;
+}
+.slot_div {
+	display: inline;
+}
+</style>
+<script type = "text/javascript">
+var marked_slots = {}
+marked_slots["0"] = [];
+marked_slots["1"] = [];
+marked_slots["2"] = [];
+marked_slots["3"] = [];
+marked_slots["4"] = [];
+marked_slots["5"] = [];
+marked_slots["6"] = [];
+<% @commitments.each do |commitment| %>
+marked_slots['<%= commitment.day %>'].push('<%= commitment.start_hour %>');
+<% end %>
+</script>
+
+<h1>choose which slots you arent available for</h1>
+<input id = "save_commitments" type = "submit" class = "btn" value = "save commitments"/>
+<div style = "clear:both; height: 25px"></div>
+<div id = "times"></div>
+<div style = "clear:both; height: 100px"></div>

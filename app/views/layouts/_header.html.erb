@@ -8,7 +8,7 @@
         <li><%= link_to "Points", points_url %></li>
         <li><%= link_to "Reimbursements", reimbursements_url %></li>
         <li><%= link_to "Calendars", commitment_calendars_url %></li>
-        <li><%= link_to "Commitments", commitments_url %></li>
+        <li><a href = "/commitments/availability">Commitments</a></li>
       <% end %>
       <% if current_member %>
         <li class="pull-right"><%= link_to current_member.name, "#" %></li>

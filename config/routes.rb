@@ -14,6 +14,9 @@ Ucbpblmembersportal::Application.routes.draw do
   # routes added by david
   match "/tabling/options", to: "tabling_slots#tabling_options"
   match "/tabling/generate", to: "tabling_slots#generate_tabling"
+
+  # match "/availability", to: "commitments#availability"
+  # match "/availability/update", to "commitments#update_availability"
   # end of david routes
 
   resources :calendars, only: [ :index, :show ] do
@@ -57,6 +60,8 @@ Ucbpblmembersportal::Application.routes.draw do
     collection do
       get :update_all
       get :preview
+      get :availability
+      get :update_availability
     end
   end
 

@@ -26,7 +26,7 @@
 # - Member
 
 class Commitment < ActiveRecord::Base
-  attr_accessible :end_time, :member_id, :start_time, :summary
+  attr_accessible :end_time, :member_id, :start_time, :summary, :start_hour, :end_hour, :day
 
   belongs_to :member
 end

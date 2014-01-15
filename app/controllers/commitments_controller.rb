@@ -34,4 +34,27 @@ class CommitmentsController < ApplicationController
     @events = @events.flatten.sort_by {|event| event[:start_time]}
   end
 
+  def availability
+    @commitments = current_member.commitments
+  end
+
+  def update_availability
+    current_member.commitments.destroy_all
+    timeslots = params[:slots]
+    for key in timeslots.keys
+      for hour in timeslots[key]
+        day = key.to_i
+        start_hour = hour.to_i
+        end_hour = hour.to_i + 1
+        c = Commitment.new
+        c.member_id = current_member.id
+        c.day = day
+        c.start_hour = start_hour
+        c.end_hour = end_hour
+        c.save
+      end
+    end
+    render json: "saved your commitments"
+  end
+
 end

@@ -1,4 +1,3 @@
-<script type = "text/javascript">
 var clicking = false;
 var slots = {};
 slots["0"] = [];
@@ -80,10 +79,10 @@ function clickingActions(){
 		clicking = false;
 	});
 }
-function generateTabling(){
-	alert("generating tabling...hold onto your potatoes");
+function submitCommitments(){
+	alert("submitting your availability...hold onto your potatoes");
 	$.ajax({
-      url:'/tabling/generate/',
+      url:'/commitments/update_availability',
       type: "GET",
       data: {"slots": slots},
       success:function(data){
@@ -98,62 +97,10 @@ $(document).ready(function(){
 	drawDays();
 	hourActions();
 	clickingActions();
-	$("#generate").click(function(){
-		generateTabling();
+	$("#save_commitments").click(function(){
+		submitCommitments();
 	});
+	if(marked_slots){
+		markSlots(marked_slots);
+	}
 });
-</script>
-
-<style type = "text/css">
-#times {
-	margin-left: 25px;
-}
-.day {
-	.background-color: white;
-	border: 1px solid black;
-	float: left;
-	width: 100px;
-	text-align: center;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-.day:hover {
-	cursor: pointer;
-}
-.day div {
-	border: 1px solid black;
-	padding: 3px;
-}
-.header {
-	background-color: maroon;
-	color: rgb(255, 213, 213);
-}
-.hour:hover {
-	cursor: pointer;
-}
-
-
-#current_member{
-	background-color: white;
-}
-.slot_div {
-	display: inline;
-}
-</style>
-
-<h1>tabling options</h1>
-<a href = "#" id = "generate">generate tabling schedule</a>
-<div id = "times"></div>
-<div style = "clear:both; height: 100px"></div>
-<% if @tabling_days %>
-<% @tabling_days.each do |day, slots| %>
-    <ul class="tabling"><%= day.strftime("%A, %D") %>
-      <%= render slots %>
-    </ul>
-  </div>
-<% end %>
-<% end %>
