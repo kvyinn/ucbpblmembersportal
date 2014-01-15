@@ -1,0 +1,135 @@
+<script type = "text/javascript">
+var clicking = false;
+var slots = {};
+slots["1"] = [];
+slots["2"] = [];
+slots["3"] = [];
+slots["4"] = [];
+slots["5"] = [];
+function drawDays(){
+	var days = ["monday", "tuesday", "wednesday", "thursday", "friday"];
+	var hours = ["9", "10", "11", "12", "1", "2", "3", "4", "5", "6"];
+	for(var i=0;i<5;i++){
+		var day_div = document.createElement("div");
+		$(day_div).addClass("day");
+		$(day_div).attr("id", (i+1).toString());
+		$(day_div).text(days[i]);
+		for(var j=0;j<hours.length-1;j++){
+			var hour = document.createElement("div");
+			$(hour).addClass("hour");
+			$(hour).attr("id", hours[j]);
+			$(hour).text(hours[j]+" to "+hours[j+1]);
+			$(day_div).append(hour);
+		}
+		$("#times").append(day_div);
+	}
+}
+function hourActions(){
+	$(".hour").click(function(){
+		if($(this).hasClass("selected")){
+			$(this).css("background-color", "white");
+			$(this).removeClass("selected");
+			// remove this hour from slots
+			var d = $(this).parent().attr("id");
+			var h = $(this).attr("id");
+			var index = slots[d].indexOf(h);
+			if(index>-1){
+				slots[d].splice(index,1);
+			}
+		}
+		else{
+			$(this).addClass("selected");
+			$(this).css("background-color", "yellow");
+			var d = $(this).parent().attr("id");
+			var h = $(this).attr("id");
+			slots[d].push(h);
+		}
+
+	});
+}
+function clickingActions(){
+	$(".hour").mousedown(function(){
+		clicking = true;
+	});
+	$(".hour").mousemove(function(){
+		if(clicking == true){
+			if(! $(this).hasClass("selected")){
+				$(this).addClass("selected");
+				$(this).css("background-color", "yellow");
+				var d = $(this).parent().attr("id");
+				var h = $(this).attr("id");
+				slots[d].push(h);
+			}
+		}
+	});
+	$(document).mouseup(function(){
+		clicking = false;
+	});
+}
+function generateTabling(){
+	alert("generating tabling...hold onto your potatoes");
+	$.ajax({
+      url:'/tabling/generate/',
+      type: "GET",
+      data: {"slots": slots},
+      success:function(data){
+      },
+      complete:function(){
+      	location.reload();
+      },
+      error:function (xhr, textStatus, thrownError){}
+  });
+}
+$(document).ready(function(){
+	drawDays();
+	hourActions();
+	clickingActions();
+	$("#generate").click(function(){
+		generateTabling();
+	});
+});
+</script>
+
+<style type = "text/css">
+.day {
+	border: 1px solid black;
+	float: left;
+	width: 200px;
+	text-align: center;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.day:hover {
+	cursor: pointer;
+}
+.hour {
+	border: 1px solid black;
+}
+.hour:hover {
+	cursor: pointer;
+}
+
+#current_member{
+	background-color: white;
+}
+.slot_div {
+	display: inline;
+}
+</style>
+
+<h1>tabling options</h1>
+<a href = "#" id = "generate">generate tabling schedule</a>
+<div id = "times"></div>
+<div style = "clear:both; height: 100px"></div>
+<% if @tabling_days %>
+<% @tabling_days.each do |day, slots| %>
+    <ul class="tabling"><%= day.strftime("%A, %D") %>
+      <%= render slots %>
+    </ul>
+  </div>
+<% end %>
+<% end %>

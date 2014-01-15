@@ -11,6 +11,10 @@ Ucbpblmembersportal::Application.routes.draw do
 
   get :rankings, to: "points#rankings", as: :rankings # TODO: move to "committees#rankings"
 
+  # routes added by david
+  match "/tabling/options", to: "tabling_slots#tabling_options"
+  match "/tabling/generate", to: "tabling_slots#generate_tabling"
+  # end of david routes
 
   resources :calendars, only: [ :index, :show ] do
     member do
