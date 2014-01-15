@@ -61,6 +61,11 @@ class Member < ActiveRecord::Base
 
   belongs_to :old_member
 
+
+  # set current semester
+  def self.current_semester
+    Semester.find(2)
+  end
   # TODO: store in DB
   def primary_committee
     self.committees.first
@@ -255,11 +260,11 @@ class Member < ActiveRecord::Base
   end
 
   # Calculate the total number of points this member has
-  def total_points
+  def total_points(semester = Member.current_semester)
     sum = 0
 
     # Calculate points from events
-    self.event_members.each do |event_member|
+    self.event_members.where(semester_id: semester.id).each do |event_member|
       sum += event_member.event_points.value if event_member.event_points
     end
 

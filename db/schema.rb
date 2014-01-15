@@ -11,7 +11,129 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131029125646) do
+ActiveRecord::Schema.define(:version => 20140115082838) do
+
+  create_table "active_admin_comments", :force => true do |t|
+    t.string   "resource_id",   :null => false
+    t.string   "resource_type", :null => false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.text     "body"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "namespace"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "admin_users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
+  add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "applicant_rankings", :force => true do |t|
+    t.integer  "applicant"
+    t.integer  "value"
+    t.text     "notes"
+    t.integer  "committee"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "deliberation_id"
+  end
+
+  add_index "applicant_rankings", ["deliberation_id"], :name => "index_applicant_rankings_on_deliberation_id"
+
+  create_table "applicants", :force => true do |t|
+    t.integer  "preference1"
+    t.integer  "preference2"
+    t.integer  "preference3"
+    t.string   "image"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "deliberation_id"
+  end
+
+  add_index "applicants", ["deliberation_id"], :name => "index_applicants_on_deliberation_id"
+
+  create_table "blog_comments", :force => true do |t|
+    t.integer  "blogpost_id"
+    t.integer  "comment_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "blog_events", :force => true do |t|
+    t.integer  "blogpost_id"
+    t.string   "event_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "blog_images", :force => true do |t|
+    t.integer  "blogpost_id"
+    t.integer  "image_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "blog_tags", :force => true do |t|
+    t.integer  "blogpost_id"
+    t.integer  "member_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "blogposts", :force => true do |t|
+    t.text     "content"
+    t.string   "title"
+    t.integer  "member_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "category"
+    t.integer  "edit_tier"
+    t.integer  "view_tier"
+  end
+
+  create_table "collection_images", :force => true do |t|
+    t.integer  "collection_id"
+    t.integer  "image_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "collections", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "member_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "member_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "commitment_calendars", :force => true do |t|
     t.integer  "member_id"
@@ -52,12 +174,18 @@ ActiveRecord::Schema.define(:version => 20131029125646) do
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
     t.integer  "committee_member_type_id"
+    t.integer  "semester_id"
   end
 
   add_index "committee_members", ["committee_id"], :name => "index_committee_members_on_committee_id"
   add_index "committee_members", ["committee_member_type_id"], :name => "cm_type_id"
   add_index "committee_members", ["member_id", "committee_id"], :name => "cm_uniq", :unique => true
   add_index "committee_members", ["member_id"], :name => "index_committee_members_on_member_id"
+
+  create_table "committee_semester_members", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "committee_types", :force => true do |t|
     t.string   "name"
@@ -79,11 +207,42 @@ ActiveRecord::Schema.define(:version => 20131029125646) do
   add_index "committees", ["abbr"], :name => "index_committees_on_abbr"
   add_index "committees", ["committee_type_id"], :name => "index_committees_on_committee_type_id"
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0, :null => false
+    t.integer  "attempts",   :default => 0, :null => false
+    t.text     "handler",                   :null => false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "deliberation_assignments", :force => true do |t|
+    t.integer  "deliberation_id"
+    t.integer  "applicant"
+    t.integer  "committee"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "deliberations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "event_members", :force => true do |t|
     t.string   "event_id"
     t.integer  "member_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "semester_id"
   end
 
   add_index "event_members", ["event_id", "member_id"], :name => "index_event_members_on_event_id_and_member_id", :unique => true
@@ -91,13 +250,60 @@ ActiveRecord::Schema.define(:version => 20131029125646) do
   add_index "event_members", ["member_id"], :name => "index_event_members_on_member_id"
 
   create_table "event_points", :force => true do |t|
-    t.string   "event_id",                  :null => false
-    t.integer  "value",      :default => 0, :null => false
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.string   "event_id",                   :null => false
+    t.integer  "value",       :default => 0, :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "semester_id"
   end
 
   add_index "event_points", ["event_id"], :name => "index_event_points_on_event_id", :unique => true
+
+  create_table "event_semester_members", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "form_fields", :force => true do |t|
+    t.integer  "form_id"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "form_results", :force => true do |t|
+    t.integer  "form_id"
+    t.text     "fields_data"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "forms", :force => true do |t|
+    t.integer  "creator_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "image_tags", :force => true do |t|
+    t.integer  "image_id"
+    t.integer  "member_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "images", :force => true do |t|
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "imageurl"
+    t.text     "description"
+  end
 
   create_table "members", :force => true do |t|
     t.string   "provider"
@@ -114,11 +320,12 @@ ActiveRecord::Schema.define(:version => 20131029125646) do
   add_index "members", ["remember_token"], :name => "index_members_on_remember_token"
 
   create_table "points", :force => true do |t|
-    t.integer  "member_id",  :null => false
-    t.integer  "value",      :null => false
+    t.integer  "member_id",   :null => false
+    t.integer  "value",       :null => false
     t.string   "details"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "semester_id"
   end
 
   add_index "points", ["member_id"], :name => "index_points_on_member_id"
@@ -134,6 +341,21 @@ ActiveRecord::Schema.define(:version => 20131029125646) do
 
   add_index "reimbursements", ["member_id"], :name => "index_reimbursements_on_member_id"
   add_index "reimbursements", ["processed"], :name => "index_reimbursements_on_processed"
+
+  create_table "semester_members", :force => true do |t|
+    t.integer  "semester_id"
+    t.integer  "member_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "semesters", :force => true do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "statuses", :force => true do |t|
     t.string   "name"

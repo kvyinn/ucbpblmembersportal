@@ -24,7 +24,7 @@ class PointsController < ApplicationController
     end
 
     # Add events
-    current_member.event_members.order("created_at DESC").each do |event_member|
+    current_member.event_members.where(semester_id: Member.current_semester.id).order("created_at DESC").each do |event_member|
       event_points = EventPoints.where(event_id: event_member.event_id).first
 
       if event_points

@@ -1,4 +1,7 @@
 Ucbpblmembersportal::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   root to: "home#home"
 
   get "/auth/google_oauth2", as: :google_signin

@@ -17,8 +17,10 @@
 # - event_id: reference to an event
 # - value: point value
 class EventPoints < ActiveRecord::Base
-  attr_accessible :event_id, :value
+  attr_accessible :event_id, :value, :semester_id
 
   validates :event_id, :value, presence: true
   validates :value, numericality: true
+  belongs_to :semester
 end
+
