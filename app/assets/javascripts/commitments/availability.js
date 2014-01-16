@@ -7,9 +7,9 @@ slots["3"] = [];
 slots["4"] = [];
 slots["5"] = [];
 slots["6"] = [];
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var hours = ["8", "9", "10", "11", "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
 function drawDays(){
-	var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-	var hours = ["8", "9", "10", "11", "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
 	for(var i=0;i<days.length;i++){
 		var day_div = document.createElement("div");
 		$(day_div).addClass("day");
@@ -66,6 +66,9 @@ function toggleSelected(thiss){
 	}
 }
 function clickingActions(){
+	$(".hour").click(function(){
+		toggleSelected($(this));
+	});
 	$(".hour").mousedown(function(){
 		clicking = true;
 		toggleSelected($(this));
@@ -93,7 +96,30 @@ function submitCommitments(){
       error:function (xhr, textStatus, thrownError){}
   });
 }
+
+function drawCMTable(){
+	for(var i=0;i<days.length;i++){
+		var day_div = document.createElement("div");
+		$(day_div).addClass("day");
+		$(day_div).attr("id", (i).toString());
+		// $(day_div).text(days[i]);
+		var header = document.createElement("div");
+		$(header).addClass("header");
+		$(header).text(days[i]);
+		$(day_div).append(header);
+		for(var j=0;j<hours.length-1;j++){
+			var hour = document.createElement("div");
+			$(hour).addClass("hour");
+			$(hour).attr("id", j+8);
+			$(hour).text(hours[j]+" - "+hours[j+1]);
+			$(hour).css("background-color", "rgba(0, 0, 0, 0)");
+			$(day_div).append(hour);
+		}
+		$("#cm_chart").append(day_div);
+	}
+}
 $(document).ready(function(){
+
 	drawDays();
 	hourActions();
 	clickingActions();
@@ -103,4 +129,68 @@ $(document).ready(function(){
 	if(marked_slots){
 		markSlots(marked_slots);
 	}
+	drawCMTable();
+	updateTrackedChart();
+	startAutocomplete();
+	startTrackedActions();
+	// makeDarker();
+	// markCMSlots(cm_slots);
 });
+
+function startTrackedActions(){
+	$(".tracked_member").click(function(){
+		$(this).remove();
+		updateTrackedChart();
+	});
+}
+function updateTrackedChart(){
+	unmarkAll();
+	// loop through the members in tracked
+	$(".tracked_member").each(function(){
+		var commitments = pbl_commitments[$(this).attr("id")];
+		// console.log($(this).attr("id")+ " was the id");
+		// console.log(commitments);
+		if(commitments){
+			for(var i=0;i<commitments.length;i++){
+				var c = commitments[i];
+				var h = $("#cm_chart").find(c);
+				makeDarker(h);
+				old_title = $(h).attr("title");
+				new_title = old_title + ", "+reverse_member_hash[$(this).attr("id")];
+				$(h).attr("title", new_title);
+			}
+		}
+	});
+	startTrackedActions();
+}
+function makeDarker(selection){
+	var color = $(selection).css('background-color');
+	var lastComma = color.lastIndexOf(',');
+	var lastOpacity = color.slice(lastComma+1, color.length-1);
+	var newOpacity = parseFloat(lastOpacity)+0.2;
+	// var newOpacity = 1
+	var newColor = color.slice(0, lastComma + 1) +newOpacity + ")";
+	$(selection).css("background-color", newColor);
+}
+
+function unmarkAll(){
+	$("#cm_chart").find(".hour").each(function(){
+		$(this).css("background-color", "rgba(0,0,0,0)");
+		$(this).attr("title", "");
+	});
+}
+
+function startAutocomplete(){
+	$("#member_search").autocomplete({
+		source: member_names,
+		select: function(event, ui){
+			// alert(ui.item.value + " "+member_hash[ui.item.value]);
+			var div = document.createElement("div");
+			$(div).addClass("tracked_member");
+			$(div).attr("id", member_hash[ui.item.value]);
+			$(div).text(ui.item.value);
+			$("#tracked_list").prepend(div);
+			updateTrackedChart();
+		}
+	})
+}

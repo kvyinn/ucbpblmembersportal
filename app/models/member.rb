@@ -77,7 +77,7 @@ class Member < ActiveRecord::Base
   #
   # === Parameters
   # - committee: the Committee to look up the position under; defaults to #primary_committee
-  def position(committee=self.primary_committee)
+  def position(committee=self.primary_committee, semester = Member.current_semester)
     if committee
       committee_member = self.committee_members.where(
         committee_id: committee.id
@@ -105,7 +105,7 @@ class Member < ActiveRecord::Base
 
   # Admin status of the member.
   def admin?
-    self.name == "Keien Ohta" or self.committees.include?(Committee.where(name: "Executive").first)
+    self.name == "Keien Ohta" or self.name == "David Liu" or self.committees.include?(Committee.where(name: "Executive").first)
   end
 
   # Officer status of the member.

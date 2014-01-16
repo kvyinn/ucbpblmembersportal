@@ -1,3 +1,4 @@
+<%= javascript_include_tag "tabling_slots.js" %>
 <section>
   <% if @tabling_days.nil? %>
     <h1>No tabling slots yet!</h1>
@@ -15,6 +16,7 @@
     </div>
     <% if current_member.admin? %>
       <%= link_to "Reroll", generate_tabling_slots_url, class: "btn" %>
+       <input type = "submit" class = "btn" value = "request new slot" id = "new_slot_btn"/>
     <% end %>
     <p><%= link_to "Print view", print_tabling_slots_url %></p>
 

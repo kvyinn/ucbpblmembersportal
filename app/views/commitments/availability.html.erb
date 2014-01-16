@@ -1,10 +1,15 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <%= javascript_include_tag "commitments/availability.js" %>
 <style type = "text/css">
-#times {
+.timetable {
 	margin-left: 25px;
+	overflow: hidden;
+	float: left;
 }
 .day {
-	.background-color: white;
+	background-color: white;
 	border: 1px solid black;
 	float: left;
 	width: 100px;
@@ -15,6 +20,7 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	overflow: hidden;
 }
 .day:hover {
 	cursor: pointer;
@@ -22,10 +28,14 @@
 .day div {
 	border: 1px solid black;
 	padding: 3px;
+	overflow: hidden;
 }
 .header {
 	background-color: maroon;
 	color: rgb(255, 213, 213);
+}
+.hour {
+	overflow: hidden;
 }
 .hour:hover {
 	cursor: pointer;
@@ -34,12 +44,9 @@
 #current_member{
 	background-color: white;
 }
-.slot_div {
-	display: inline;
-}
 </style>
 <script type = "text/javascript">
-var marked_slots = {}
+var marked_slots = {};
 marked_slots["0"] = [];
 marked_slots["1"] = [];
 marked_slots["2"] = [];
@@ -50,10 +57,59 @@ marked_slots["6"] = [];
 <% @commitments.each do |commitment| %>
 marked_slots['<%= commitment.day %>'].push('<%= commitment.start_hour %>');
 <% end %>
+
+</script>
+<script type = "text/javascript">
+var pbl_commitments = {};
+<% @pbl_commitments.keys.each do |m_id| %>
+pbl_commitments['<%= m_id %>'] = [];
+<% @pbl_commitments[m_id].each do |hour| %>
+pbl_commitments['<%= m_id %>'].push('<%= hour %>');
+<% end %>
+<% end %>
+var member_hash = {};
+var reverse_member_hash = {};
+var member_names = [];
+<% Member.all.each do |m| %>
+member_hash['<%= m.name %>'] = '<%= m.id %>';
+reverse_member_hash['<%= m.id %>'] = '<%= m.name %>';
+member_names.push('<%= m.name %>');
+<% end %>
 </script>
 
-<h1>choose which slots you arent available for</h1>
+
+<h1>mark unavailable slots</h1>
 <input id = "save_commitments" type = "submit" class = "btn" value = "save commitments"/>
 <div style = "clear:both; height: 25px"></div>
-<div id = "times"></div>
+<div id = "times" class = "timetable"></div>
 <div style = "clear:both; height: 100px"></div>
+<h1>compare availability</h1>
+
+<div id = "cm_chart" class = "timetable"></div>
+<div id = "options_div">
+<h2>tracked members</h2>
+<input type = "text" id = "member_search" />
+<div id = "tracked_list">
+<% current_member.primary_committee.cms.each do |cm| %>
+	<div id = '<%= cm.member.id %>' class = "tracked_member"><%= cm.member.name %></div>
+<% end %>
+</div>
+<!-- end of tracked list -->
+</div>
+<!-- end of options div -->
+<div style = "clear: both; height: 150px;"></div>
+
+<style type = "text/css">
+#options_div {
+	border: 1px solid rgba(0,0,0,0.1);
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+	padding: 10px;
+	float: left;
+	margin-left: 15px;
+}
+.tracked_member:hover {
+	color: maroon;
+	cursor: pointer;
+	background-color: white;
+}
+</style>

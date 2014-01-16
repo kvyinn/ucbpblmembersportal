@@ -11,14 +11,6 @@ Ucbpblmembersportal::Application.routes.draw do
 
   get :rankings, to: "points#rankings", as: :rankings # TODO: move to "committees#rankings"
 
-  # routes added by david
-  match "/tabling/options", to: "tabling_slots#tabling_options"
-  match "/tabling/generate", to: "tabling_slots#generate_tabling"
-
-  # match "/availability", to: "commitments#availability"
-  # match "/availability/update", to "commitments#update_availability"
-  # end of david routes
-
   resources :calendars, only: [ :index, :show ] do
     member do
       get :clear
@@ -40,8 +32,14 @@ Ucbpblmembersportal::Application.routes.draw do
   end
 
   resources :tabling_slots, only: [ :index, :show ] do
-    get :print, on: :collection
-    get :generate, on: :collection
+    # get :print, on: :collection
+    # get :generate, on: :collection
+    collection do
+      get :tabling_options
+      get :generate_tabling
+      get :print
+      get :generate
+    end
   end
 
   resources :tabling_slot_members, only: [ :create, :destroy, :update ] do

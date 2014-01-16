@@ -50,3 +50,12 @@ function addMember(ev) {
     $(".delete").slideUp();
   });
 }
+
+$(document).ready(function(){
+  $("#new_slot_btn").click(function(){
+    var r = confirm("have you updated your committments?");
+    if(r){
+       alert("a request has been made to change your tabling slot");
+    }
+  })
+});

@@ -31,4 +31,14 @@
     <p><%= link_to "View details", points_url %></p>
   </section>
 
+  <section>
+    <h2>random information for testing</h2>
+    position: <%= current_member.position %><br>
+    primary committee: <%= current_member.primary_committee %><br>
+    tier: <%= current_member.tier %><br>
+    cms: <%= current_member.cms %><br>
+    find old members: <%= current_member.find_old_members %><br>
+    attended slots: <%= current_member.attended_slots %><br>
+  </section>
+
 <% end %>

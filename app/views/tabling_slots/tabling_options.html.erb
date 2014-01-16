@@ -67,6 +67,9 @@ function toggleSelected(thiss){
 	}
 }
 function clickingActions(){
+	$(".hour").click(function(){
+		toggleSelected($(this));
+	});
 	$(".hour").mousedown(function(){
 		clicking = true;
 		toggleSelected($(this));
@@ -81,9 +84,9 @@ function clickingActions(){
 	});
 }
 function generateTabling(){
-	alert("generating tabling...hold onto your potatoes");
+	alert("generating tabling...hold onto your potatoess");
 	$.ajax({
-      url:'/tabling/generate/',
+      url:'/tabling_slots/generate_tabling/',
       type: "GET",
       data: {"slots": slots},
       success:function(data){
@@ -109,7 +112,7 @@ $(document).ready(function(){
 	margin-left: 25px;
 }
 .day {
-	.background-color: white;
+	background-color: white;
 	border: 1px solid black;
 	float: left;
 	width: 100px;
@@ -146,9 +149,10 @@ $(document).ready(function(){
 </style>
 
 <h1>tabling options</h1>
-<a href = "#" id = "generate">generate tabling schedule</a>
+<input type = "submit" class = "btn" id = "generate" value = "generate tabling schedule"/>
+<div style = "clear:both; height: 50px"></div>
 <div id = "times"></div>
-<div style = "clear:both; height: 100px"></div>
+<div style = "clear:both; height: 50px"></div>
 <% if @tabling_days %>
 <% @tabling_days.each do |day, slots| %>
     <ul class="tabling"><%= day.strftime("%A, %D") %>

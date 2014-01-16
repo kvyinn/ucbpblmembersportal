@@ -102,12 +102,15 @@ class TablingSlotsController < ApplicationController
   end
 
   def generate_tabling
+    puts "about to generate tabling slots"
     timeslots = params[:slots]
     puts timeslots
     puts "THAT WAS TIMESLOTS"
     @slots = Array.new
     # TODO: destroy all tablings slots?
-    TablingSlot.destroy_all
+    # should only destroy all tabling slots for this week
+    # TablingSlot.destroy_all
+    clear_this_week_slots
     timeslots.keys.each do |key|
       day = Date::DAYNAMES[key.to_i]
       if timeslots[key].length > 0
@@ -125,7 +128,19 @@ class TablingSlotsController < ApplicationController
   end
 
   # helper methods for tabling generation
-
+  def clear_this_week_slots
+    days = (0..7).to_a
+    hours = (1..24).to_a
+    days.each do |key|
+      day = Date::DAYNAMES[key]
+      hours.each do |hour|
+        TablingSlot.where(
+          start_time: Chronic.parse("#{hour} this #{day}"),
+          end_time: Chronic.parse("#{hour + 1} this #{day}")
+        ).destroy_all
+      end
+    end
+  end
 # input slots: tabling slots that you want to fill
 # return hash {"assignments": assignments, "manual": manual}
 # assignments {slot: array of members}
