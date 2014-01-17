@@ -1,0 +1,38 @@
+<style type = "text/css">
+#attendees_div {
+	padding: 15px;
+	float: left;
+	margin: 15px;
+	background-color: white;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.1);
+}
+#left_col {
+	float: left;
+	margin-right: 35px;
+}
+#right_col {
+	float: right;
+}
+</style>
+
+<h1><%= @event.name %></h1>
+ <% if current_member.officer? %>
+    <%= render "event_members/form", event: @event %>
+  <% else %>
+    <%= render "events/members", members: @attendees %>
+  <% end %>
+
+<div id = "attendees_div">
+<h2>attendees(<%= @attendees.length %>)</h2>
+<div id = "left_col" class = "col">
+<% @attendees.slice(0, @attendees.length/2).each do |attendee| %>
+<div><%= attendee.name %></div>
+<% end %>
+</div>
+<div id = "right_col" class = "col">
+<% @attendees.slice(@attendees.length/2, @attendees.length).each do |attendee| %>
+<div><%= attendee.name %></div>
+<% end %>
+</div>
+</div>

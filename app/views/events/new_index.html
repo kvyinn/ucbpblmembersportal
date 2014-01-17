@@ -1,0 +1,95 @@
+<style type = "text/css">
+.events_table, th, td {
+	border-collapse: collapse;
+	border: 1px solid black;
+	padding: 3px;
+	text-align: center;
+	margin: 15px;
+}
+th {
+	background-color: maroon;
+	color: rgb(255, 190, 190);
+	width: 10%;
+}
+td {
+	background-color: white;
+}
+input[type="checkbox"] {
+	display: inline;
+}
+.highlight td {
+	background-color: rgb(246, 218, 218);
+}
+</style>
+<a href = "#" class = "btn">sync with goolgle calendars</a>
+<a href = "/event_points" class = "btn">edit event points</a>
+<div style = "height:50px"></div>
+<h1>upcoming events</h1>
+<table class = "events_table" id = "upcoming_events_table">
+	<thead>
+		<th>date</th>
+		<th>event name</th>
+		<th>time</th>
+		<th>location</th>
+		<th>type</th>
+		<th>points</th>
+		<th>attending</th>
+	</thead>
+	<tbody>
+	<% @upcoming_events.each do |ue| %>
+		<tr>
+			<td><%= ue.start_time.strftime("%D") %></td>
+			<td><%= ue.name %></td>
+			<td><%= ue.start_time.strftime("%r") %></td>
+			<td>location</td>
+			<td></td>
+			<td><% if EventPoints.where(event_id: ue.id).first %>
+				<%= EventPoints.where(event_id: ue.id).first.value %>
+				<% else %>
+				?
+				<% end %>
+			</td>
+			<td><input type = "checkbox"/></td>
+		</tr>
+	<% end %>
+
+	</tbody>
+</table>
+
+
+
+<h1>past events</h1>
+<table class = "events_table" id = "upcoming_events_table">
+	<thead>
+		<th>date</th>
+		<th>event name</th>
+		<th>time</th>
+		<th>location</th>
+		<th>type</th>
+		<th>points</th>
+		<th>attending</th>
+	</thead>
+	<tbody>
+	<% @past_events.reverse.each do |pe| %>
+		<% if @attended_events.include? pe %>
+		<tr class = "highlight">
+		<% else %>
+		<tr>
+		<% end %>
+			<td><%= pe.start_time.strftime("%D") %></td>
+			<td><%= link_to pe.name, pe %></td>
+			<td><%= pe.start_time.strftime("%r") %></td>
+			<td>location</td>
+			<td></td>
+			<td><% if EventPoints.where(event_id: pe.id).first %>
+				<%= EventPoints.where(event_id: pe.id).first.value %>
+				<% else %>
+				?
+				<% end %></td>
+			<td><input type = "checkbox"/></td>
+		</tr>
+	<% end %>
+
+	</tbody>
+</table>
+

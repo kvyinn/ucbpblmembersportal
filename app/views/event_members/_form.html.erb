@@ -1,17 +1,34 @@
-<h2>Attendance</h2>
+<style type = "text/css">
+.attendance_form {
+  float: left;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+  width: 250px;
+  background-color: white;
+  text-align: center;
+  margin: 15px;
+  padding: 15px;
+}
+.check:hover {
+  cursor: pointer;
+}
+</style>
+<div class = "attendance_form">
+  <h2>cm attendance form</h2>
 <%= form_for current_member.event_members.build(event_id: event.id), html: { class: "form-inline" } do |f| %>
-  <%= f.hidden_field :event_id %>
-  <ul>
-    <% current_member.cms.each do |member| %>
-      <li class="<%= "checked" if member.attended?(event) %>">
-      <%= label_tag :name, member.name, class: "check" %>
-        <%= check_box_tag "member_ids[]", member.id, member.attended?(event) %>
-      </li>
-    <% end %>
-  </ul>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
-<% end %>
+  <%= f.hidden_field :event_id, :value => event.id %>
 
+    <% current_member.cms.each do |member| %>
+      <div class="<%= "checked" if member.attended?(event) %>">
+      <!-- <%= label_tag :name, member.name, class: "check" %> -->
+      <div class = "check"><%= member.name %></div>
+        <%= check_box_tag "member_ids[]", member.id, member.attended?(event) %>
+      </div>
+    <% end %>
+
+  <%= f.submit "Submit" %>
+<% end %>
+</div>
 <script>
   $(".check").click(function() {
     var checkbox;

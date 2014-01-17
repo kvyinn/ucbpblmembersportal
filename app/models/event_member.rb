@@ -24,9 +24,10 @@
 # === Has one:
 # - EventPoint
 class EventMember < ActiveRecord::Base
-  attr_accessible :event_id, :member_id, :semester_id
+  attr_accessible :event_id, :member_id, :semester_id, :google_id
 
   belongs_to :member
   belongs_to :semester
+  belongs_to :event, foreign_key: :event_id
   has_one :event_points, foreign_key: :event_id, primary_key: :event_id
 end

@@ -21,7 +21,8 @@ class EventPointsController < ApplicationController
     ).data.items
 
     # Look up point values, or assign the default value of 0
-    events.each do |event|
+    # events.each do |event|
+    Event.all.each do |event|
       event_points = EventPoints.where(event_id: event.id).first
       points = event_points ? event_points.value : 0
 
@@ -38,6 +39,13 @@ class EventPointsController < ApplicationController
     params[:event_ids].zip(params[:points]).map do |item|
       { event_id: item[0], value: item[1] }
     end.each do |attributes|
+      # google_id = attributes[:event_id]
+      # puts google_id
+      # event = Event.where(google_id: google_id)
+      # puts event
+      # puts "that was your event was it right?"
+      # if event.length != 0
+      # event = event.first
       event_points = EventPoints.where(event_id: attributes[:event_id]).first_or_initialize
       event_points.value = attributes[:value]
 
@@ -46,6 +54,7 @@ class EventPointsController < ApplicationController
         return
       end
     end
+    # end
     redirect_to event_points_path, notice: "You have updated event point values!"
   end
 

@@ -11,6 +11,10 @@ Ucbpblmembersportal::Application.routes.draw do
 
   get :rankings, to: "points#rankings", as: :rankings # TODO: move to "committees#rankings"
 
+  # ad hoc route for events
+  match "/new_events", to: "events#new_index"
+  match "/new_events/:id", to: "events#new_show"
+
   resources :calendars, only: [ :index, :show ] do
     member do
       get :clear
@@ -18,6 +22,7 @@ Ucbpblmembersportal::Application.routes.draw do
     end
 
     resources :events, only: [ :show, :index ]
+
   end
 
   resources :events, only: [ :show, :index ] do

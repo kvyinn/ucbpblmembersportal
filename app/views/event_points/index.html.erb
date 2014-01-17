@@ -4,7 +4,7 @@
     <%= form_tag update_all_event_points_url, method: "post" do %>
       <% @event_points.each do |item| %>
         <li>
-          <%= label_tag item[:event].summary %>
+          <%= label_tag item[:event].name %>
           <%= hidden_field_tag "event_ids[]", item[:event].id %>
           <%= text_field_tag "points[]", item[:points] %>
         </li>

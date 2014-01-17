@@ -28,7 +28,8 @@ class PointsController < ApplicationController
       event_points = EventPoints.where(event_id: event_member.event_id).first
 
       if event_points
-        @recently_earned << { title: events[event_member.event_id], points: event_points.value }
+        # @recently_earned << { title: events[event_member.event_id], points: event_points.value }
+        @recently_earned << { title: Event.find(event_points.event_id).name , points: event_points.value }
       end
     end
 

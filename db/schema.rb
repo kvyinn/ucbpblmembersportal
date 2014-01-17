@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115162431) do
+ActiveRecord::Schema.define(:version => 20140116193502) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -246,6 +246,7 @@ ActiveRecord::Schema.define(:version => 20140115162431) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "semester_id"
+    t.string   "google_id"
   end
 
   add_index "event_members", ["event_id", "member_id"], :name => "index_event_members_on_event_id_and_member_id", :unique => true
@@ -258,6 +259,7 @@ ActiveRecord::Schema.define(:version => 20140115162431) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.integer  "semester_id"
+    t.string   "google_id"
   end
 
   add_index "event_points", ["event_id"], :name => "index_event_points_on_event_id", :unique => true
@@ -268,8 +270,14 @@ ActiveRecord::Schema.define(:version => 20140115162431) do
   end
 
   create_table "events", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "name"
+    t.text     "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "google_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "semester_id"
   end
 
   create_table "form_fields", :force => true do |t|
