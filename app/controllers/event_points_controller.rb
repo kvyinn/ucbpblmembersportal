@@ -11,14 +11,14 @@ class EventPointsController < ApplicationController
 
     # Load events
     @event_points = []
-    events = google_api_request(
-      'calendar', 'v3', 'events', 'list',
-      {
-        calendarId: pbl_events_calendar_id,
-        timeMin: beginning_of_fall_semester,
-        timeMax: DateTime.now,
-      }
-    ).data.items
+    # events = google_api_request(
+    #   'calendar', 'v3', 'events', 'list',
+    #   {
+    #     calendarId: pbl_events_calendar_id,
+    #     timeMin: beginning_of_fall_semester,
+    #     timeMax: DateTime.now,
+    #   }
+    # ).data.items
 
     # Look up point values, or assign the default value of 0
     # events.each do |event|

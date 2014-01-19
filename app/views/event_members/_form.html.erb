@@ -1,20 +1,20 @@
 <style type = "text/css">
 .attendance_form {
   float: left;
-  border: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-  width: 250px;
+  /*border: 1px solid rgba(0,0,0,0.1);*/
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  width: 270px;
   background-color: white;
   text-align: center;
   margin: 15px;
-  padding: 15px;
+  padding-bottom: 10px;
 }
 .check:hover {
   cursor: pointer;
 }
 </style>
 <div class = "attendance_form">
-  <h2>cm attendance form</h2>
+  <div class = "box_header">CM Attendance Form</div>
 <%= form_for current_member.event_members.build(event_id: event.id), html: { class: "form-inline" } do |f| %>
   <%= f.hidden_field :event_id, :value => event.id %>
 
@@ -25,8 +25,8 @@
         <%= check_box_tag "member_ids[]", member.id, member.attended?(event) %>
       </div>
     <% end %>
-
-  <%= f.submit "Submit" %>
+    <br>
+  <%= f.submit "Submit", :class=> "btn" %>
 <% end %>
 </div>
 <script>

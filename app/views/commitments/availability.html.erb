@@ -7,10 +7,11 @@
 	margin-left: 25px;
 	overflow: hidden;
 	float: left;
+	border-left: 1px solid black;
 }
 .day {
 	background-color: white;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	float: left;
 	width: 100px;
 	text-align: center;
@@ -21,6 +22,9 @@
 	-ms-user-select: none;
 	user-select: none;
 	overflow: hidden;
+	/*margin: 3px;*/
+	margin-left: -1px;
+	/*box-shadow: 3px 3px 5px rgba(0,0,0,0.3);*/
 }
 .day:hover {
 	cursor: pointer;
@@ -29,10 +33,12 @@
 	border: 1px solid black;
 	padding: 3px;
 	overflow: hidden;
+	margin-top: -1px;
 }
-.header {
+.day_header {
 	background-color: maroon;
 	color: rgb(255, 213, 213);
+	/*font-weight: bold;*/
 }
 .hour {
 	overflow: hidden;
@@ -43,6 +49,9 @@
 
 #current_member{
 	background-color: white;
+}
+#save_commitments {
+	margin-left: 25px;
 }
 </style>
 <script type = "text/javascript">
@@ -87,7 +96,7 @@ member_names.push('<%= m.name %>');
 
 <div id = "cm_chart" class = "timetable"></div>
 <div id = "options_div">
-<h2>tracked members</h2>
+<div id = "tracked_header">Tracked Members</div>
 <input type = "text" id = "member_search" />
 <div id = "tracked_list">
 <% current_member.primary_committee.cms.each do |cm| %>
@@ -101,15 +110,26 @@ member_names.push('<%= m.name %>');
 
 <style type = "text/css">
 #options_div {
-	border: 1px solid rgba(0,0,0,0.1);
-	box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-	padding: 10px;
+	/*border: 1px solid rgba(0,0,0,0.1);*/
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+	width: 200px;
 	float: left;
 	margin-left: 15px;
+	/*background-color: rgb(245, 245, 245);*/
+	background-color: white;
+	/*border: 1px solid black;*/
+	text-align:center;
+	padding-bottom: 5px;
+}
+#tracked_header {
+	background-color: maroon;
+	padding: 10px;
+	color: rgb(255, 213, 213);
+	margin-bottom: 5px;
+	text-align: center;
 }
 .tracked_member:hover {
-	color: maroon;
 	cursor: pointer;
-	background-color: white;
+	color: red;
 }
 </style>

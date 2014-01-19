@@ -54,11 +54,9 @@ class EventsController < ApplicationController
     current_member.event_members.each do |event_member|
       @attended_events << Event.where(id: event_member.event_id).first
     end
-    @calendar_id = revert_google_calendar_id(params[:calendar_id] || pbl_events_calendar_id)
+    # @calendar_id = revert_google_calendar_id(params[:calendar_id] || pbl_events_calendar_id)
     @past_events = Array.new
-    # Event.where(:start_time < DateTime.now)
     @upcoming_events = Array.new
-    # Event.where(:start_time >= DateTime.now)
     Event.all.each do |event|
       if event.start_time < DateTime.now
         @past_events << event
@@ -66,14 +64,16 @@ class EventsController < ApplicationController
         @upcoming_events << event
       end
     end
+    # @past_events = @past_events.sort! {|x,y| x.points <=> y.points}
+    @past_events = sort(@past_events, params[:sort], params[:direction])
     render "new_index"
   end
 
+
+
   def show
     @event = Event.find(params[:id])
-    @attendees = EventMember.where(event_id: @event.id).map do |event_member|
-      event_member.member
-    end.uniq
+    @attendees = @event.attendees
     render "new_show"
   end
   # def swap_ids
@@ -150,5 +150,38 @@ class EventsController < ApplicationController
     end
   end
 
+
+    # sorts array by sort parameter and returns sorted array
+  def sort(array, sort_param, direction)
+    if sort_param == "points"
+      if direction == "asc"
+        array = array.sort! {|x,y| x.points <=> y.points}
+      else
+        array = array.sort! {|y,x| x.points <=> y.points}
+      end
+    end
+    if sort_param == "name"
+      if direction == "desc"
+        array = array.sort! {|x,y| x.name <=> y.name}
+      else
+        array = array.sort! {|y,x| x.name <=> y.name}
+      end
+    end
+    if sort_param == "date"
+      if direction == "desc"
+        array = array.sort! {|x,y| x.start_time <=> y.start_time}
+      else
+        array = array.sort! {|y,x| x.start_time <=> y.start_time}
+      end
+    end
+    if sort_param == "attendees"
+      if direction == "asc"
+        array = array.sort! {|x,y| x.attendees.length <=> y.attendees.length}
+      else
+        array = array.sort! {|y,x| x.attendees.length <=> y.attendees.length}
+      end
+    end
+    return array
+  end
 
 end

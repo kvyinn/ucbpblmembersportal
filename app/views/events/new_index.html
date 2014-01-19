@@ -4,12 +4,16 @@
 	border: 1px solid black;
 	padding: 3px;
 	text-align: center;
-	margin: 15px;
+	margin: 10px 25px;
 }
 th {
 	background-color: maroon;
-	color: rgb(255, 190, 190);
+	color: rgb(255, 240, 240);
 	width: 10%;
+	font-weight: normal;
+}
+th a {
+	color: rgb(255, 240, 240);
 }
 td {
 	background-color: white;
@@ -39,16 +43,11 @@ input[type="checkbox"] {
 	<% @upcoming_events.each do |ue| %>
 		<tr>
 			<td><%= ue.start_time.strftime("%D") %></td>
-			<td><%= ue.name %></td>
+			<td><%= link_to ue.name, ue %></td>
 			<td><%= ue.start_time.strftime("%r") %></td>
 			<td>location</td>
 			<td></td>
-			<td><% if EventPoints.where(event_id: ue.id).first %>
-				<%= EventPoints.where(event_id: ue.id).first.value %>
-				<% else %>
-				?
-				<% end %>
-			</td>
+			<td><%= ue.points %></td>
 			<td><input type = "checkbox"/></td>
 		</tr>
 	<% end %>
@@ -59,15 +58,15 @@ input[type="checkbox"] {
 
 
 <h1>past events</h1>
-<table class = "events_table" id = "upcoming_events_table">
+<table class = "events_table" id = "past_events_table">
 	<thead>
-		<th>date</th>
-		<th>event name</th>
+		<th><%= sortable "date", "Date" %></th>
+		<th><%= sortable "name", "Event Name" %></th>
 		<th>time</th>
 		<th>location</th>
 		<th>type</th>
-		<th>points</th>
-		<th>attending</th>
+		<th><%= sortable "points" %></th>
+		<th><%= sortable "attendees" %></th>
 	</thead>
 	<tbody>
 	<% @past_events.reverse.each do |pe| %>
@@ -80,13 +79,9 @@ input[type="checkbox"] {
 			<td><%= link_to pe.name, pe %></td>
 			<td><%= pe.start_time.strftime("%r") %></td>
 			<td>location</td>
-			<td></td>
-			<td><% if EventPoints.where(event_id: pe.id).first %>
-				<%= EventPoints.where(event_id: pe.id).first.value %>
-				<% else %>
-				?
-				<% end %></td>
-			<td><input type = "checkbox"/></td>
+			<td><%= Committee.all.sample.name %></td>
+			<td><%= pe.points %></td>
+			<td><%= pe.attendees.length %></td>
 		</tr>
 	<% end %>
 

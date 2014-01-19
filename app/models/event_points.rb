@@ -23,6 +23,6 @@ class EventPoints < ActiveRecord::Base
   validates :event_id, :value, presence: true
   validates :value, numericality: true
   belongs_to :semester
-  # belongs_to :event, foreign_key: :event_id
+  belongs_to :event, foreign_key: :event_id
 end
 
