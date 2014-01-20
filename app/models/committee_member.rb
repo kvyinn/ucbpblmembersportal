@@ -30,4 +30,6 @@ class CommitteeMember < ActiveRecord::Base
   belongs_to :member
   belongs_to :committee
   belongs_to :semester, foreign_key: :semester_id
+  current_semester_id = Semester.current_semester.id
+  default_scope where(semester_id: current_semester_id)
 end

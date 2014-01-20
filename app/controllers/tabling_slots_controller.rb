@@ -125,7 +125,19 @@ class TablingSlotsController < ApplicationController
         end
       end
     end
-    generate_tabling_schedule(@slots)
+    members = Member.all
+    # for chairs only
+    chairs = Array.new
+    Member.all.each do |member|
+      # if chair or exec
+      if member.position == "chair" or (member.primary_committee and member.primary_committee.id == 2)
+        chairs << member
+      end
+    end
+    if params[:type] == "chairs"
+      members = chairs
+    end
+    generate_tabling_schedule(@slots, members)
     render json: "your thing worked and i added tabling slots for you homie"
   end
 
@@ -146,7 +158,7 @@ class TablingSlotsController < ApplicationController
 
 # input slots: tabling slots that you want to fill
 # return assignments hash key: slot, value: array of members}
-  def generate_tabling_schedule(slots)
+  def generate_tabling_schedule(slots, members = Member.all)
     puts "generating schedule"
     #initialize your assignment hash
     assignments = Hash.new
@@ -155,7 +167,7 @@ class TablingSlotsController < ApplicationController
     for s in slots
       assignments[s] = Array.new
     end
-    curr_member = get_MCV(assignments)
+    curr_member = get_MCV(assignments, members)
     while curr_member != nil do
       puts "assigning"
       puts curr_member
@@ -168,17 +180,17 @@ class TablingSlotsController < ApplicationController
         manual_assignments << curr_member
         assignments["manual"] << curr_member
       end
-      curr_member = get_MCV(assignments)
+      curr_member = get_MCV(assignments, members)
     end
     save_tabling_results(assignments, slots)
     return assignments
   end
 
   # return the hardest to work with member (least slots open)
-  def get_MCV(assignments)
+  def get_MCV(assignments, members)
     difficult_members = Array.new
     num_slots = 1000
-    for member in Member.all
+    for member in members
       if not is_assigned(assignments, member)
         available_slots = get_current_available_slots(assignments, member).length
         if available_slots < num_slots

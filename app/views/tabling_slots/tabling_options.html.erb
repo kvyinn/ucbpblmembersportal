@@ -83,12 +83,12 @@ function clickingActions(){
 		clicking = false;
 	});
 }
-function generateTabling(){
-	alert("generating tabling...hold onto your potatoess");
+function generateTabling(type){
+	alert("generating tabling for "+type+" ...hold onto your potatoess");
 	$.ajax({
       url:'/tabling_slots/generate_tabling/',
       type: "GET",
-      data: {"slots": slots},
+      data: {"slots": slots, "type": type},
       success:function(data){
       },
       complete:function(){
@@ -102,7 +102,10 @@ $(document).ready(function(){
 	hourActions();
 	clickingActions();
 	$("#generate").click(function(){
-		generateTabling();
+		generateTabling("all");
+	});
+	$("#generate_chairs").click(function(){
+		generateTabling("chairs");
 	});
 });
 </script>
@@ -149,8 +152,9 @@ $(document).ready(function(){
 }
 </style>
 
-<h1>tabling options</h1>
-<input type = "submit" class = "btn" id = "generate" value = "generate tabling schedule"/>
+<h1>Tabling Options</h1>
+<input type = "submit" class = "btn" id = "generate" value = "Generate Tabling Schedule"/>
+<input type = "submit" class = "btn" id = "generate_chairs" value = "Generate Tabling for Chairs Only"/>
 <div style = "clear:both; height: 50px"></div>
 <div id = "times"></div>
 <div style = "clear:both; height: 50px"></div>

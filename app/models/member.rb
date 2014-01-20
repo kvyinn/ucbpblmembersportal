@@ -62,10 +62,7 @@ class Member < ActiveRecord::Base
   belongs_to :old_member
 
 
-  # set current semester
-  def self.current_semester
-    Semester.find(1)
-  end
+
   # TODO: store in DB
   def primary_committee
     self.committees.first

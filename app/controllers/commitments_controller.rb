@@ -36,6 +36,10 @@ class CommitmentsController < ApplicationController
 
   def availability
     @commitments = current_member.commitments
+    @cms = Array.new
+    if current_member.primary_committee
+      @cms = current_member.primary_committee.cms
+    end
     @pbl_commitments = Hash.new
     Member.all.each do |member|
       @pbl_commitments[member.id] = Array.new

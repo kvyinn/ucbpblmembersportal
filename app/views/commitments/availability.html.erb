@@ -99,7 +99,7 @@ member_names.push('<%= m.name %>');
 <div id = "tracked_header">Tracked Members</div>
 <input type = "text" id = "member_search" />
 <div id = "tracked_list">
-<% current_member.primary_committee.cms.each do |cm| %>
+<% @cms.each do |cm| %>
 	<div id = '<%= cm.member.id %>' class = "tracked_member"><%= cm.member.name %></div>
 <% end %>
 </div>

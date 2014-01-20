@@ -8,6 +8,7 @@
 </section>
 
 <section>
+  <% if current_member.primary_committee %>
   <h2>Your committee's rating: <%= current_member.primary_committee.rating %></h2>
   <p>Your committee's rating is a normalized value based on each of the committee member's points. This is the value used in committee rankings</p>
   <ul>
@@ -15,4 +16,7 @@
       <li><%= "#{cm.member.name}: #{pluralize(cm.member.total_points, "point")}" %></li>
     <% end %>
   </ul>
+  <% else %>
+  <h2>oops homie you aren't in a committee this semester</h2>
+  <% end %>
 </section>
