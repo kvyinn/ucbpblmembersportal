@@ -54,7 +54,7 @@ class EventsController < ApplicationController
     current_member.event_members.each do |event_member|
       @attended_events << Event.where(id: event_member.event_id).first
     end
-    # @calendar_id = revert_google_calendar_id(params[:calendar_id] || pbl_events_calendar_id)
+
     @past_events = Array.new
     @upcoming_events = Array.new
     Event.all.each do |event|
@@ -64,7 +64,7 @@ class EventsController < ApplicationController
         @upcoming_events << event
       end
     end
-    # @past_events = @past_events.sort! {|x,y| x.points <=> y.points}
+
     @past_events = sort(@past_events, params[:sort], params[:direction])
     render "new_index"
   end
@@ -135,23 +135,20 @@ class EventsController < ApplicationController
     # add these events to event model
     all_events = process_google_events(all_events)
     all_events.each do |e|
-      if Event.where(google_id: e[:id]).length == 0
-        event = Event.new
-        event.google_id = e[:id]
-        event.start_time = e[:start_time]
-        event.end_time = e[:end_time]
-        event.name = e[:summary]
-        event.save
-      else
+      event = Event.new
+      if Event.where(google_id: e[:id]).length != 0
         event = Event.where(google_id: e[:id]).first
-        event.semester_id = 1
-        event.save
       end
+      event.google_id = e[:id]
+      event.start_time = e[:start_time]
+      event.end_time = e[:end_time]
+      event.name = e[:summary]
+      event.save
     end
   end
 
 
-    # sorts array by sort parameter and returns sorted array
+  # sorts array by sort parameter and returns sorted array
   def sort(array, sort_param, direction)
     if sort_param == "points"
       if direction == "asc"

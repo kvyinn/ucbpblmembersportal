@@ -48,6 +48,7 @@ class CommitmentsController < ApplicationController
   end
 
   def update_availability
+    # mem = current_member.cms.sample
     current_member.commitments.destroy_all
     timeslots = params[:slots]
     for key in timeslots.keys

@@ -29,5 +29,5 @@ class CommitteeMember < ActiveRecord::Base
   belongs_to :committee_member_type
   belongs_to :member
   belongs_to :committee
-  belongs_to :semester
+  belongs_to :semester, foreign_key: :semester_id
 end

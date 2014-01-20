@@ -11,21 +11,25 @@ class PointsController < ApplicationController
     @recently_earned = []
 
     # Load events for names
-    events = {}
-    google_api_request(
-      'calendar', 'v3', 'events', 'list',
-      {
-        calendarId: pbl_events_calendar_id,
-        timeMin: beginning_of_fall_semester,
-        timeMax: DateTime.now,
-      }
-    ).data.items.each do |event|
-      events[event.id] = event.summary
-    end
+    # events = {}
+    # google_api_request(
+    #   'calendar', 'v3', 'events', 'list',
+    #   {
+    #     calendarId: pbl_events_calendar_id,
+    #     timeMin: beginning_of_fall_semester,
+    #     timeMax: DateTime.now,
+    #   }
+    # ).data.items.each do |event|
+    #   events[event.id] = event.summary
+    # end
 
     # Add events
-    current_member.event_members.where(semester_id: Member.current_semester.id).order("created_at DESC").each do |event_member|
-      event_points = EventPoints.where(event_id: event_member.event_id).first
+    current_member.event_members.each do |event_member|
+      event_points = EventPoints.where(event_id: event_member.event_id).first if event_member.semester == Semester.current_semester
+
+    # Add events
+    # current_member.event_members.where(semester_id: Member.current_semester.id).order("created_at DESC").each do |event_member|
+    #   event_points = EventPoints.where(event_id: event_member.event_id).first
 
       if event_points
         # @recently_earned << { title: events[event_member.event_id], points: event_points.value }

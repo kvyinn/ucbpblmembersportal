@@ -88,6 +88,8 @@ class TablingSlotsController < ApplicationController
   def tabling_options
     @all_slots = TablingSlot.all
 
+    # this shows all the tabling slots
+    # TODO only show the tabling slots you have generated for this week/the ones you will overwrite
     @tabling_days = Hash.new
     if !@all_slots.empty?
       @earliest_time = @all_slots.first.start_time
@@ -141,10 +143,9 @@ class TablingSlotsController < ApplicationController
       end
     end
   end
+
 # input slots: tabling slots that you want to fill
-# return hash {"assignments": assignments, "manual": manual}
-# assignments {slot: array of members}
-# manual array of members that didn't get added
+# return assignments hash key: slot, value: array of members}
   def generate_tabling_schedule(slots)
     puts "generating schedule"
     #initialize your assignment hash
@@ -164,7 +165,6 @@ class TablingSlotsController < ApplicationController
         assignments[slot] << curr_member
       else
         # you cant assign this member
-        puts "manually assign i guess"
         manual_assignments << curr_member
         assignments["manual"] << curr_member
       end
@@ -213,6 +213,7 @@ class TablingSlotsController < ApplicationController
     end
     return lcv_slots.sample
   end
+
   # returns if start1, end1, conflicts with start2, end2
   def conflicts(s1,e1,s2,e2)
     if s1<=s2 and e1>s2
@@ -267,21 +268,6 @@ class TablingSlotsController < ApplicationController
     end
     return slots
   end
-
-  # changes commitments to this_week
-# TODO: dont do this. only because it was slow
-# TODO: this is wrong!
-def this_week_commitments
-  for mem in Member.all
-    for c in mem.commitments
-      s = this_week(c.start_time)
-      e = this_week(c.end_time)
-      c.start_time = s
-      c.end_time = e
-      c.save
-    end
-  end
-end
 
 def save_tabling_results(assignments, slots)
   for tabling_slot in slots

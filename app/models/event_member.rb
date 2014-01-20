@@ -27,7 +27,23 @@ class EventMember < ActiveRecord::Base
   attr_accessible :event_id, :member_id, :semester_id, :google_id
 
   belongs_to :member
-  belongs_to :semester
+  belongs_to :semester, foreign_key: :semester_id
   belongs_to :event, foreign_key: :event_id
   has_one :event_points, foreign_key: :event_id, primary_key: :event_id
+
+  def event
+  	if Event.where(id: self.event_id).length != 0
+  		return Event.find(self.event_id)
+  	else
+  		nil
+  	end
+  end
+
+  def semester
+  	if self.event
+  		return self.event.semester
+  	else
+  		return nil
+  	end
+  end
 end
