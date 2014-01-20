@@ -25,9 +25,11 @@ input[type="checkbox"] {
 	background-color: rgb(246, 218, 218);
 }
 </style>
-<a href = "#" class = "btn">sync with goolgle calendars</a>
+<% if current_member.admin? %>
+<a href = "/events/sync_events_with_google" class = "btn">sync with google calendars</a>
 <a href = "/event_points" class = "btn">edit event points</a>
 <div style = "height:50px"></div>
+<% end %>
 <h1>Upcoming Events</h1>
 <table class = "events_table" id = "upcoming_events_table">
 	<thead>

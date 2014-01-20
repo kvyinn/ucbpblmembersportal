@@ -15,11 +15,10 @@
       <% end %>
     </div>
     <% if current_member.admin? %>
-      <%= link_to "Reroll", generate_tabling_slots_url, class: "btn" %>
-       <!-- <input type = "submit" class = "btn" value = "request new slot" id = "new_slot_btn"/> -->
+      <%= link_to "Reroll", generate_tabling_slots_url, class: "btn", :style=>"display:none" %>
        <a href = "/tabling_slots/tabling_options" class = "btn">Generate New Slots</a>
     <% end %>
-    <a href = "#" class = "btn">Request New Slot</a>
+    <a href = "#" class = "btn" onclick = "alert('doesnt work yet, but what did the cannibal do to his girlfriend?...he dumped her!');">Request New Slot</a>
     <p><%= link_to "Print view", print_tabling_slots_url %></p>
 
     <% @tabling_days.each do |day, slots| %>

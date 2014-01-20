@@ -49,6 +49,8 @@ class EventsController < ApplicationController
     render "index"
   end
 
+
+
   def index
     @attended_events = Array.new
     current_member.event_members.each do |event_member|
@@ -145,6 +147,7 @@ class EventsController < ApplicationController
       event.name = e[:summary]
       event.save
     end
+    redirect_to(:back)
   end
 
 

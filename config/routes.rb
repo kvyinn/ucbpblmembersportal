@@ -30,6 +30,9 @@ Ucbpblmembersportal::Application.routes.draw do
       resources :event_members, only: [ :create, :destroy ]
       resources :members, only: [ :index ]
     end
+    collection do
+      get :sync_events_with_google
+    end
   end
 
   resources :members, only: [ :show ] do
