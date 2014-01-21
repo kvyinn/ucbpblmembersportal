@@ -28,6 +28,10 @@ module GoogleApiHelper
       parameters[:singleEvents] = true
     end
 
+    p parameters
+    p method
+    p body
+
     result = google_api_client.execute(
       api_method: api_resource.send(method),
       parameters: parameters,

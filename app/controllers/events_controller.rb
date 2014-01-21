@@ -124,7 +124,7 @@ class EventsController < ApplicationController
   # end
 
   def sync_events_with_google
-    @calendar_id = revert_google_calendar_id(params[:calendar_id] || pbl_events_calendar_id)
+    @calendar_id = revert_google_calendar_id(pbl_events_calendar_id)
 
     all_events = google_api_request(
       'calendar', 'v3', 'events', 'list',
@@ -144,6 +144,8 @@ class EventsController < ApplicationController
       event.google_id = e[:id]
       event.start_time = e[:start_time]
       event.end_time = e[:end_time]
+      # puts e[:start_time]
+      # puts e[:end_time]
       event.name = e[:summary]
       event.save
     end

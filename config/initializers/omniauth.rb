@@ -10,6 +10,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
             https://www.googleapis.com/auth/calendar
             https://www.googleapis.com/auth/plus.login',
     redirect_uri:'http://ucbpblmp-staging.herokuapp.com/auth/google_oauth2/callback'
-    # redirect_uri: ''
+    # redirect_uri: 'http://localhost:3000/auth/google_oath2/callback'
   }
 end
