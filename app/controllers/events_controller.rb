@@ -125,13 +125,16 @@ class EventsController < ApplicationController
 
   def sync_events_with_google
     @calendar_id = revert_google_calendar_id(pbl_events_calendar_id)
-
+    puts "these are time min and maxes"
+    puts beginning_of_fall_semester
+    puts (DateTime.now + 6.month)
+    puts "end of those two"
     all_events = google_api_request(
       'calendar', 'v3', 'events', 'list',
       {
         calendarId: @calendar_id,
-        timeMin: beginning_of_fall_semester.to_s,
-        timeMax: (DateTime.now + 6.month).to_s,
+        timeMin: beginning_of_fall_semester,
+        timeMax: (DateTime.now + 6.month),
       }
     ).data.items
     # add these events to event model
