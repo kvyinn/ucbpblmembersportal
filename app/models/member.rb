@@ -62,10 +62,7 @@ class Member < ActiveRecord::Base
   belongs_to :old_member
 
 
-  # set current semester
-  def self.current_semester
-    Semester.find(2)
-  end
+
   # TODO: store in DB
   def primary_committee
     self.committees.first
@@ -77,10 +74,11 @@ class Member < ActiveRecord::Base
   #
   # === Parameters
   # - committee: the Committee to look up the position under; defaults to #primary_committee
-  def position(committee=self.primary_committee, semester = Member.current_semester)
+  def position(semester = Semester.current_semester, committee=self.primary_committee)
     if committee
       committee_member = self.committee_members.where(
-        committee_id: committee.id
+        committee_id: committee.id).where(
+        semester_id: semester.id
       ).first
 
       committee_member.committee_member_type.name if committee_member
@@ -93,10 +91,11 @@ class Member < ActiveRecord::Base
   #
   # === Parameters
   # - committee: the Committee to look up the tier under; defaults to #primary_committee
-  def tier(committee=primary_committee)
+  def tier(semester = Semester.current_semester, committee=self.primary_committee)
     if committee
       committee_member = self.committee_members.where(
-        committee_id: committee.id
+        committee_id: committee.id).where(
+        semester_id: semester.id
       ).first
 
       committee_member.committee_member_type.tier if committee_member
@@ -104,6 +103,7 @@ class Member < ActiveRecord::Base
   end
 
   # Admin status of the member.
+  # TODO only if currently an exec
   def admin?
     self.name == "Keien Ohta" or self.name == "David Liu" or self.committees.include?(Committee.where(name: "Executive").first)
   end
@@ -223,6 +223,7 @@ class Member < ActiveRecord::Base
 
   # Add member to the committee (creating the committee if it doesn't exist) as the given
   # committee member type, if he isn't part of the committee already
+  # TODO semester?
   def add_to_committee(committee_name, committee_type, cm_type)
     # Find or create committee
     committee = Committee.where(
@@ -260,15 +261,23 @@ class Member < ActiveRecord::Base
   end
 
   # Calculate the total number of points this member has
-  def total_points(semester = Member.current_semester)
+  def total_points(semester = Semester.current_semester)
     sum = 0
 
+    event_mems = Array.new
+    self.event_members.each do |em|
+      if em.semester == semester
+        event_mems << em
+      end
+    end
+
     # Calculate points from events
-    self.event_members.where(semester_id: semester.id).each do |event_member|
+    event_mems.each do |event_member|
       sum += event_member.event_points.value if event_member.event_points
     end
 
     # Calculate points from tabling
+    # TODO only for this semester tabling slots
     self.tabling_slot_members.where(
       status_id: Status.where(name: :attended).first
     ).each do |tsm|

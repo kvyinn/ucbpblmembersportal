@@ -16,7 +16,7 @@ function drawDays(){
 		$(day_div).attr("id", (i).toString());
 		// $(day_div).text(days[i]);
 		var header = document.createElement("div");
-		$(header).addClass("header");
+		$(header).addClass("day_header");
 		$(header).text(days[i]);
 		$(day_div).append(header);
 		for(var j=0;j<hours.length-1;j++){
@@ -104,7 +104,7 @@ function drawCMTable(){
 		$(day_div).attr("id", (i).toString());
 		// $(day_div).text(days[i]);
 		var header = document.createElement("div");
-		$(header).addClass("header");
+		$(header).addClass("day_header");
 		$(header).text(days[i]);
 		$(day_div).append(header);
 		for(var j=0;j<hours.length-1;j++){
@@ -161,7 +161,7 @@ function updateTrackedChart(){
 			}
 		}
 	});
-	startTrackedActions();
+
 }
 function makeDarker(selection){
 	var color = $(selection).css('background-color');
@@ -191,6 +191,8 @@ function startAutocomplete(){
 			$(div).text(ui.item.value);
 			$("#tracked_list").prepend(div);
 			updateTrackedChart();
+			startTrackedActions();
+			$(this).val("");
 		}
 	})
 }

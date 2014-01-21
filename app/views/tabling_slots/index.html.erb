@@ -1,30 +1,49 @@
 <%= javascript_include_tag "tabling_slots.js" %>
-<section>
+
   <% if @tabling_days.nil? %>
     <h1>No tabling slots yet!</h1>
-    <% if current_member.admin? %>
-      <%= link_to "Generate", generate_tabling_slots_url, class: "btn" %>
-    <% end %>
   <% else %>
     <h1>Tabling for the week of <%= @earliest_time.strftime("%D") %></h1>
 
-    <div class="right-align">
-      <span><%= link_to "Previous week", tabling_slots_url(prev: @prev - 1) %></span>
+    <div class="btn-group">
+      <div type="button" class="btn btn-default"><%= link_to "Previous week", tabling_slots_url(prev: @prev - 1) %></div>
       <% if @prev < 0 %>
-        --- <span><%= link_to "Next week", tabling_slots_url(prev: @prev + 1) %></span>
+        <div type="button" class="btn btn-default"><%= link_to "Next week", tabling_slots_url(prev: @prev + 1) %></div>
       <% end %>
-    </div>
+
     <% if current_member.admin? %>
-      <%= link_to "Reroll", generate_tabling_slots_url, class: "btn" %>
-       <input type = "submit" class = "btn" value = "request new slot" id = "new_slot_btn"/>
+       <div type="button" class="btn btn-default"><a href = "/tabling_slots/tabling_options">Generate New Slots</a></div>
     <% end %>
-    <p><%= link_to "Print view", print_tabling_slots_url %></p>
+   <div type="button" class="btn btn-default"> <a href = "#" onclick = "alert('doesnt work yet, but what did the cannibal do to his girlfriend?...he dumped her!');">Request New Slot</a></div>
+   <div type="button" class="btn btn-default"><%= link_to "Print view", print_tabling_slots_url %></div>
+    </div>
+    <!-- end of button group -->
+
+    <div style = "height: 25px; clear:both"></div>
 
     <% @tabling_days.each do |day, slots| %>
-        <ul class="tabling"><%= day.strftime("%A, %D") %>
+
+        <ul class="tabling list-group">
+          <div class="label label-default dayheading"><%= day.strftime("%A, %D") %></div>
+          <div style = "height:15px"></div>
           <%= render slots %>
+
         </ul>
       </div>
+
     <% end %>
   <% end %>
-</div>
+
+
+<style type = "text/css">
+.tabling {
+  float: left;
+  margin: 25px;
+}
+li{
+  list-style-type: none;
+}
+.btn-group a {
+  color: maroon;
+}
+</style>

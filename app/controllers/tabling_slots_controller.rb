@@ -86,19 +86,43 @@ class TablingSlotsController < ApplicationController
   end
 
   def tabling_options
-    @all_slots = TablingSlot.all
+    # @all_slots = TablingSlot.all
+    @this_week_slots = Array.new
+    days = (0..7).to_a
+    hours = (1..24).to_a
+    days.each do |key|
+      day = Date::DAYNAMES[key]
+      hours.each do |hour|
+        slots = TablingSlot.where(
+          start_time: Chronic.parse("#{hour} this #{day}"),
+          end_time: Chronic.parse("#{hour + 1} this #{day}")
+        )
+        if slots
+          slots.each do |slot|
+            @this_week_slots << slot
+          end
+        end
+      end
+    end
 
+    # this shows all the tabling slots
+    # TODO only show the tabling slots you have generated for this week/the ones you will overwrite
     @tabling_days = Hash.new
-    if !@all_slots.empty?
-      @earliest_time = @all_slots.first.start_time
+    if !@this_week_slots.empty?
+      @earliest_time = @this_week_slots.first.start_time
 
       @tabling_days = Hash.new
-      @all_slots.each do |tabling_slot|
+      @this_week_slots.each do |tabling_slot|
         @tabling_days[tabling_slot.start_time.to_date] ||= Array.new
         tabling_day = @tabling_days[tabling_slot.start_time.to_date]
         tabling_day << tabling_slot
       end
     end
+
+  end
+
+  def delete_slots
+    clear_this_week_slots
   end
 
   def generate_tabling
@@ -110,7 +134,7 @@ class TablingSlotsController < ApplicationController
     # TODO: destroy all tablings slots?
     # should only destroy all tabling slots for this week
     # TablingSlot.destroy_all
-    clear_this_week_slots
+    # clear_this_week_slots
     timeslots.keys.each do |key|
       day = Date::DAYNAMES[key.to_i]
       if timeslots[key].length > 0
@@ -123,7 +147,20 @@ class TablingSlotsController < ApplicationController
         end
       end
     end
-    generate_tabling_schedule(@slots)
+    members = Member.all
+
+    if params[:type] == "chairs"
+      # for chairs only
+      chairs = Array.new
+      Member.all.each do |member|
+        # if chair or exec
+        if member.position == "chair" or (member.primary_committee and member.primary_committee.id == 2)
+          chairs << member
+        end
+      end
+      members = chairs
+    end
+    generate_tabling_schedule(@slots, members)
     render json: "your thing worked and i added tabling slots for you homie"
   end
 
@@ -141,12 +178,13 @@ class TablingSlotsController < ApplicationController
       end
     end
   end
+
 # input slots: tabling slots that you want to fill
-# return hash {"assignments": assignments, "manual": manual}
-# assignments {slot: array of members}
-# manual array of members that didn't get added
-  def generate_tabling_schedule(slots)
+# return assignments hash key: slot, value: array of members}
+  def generate_tabling_schedule(slots, members)
     puts "generating schedule"
+    convert_commitments(members)
+    puts "commitments converted"
     #initialize your assignment hash
     assignments = Hash.new
     assignments["manual"] = Array.new
@@ -154,7 +192,7 @@ class TablingSlotsController < ApplicationController
     for s in slots
       assignments[s] = Array.new
     end
-    curr_member = get_MCV(assignments)
+    curr_member = get_MCV(assignments, members)
     while curr_member != nil do
       puts "assigning"
       puts curr_member
@@ -164,21 +202,20 @@ class TablingSlotsController < ApplicationController
         assignments[slot] << curr_member
       else
         # you cant assign this member
-        puts "manually assign i guess"
         manual_assignments << curr_member
         assignments["manual"] << curr_member
       end
-      curr_member = get_MCV(assignments)
+      curr_member = get_MCV(assignments, members)
     end
     save_tabling_results(assignments, slots)
     return assignments
   end
 
   # return the hardest to work with member (least slots open)
-  def get_MCV(assignments)
+  def get_MCV(assignments, members)
     difficult_members = Array.new
     num_slots = 1000
-    for member in Member.all
+    for member in members
       if not is_assigned(assignments, member)
         available_slots = get_current_available_slots(assignments, member).length
         if available_slots < num_slots
@@ -213,6 +250,7 @@ class TablingSlotsController < ApplicationController
     end
     return lcv_slots.sample
   end
+
   # returns if start1, end1, conflicts with start2, end2
   def conflicts(s1,e1,s2,e2)
     if s1<=s2 and e1>s2
@@ -235,10 +273,28 @@ class TablingSlotsController < ApplicationController
     end
   end
 
+  def convert_commitments(members)
+    members.each do |member|
+      member.commitments.each do |c|
+        if c.day
+          d = c.day
+          s = c.start_hour
+          e = c.end_hour
+          day = Date::DAYNAMES[d]
+          start = Chronic.parse("#{s} this #{day}")
+          endt =  Chronic.parse("#{e} this #{day}")
+          c.start_time = start
+          c.end_time = endt
+          c.save
+        end
+      end
+    end
+  end
    # assumes each slot has same capacity 5
   # TODO add capacity to tabling_slots table
   def get_current_available_slots(assignments, member)
     slots = Array.new
+    # puts "getting slots for "+member.name
     assignments.keys.each do |key|
       slot = key
       conflicts = true
@@ -248,10 +304,14 @@ class TablingSlotsController < ApplicationController
           d = c.day
           s = c.start_hour
           e = c.end_hour
+          # TODO have these calculated somewhere else
           if d
+            # puts "taking a while on this part"
             day = Date::DAYNAMES[d]
-            start = Chronic.parse("#{s} this #{day}")
-            endt =  Chronic.parse("#{e} this #{day}")
+            # start = Chronic.parse("#{s} this #{day}")
+            # endt =  Chronic.parse("#{e} this #{day}")
+            start = c.start_time
+            endt = c.end_time
             if day and conflicts(start, endt, slot.start_time, slot.end_time)
               conflicts = true
               break
@@ -267,21 +327,6 @@ class TablingSlotsController < ApplicationController
     end
     return slots
   end
-
-  # changes commitments to this_week
-# TODO: dont do this. only because it was slow
-# TODO: this is wrong!
-def this_week_commitments
-  for mem in Member.all
-    for c in mem.commitments
-      s = this_week(c.start_time)
-      e = this_week(c.end_time)
-      c.start_time = s
-      c.end_time = e
-      c.save
-    end
-  end
-end
 
 def save_tabling_results(assignments, slots)
   for tabling_slot in slots

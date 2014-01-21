@@ -7,10 +7,11 @@
 	margin-left: 25px;
 	overflow: hidden;
 	float: left;
+	/*border-left: 1px solid black;*/
 }
 .day {
 	background-color: white;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	float: left;
 	width: 100px;
 	text-align: center;
@@ -21,18 +22,26 @@
 	-ms-user-select: none;
 	user-select: none;
 	overflow: hidden;
+	border-radius: 15px;
+	border-bottom-right-radius:0px;
+	border-bottom-left-radius:0px;
+	margin-left: -1px;
+	/*box-shadow: 3px 3px 5px rgba(0,0,0,0.3);*/
 }
 .day:hover {
 	cursor: pointer;
 }
 .day div {
-	border: 1px solid black;
+	border: 1px solid #C5C5C5;
 	padding: 3px;
 	overflow: hidden;
+	margin-top: -1px;
 }
-.header {
+.day_header {
 	background-color: maroon;
-	color: rgb(255, 213, 213);
+	/*color: rgb(255, 213, 213);*/
+	color: white;
+	/*font-weight: bold;*/
 }
 .hour {
 	overflow: hidden;
@@ -43,6 +52,9 @@
 
 #current_member{
 	background-color: white;
+}
+#save_commitments {
+	margin-left: 25px;
 }
 </style>
 <script type = "text/javascript">
@@ -78,38 +90,56 @@ member_names.push('<%= m.name %>');
 </script>
 
 
-<h1>mark unavailable slots</h1>
-<input id = "save_commitments" type = "submit" class = "btn" value = "save commitments"/>
+<h1>Mark Unavailable Slots</h1>
+<button type = "button" id = "save_commitments" type = "submit" class = "btn" value = "Save Commitments"/>Save Commitments</button>
 <div style = "clear:both; height: 25px"></div>
 <div id = "times" class = "timetable"></div>
 <div style = "clear:both; height: 100px"></div>
-<h1>compare availability</h1>
+<h1>Compare Availability</h1>
 
 <div id = "cm_chart" class = "timetable"></div>
-<div id = "options_div">
-<h2>tracked members</h2>
-<input type = "text" id = "member_search" />
-<div id = "tracked_list">
-<% current_member.primary_committee.cms.each do |cm| %>
-	<div id = '<%= cm.member.id %>' class = "tracked_member"><%= cm.member.name %></div>
-<% end %>
+<div id = "options_div"  class="panel panel-default">
+<div id = "tracked_header" class = "panel-heading">Tracked Members</div>
+<div class = "panel-body">
+	<input class="form-control" placeholder="search pbl members" type = "text" id = "member_search" />
+	<br>
+	<div id = "tracked_list">
+	<% @cms.each do |cm| %>
+		<div id = '<%= cm.member.id %>' class = "tracked_member"><%= cm.member.name %></div>
+	<% end %>
+	</div><!-- end of tracked list -->
 </div>
-<!-- end of tracked list -->
+
 </div>
-<!-- end of options div -->
+<!-- end of options panel div -->
 <div style = "clear: both; height: 150px;"></div>
 
 <style type = "text/css">
 #options_div {
-	border: 1px solid rgba(0,0,0,0.1);
-	box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-	padding: 10px;
+	/*border: 1px solid rgba(0,0,0,0.1);*/
+	/*box-shadow: 1px 1px 5px rgba(0,0,0,0.2);*/
+	width: 200px;
 	float: left;
 	margin-left: 15px;
+	/*background-color: rgb(245, 245, 245);*/
+	background-color: white;
+	border: 1px solid #e7e7e7;
+	text-align:center;
+	padding-bottom: 5px;
+	border-radius: 10px;
+
+}
+#tracked_header {
+	background-color: maroon;
+	padding: 3px;
+	color: white;
+	margin-bottom: 5px;
+	text-align: center;
+	border-radius: 10px 10px 0px 0px;
+
 }
 .tracked_member:hover {
-	color: maroon;
 	cursor: pointer;
-	background-color: white;
+	color: red;
 }
 </style>

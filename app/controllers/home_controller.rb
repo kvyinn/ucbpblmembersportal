@@ -6,4 +6,11 @@ class HomeController < ApplicationController
     )
   end
 
+  def coolmethod
+  	CommitteeMember.all.each do |cm|
+  		cm.semester = Semester.find(1)
+  		cm.save
+  	end
+  end
+
 end

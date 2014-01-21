@@ -7,38 +7,63 @@
   </section>
 <% else %>
 
-  <section>
-    <h1><%= current_member.name %></h1>
+  <!-- <section> -->
+  <div class="panel panel-default homepanel">
+    <div class="panel-heading"><h1><%= current_member.name %></h1></div>
+    <div class = "panel-body">
+    <% if current_member.primary_committee %>
     <p><%= "#{current_member.primary_committee.name}, #{current_member.position}" %></p>
-  </section>
+    <% else %>
+    <p>no committee this semester</p>
+    <% end %>
+  </div>
+  </div>
+  <!-- </section> -->
 
   <% if @tabling_slots and not @tabling_slots.empty? %>
-    <section>
-      <h2>Your tabling slots for this week</h2>
+    <!-- <section> -->
+    <div class="panel panel-default homepanel">
+      <div class="panel-heading"><h2>Your tabling slots for this week</h2></div>
+      <div class = "panel-body">
       <% @tabling_slots.each do |slot| %>
-        <ul><%= slot.start_time.strftime("%A, %D - %l:%M%p") %>
+        <ul>
+          <div class="label label-default dayheading"><%= slot.start_time.strftime("%A, %D - %l:%M%p") %></div>
+          <div style = "height:15px"></div>
           <% slot.members.each do |member| %>
             <li><%= member.name %></li>
           <% end %>
         </ul>
       <% end %>
-    </section>
+    </div>
+    </div>
+    <!-- </section> -->
   <% end %>
 
-  <section>
-    <h2>Your Committee Points: <%= current_member.total_points %></h2>
-    <p>Committee rating: <%= current_member.primary_committee.rating %></p>
-    <p><%= link_to "View details", points_url %></p>
-  </section>
+  <!-- <section> -->
+  <div class="panel panel-default homepanel">
+     <div class="panel-heading"><h2>Your Committee Points: <%= current_member.total_points %></h2></div>
+     <div class = "panel-body">
+      <p>Committee rating: <%= current_member.primary_committee.rating if current_member.primary_committee %></p>
+      <p><%= link_to "View details", points_url %></p>
+    </div>
+  <!-- </section> -->
+</div>
 
-  <section>
-    <h2>random information for testing</h2>
-    position: <%= current_member.position %><br>
-    primary committee: <%= current_member.primary_committee %><br>
-    tier: <%= current_member.tier %><br>
-    cms: <%= current_member.cms %><br>
-    find old members: <%= current_member.find_old_members %><br>
-    attended slots: <%= current_member.attended_slots %><br>
-  </section>
 
 <% end %>
+<style type = "text/css">
+.homepanel {
+  margin-top: 35px;
+  width: 500px;
+  margin-left: 50px;
+}
+.homepanel .panel-heading {
+  text-align: center;
+}
+.homepanel .panel-body {
+  padding: 20px;
+}
+ul {
+  list-style-type: none
+}
+</style>

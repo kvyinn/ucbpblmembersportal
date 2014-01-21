@@ -83,12 +83,12 @@ function clickingActions(){
 		clicking = false;
 	});
 }
-function generateTabling(){
-	alert("generating tabling...hold onto your potatoess");
+function generateTabling(type){
+	alert("generating tabling for "+type+" ...hold onto your potatoess");
 	$.ajax({
       url:'/tabling_slots/generate_tabling/',
       type: "GET",
-      data: {"slots": slots},
+      data: {"slots": slots, "type": type},
       success:function(data){
       },
       complete:function(){
@@ -97,12 +97,34 @@ function generateTabling(){
       error:function (xhr, textStatus, thrownError){}
   });
 }
+function clearSlots(){
+	var r = confirm("the tabling slots you generated for this week will be cleared. continue?");
+	if(r){
+		$.ajax({
+		      url:'/tabling_slots/delete_slots/',
+		      type: "GET",
+		      data: {},
+		      success:function(data){
+		      },
+		      complete:function(){
+		      	location.reload();
+		      },
+		      error:function (xhr, textStatus, thrownError){}
+		  });
+	}
+}
 $(document).ready(function(){
 	drawDays();
 	hourActions();
 	clickingActions();
 	$("#generate").click(function(){
-		generateTabling();
+		generateTabling("all");
+	});
+	$("#generate_chairs").click(function(){
+		generateTabling("chairs");
+	});
+	$("#delete_slots").click(function(){
+		clearSlots();
 	});
 });
 </script>
@@ -113,10 +135,10 @@ $(document).ready(function(){
 }
 .day {
 	background-color: white;
-	border: 1px solid black;
 	float: left;
 	width: 100px;
 	text-align: center;
+	margin-left: -1px;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -128,17 +150,20 @@ $(document).ready(function(){
 	cursor: pointer;
 }
 .day div {
-	border: 1px solid black;
+	border: 1px solid #C5C5C5;
 	padding: 3px;
+	margin-bottom: -1px;
 }
 .header {
 	background-color: maroon;
-	color: rgb(255, 213, 213);
+	color: white;
 }
 .hour:hover {
 	cursor: pointer;
 }
-
+#delete_slots {
+	margin-left: 25px;
+}
 
 #current_member{
 	background-color: white;
@@ -146,16 +171,29 @@ $(document).ready(function(){
 .slot_div {
 	display: inline;
 }
+
+.tabling {
+  float: left;
+  margin: 25px;
+}
+li{
+  list-style-type: none;
+}
+
 </style>
 
-<h1>tabling options</h1>
-<input type = "submit" class = "btn" id = "generate" value = "generate tabling schedule"/>
-<div style = "clear:both; height: 50px"></div>
+<h1>Tabling Options</h1>
+<input type = "submit" class = "btn" id = "delete_slots" value = "Clear Slots"/>
+<input type = "submit" class = "btn" id = "generate" value = "Generate Tabling Schedule"/>
+<input type = "submit" class = "btn" id = "generate_chairs" value = "Generate Tabling for Chairs Only"/>
+<div style = "clear:both; height: 25px"></div>
 <div id = "times"></div>
 <div style = "clear:both; height: 50px"></div>
 <% if @tabling_days %>
 <% @tabling_days.each do |day, slots| %>
-    <ul class="tabling"><%= day.strftime("%A, %D") %>
+    <ul class="tabling">
+    	<div class="label label-default dayheading"><%= day.strftime("%A, %D") %></div>
+    	<div style = "height:15px"></div>
       <%= render slots %>
     </ul>
   </div>

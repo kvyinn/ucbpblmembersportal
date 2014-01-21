@@ -1,6 +1,6 @@
 <li class="no-border" <%= "ondragover=showAdd(event) id=#{tabling_slot.id}" if current_member.admin? %>> <b><%= link_to "#{tabling_slot.start_time.strftime("%l:%M%p")} to #{tabling_slot.end_time.strftime("%l:%M%p")}", tabling_slot %></b>
 
-  <ul>
+  <ul class = "list-group">
     <% tabling_slot.tabling_slot_members.each do |tsm| %>
       <%= render "tabling_slots/member", member: tsm.member, tabling_slot: tabling_slot, tsm: tsm %>
     <% end %>

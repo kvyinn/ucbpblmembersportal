@@ -1,18 +1,36 @@
-<section>
-  <h1>You have earned <%= pluralize(current_member.total_points, "point") %>!</h1>
+<style type = "text/css">
+.panel {
+  margin: 50px;
+}
+ul{
+  list-style-type: none;
+}
+</style>
+<!-- <section> -->
+  <div class="panel panel-default">
+  <div class="panel-heading"><h1>You have earned <%= pluralize(current_member.total_points, "point") %>!</h1></div>
+  <div class="panel-body">
   <ul>
     <% @recently_earned.each do |item| %>
       <li><%= "#{item[:title]}: #{pluralize(item[:points].to_i, "point")}" %></li>
     <% end %>
   </ul>
-</section>
+</div>
+</div>
+<!-- </section> -->
 
-<section>
-  <h2>Your committee's rating: <%= current_member.primary_committee.rating %></h2>
+<div class="panel panel-default">
+  <% if current_member.primary_committee %>
+  <div class="panel-heading"><h2>Your committee's rating: <%= current_member.primary_committee.rating %></h2></div>
+  <div class="panel-body">
   <p>Your committee's rating is a normalized value based on each of the committee member's points. This is the value used in committee rankings</p>
   <ul>
     <% current_member.primary_committee.cms.each do |cm| %>
       <li><%= "#{cm.member.name}: #{pluralize(cm.member.total_points, "point")}" %></li>
     <% end %>
   </ul>
-</section>
+</div>
+  <% else %>
+  <div class="panel-heading"><h2>oops homie you aren't in a committee this semester</h2></div>
+  <% end %>
+</div>
