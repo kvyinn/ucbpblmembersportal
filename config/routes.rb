@@ -47,6 +47,7 @@ Ucbpblmembersportal::Application.routes.draw do
       get :generate_tabling
       get :print
       get :generate
+      get :delete_slots
     end
   end
 

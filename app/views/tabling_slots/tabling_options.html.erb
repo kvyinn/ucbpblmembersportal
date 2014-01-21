@@ -97,6 +97,22 @@ function generateTabling(type){
       error:function (xhr, textStatus, thrownError){}
   });
 }
+function clearSlots(){
+	var r = confirm("the tabling slots you generated for this week will be cleared. continue?");
+	if(r){
+		$.ajax({
+		      url:'/tabling_slots/delete_slots/',
+		      type: "GET",
+		      data: {},
+		      success:function(data){
+		      },
+		      complete:function(){
+		      	location.reload();
+		      },
+		      error:function (xhr, textStatus, thrownError){}
+		  });
+	}
+}
 $(document).ready(function(){
 	drawDays();
 	hourActions();
@@ -106,6 +122,9 @@ $(document).ready(function(){
 	});
 	$("#generate_chairs").click(function(){
 		generateTabling("chairs");
+	});
+	$("#delete_slots").click(function(){
+		clearSlots();
 	});
 });
 </script>
@@ -142,7 +161,9 @@ $(document).ready(function(){
 .hour:hover {
 	cursor: pointer;
 }
-
+#delete_slots {
+	margin-left: 25px;
+}
 
 #current_member{
 	background-color: white;
@@ -153,9 +174,10 @@ $(document).ready(function(){
 </style>
 
 <h1>Tabling Options</h1>
+<input type = "submit" class = "btn" id = "delete_slots" value = "Clear Slots"/>
 <input type = "submit" class = "btn" id = "generate" value = "Generate Tabling Schedule"/>
 <input type = "submit" class = "btn" id = "generate_chairs" value = "Generate Tabling for Chairs Only"/>
-<div style = "clear:both; height: 50px"></div>
+<div style = "clear:both; height: 25px"></div>
 <div id = "times"></div>
 <div style = "clear:both; height: 50px"></div>
 <% if @tabling_days %>

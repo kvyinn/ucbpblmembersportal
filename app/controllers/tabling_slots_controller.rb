@@ -86,21 +86,43 @@ class TablingSlotsController < ApplicationController
   end
 
   def tabling_options
-    @all_slots = TablingSlot.all
+    # @all_slots = TablingSlot.all
+    @this_week_slots = Array.new
+    days = (0..7).to_a
+    hours = (1..24).to_a
+    days.each do |key|
+      day = Date::DAYNAMES[key]
+      hours.each do |hour|
+        slots = TablingSlot.where(
+          start_time: Chronic.parse("#{hour} this #{day}"),
+          end_time: Chronic.parse("#{hour + 1} this #{day}")
+        )
+        if slots
+          slots.each do |slot|
+            @this_week_slots << slot
+          end
+        end
+      end
+    end
 
     # this shows all the tabling slots
     # TODO only show the tabling slots you have generated for this week/the ones you will overwrite
     @tabling_days = Hash.new
-    if !@all_slots.empty?
-      @earliest_time = @all_slots.first.start_time
+    if !@this_week_slots.empty?
+      @earliest_time = @this_week_slots.first.start_time
 
       @tabling_days = Hash.new
-      @all_slots.each do |tabling_slot|
+      @this_week_slots.each do |tabling_slot|
         @tabling_days[tabling_slot.start_time.to_date] ||= Array.new
         tabling_day = @tabling_days[tabling_slot.start_time.to_date]
         tabling_day << tabling_slot
       end
     end
+
+  end
+
+  def delete_slots
+    clear_this_week_slots
   end
 
   def generate_tabling
@@ -112,7 +134,7 @@ class TablingSlotsController < ApplicationController
     # TODO: destroy all tablings slots?
     # should only destroy all tabling slots for this week
     # TablingSlot.destroy_all
-    clear_this_week_slots
+    # clear_this_week_slots
     timeslots.keys.each do |key|
       day = Date::DAYNAMES[key.to_i]
       if timeslots[key].length > 0
@@ -126,15 +148,16 @@ class TablingSlotsController < ApplicationController
       end
     end
     members = Member.all
-    # for chairs only
-    chairs = Array.new
-    Member.all.each do |member|
-      # if chair or exec
-      if member.position == "chair" or (member.primary_committee and member.primary_committee.id == 2)
-        chairs << member
-      end
-    end
+
     if params[:type] == "chairs"
+      # for chairs only
+      chairs = Array.new
+      Member.all.each do |member|
+        # if chair or exec
+        if member.position == "chair" or (member.primary_committee and member.primary_committee.id == 2)
+          chairs << member
+        end
+      end
       members = chairs
     end
     generate_tabling_schedule(@slots, members)
@@ -158,7 +181,7 @@ class TablingSlotsController < ApplicationController
 
 # input slots: tabling slots that you want to fill
 # return assignments hash key: slot, value: array of members}
-  def generate_tabling_schedule(slots, members = Member.all)
+  def generate_tabling_schedule(slots, members)
     puts "generating schedule"
     #initialize your assignment hash
     assignments = Hash.new
@@ -261,6 +284,7 @@ class TablingSlotsController < ApplicationController
           d = c.day
           s = c.start_hour
           e = c.end_hour
+          # TODO have these calculated somewhere else
           if d
             day = Date::DAYNAMES[d]
             start = Chronic.parse("#{s} this #{day}")
