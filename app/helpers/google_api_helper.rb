@@ -24,7 +24,7 @@ module GoogleApiHelper
     client.authorization.access_token = cookies[:access_token] || auth_info["credentials"]["token"]
     service = client.discovered_api('calendar','v3')
     result = client.execute(
-      api_method: service.calendar_list.list,
+      api_method: service.events.list,
       parameters: {
         calendarId: calendarId
       },
