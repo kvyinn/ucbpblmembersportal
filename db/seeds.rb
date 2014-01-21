@@ -5,6 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+s = Semester.new
+s.name = "Fall 2013"
+s.save
+
+s2 = Semester.new
+s2.name = "Spring 2014"
+s.save
+
 if Rails.env.development?
   100.times { FactoryGirl.create(:member) }
   10.times { FactoryGirl.create(:committee) }
