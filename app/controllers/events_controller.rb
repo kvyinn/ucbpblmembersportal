@@ -137,24 +137,24 @@ class EventsController < ApplicationController
         # timeMax: (DateTime.now + 6.month),
       }
     )
-    # .data.items
+    .data.items
     puts all_events
     puts "that was all events"
     # add these events to event model
-    # all_events = process_google_events(all_events)
-    # all_events.each do |e|
-    #   event = Event.new
-    #   if Event.where(google_id: e[:id]).length != 0
-    #     event = Event.where(google_id: e[:id]).first
-    #   end
-    #   if e[:start_time] and e[:end_time]
-    #     event.google_id = e[:id]
-    #     event.start_time = e[:start_time]
-    #     event.end_time = e[:end_time]
-    #     event.name = e[:summary]
-    #     event.save
-    #   end
-    # end
+    all_events = process_google_events(all_events)
+    all_events.each do |e|
+      event = Event.new
+      if Event.where(google_id: e[:id]).length != 0
+        event = Event.where(google_id: e[:id]).first
+      end
+      if e[:start_time] and e[:end_time]
+        event.google_id = e[:id]
+        event.start_time = e[:start_time]
+        event.end_time = e[:end_time]
+        event.name = e[:summary]
+        event.save
+      end
+    end
     redirect_to(:back)
   end
 
