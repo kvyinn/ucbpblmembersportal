@@ -133,8 +133,8 @@ class EventsController < ApplicationController
       'calendar', 'v3', 'events', 'list',
       {
         calendarId: @calendar_id,
-        timeMin: beginning_of_fall_semester,
-        timeMax: (DateTime.now + 6.month),
+        # timeMin: beginning_of_fall_semester,
+        # timeMax: (DateTime.now + 6.month),
       }
     )
     # .data.items
