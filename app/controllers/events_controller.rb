@@ -136,7 +136,10 @@ class EventsController < ApplicationController
         timeMin: beginning_of_fall_semester,
         timeMax: (DateTime.now + 6.month),
       }
-    ).data.items
+    )
+    # .data.items
+    puts all_events
+    puts "that was all events"
     # add these events to event model
     # all_events = process_google_events(all_events)
     # all_events.each do |e|
