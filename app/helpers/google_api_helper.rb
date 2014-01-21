@@ -28,6 +28,8 @@ module GoogleApiHelper
       parameters[:singleEvents] = true
     end
 
+    puts "HERE IS THE METHIOD"
+    puts method
     puts "here i am and about to fail"
     puts google_api_client
     puts "that was the client"
