@@ -183,6 +183,8 @@ class TablingSlotsController < ApplicationController
 # return assignments hash key: slot, value: array of members}
   def generate_tabling_schedule(slots, members)
     puts "generating schedule"
+    convert_commitments(members)
+    puts "commitments converted"
     #initialize your assignment hash
     assignments = Hash.new
     assignments["manual"] = Array.new
@@ -271,10 +273,28 @@ class TablingSlotsController < ApplicationController
     end
   end
 
+  def convert_commitments(members)
+    members.each do |member|
+      member.commitments.each do |c|
+        if c.day
+          d = c.day
+          s = c.start_hour
+          e = c.end_hour
+          day = Date::DAYNAMES[d]
+          start = Chronic.parse("#{s} this #{day}")
+          endt =  Chronic.parse("#{e} this #{day}")
+          c.start_time = start
+          c.end_time = endt
+          c.save
+        end
+      end
+    end
+  end
    # assumes each slot has same capacity 5
   # TODO add capacity to tabling_slots table
   def get_current_available_slots(assignments, member)
     slots = Array.new
+    # puts "getting slots for "+member.name
     assignments.keys.each do |key|
       slot = key
       conflicts = true
@@ -286,9 +306,12 @@ class TablingSlotsController < ApplicationController
           e = c.end_hour
           # TODO have these calculated somewhere else
           if d
+            # puts "taking a while on this part"
             day = Date::DAYNAMES[d]
-            start = Chronic.parse("#{s} this #{day}")
-            endt =  Chronic.parse("#{e} this #{day}")
+            # start = Chronic.parse("#{s} this #{day}")
+            # endt =  Chronic.parse("#{e} this #{day}")
+            start = c.start_time
+            endt = c.end_time
             if day and conflicts(start, endt, slot.start_time, slot.end_time)
               conflicts = true
               break
