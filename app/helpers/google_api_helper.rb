@@ -34,8 +34,6 @@ module GoogleApiHelper
       body: body,
       headers: { 'Content-Type' => content_type }
     )
-
-    p "API call finished."
   end
 
   # Accessor for the OmniAuth authorization information
