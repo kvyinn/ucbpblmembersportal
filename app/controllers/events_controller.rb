@@ -140,6 +140,8 @@ class EventsController < ApplicationController
     # .data.items
     puts all_events
     puts "that was all events"
+    @all_events = all_events
+    render "syncview"
     # add these events to event model
     # all_events = process_google_events(all_events)
     # all_events.each do |e|
@@ -155,7 +157,7 @@ class EventsController < ApplicationController
     #     event.save
     #   end
     # end
-    redirect_to(:back)
+    # redirect_to(:back)
   end
 
 
