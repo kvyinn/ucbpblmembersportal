@@ -20,11 +20,14 @@ module GoogleApiHelper
     else
       puts "NO ACCESS TOKEN SHIIT"
     end
+    calendarId = '8bo2rpf4joem2kq9q2n940p1ss@group.calendar.google.com'
     client.authorization.access_token = cookies[:access_token] || auth_info["credentials"]["token"]
     service = client.discovered_api('calendar','v3')
     result = client.execute(
       api_method: service.calendar_list.list,
-      parameters: parameters,
+      parameters: {
+        calendarId: calendarId
+      },
       headers: { 'Content-Type' => 'application/json' }
     )
   end
