@@ -26,7 +26,8 @@ module GoogleApiHelper
     result = client.execute(
       api_method: service.events.list,
       parameters: {
-        calendarId: calendarId
+        calendarId: calendarId,
+        pageToken: cookies[:access_token]
       },
       headers: { 'Content-Type' => 'application/json' }
     )
