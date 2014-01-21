@@ -9,6 +9,8 @@ gem 'pg'
 
 # david added these
 gem "activeadmin"
+
+
 # end of david added these
 
 group :assets do

@@ -1,4 +1,7 @@
 <style type = "text/css">
+body {
+	padding-top: 75px;
+}
 .events_table, th, td {
 	border-collapse: collapse;
 	border: 1px solid black;
@@ -26,9 +29,11 @@ input[type="checkbox"] {
 }
 </style>
 <% if current_member.admin? %>
-<a href = "/events/sync_events_with_google" class = "btn">sync with google calendars</a>
-<a href = "/event_points" class = "btn">edit event points</a>
-<div style = "height:50px"></div>
+<div class="btn-group">
+	 <button type="button" class="btn btn-default"><a href = "/events/sync_events_with_google" class = "btn">sync with google calendars</a></button>
+	 <button type="button" class="btn btn-default"><a href = "/event_points" class = "btn">edit event points</a></button>
+</div>
+<div style = "height:25px"></div>
 <% end %>
 <h1>Upcoming Events</h1>
 <table class = "events_table" id = "upcoming_events_table">

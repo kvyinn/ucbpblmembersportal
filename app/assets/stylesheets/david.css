@@ -1,0 +1,114 @@
+body {
+	padding-top: 50px;
+}
+#navlist {
+	padding: 10px;
+}
+#navlist a{
+	color: black;
+}
+#navlist .logo a{
+	color: white;
+}
+#navlist .active a{
+	background-color: maroon;
+	color: white;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+/* Drag and drop lists */
+
+li.delete {
+  border-left: 2px solid #F55;
+  color: #DDD;
+  display: none;
+}
+
+li.add {
+  border-left: 2px solid #2A2;
+  color: #DDD;
+  display: none;
+}
+
+
+/* tabling stuff */
+.dayheading{
+  padding: 5px;
+  font-size:1.1em;
+  margin-bottom: 15px;
+  background-color: #428bca;
+}
+
+/* Content-specific styling */
+
+.current_member {
+  color: rgb(245, 6, 235);
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin h1 {
+  font-size: 72px;
+}
+
+.ui-menu-item {
+  border: none;
+}
+
+.flash {
+  padding: 5px;
+  width: 100%;
+  margin: 0;
+}
+
+.flash ul {
+  margin: 0;
+  padding: 0;
+}
+
+.flash li {
+  border: 0;
+}
+
+.flash li:hover {
+  background-color: auto;
+}
+
+/*ul.tabling {
+  width: 18%;
+  padding-right: 1%;
+  display: inline-block;
+  vertical-align: top;
+}*/
+
+.tsm-status {
+  font-size: 0.8em;
+  color: #DDD;
+  margin-left: 0.5em;
+}
+
+.right-align {
+  display: block;
+  float: right;
+  text-align: right;
+}
+
+.tsm-status-set:hover {
+  text-decoration: underline;
+}
+
+section {
+  margin: 20px;
+  padding: 20px;
+
+  clear: both;
+
+  background-color: white;
+
+  border-bottom: 2px solid #AAA;
+}

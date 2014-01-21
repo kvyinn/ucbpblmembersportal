@@ -150,13 +150,13 @@ $(document).ready(function(){
 	cursor: pointer;
 }
 .day div {
-	border: 1px solid black;
+	border: 1px solid #C5C5C5;
 	padding: 3px;
 	margin-bottom: -1px;
 }
 .header {
 	background-color: maroon;
-	color: rgb(255, 213, 213);
+	color: white;
 }
 .hour:hover {
 	cursor: pointer;
@@ -171,6 +171,15 @@ $(document).ready(function(){
 .slot_div {
 	display: inline;
 }
+
+.tabling {
+  float: left;
+  margin: 25px;
+}
+li{
+  list-style-type: none;
+}
+
 </style>
 
 <h1>Tabling Options</h1>
@@ -182,7 +191,9 @@ $(document).ready(function(){
 <div style = "clear:both; height: 50px"></div>
 <% if @tabling_days %>
 <% @tabling_days.each do |day, slots| %>
-    <ul class="tabling"><%= day.strftime("%A, %D") %>
+    <ul class="tabling">
+    	<div class="label label-default dayheading"><%= day.strftime("%A, %D") %></div>
+    	<div style = "height:15px"></div>
       <%= render slots %>
     </ul>
   </div>
