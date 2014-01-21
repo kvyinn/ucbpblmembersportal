@@ -7,7 +7,7 @@ class Semester < ActiveRecord::Base
   has_many :event_members
 
   def self.current_semester
-  	# return Semester.first(:order => 'created_at DESC')
-  	return Semester.first
+  	return Semester.first(:order => 'created_at DESC')
+  	# return Semester.first
   end
 end

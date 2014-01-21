@@ -1,7 +1,9 @@
-<section>
-  <h1>Tabling Slot <%= "#{@tabling_slot.start_time.strftime("%A, %D")}" %></h1>
+<!-- <section> -->
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Tabling Slot <%= "#{@tabling_slot.start_time.strftime("%A, %D")}" %></h1>
   <h2><%= "#{@tabling_slot.start_time.strftime("%l:%M%p")} to #{@tabling_slot.end_time.strftime("%l:%M%p")}" %></h2>
-
+</div>
+<div class="panel-body">
   <ul>
     <%= render @tabling_slot.tabling_slot_members %>
     <% if current_member.admin? %>
@@ -16,4 +18,14 @@
 
     <%= f.submit "Add", class: "btn btn-primary" %>
   <% end %>
-</section>
+</div>
+</div>
+<!-- </section> -->
+<style type = "text/css">
+.panel {
+  margin: 50px;
+}
+ul {
+  list-style-type: none;
+}
+</style>

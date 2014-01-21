@@ -110,5 +110,8 @@ section {
 
   background-color: white;
 
-  border-bottom: 2px solid #AAA;
+  /*border-bottom: 2px solid #AAA;*/
+}
+ul {
+  list-style-type: none;
 }
