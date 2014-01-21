@@ -129,14 +129,18 @@ class EventsController < ApplicationController
     puts beginning_of_fall_semester
     puts (DateTime.now + 6.month)
     puts "end of those two"
-    all_events = google_api_request(
-      'calendar', 'v3', 'events', 'list',
-      {
-        calendarId: @calendar_id,
-        # timeMin: beginning_of_fall_semester,
-        # timeMax: (DateTime.now + 6.month),
-      }
-    )
+    # all_events = google_api_request(
+    #   'calendar', 'v3', 'events', 'list',
+    #   {
+    #     calendarId: @calendar_id,
+    #     # timeMin: beginning_of_fall_semester,
+    #     # timeMax: (DateTime.now + 6.month),
+    #   }
+    # )
+    all_events = google_api_events(
+    {
+      calendarId: @calendar_id,
+    })
     # .data.items
     puts all_events
     puts "that was all events"

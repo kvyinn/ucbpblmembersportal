@@ -13,6 +13,21 @@ module GoogleApiHelper
     return @client
   end
 
+  def google_api_events(parameters)
+    client = Google::APIClient.new
+    if cookies[:access_token]
+      puts "YEAH I GOT AN ACCESS TOKEN"
+    else
+      puts "NO ACCESS TOKEN SHIIT"
+    end
+    client.authorization.access_token = cookies[:access_token] || auth_info["credentials"]["token"]
+    service = client.discovered_api('calendar','v3')
+    result = client.execute(
+      api_method: service.calendar_list.list,
+      parameters: parameters,
+      headers: { 'Content-Type' => 'application/json' }
+    )
+  end
   # Wrapper for the Google API client discover and execute method
   def google_api_request(service, version, resources, method, parameters, body=nil, content_type='application/json')
     api_service = google_api_client.discovered_api(service, version)
