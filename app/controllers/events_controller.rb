@@ -141,13 +141,15 @@ class EventsController < ApplicationController
       if Event.where(google_id: e[:id]).length != 0
         event = Event.where(google_id: e[:id]).first
       end
-      event.google_id = e[:id]
-      event.start_time = e[:start_time]
-      event.end_time = e[:end_time]
-      # puts e[:start_time]
-      # puts e[:end_time]
-      event.name = e[:summary]
-      event.save
+      if e[:start_time] and e[:end_time]
+        event.google_id = e[:id]
+        event.start_time = e[:start_time]
+        event.end_time = e[:end_time]
+        # puts e[:start_time]
+        # puts e[:end_time]
+        event.name = e[:summary]
+        event.save
+      end
     end
     redirect_to(:back)
   end
