@@ -28,6 +28,12 @@ module GoogleApiHelper
       parameters[:singleEvents] = true
     end
 
+    puts "here i am and about to fail"
+    puts google_api_client
+    puts "that was the client"
+    puts parameters
+    puts "those were the PARAMETERS"
+
     result = google_api_client.execute(
       api_method: api_resource.send(method),
       parameters: parameters,
