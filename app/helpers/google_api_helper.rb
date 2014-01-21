@@ -6,9 +6,9 @@ module GoogleApiHelper
 
     @client.authorization.access_token = cookies[:access_token] || auth_info["credentials"]["token"]
 
-    if @client.authorization.expired?
-      @client.authorization.fetch_access_token!(cookies[:refresh_token])
-    end
+    # if @client.authorization.expired?
+    #   @client.authorization.fetch_access_token!(cookies[:refresh_token])
+    # end
 
     return @client
   end
@@ -27,10 +27,6 @@ module GoogleApiHelper
     if resources == 'events'
       parameters[:singleEvents] = true
     end
-
-    p parameters
-    p method
-    p body
 
     result = google_api_client.execute(
       api_method: api_resource.send(method),
