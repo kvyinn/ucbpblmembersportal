@@ -224,7 +224,7 @@ class Member < ActiveRecord::Base
   # Add member to the committee (creating the committee if it doesn't exist) as the given
   # committee member type, if he isn't part of the committee already
   # TODO semester?
-  def add_to_committee(committee_name, committee_type, cm_type)
+  def add_to_committee(committee_name, committee_type, cm_type, semester = Semester.current_semester)
     # Find or create committee
     committee = Committee.where(
       name: committee_name,
@@ -237,6 +237,7 @@ class Member < ActiveRecord::Base
     # Add member to committee if not already
     committee_member = self.committee_members.where(
       committee_id: committee.id,
+      semester_id: semester.id,
     ).first_or_create!
 
     # Set the committee_member type
