@@ -56,21 +56,22 @@ task :google_sync => :environment do
     )
     puts result.data
     puts "that was the resulting data"
-    all_events = result.data.items
-    all_events = process_google_events(all_events)
-    all_events.each do |e|
-      event = Event.new
-      if Event.where(google_id: e[:id]).length != 0
-        event = Event.where(google_id: e[:id]).first
-      end
-      if e[:start_time] and e[:end_time]
-        event.google_id = e[:id]
-        event.start_time = e[:start_time]
-        event.end_time = e[:end_time]
-        event.name = e[:summary]
-        event.save
-      end
-    end
+
+    # all_events = result.data.items
+    # all_events = process_google_events(all_events)
+    # all_events.each do |e|
+    #   event = Event.new
+    #   if Event.where(google_id: e[:id]).length != 0
+    #     event = Event.where(google_id: e[:id]).first
+    #   end
+    #   if e[:start_time] and e[:end_time]
+    #     event.google_id = e[:id]
+    #     event.start_time = e[:start_time]
+    #     event.end_time = e[:end_time]
+    #     event.name = e[:summary]
+    #     event.save
+    #   end
+    # end
     puts "Done adding all events"
 end
 

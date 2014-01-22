@@ -10,6 +10,9 @@ gem 'pg'
 # david added these
 gem "activeadmin"
 
+group :production do
+  gem 'google-api-client', :require => 'google/api_client'
+end
 
 # end of david added these
 
