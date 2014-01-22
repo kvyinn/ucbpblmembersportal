@@ -17,6 +17,9 @@
     <% else %>
     <p>no committee this semester</p>
     <% end %>
+    <div>Your Committee Points: <%= current_member.total_points %></div>
+      <p>Committee rating: <%= current_member.primary_committee.rating if current_member.primary_committee %></p>
+      <p><%= link_to "View details", points_url %></p>
   </div>
   </div>
   <!-- </section> -->
@@ -40,22 +43,14 @@
     <!-- </section> -->
   <% end %>
 
-  <!-- <section> -->
-  <div class="panel panel-default homepanel">
-     <div class="panel-heading"><h2>Your Committee Points: <%= current_member.total_points %></h2></div>
-     <div class = "panel-body">
-      <p>Committee rating: <%= current_member.primary_committee.rating if current_member.primary_committee %></p>
-      <p><%= link_to "View details", points_url %></p>
-    </div>
-  <!-- </section> -->
-</div>
 
 
 <% end %>
 <style type = "text/css">
 .homepanel {
   margin-top: 35px;
-  width: 500px;
+  /*width: 500px;*/
+  float: left;
   margin-left: 50px;
 }
 .homepanel .panel-heading {
