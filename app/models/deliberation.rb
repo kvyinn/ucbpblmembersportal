@@ -53,6 +53,7 @@ class Deliberation < ActiveRecord::Base
 		committee3 = Committee.find(a.preference3)
 		committees = [committee1, committee2, committee3]
 		for c in committees
+			# if c.name != "Executives" and c.name != "General Members"
 			rank = ApplicantRanking.new
 			rank.committee = c.id
 			rank.applicant = a

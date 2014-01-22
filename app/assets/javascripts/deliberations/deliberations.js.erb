@@ -45,7 +45,7 @@ function toggleChargeDistance(charge, distance){
 function toggleApplicants(hide){
 	if(hide){
 		//remove links that are yellow
-		links = current_data["links"].slice(0);
+		links = current_data["links"];
 		for (var i=0;i<links.length;i++){
 			if(links[i]["color"]=="yellow"){
 				links.splice(i,1);
@@ -53,12 +53,12 @@ function toggleApplicants(hide){
 			}
 		}
 		new_graph_data = {};
-		nodes = current_data["nodes"].slice(0);
+		nodes = current_data["nodes"];
 		new_graph_data["nodes"] = nodes;
 		new_graph_data["links"] = links;
 		do_pretty(new_graph_data, linkDistance,linkCharge);
-		console.log("did pretty");
-		console.log(new_graph_data);
+		// console.log("did pretty");
+		// console.log(new_graph_data);
 	}
 	else{
 		do_pretty(global_data, linkDistance, linkCharge);
