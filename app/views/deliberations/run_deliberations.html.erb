@@ -137,7 +137,7 @@ $(document).ready(function(){
 <!-- <div style = "height: 50px; clear:both;"></div> -->
 
 <div class = "assignments_lists">
-<% Committee.each do |c| %>
+<% Committee.all.each do |c| %>
 <% if c.name != "Executives" and c.name != "General Members" %>
 <div class = "committee_list"> <div class = "clist_header expandable"><%= c.name %></div>
 <% @deliberation.applicant_ranks_by_committee(c).order(:value).each do |rank| %>
