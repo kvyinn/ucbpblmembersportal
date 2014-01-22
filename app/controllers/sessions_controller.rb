@@ -35,7 +35,6 @@ class SessionsController < ApplicationController
       puts "trying to sync with google"
       google_api_events("hello")
       cookies[:sync_with_google] = nil
-      redirect_to events_path
     end
     if member.save
       cookies[:remember_token] = member.remember_token
