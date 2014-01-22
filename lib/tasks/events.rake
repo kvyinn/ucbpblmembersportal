@@ -29,9 +29,9 @@ task :import_events => :environment do
 			e.start_time = event.start_time
 			e.end_time = event.end_time
 			# give it the right semester
-			spring = Semester.where(name: "Spring 2014")
-			fall = Semester.where(name: "Fall 2013")
-			previous = Semester.where(name: "Previous Semesters")
+			spring = Semester.where(name: "Spring 2014").first
+			fall = Semester.where(name: "Fall 2013").first
+			previous = Semester.where(name: "Previous Semesters").first
 			if e.start_time > spring.start_date
 				spring.events << e
 			elsif e.start_time > fall.start_date
