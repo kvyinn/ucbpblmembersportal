@@ -149,15 +149,17 @@ def deliberate
 	unsure = Hash.new
 	conflicts = Hash.new
 	# initialize ranks list
-	for cid in [3,4,5,6,7,9,10,11]
-		c = Committee.find(cid)
-		rank_lists[c] = Array.new
-		unsure[c] = Array.new
-		assignments[c] = Array.new
-		ranks = self.applicant_ranks_by_committee(c).order(:value)
-		for r in ranks
-			if Applicant.find(r.applicant)
-				rank_lists[c] << Applicant.find(r.applicant)
+	for c in Committee.all
+		# c = Committee.find(cid)
+		if not c.name == "Executives" or c.name = "General Members"
+			rank_lists[c] = Array.new
+			unsure[c] = Array.new
+			assignments[c] = Array.new
+			ranks = self.applicant_ranks_by_committee(c).order(:value)
+			for r in ranks
+				if Applicant.find(r.applicant)
+					rank_lists[c] << Applicant.find(r.applicant)
+				end
 			end
 		end
 	end

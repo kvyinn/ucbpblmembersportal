@@ -185,9 +185,11 @@ input[type="checkbox"] {
 	<br>
 	<div id = "committee_filter_div" class = "filter_div">
 		check which committees to show<br>
-		<% Committee.find([3,4,5,6,7,9,10,11]).each do |committee| %>
+		<% Committee.each do |committee| %>
+		<% if committee.name != "Executives" and committee.name != "General Members" %>
 		<input class = "commitee_checkbox" type = "checkbox" id = '<%= committee.name %>'/> <%= committee.name %></input>
 		<br>
+		<% end %>
 		<% end %>
 	</div><!-- end of hiding filters -->
 	</div><!-- end of panel body -->
@@ -200,7 +202,8 @@ input[type="checkbox"] {
 <div style = "text-align:center"><div id = "delib_title" class="label label-default">Committee Assignments</div></div>
 <div style = "height:50px"></div>
 <div class = "assignments_lists">
-<% Committee.find([3,4,5,6,7,9,10,11]).each do |c| %>
+<% Committee.each do |c| %>
+<% if c.name != "Executives" and c.name != "General Members" %>
 <div class = "committee_list panel panel-default" id = '<%= c.id %>'>
 	<div class = "clist_header panel-heading"><%= c.name %></div>
 	<div class = "panel-body">
@@ -211,6 +214,7 @@ input[type="checkbox"] {
 	</div>
 </div>
 <!-- end of committee list -->
+<% end %>
 <% end %>
 </div>
 <!-- end of assignments list -->
