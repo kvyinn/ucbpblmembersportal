@@ -28,9 +28,17 @@ task :import_events => :environment do
 			e.name = event.name
 			e.start_time = event.start_time
 			e.end_time = event.end_time
-			# e.semester_id = event.semester_id
-			# put e in the right semester.
-			# e = event
+			# give it the right semester
+			spring = Semester.where(name: "Spring 2014")
+			fall = Semester.where(name: "Fall 2013")
+			previous = Semester.where(name: "Previous Semesters")
+			if e.start_time > spring.start_date
+				spring.events << e
+			elsif e.start_time > fall.start_date
+				fall.events << e
+			else
+				previous.events << e
+			end
 			if e.save
 				puts "saved an event"
 			else
