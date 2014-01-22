@@ -25197,6 +25197,7 @@ $.widget( "ui.tooltip", {
 
 })( jQuery );
 (function() {
+
   window.ActiveAdmin = {};
 
   if (!window.AA) {
@@ -25205,7 +25206,9 @@ $.widget( "ui.tooltip", {
 
 }).call(this);
 (function() {
+
   window.ActiveAdmin.CheckboxToggler = ActiveAdmin.CheckboxToggler = (function() {
+
     function CheckboxToggler(options, container) {
       var defaults;
       this.options = options;
@@ -25275,7 +25278,9 @@ $.widget( "ui.tooltip", {
 
 }).call(this);
 (function() {
+
   window.ActiveAdmin.DropdownMenu = ActiveAdmin.DropdownMenu = (function() {
+
     function DropdownMenu(options, element) {
       var defaults;
       this.options = options;
@@ -25392,7 +25397,9 @@ $.widget( "ui.tooltip", {
 
 }).call(this);
 (function() {
+
   window.ActiveAdmin.Popover = ActiveAdmin.Popover = (function() {
+
     function Popover(options, element) {
       var defaults;
       this.options = options;
@@ -25494,16 +25501,15 @@ $.widget( "ui.tooltip", {
 
 }).call(this);
 (function() {
-  var _ref,
-    __hasProp = {}.hasOwnProperty,
+  var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   window.ActiveAdmin.TableCheckboxToggler = ActiveAdmin.TableCheckboxToggler = (function(_super) {
+
     __extends(TableCheckboxToggler, _super);
 
     function TableCheckboxToggler() {
-      _ref = TableCheckboxToggler.__super__.constructor.apply(this, arguments);
-      return _ref;
+      return TableCheckboxToggler.__super__.constructor.apply(this, arguments);
     }
 
     TableCheckboxToggler.prototype._init = function() {
@@ -25545,6 +25551,7 @@ $.widget( "ui.tooltip", {
 
 }).call(this);
 (function() {
+
   $(function() {
     $(document).on('focus', '.datepicker:not(.hasDatepicker)', function() {
       return $(this).datepicker({
@@ -25569,6 +25576,7 @@ $.widget( "ui.tooltip", {
 
 }).call(this);
 (function() {
+
   jQuery(function($) {
     $(document).delegate("#batch_actions_selector li a", "click.rails", function() {
       $("#batch_action").val($(this).attr("data-action"));

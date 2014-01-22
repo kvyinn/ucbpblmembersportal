@@ -17,6 +17,8 @@ active_admin.css: active_admin.css
 active_admin/index.css: active_admin.css
 application.css: application.css
 application/index.css: application.css
+ui-lightness/images/Thumbs.db: ui-lightness/images/Thumbs.db
+ui-lightness/images/Thumbs/index.db: ui-lightness/images/Thumbs.db
 ui-lightness/images/animated-overlay.gif: ui-lightness/images/animated-overlay.gif
 ui-lightness/images/animated-overlay/index.gif: ui-lightness/images/animated-overlay.gif
 ui-lightness/images/ui-bg_diagonals-thick_18_b81900_40x40.png: ui-lightness/images/ui-bg_diagonals-thick_18_b81900_40x40.png

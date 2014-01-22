@@ -1,4 +1,5 @@
 (function() {
+
   $(function() {
     $(document).on('focus', '.datepicker:not(.hasDatepicker)', function() {
       return $(this).datepicker({
