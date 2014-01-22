@@ -16,10 +16,18 @@ task :import_events => :environment do
 	File.open(Rails.root.join('events_dump.yaml'), "r").each do |object|
 	  events << YAML::load(object)
 	end
-	puts events
-	puts "saving the result"
+	# puts events
+	# puts "saving the result"
 	events.each do |event|
-		event.save
+		e = Event.new
+		if Event.where(name: event.name).length == 0
+			e.name = event.name
+			e.start_time = event.start_time
+			e.end_time = event.end_time
+			e.semester_id = event.semester_id
+			e.save
+			puts "saved an event"
+		end
 	end
 end
 task :google_sync => :environment do
