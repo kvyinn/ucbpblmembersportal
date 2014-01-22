@@ -20,20 +20,20 @@ module GoogleApiHelper
     puts client.authorization.access_token
     puts "THAT WAAS THE ACEES TOKENN"
     service = client.discovered_api('calendar','v3')
-    tempresult = client.execute(
-      api_method: service.events.list,
+    result = google_api_client.execute(
+      api_method: service.send("events"),
       parameters: {
         calendarId: calendarId,
       },
       headers: { 'Content-Type' => 'application/json' }
     )
-    if tempresult.data.error
-      puts tempresult.data.error
-      puts "there was an erroor"
-    else
-      puts "YOURE IN THE CLEAR"
-    end
-    return tempresult
+    puts result.data
+    puts "THAT WAS THE DATA"
+    # result = client.execute(
+    #   api_method: service.events.list,
+
+    #   headers: { 'Content-Type' => 'application/json' }
+    # )
   end
   # Wrapper for the Google API client discover and execute method
   def google_api_request(service, version, resources, method, parameters, body=nil, content_type='application/json')
