@@ -21,6 +21,13 @@ class SessionsController < ApplicationController
       },
       headers: { 'Content-Type' => 'application/json' }
     )
+    puts result.data
+    if result.data.error
+      puts "there was an ERROR"
+      puts result.data.error
+    else
+      puts "there was no ERROR you should go on"
+    end
   end
 
   def create
@@ -34,12 +41,12 @@ class SessionsController < ApplicationController
       puts "trying to sync with google"
       events = google_api_events("hello")
       cookies[:sync_with_google] = nil
-      if events.data.error
-        puts "THERE IS AN ERROR OMG"
-        puts events.data.error
-      else
-        puts "no errors youre in the clear"
-      end
+      # if events.data.error
+      #   puts "THERE IS AN ERROR OMG"
+      #   puts events.data.error
+      # else
+      #   puts "no errors youre in the clear"
+      # end
     end
     if member.save
       cookies[:remember_token] = member.remember_token
