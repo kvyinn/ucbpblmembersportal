@@ -46,6 +46,7 @@ class Deliberation < ActiveRecord::Base
   end
 
   def generate_default_rankings
+  	ApplicantRanking.where(deliberation_id: self.id).destroy_all
   	for a in self.applicants
 		committee1 = Committee.find(a.preference1)
 		committee2 = Committee.find(a.preference2)
