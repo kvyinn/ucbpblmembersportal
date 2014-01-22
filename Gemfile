@@ -11,6 +11,10 @@ gem 'pg'
 gem "activeadmin"
 # end of david added these
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -51,3 +55,4 @@ gem 'google-api-client', :require => 'google/api_client'
 gem 'omniauth', '1.1.0'
 # gem 'omniauth', '1.4.0'
 gem 'omniauth-google-oauth2', :git => 'https://github.com/zquestz/omniauth-google-oauth2.git'
+gem "devise"

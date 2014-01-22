@@ -59,7 +59,7 @@ class EventsController < ApplicationController
 
     @past_events = Array.new
     @upcoming_events = Array.new
-    Event.all.each do |event|
+    Event.order(:start_time).all.each do |event|
       if event.start_time < DateTime.now
         @past_events << event
       else
@@ -67,7 +67,9 @@ class EventsController < ApplicationController
       end
     end
 
-    @past_events = sort(@past_events, params[:sort], params[:direction])
+    if params[:sort]
+        @past_events = sort(@past_events, params[:sort], params[:direction])
+    end
     render "new_index"
   end
 

@@ -193,6 +193,11 @@ GEM
       activesupport (= 3.2.12)
       bundler (~> 1.0)
       railties (= 3.2.12)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (3.2.12)
       actionpack (= 3.2.12)
       activesupport (= 3.2.12)
@@ -272,6 +277,7 @@ DEPENDENCIES
   chronic
   coffee-rails (~> 3.2.1)
   coffee-script-source (~> 1.4.0)
+  devise
   factory_girl_rails (~> 4.0.0)
   faker
   google-api-client
@@ -283,6 +289,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 3.2.12)
+  rails_12factor
   rjb
   rspec-rails (~> 2.14)
   sass-rails (~> 3.2.3)
