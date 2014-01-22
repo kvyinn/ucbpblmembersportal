@@ -45,7 +45,7 @@ task :google_sync => :environment do
     # client.authorization.code = '....'
     # client.authorization.fetch_access_token!
     calendarId = '8bo2rpf4joem2kq9q2n940p1ss@group.calendar.google.com'
-    client.authorization.access_token = 'ya29.1.AADtN_UfONspFh2NpEV3RcElEjRBPVRF_MqGE9mIJxJEgAApVLIesUEfm_anhdSP8hbRtCDY_CMIFO3F1jG836FbkpdHqrLGzY8Tw4Yx5cxZ23ve-3WiV-Y-C1COHJN5TG_h'
+    client.authorization.access_token = '29.1.AADtN_XrNtFHYhP7DUvVh6vdqdKL0FOJWzHkNrlMmhpsz9ZsY0j9fE1p5FKTEHworL3-'
     # Make an API call
     result = client.execute(
       api_method: service.events.list,

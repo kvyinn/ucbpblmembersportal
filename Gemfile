@@ -9,11 +9,6 @@ gem 'pg'
 
 # david added these
 gem "activeadmin"
-
-group :production do
-  gem 'google-api-client', :require => 'google/api_client'
-end
-
 # end of david added these
 
 group :assets do
@@ -52,6 +47,6 @@ ENV['JAVA_HOME'] = heroku_java_home if Dir.exist?(heroku_java_home)
 
 gem 'nifty-generators'
 gem 'google-api-client', :require => 'google/api_client'
-# gem 'omniauth', '1.1.0'
-gem 'omniauth', '1.4.0'
+gem 'omniauth', '1.1.0'
+# gem 'omniauth', '1.4.0'
 gem 'omniauth-google-oauth2', :git => 'https://github.com/zquestz/omniauth-google-oauth2.git'
