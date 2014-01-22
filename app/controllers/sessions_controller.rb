@@ -24,7 +24,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-
     @result = google_api_request('plus', 'v1', 'people', 'get', { userId: auth_info["uid"] } )
     cookies[:access_token] = auth_info["credentials"]["token"]
     cookies[:refresh_token] = auth_info["credentials"]["refresh_token"]
@@ -33,8 +32,14 @@ class SessionsController < ApplicationController
     member.name = @result.data.display_name
     if cookies[:sync_with_google]
       puts "trying to sync with google"
-      google_api_events("hello")
+      events = google_api_events("hello")
       cookies[:sync_with_google] = nil
+      if events.data.error
+        puts "THERE IS AN ERROR OMG"
+        puts events.data.error
+      else
+        puts "no errors youre in the clear"
+      end
     end
     if member.save
       cookies[:remember_token] = member.remember_token
