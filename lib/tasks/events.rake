@@ -20,7 +20,7 @@ task :import_events => :environment do
 	# puts "saving the result"
 	events.each do |event|
 		e = Event.new
-		if Event.where(name: event.name).length == 0 and event
+		if event and Event.where(name: event.name).length == 0
 			e.name = event.name
 			e.start_time = event.start_time
 			e.end_time = event.end_time
