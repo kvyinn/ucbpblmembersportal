@@ -129,6 +129,8 @@ class EventsController < ApplicationController
     puts beginning_of_fall_semester
     puts (DateTime.now + 6.month)
     puts "end of those two"
+    cookies[:sync_with_google] = "please"
+    redirect_to google_signin_url
     # all_events = google_api_request(
     #   'calendar', 'v3', 'events', 'list',
     #   {
@@ -137,15 +139,15 @@ class EventsController < ApplicationController
     #     # timeMax: (DateTime.now + 6.month),
     #   }
     # )
-    all_events = google_api_events(
-    {
-      calendarId: @calendar_id,
-    })
-    # .data.items
-    puts all_events
-    puts "that was all events"
-    @all_events = all_events
-    render "syncview"
+    # all_events = google_api_events(
+    # {
+    #   calendarId: @calendar_id,
+    # })
+    # # .data.items
+    # puts all_events
+    # puts "that was all events"
+    # @all_events = all_events
+    # render "syncview"
     # add these events to event model
     # all_events = process_google_events(all_events)
     # all_events.each do |e|
