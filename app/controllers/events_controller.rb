@@ -124,13 +124,13 @@ class EventsController < ApplicationController
   # end
 
   def sync_events_with_google
-    @calendar_id = revert_google_calendar_id(pbl_events_calendar_id)
-    puts "these are time min and maxes"
-    puts beginning_of_fall_semester
-    puts (DateTime.now + 6.month)
-    puts "end of those two"
-    cookies[:sync_with_google] = "please"
-    redirect_to google_signin_url
+    # @calendar_id = revert_google_calendar_id(pbl_events_calendar_id)
+    # puts "these are time min and maxes"
+    # puts beginning_of_fall_semester
+    # puts (DateTime.now + 6.month)
+    # puts "end of those two"
+    # cookies[:sync_with_google] = "please"
+    # redirect_to google_signin_url
     # all_events = google_api_request(
     #   'calendar', 'v3', 'events', 'list',
     #   {
@@ -139,10 +139,8 @@ class EventsController < ApplicationController
     #     # timeMax: (DateTime.now + 6.month),
     #   }
     # )
-    # all_events = google_api_events(
-    # {
-    #   calendarId: @calendar_id,
-    # })
+    all_events = google_api_events("")
+    redirect_to(:back)
     # # .data.items
     # puts all_events
     # puts "that was all events"
