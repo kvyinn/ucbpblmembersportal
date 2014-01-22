@@ -20,15 +20,19 @@ task :import_events => :environment do
 	# 	puts "hello there "+event.to_s
 	# end
 	events.each do |event|
-		e = Event.new
+
 		if event and Event.where(name: event.name).length == 0
-			# e.name = event.name
-			# e.start_time = event.start_time
-			# e.end_time = event.end_time
-			# e.semester_id = event.semester_id
-			e = event
-			e.save
-			puts "saved an event"
+			e = Event.new
+			e.name = event.name
+			e.start_time = event.start_time
+			e.end_time = event.end_time
+			e.semester_id = event.semester_id
+			# e = event
+			if e.save
+				puts "saved an event"
+			else
+				puts "save failed"
+			end
 		end
 	end
 end
