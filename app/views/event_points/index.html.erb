@@ -4,9 +4,11 @@
     <%= form_tag update_all_event_points_url, method: "post" do %>
       <% @event_points.each do |item| %>
         <li>
-          <%= label_tag item[:event].name %>
+
+          <%= text_field_tag "points[]", item[:points] ,:type=>"text", :class=>"form-control point_input", :placeholder=>"Text input"%>
+          <%= item[:event].name %>
           <%= hidden_field_tag "event_ids[]", item[:event].id %>
-          <%= text_field_tag "points[]", item[:points] %>
+
         </li>
       <% end %>
 
@@ -14,3 +16,10 @@
     <% end %>
   </ul>
 </section>
+<style type = "text/css">
+.point_input {
+  width: 50px;
+  padding:2px;
+  display:inline;
+}
+</style>

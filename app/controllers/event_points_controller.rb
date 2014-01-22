@@ -14,7 +14,7 @@ class EventPointsController < ApplicationController
 
     # Look up point values, or assign the default value of 0
     # events.each do |event|
-    Event.all.reverse.each do |event|
+    Event.order(:start_time).all.reverse.each do |event|
       event_points = EventPoints.where(event_id: event.id).first
       points = event_points ? event_points.value : 0
 
