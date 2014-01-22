@@ -56,7 +56,18 @@ task :google_sync => :environment do
     )
     puts result.data
     puts "that was the resulting data"
-
+    if result.data.error
+    	puts "it seems there was an error"
+    	puts result.data.error
+    end
+    if result.data.data
+    	puts "there was another layer fuck"
+    	puts result.data.data
+    end
+    if result.data.error.errors
+    	puts "ok errorers"
+    	puts result.data.error.errors
+    end
     # all_events = result.data.items
     # all_events = process_google_events(all_events)
     # all_events.each do |e|
