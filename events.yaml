@@ -1,0 +1,3664 @@
+---
+- !ruby/object:Event
+  attributes:
+    id: 2
+    name: Calapalooza
+    description: 
+    start_time: 2013-08-29 22:30:00.000000000 Z
+    end_time: 2013-08-30 02:00:00.000000000 Z
+    google_id: kb8vqba8koghbq914f1pp5pc1g
+    created_at: 2014-01-16 16:57:02.557228000 Z
+    updated_at: 2014-01-16 17:19:34.421132000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 3
+    name: Northwestern Game
+    description: 
+    start_time: 2013-09-01 00:00:00.000000000 Z
+    end_time: 2013-09-01 05:00:00.000000000 Z
+    google_id: 35r9n7rl252sja1c8homb31l04
+    created_at: 2014-01-16 16:57:02.560871000 Z
+    updated_at: 2014-01-16 17:19:34.426134000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 4
+    name: First General Meeting
+    description: 
+    start_time: 2013-09-04 02:00:00.000000000 Z
+    end_time: 2013-09-04 04:00:00.000000000 Z
+    google_id: bhqk3oq83s47mln6sqlfnvc40k
+    created_at: 2014-01-16 16:57:02.564334000 Z
+    updated_at: 2014-01-16 17:19:34.430137000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 5
+    name: ! '[PD] Life @ Haas'
+    description: 
+    start_time: 2013-09-06 02:30:00.000000000 Z
+    end_time: 2013-09-06 04:30:00.000000000 Z
+    google_id: tssk7vqe109g0itd5blejuplm0
+    created_at: 2014-01-16 16:57:02.567337000 Z
+    updated_at: 2014-01-16 17:19:34.434139000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 7
+    name: Portland State Game
+    description: 
+    start_time: 2013-09-07 00:00:00.000000000 Z
+    end_time: 2013-09-08 00:00:00.000000000 Z
+    google_id: 5njuqisqq1tsudi8lkuqebo960
+    created_at: 2014-01-16 16:57:02.573342000 Z
+    updated_at: 2014-01-16 17:19:34.459121000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 8
+    name: ! '[SO] Mixer'
+    description: 
+    start_time: 2013-09-07 01:00:00.000000000 Z
+    end_time: 2013-09-07 04:00:00.000000000 Z
+    google_id: dlnbpm5hb5aqp2eamadhc7fb54
+    created_at: 2014-01-16 16:57:02.577345000 Z
+    updated_at: 2014-01-16 17:19:34.464175000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 9
+    name: ! '[IN] Kickoff'
+    description: 
+    start_time: 2013-09-10 01:00:00.000000000 Z
+    end_time: 2013-09-10 03:00:00.000000000 Z
+    google_id: rm63hgd1tv4a6ev9hsm1tfg0sc
+    created_at: 2014-01-16 16:57:02.580346000 Z
+    updated_at: 2014-01-16 17:19:34.497196000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 10
+    name: Ohio State Game
+    description: 
+    start_time: 2013-09-14 00:00:00.000000000 Z
+    end_time: 2013-09-15 00:00:00.000000000 Z
+    google_id: ot2btl9stgno2lpljhf2e69jcc
+    created_at: 2014-01-16 16:57:02.583348000 Z
+    updated_at: 2014-01-16 17:19:34.502200000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 11
+    name: CM Initiation
+    description: 
+    start_time: 2013-09-14 01:00:00.000000000 Z
+    end_time: 2013-09-14 03:00:00.000000000 Z
+    google_id: 8r4hikm3ij64eeungtl6otao9o
+    created_at: 2014-01-16 16:57:02.586350000 Z
+    updated_at: 2014-01-16 17:19:34.507203000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 13
+    name: ! 'Officer Meeting #3'
+    description: 
+    start_time: 2013-09-18 02:00:00.000000000 Z
+    end_time: 2013-09-18 04:00:00.000000000 Z
+    google_id: _65132g9i8l348b9n64q4ab9k8go30ba26so44ba268s42ha56l238g9n60
+    created_at: 2014-01-16 16:57:02.593355000 Z
+    updated_at: 2014-01-16 17:19:34.516194000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 14
+    name: Manhattan GMAT Workshop
+    description: 
+    start_time: 2013-09-19 02:30:00.000000000 Z
+    end_time: 2013-09-19 04:30:00.000000000 Z
+    google_id: qqn6on40vdul21rigsudfvm65o
+    created_at: 2014-01-16 16:57:02.596343000 Z
+    updated_at: 2014-01-16 17:19:34.519198000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 15
+    name: ! '[IN] Cheeseboard'
+    description: 
+    start_time: 2013-09-20 01:00:00.000000000 Z
+    end_time: 2013-09-20 03:00:00.000000000 Z
+    google_id: 7c7crg4b3id435tnokvkh5oqmo
+    created_at: 2014-01-16 16:57:02.599345000 Z
+    updated_at: 2014-01-16 17:19:34.523210000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 16
+    name: ! '[SO] 1st Social Event'
+    description: 
+    start_time: 2013-09-21 00:15:00.000000000 Z
+    end_time: 2013-09-21 04:15:00.000000000 Z
+    google_id: vl6ki9btcs6o7c8drhcjdudgss
+    created_at: 2014-01-16 16:57:02.602347000 Z
+    updated_at: 2014-01-16 17:19:34.527215000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 17
+    name: ! '[PD] Resume Critique'
+    description: 
+    start_time: 2013-09-25 02:00:00.000000000 Z
+    end_time: 2013-09-25 04:00:00.000000000 Z
+    google_id: qdrn0ejhdbne9a6ma25fdkggr0
+    created_at: 2014-01-16 16:57:02.634367000 Z
+    updated_at: 2014-01-16 17:19:34.532216000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 19
+    name: ! '[IN] Karaoke Night'
+    description: 
+    start_time: 2013-09-29 02:00:00.000000000 Z
+    end_time: 2013-09-29 04:00:00.000000000 Z
+    google_id: 0srtfj8vc9lsbeit8fpmmguh6s
+    created_at: 2014-01-16 16:57:02.651409000 Z
+    updated_at: 2014-01-16 17:19:34.539221000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 20
+    name: ! '[CS] Playland Not-At-The-Beach'
+    description: 
+    start_time: 2013-09-29 17:00:00.000000000 Z
+    end_time: 2013-09-30 00:00:00.000000000 Z
+    google_id: _750j4c9h89230b9i6so3eb9k8crk8ba1652kcba38l0jgdi56d0j4d9o68
+    created_at: 2014-01-16 16:57:02.655765000 Z
+    updated_at: 2014-01-16 17:19:34.544226000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 21
+    name: Second General Meeting
+    description: 
+    start_time: 2013-10-04 02:00:00.000000000 Z
+    end_time: 2013-10-04 04:00:00.000000000 Z
+    google_id: cjs5t8c5b6tepe4ahsrdapugrg
+    created_at: 2014-01-16 16:57:02.658769000 Z
+    updated_at: 2014-01-16 17:19:34.548245000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 22
+    name: Washington State Game
+    description: 
+    start_time: 2013-10-05 00:00:00.000000000 Z
+    end_time: 2013-10-06 00:00:00.000000000 Z
+    google_id: b02k1513lqu9matau2iji1oak0
+    created_at: 2014-01-16 16:57:02.662771000 Z
+    updated_at: 2014-01-16 17:19:34.552033000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 23
+    name: ! '[IN] Big C Hike'
+    description: 
+    start_time: 2013-10-05 00:45:00.000000000 Z
+    end_time: 2013-10-05 02:15:00.000000000 Z
+    google_id: cm1i3rlv01ens7vrjlrucoqqeg
+    created_at: 2014-01-16 16:57:02.665774000 Z
+    updated_at: 2014-01-16 17:19:34.555880000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 24
+    name: ! '[OF] Officer Meeting #4'
+    description: 
+    start_time: 2013-10-06 17:00:00.000000000 Z
+    end_time: 2013-10-06 19:00:00.000000000 Z
+    google_id: _710k6e1m8h1k4b9m8h14cb9k64pjeb9o712jaba28oq4aci184ojec9h8c
+    created_at: 2014-01-16 16:57:02.668956000 Z
+    updated_at: 2014-01-16 17:19:34.559884000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 25
+    name: ! '[EX] Alumni Lunch'
+    description: 
+    start_time: 2013-10-06 19:00:00.000000000 Z
+    end_time: 2013-10-06 21:00:00.000000000 Z
+    google_id: s68gaak1mpbvs3as9uqfrkc0f8
+    created_at: 2014-01-16 16:57:02.671959000 Z
+    updated_at: 2014-01-16 17:19:34.563939000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 26
+    name: ! '[FI] Finance Career Speaker Panel'
+    description: 
+    start_time: 2013-10-08 02:00:00.000000000 Z
+    end_time: 2013-10-08 04:00:00.000000000 Z
+    google_id: vpiuuh02ekiapvjsru0er415jg
+    created_at: 2014-01-16 16:57:02.674961000 Z
+    updated_at: 2014-01-16 17:19:34.567944000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 28
+    name: ! '[SO] Members Retreat'
+    description: 
+    start_time: 2013-10-11 00:00:00.000000000 Z
+    end_time: 2013-10-14 00:00:00.000000000 Z
+    google_id: ij2efpcmfcnn6vccphkjb28vr0
+    created_at: 2014-01-16 16:57:02.681897000 Z
+    updated_at: 2014-01-16 17:19:34.575250000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 29
+    name: ! '[EX] Workshop 1: Career Advisory Panel'
+    description: 
+    start_time: 2013-10-15 02:00:00.000000000 Z
+    end_time: 2013-10-15 04:00:00.000000000 Z
+    google_id: 44pfmkb55ogt9s3ukmlur4ieo8
+    created_at: 2014-01-16 16:57:02.684898000 Z
+    updated_at: 2014-01-16 17:19:34.579718000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 30
+    name: ! '[CO] Case Workshops'
+    description: 
+    start_time: 2013-10-18 02:00:00.000000000 Z
+    end_time: 2013-10-18 05:00:00.000000000 Z
+    google_id: cmfnkpjnij4ltpfqgiha5gbv34
+    created_at: 2014-01-16 16:57:02.687900000 Z
+    updated_at: 2014-01-16 17:19:34.583722000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 31
+    name: Oregon State Game
+    description: 
+    start_time: 2013-10-19 00:00:00.000000000 Z
+    end_time: 2013-10-20 00:00:00.000000000 Z
+    google_id: oq4t6i9p0ot9tbqkfbg7o49ofg
+    created_at: 2014-01-16 16:57:02.690901000 Z
+    updated_at: 2014-01-16 17:19:34.587150000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 32
+    name: ! '[IN] Zombie Tag'
+    description: 
+    start_time: 2013-10-19 02:00:00.000000000 Z
+    end_time: 2013-10-19 04:00:00.000000000 Z
+    google_id: 6uudbj8t7t55k7bv1chhr85cjs
+    created_at: 2014-01-16 16:57:02.694905000 Z
+    updated_at: 2014-01-16 17:19:34.591154000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 33
+    name: Leaders in Investment Banking
+    description: 
+    start_time: 2013-10-19 16:00:00.000000000 Z
+    end_time: 2013-10-19 20:00:00.000000000 Z
+    google_id: q8s0rd4a17904vel2kq6mic47k
+    created_at: 2014-01-16 16:57:02.698304000 Z
+    updated_at: 2014-01-16 17:19:34.596157000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 34
+    name: ! '[TT] Meeting'
+    description: 
+    start_time: 2013-10-19 20:00:00.000000000 Z
+    end_time: 2013-10-19 22:00:00.000000000 Z
+    google_id: m70uqp09eb0oc7nhok5haju08k_20131019T200000Z
+    created_at: 2014-01-16 16:57:02.700862000 Z
+    updated_at: 2014-01-16 17:19:34.627972000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 36
+    name: SFBLC Case Comp Tryouts
+    description: 
+    start_time: 2013-10-20 20:00:00.000000000 Z
+    end_time: 2013-10-20 22:30:00.000000000 Z
+    google_id: _74sj4dpk8gsk6ba684q42b9k6ook8b9o892jcb9m6d330gpn6p1jeda460
+    created_at: 2014-01-16 16:57:02.706868000 Z
+    updated_at: 2014-01-16 17:19:34.636976000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 37
+    name: ABA/PBL - NEXUS
+    description: 
+    start_time: 2013-10-23 02:00:00.000000000 Z
+    end_time: 2013-10-23 04:00:00.000000000 Z
+    google_id: ug4o6bahsqeo543428uu6qdbcc
+    created_at: 2014-01-16 16:57:02.710871000 Z
+    updated_at: 2014-01-16 17:19:34.640149000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 38
+    name: Faculty Dinner - Professor Terry Johnson
+    description: 
+    start_time: 2013-10-26 01:30:00.000000000 Z
+    end_time: 2013-10-26 03:30:00.000000000 Z
+    google_id: s0udqh19pcqgum4m95akb32mcc
+    created_at: 2014-01-16 16:57:02.714565000 Z
+    updated_at: 2014-01-16 17:19:34.644155000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 39
+    name: ! '[CS] Berkeley Project'
+    description: 
+    start_time: 2013-10-26 15:30:00.000000000 Z
+    end_time: 2013-10-26 23:00:00.000000000 Z
+    google_id: vr8u0l7tanpb8hon8buujl9jgs
+    created_at: 2014-01-16 16:57:02.717480000 Z
+    updated_at: 2014-01-16 17:19:34.648621000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 40
+    name: PD Open Committee Workshop for Pre-Haas
+    description: 
+    start_time: 2013-10-28 00:00:00.000000000 Z
+    end_time: 2013-10-28 02:00:00.000000000 Z
+    google_id: _8l13edhg6d13cb9n8oo46b9k6kojcba26t13cb9h84p3aha460r36chl70
+    created_at: 2014-01-16 16:57:02.720704000 Z
+    updated_at: 2014-01-16 17:19:34.652626000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 41
+    name: ! '[EX] Workshop 2: Professional Slide Deck and Presentation'
+    description: 
+    start_time: 2013-10-29 02:00:00.000000000 Z
+    end_time: 2013-10-29 04:00:00.000000000 Z
+    google_id: kl59ctkct7ttsrlbfmacr99ki4
+    created_at: 2014-01-16 16:57:02.723722000 Z
+    updated_at: 2014-01-16 17:19:34.656629000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 42
+    name: Third General Meeting
+    description: 
+    start_time: 2013-10-30 02:00:00.000000000 Z
+    end_time: 2013-10-30 04:00:00.000000000 Z
+    google_id: to46c6taq0iqlakit12qhq31e4
+    created_at: 2014-01-16 16:57:02.726723000 Z
+    updated_at: 2014-01-16 17:19:34.660632000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 43
+    name: Arizona Game
+    description: 
+    start_time: 2013-11-02 00:00:00.000000000 Z
+    end_time: 2013-11-03 00:00:00.000000000 Z
+    google_id: va9ctq9ri451pp2om8i2cra28k
+    created_at: 2014-01-16 16:57:02.730525000 Z
+    updated_at: 2014-01-16 17:19:34.665113000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 45
+    name: ! 'Officer Meeting #6'
+    description: 
+    start_time: 2013-11-03 18:30:00.000000000 Z
+    end_time: 2013-11-03 20:30:00.000000000 Z
+    google_id: _6gsj0c236d0jcb9m6l1k4b9k6p23ib9o8534cba168p38c9i6cs4aga688
+    created_at: 2014-01-16 16:57:02.780937000 Z
+    updated_at: 2014-01-16 17:19:34.672119000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 46
+    name: ! '[EX] Recruitment Workshop: Investment Banking'
+    description: 
+    start_time: 2013-11-08 03:00:00.000000000 Z
+    end_time: 2013-11-08 04:30:00.000000000 Z
+    google_id: p4ufnqdqju4o3ibl72t8jbps10
+    created_at: 2014-01-16 16:57:02.784719000 Z
+    updated_at: 2014-01-16 17:19:34.676122000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 47
+    name: USC Game
+    description: 
+    start_time: 2013-11-09 00:00:00.000000000 Z
+    end_time: 2013-11-10 00:00:00.000000000 Z
+    google_id: 085ahuac1ard749r128ejm3hm4
+    created_at: 2014-01-16 16:57:02.787912000 Z
+    updated_at: 2014-01-16 17:19:34.681083000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 48
+    name: State Fall Business Leadership Conference
+    description: 
+    start_time: 2013-11-09 00:00:00.000000000 Z
+    end_time: 2013-11-11 00:00:00.000000000 Z
+    google_id: 2356r7dq074m2eagomsbdtm49o
+    created_at: 2014-01-16 16:57:02.791915000 Z
+    updated_at: 2014-01-16 17:19:34.685086000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 49
+    name: ! '[EX] SFBLC Poster Making'
+    description: 
+    start_time: 2013-11-09 03:00:00.000000000 Z
+    end_time: 2013-11-09 05:00:00.000000000 Z
+    google_id: r8qoa80harigc0iisospi58ab4
+    created_at: 2014-01-16 16:57:02.795919000 Z
+    updated_at: 2014-01-16 17:19:34.689098000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 51
+    name: ! '[PB] Photoshop Workshop'
+    description: 
+    start_time: 2013-11-13 03:00:00.000000000 Z
+    end_time: 2013-11-13 06:00:00.000000000 Z
+    google_id: ntglcrvvqjrf5rrm9hcm3h38ak
+    created_at: 2014-01-16 16:57:02.802436000 Z
+    updated_at: 2014-01-16 17:19:34.698104000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 52
+    name: Faculty Dinner - Professor Frank Schultz
+    description: 
+    start_time: 2013-11-15 03:00:00.000000000 Z
+    end_time: 2013-11-15 05:00:00.000000000 Z
+    google_id: ntbmfmn8gu06tvu0g50kuat41k
+    created_at: 2014-01-16 16:57:02.805438000 Z
+    updated_at: 2014-01-16 17:19:34.701106000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 53
+    name: ! '[SO] Disney Gone Wild!'
+    description: 
+    start_time: 2013-11-16 02:55:00.000000000 Z
+    end_time: 2013-11-16 05:00:00.000000000 Z
+    google_id: 5chmg210t2hp2o8283bcfdqdbs
+    created_at: 2014-01-16 16:57:02.808440000 Z
+    updated_at: 2014-01-16 17:19:34.705128000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 54
+    name: ! 'Exec Workshop #4: Excel'
+    description: 
+    start_time: 2013-11-16 19:00:00.000000000 Z
+    end_time: 2013-11-16 20:15:00.000000000 Z
+    google_id: _6os36c216l0k4b9g6sqjab9k6d0kaba18ksjcba68cr44e1i6l2jeh9j74
+    created_at: 2014-01-16 16:57:02.812443000 Z
+    updated_at: 2014-01-16 17:19:34.709111000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 55
+    name: ! 'Officer Meeting #7'
+    description: 
+    start_time: 2013-11-17 18:30:00.000000000 Z
+    end_time: 2013-11-17 20:30:00.000000000 Z
+    google_id: _8p33ad9k6l1kaba48l344b9k6gr4aba264sj6ba38d1kae9p8csjicq38k
+    created_at: 2014-01-16 16:57:02.815578000 Z
+    updated_at: 2014-01-16 17:19:34.714116000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 57
+    name: Faculty Dinner - Professor Cristina Banks
+    description: 
+    start_time: 2013-11-21 03:00:00.000000000 Z
+    end_time: 2013-11-21 05:00:00.000000000 Z
+    google_id: plft3qq73et638uv4cc9lsim8c
+    created_at: 2014-01-16 16:57:02.820582000 Z
+    updated_at: 2014-01-16 17:19:34.721119000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 58
+    name: Fourth General Meeting
+    description: 
+    start_time: 2013-11-22 03:00:00.000000000 Z
+    end_time: 2013-11-22 05:00:00.000000000 Z
+    google_id: 5j3o4gvf7pt54sbtt1r2oac2io
+    created_at: 2014-01-16 16:57:02.823445000 Z
+    updated_at: 2014-01-16 17:19:34.752903000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 59
+    name: ! '[FI] Finance Open Workshop'
+    description: 
+    start_time: 2013-11-23 00:45:00.000000000 Z
+    end_time: 2013-11-23 02:00:00.000000000 Z
+    google_id: pp3apbnbu78sgs1osuhgkqp580
+    created_at: 2014-01-16 16:57:02.826453000 Z
+    updated_at: 2014-01-16 17:19:34.771964000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 60
+    name: ! '[CS] Small Actions, Big Impact'
+    description: 
+    start_time: 2013-11-23 19:00:00.000000000 Z
+    end_time: 2013-11-23 22:00:00.000000000 Z
+    google_id: mc0r5f8cdq8rgj043ica2b8e4k
+    created_at: 2014-01-16 16:57:02.830455000 Z
+    updated_at: 2014-01-16 17:19:34.778663000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 61
+    name: ! '[TT] Meeting'
+    description: 
+    start_time: 2013-11-23 21:00:00.000000000 Z
+    end_time: 2013-11-23 23:00:00.000000000 Z
+    google_id: m70uqp09eb0oc7nhok5haju08k_20131123T210000Z
+    created_at: 2014-01-16 16:57:02.833457000 Z
+    updated_at: 2014-01-16 17:19:34.782768000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 62
+    name: ! '[PD] Who Wants to Be the Next Billionaire'
+    description: 
+    start_time: 2013-11-26 03:00:00.000000000 Z
+    end_time: 2013-11-26 05:00:00.000000000 Z
+    google_id: 46te7vbeqd06suufm2kio9qslg
+    created_at: 2014-01-16 16:57:02.835457000 Z
+    updated_at: 2014-01-16 17:19:34.788515000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 1
+    name: First Day of Instruction
+    description: 
+    start_time: 2013-08-29 00:00:00.000000000 Z
+    end_time: 2013-08-30 00:00:00.000000000 Z
+    google_id: cb869ck6ckadah9igme5sdcdc8
+    created_at: 2014-01-16 16:57:02.305104000 Z
+    updated_at: 2014-01-16 17:19:34.379935000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 6
+    name: CM Interviews
+    description: 
+    start_time: 2013-09-07 00:00:00.000000000 Z
+    end_time: 2013-09-09 00:00:00.000000000 Z
+    google_id: 5ovakk7mr6keaum3j8jfp3fn18
+    created_at: 2014-01-16 16:57:02.570341000 Z
+    updated_at: 2014-01-16 17:19:34.438104000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 12
+    name: ! '[EX] Professional Day'
+    description: 
+    start_time: 2013-09-14 17:30:00.000000000 Z
+    end_time: 2013-09-14 22:00:00.000000000 Z
+    google_id: gp8f6ch5icq4hc04cosodntees
+    created_at: 2014-01-16 16:57:02.589354000 Z
+    updated_at: 2014-01-16 17:19:34.512207000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 18
+    name: Box.com Intern Open House
+    description: 
+    start_time: 2013-09-27 02:00:00.000000000 Z
+    end_time: 2013-09-27 05:00:00.000000000 Z
+    google_id: _88q4ch2374ojib9l712j2b9k6h23ib9p6sp48ba1610kae9k8crjicpo74
+    created_at: 2014-01-16 16:57:02.642229000 Z
+    updated_at: 2014-01-16 17:19:34.536220000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 27
+    name: Faculty Dinner - Professor Clayton Critcher
+    description: 
+    start_time: 2013-10-10 02:00:00.000000000 Z
+    end_time: 2013-10-10 04:00:00.000000000 Z
+    google_id: ipu2kqk147kkrqg8g2ovf9hg34
+    created_at: 2014-01-16 16:57:02.678876000 Z
+    updated_at: 2014-01-16 17:19:34.570946000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 35
+    name: ! 'Officer Meeting #5'
+    description: 
+    start_time: 2013-10-20 17:30:00.000000000 Z
+    end_time: 2013-10-20 19:30:00.000000000 Z
+    google_id: _8gq32chm70s34ba564sjeb9k8d2jgb9o88s3eb9l64pjaghm64q30c1g6g
+    created_at: 2014-01-16 16:57:02.703865000 Z
+    updated_at: 2014-01-16 17:19:34.632975000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 44
+    name: ! '[TT] Meeting'
+    description: 
+    start_time: 2013-11-02 20:00:00.000000000 Z
+    end_time: 2013-11-02 22:00:00.000000000 Z
+    google_id: m70uqp09eb0oc7nhok5haju08k_20131102T200000Z
+    created_at: 2014-01-16 16:57:02.751616000 Z
+    updated_at: 2014-01-16 17:19:34.669117000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 50
+    name: ! '[TT] Meeting'
+    description: 
+    start_time: 2013-11-10 03:00:00.000000000 Z
+    end_time: 2013-11-10 05:00:00.000000000 Z
+    google_id: m70uqp09eb0oc7nhok5haju08k_20131109T210000Z
+    created_at: 2014-01-16 16:57:02.798922000 Z
+    updated_at: 2014-01-16 17:19:34.693102000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 56
+    name: Southern Utah Basketball Concessions
+    description: 
+    start_time: 2013-11-19 01:00:00.000000000 Z
+    end_time: 2013-11-19 06:00:00.000000000 Z
+    google_id: _68o34e9o6l232b9n8p0jgb9k64sj8ba288qjeb9n8gs3ee21752k4g9i74
+    created_at: 2014-01-16 16:57:02.817586000 Z
+    updated_at: 2014-01-16 17:19:34.718116000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 63
+    name: ! '[FI] The Mystery of the Dark Investor'
+    description: 
+    start_time: 2013-11-27 03:00:00.000000000 Z
+    end_time: 2013-11-27 05:00:00.000000000 Z
+    google_id: _8os32c1p64r44ba561336b9k6h336ba1852k6b9l70sjeh9n84qjccpm6s
+    created_at: 2014-01-16 16:57:02.838726000 Z
+    updated_at: 2014-01-16 17:19:34.792408000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 64
+    name: ! '[EX] Workshop #5: Leadership and Team Management '
+    description: 
+    start_time: 2013-12-05 03:00:00.000000000 Z
+    end_time: 2013-12-05 05:00:00.000000000 Z
+    google_id: jnrueq2tokl3sqp29bvd2qco38
+    created_at: 2014-01-16 16:57:02.842728000 Z
+    updated_at: 2014-01-16 17:19:34.796410000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 65
+    name: ! '[EX] PBL Apprentice Challenge'
+    description: 
+    start_time: 2013-12-06 03:00:00.000000000 Z
+    end_time: 2013-12-06 06:00:00.000000000 Z
+    google_id: 7a0tgsdotpsuo6e4g32aqn3f4o
+    created_at: 2014-01-16 16:57:02.846730000 Z
+    updated_at: 2014-01-16 17:19:34.800216000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 66
+    name: ! 'Chair Interviews '
+    description: 
+    start_time: 2013-12-07 00:00:00.000000000 Z
+    end_time: 2013-12-09 00:00:00.000000000 Z
+    google_id: _6gr36gph64rj4b9o6914cb9k60rk8b9p8oq3iba46ss34hi488o46h1o6o
+    created_at: 2014-01-16 16:57:02.849733000 Z
+    updated_at: 2014-01-16 17:19:34.803219000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 67
+    name: ! '[EX] Alumni Luncheon'
+    description: 
+    start_time: 2013-12-07 20:00:00.000000000 Z
+    end_time: 2013-12-07 22:00:00.000000000 Z
+    google_id: 5r1j7osotjumdphdu2tflvb8nc
+    created_at: 2014-01-16 16:57:02.852734000 Z
+    updated_at: 2014-01-16 17:19:34.806480000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 68
+    name: ! '[TT] Meeting'
+    description: 
+    start_time: 2013-12-07 21:00:00.000000000 Z
+    end_time: 2013-12-07 23:00:00.000000000 Z
+    google_id: m70uqp09eb0oc7nhok5haju08k_20131207T210000Z
+    created_at: 2014-01-16 16:57:02.855737000 Z
+    updated_at: 2014-01-16 17:19:34.810489000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 69
+    name: ! '[SO] End-of-the-Semester Banquet'
+    description: 
+    start_time: 2013-12-09 01:30:00.000000000 Z
+    end_time: 2013-12-09 05:30:00.000000000 Z
+    google_id: hqot2vicf8uhm3qesspahca5e4
+    created_at: 2014-01-16 16:57:02.858739000 Z
+    updated_at: 2014-01-16 17:19:34.814486000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 70
+    name: ! '[PBL][EX] Transition'
+    description: 
+    start_time: 2013-12-09 23:00:00.000000000 Z
+    end_time: 2013-12-10 01:00:00.000000000 Z
+    google_id: bo8r20kd0np45djitbcl3m0npc
+    created_at: 2014-01-16 16:57:02.861740000 Z
+    updated_at: 2014-01-16 17:19:34.818437000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 71
+    name: Yearbook Signing Party
+    description: 
+    start_time: 2013-12-12 06:00:00.000000000 Z
+    end_time: 2013-12-12 10:00:00.000000000 Z
+    google_id: _6op30c1g6p1jcba46t2k6b9k851k2b9o8913ab9l8krk4h2470r48dpp8o
+    created_at: 2014-01-16 16:57:02.865515000 Z
+    updated_at: 2014-01-16 17:19:34.820893000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 72
+    name: MLK Day - Academic Holiday
+    description: 
+    start_time: 2014-01-20 00:00:00.000000000 Z
+    end_time: 2014-01-21 00:00:00.000000000 Z
+    google_id: 4u0lptpn79uen4t6qkram0f0ss
+    created_at: 2014-01-16 16:57:02.894536000 Z
+    updated_at: 2014-01-16 17:19:34.824898000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 95
+    name: ! 'Path to Success: Landing an Internship'
+    description: 
+    start_time: 2010-01-29 03:00:00.000000000 Z
+    end_time: 2010-01-29 04:00:00.000000000 Z
+    google_id: 97s4v6j3ls44te2f6ek26mr66s
+    created_at: 2014-01-21 23:25:42.916261000 Z
+    updated_at: 2014-01-21 23:25:42.916261000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 74
+    name: PBL 1st General Meeting
+    description: 
+    start_time: 2014-01-29 03:00:00.000000000 Z
+    end_time: 2014-01-29 05:00:00.000000000 Z
+    google_id: 6kkcdcqjefn1lm13sephvcl9d4
+    created_at: 2014-01-20 17:08:41.786365000 Z
+    updated_at: 2014-01-20 17:08:41.786365000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 75
+    name: ! '[PD] Alumni Speaker Panel'
+    description: 
+    start_time: 2014-01-31 03:30:00.000000000 Z
+    end_time: 2014-01-31 05:30:00.000000000 Z
+    google_id: nb0rmcs7epi0s8foomopl63kus
+    created_at: 2014-01-20 17:08:41.949949000 Z
+    updated_at: 2014-01-20 17:08:41.949949000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 76
+    name: ! '[SO] New Member''s Mixer'
+    description: 
+    start_time: 2014-02-01 02:00:00.000000000 Z
+    end_time: 2014-02-01 05:00:00.000000000 Z
+    google_id: di1gvg482278hv92ufnkq4j1jk
+    created_at: 2014-01-20 17:08:41.952951000 Z
+    updated_at: 2014-01-20 17:08:41.952951000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 77
+    name: ! '[OF] CM Interviews'
+    description: 
+    start_time: 2014-02-01 17:00:00.000000000 Z
+    end_time: 2014-02-03 02:00:00.000000000 Z
+    google_id: hueij17as564kpu8eblmge5has
+    created_at: 2014-01-20 17:08:41.954952000 Z
+    updated_at: 2014-01-20 17:08:41.954952000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 78
+    name: ! '[IN] Member''s Kickoff!'
+    description: 
+    start_time: 2014-02-05 03:00:00.000000000 Z
+    end_time: 2014-02-05 05:00:00.000000000 Z
+    google_id: d56tcjvgpjp4vf6dll7quutufo
+    created_at: 2014-01-20 17:08:41.957954000 Z
+    updated_at: 2014-01-20 17:08:41.957954000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 79
+    name: CM Initiation
+    description: 
+    start_time: 2014-02-08 02:00:00.000000000 Z
+    end_time: 2014-02-08 05:00:00.000000000 Z
+    google_id: 9tqk5ucghbde86gbm2e9s0eivo
+    created_at: 2014-01-20 17:08:41.959955000 Z
+    updated_at: 2014-01-20 17:08:41.959955000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 80
+    name: President's Day - Academic Holiday
+    description: 
+    start_time: 2014-02-17 00:00:00.000000000 Z
+    end_time: 2014-02-18 00:00:00.000000000 Z
+    google_id: 95rneq11jo6rcjfs6ha83tbnsg
+    created_at: 2014-01-20 17:08:41.962958000 Z
+    updated_at: 2014-01-20 17:08:41.962958000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 81
+    name: Add/drop Deadline
+    description: 
+    start_time: 2014-02-21 00:00:00.000000000 Z
+    end_time: 2014-02-22 00:00:00.000000000 Z
+    google_id: umbsthq53jjs2pn3e2maopup9c
+    created_at: 2014-01-20 17:08:41.965625000 Z
+    updated_at: 2014-01-20 17:08:41.965625000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 82
+    name: Haas Decisions
+    description: 
+    start_time: 2014-02-21 00:00:00.000000000 Z
+    end_time: 2014-02-22 00:00:00.000000000 Z
+    google_id: 07etasfd5b15j4afdov68fdoqs
+    created_at: 2014-01-20 17:08:41.968625000 Z
+    updated_at: 2014-01-20 17:08:41.968625000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 83
+    name: Spring Break
+    description: 
+    start_time: 2014-03-24 00:00:00.000000000 Z
+    end_time: 2014-03-29 00:00:00.000000000 Z
+    google_id: 8gsitic2ejsdua0dbl2v2785a4
+    created_at: 2014-01-20 17:08:41.970626000 Z
+    updated_at: 2014-01-20 17:08:41.970626000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 73
+    name: Spring 2014 Calapalooza!
+    description: 
+    start_time: 2014-01-21 20:00:00.000000000 Z
+    end_time: 2014-01-22 02:00:00.000000000 Z
+    google_id: kc7tpjj7vpml1bhim06t6mujjk
+    created_at: 2014-01-16 16:57:02.897536000 Z
+    updated_at: 2014-01-21 06:29:39.344576000 Z
+    semester_id: 1
+- !ruby/object:Event
+  attributes:
+    id: 84
+    name: Officer Check-in
+    description: 
+    start_time: 2010-01-05 00:00:00.000000000 Z
+    end_time: 2010-01-06 00:00:00.000000000 Z
+    google_id: 16a8m3flaf3ujj707a8ed0vn6o
+    created_at: 2014-01-21 23:25:42.469574000 Z
+    updated_at: 2014-01-21 23:25:42.469574000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 85
+    name: Calendar Setting
+    description: 
+    start_time: 2010-01-07 06:00:00.000000000 Z
+    end_time: 2010-01-07 07:30:00.000000000 Z
+    google_id: svs2j8nagrsuindcf4ppi540qs
+    created_at: 2014-01-21 23:25:42.884149000 Z
+    updated_at: 2014-01-21 23:25:42.884149000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 86
+    name: Executive Check-in
+    description: 
+    start_time: 2010-01-10 00:00:00.000000000 Z
+    end_time: 2010-01-11 00:00:00.000000000 Z
+    google_id: 6n4r3dmt5n6fngm17nb3m20jk0
+    created_at: 2014-01-21 23:25:42.888148000 Z
+    updated_at: 2014-01-21 23:25:42.888148000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 87
+    name: SPRING SEMESTER BEGINS
+    description: 
+    start_time: 2010-01-12 00:00:00.000000000 Z
+    end_time: 2010-01-13 00:00:00.000000000 Z
+    google_id: e3hvbc2eln9qolfc3v0ksom3ho
+    created_at: 2014-01-21 23:25:42.891917000 Z
+    updated_at: 2014-01-21 23:25:42.891917000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 88
+    name: Executive Retreat
+    description: 
+    start_time: 2010-01-13 00:00:00.000000000 Z
+    end_time: 2010-01-14 00:00:00.000000000 Z
+    google_id: 00pmc58hgbg7jsf1b0kmemjdcg
+    created_at: 2014-01-21 23:25:42.894613000 Z
+    updated_at: 2014-01-21 23:25:42.894613000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 89
+    name: Officers' Retreat
+    description: 
+    start_time: 2010-01-15 23:30:00.000000000 Z
+    end_time: 2010-01-17 20:00:00.000000000 Z
+    google_id: rg7d3u677s9f5iudmn51162tqg
+    created_at: 2014-01-21 23:25:42.897094000 Z
+    updated_at: 2014-01-21 23:25:42.897094000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 90
+    name: Professional Portraits Photoshoot
+    description: 
+    start_time: 2010-01-18 18:00:00.000000000 Z
+    end_time: 2010-01-18 20:00:00.000000000 Z
+    google_id: ml6d15jm3taebqt4adv85g8c70
+    created_at: 2014-01-21 23:25:42.900096000 Z
+    updated_at: 2014-01-21 23:25:42.900096000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 91
+    name: INSTRUCTION BEGINS
+    description: 
+    start_time: 2010-01-19 00:00:00.000000000 Z
+    end_time: 2010-01-20 00:00:00.000000000 Z
+    google_id: 6hqsnq1fov3ekmfgb65uv8vrq0
+    created_at: 2014-01-21 23:25:42.904099000 Z
+    updated_at: 2014-01-21 23:25:42.904099000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 92
+    name: ! '[Fin] Concessions'
+    description: 
+    start_time: 2010-01-22 00:30:00.000000000 Z
+    end_time: 2010-01-22 06:00:00.000000000 Z
+    google_id: hke4jc37rj24td0irouknmu48c
+    created_at: 2014-01-21 23:25:42.908100000 Z
+    updated_at: 2014-01-21 23:25:42.908100000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 93
+    name: ! 'Officers'' Meeting #1'
+    description: 
+    start_time: 2010-01-23 03:00:00.000000000 Z
+    end_time: 2010-01-23 05:00:00.000000000 Z
+    google_id: m12iqr4ci6r347o1je72es9330
+    created_at: 2014-01-21 23:25:42.910102000 Z
+    updated_at: 2014-01-21 23:25:42.910102000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 94
+    name: First General Meeting
+    description: 
+    start_time: 2010-01-28 03:00:00.000000000 Z
+    end_time: 2010-01-28 04:00:00.000000000 Z
+    google_id: q6nlpm0dr4pofatbq72ovseg2c
+    created_at: 2014-01-21 23:25:42.913571000 Z
+    updated_at: 2014-01-21 23:25:42.913571000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 96
+    name: Committee Member Interviews
+    description: 
+    start_time: 2010-01-30 00:00:00.000000000 Z
+    end_time: 2010-02-01 00:00:00.000000000 Z
+    google_id: gnr1ujgerjcalu0d81u8o41qn8
+    created_at: 2014-01-21 23:25:42.919669000 Z
+    updated_at: 2014-01-21 23:25:42.919669000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 97
+    name: Blakes Mixer
+    description: 
+    start_time: 2010-01-30 03:00:00.000000000 Z
+    end_time: 2010-01-30 06:00:00.000000000 Z
+    google_id: cgutgslphu5td681vqb4e8jsk8
+    created_at: 2014-01-21 23:25:42.923234000 Z
+    updated_at: 2014-01-21 23:25:42.923234000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 98
+    name: Committee Results Announced
+    description: 
+    start_time: 2010-02-03 00:00:00.000000000 Z
+    end_time: 2010-02-04 00:00:00.000000000 Z
+    google_id: vbbnlbhdaep5odpn82hu0c7png
+    created_at: 2014-01-21 23:25:42.926157000 Z
+    updated_at: 2014-01-21 23:25:42.926157000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 99
+    name: ! '[IN] Internal Networking Kickoff'
+    description: 
+    start_time: 2010-02-03 03:00:00.000000000 Z
+    end_time: 2010-02-03 05:00:00.000000000 Z
+    google_id: i2s2deusb5bkhlcbrf6p1lotbs
+    created_at: 2014-01-21 23:25:42.930038000 Z
+    updated_at: 2014-01-21 23:25:42.930038000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 100
+    name: ! '[IN] Lunch at Tako Sushi'
+    description: 
+    start_time: 2010-02-03 20:15:00.000000000 Z
+    end_time: 2010-02-03 21:15:00.000000000 Z
+    google_id: tnele6nr0a73cptjpect2itv6c
+    created_at: 2014-01-21 23:25:42.932040000 Z
+    updated_at: 2014-01-21 23:25:42.932040000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 101
+    name: ! '[Fin] Concessions'
+    description: 
+    start_time: 2010-02-05 00:30:00.000000000 Z
+    end_time: 2010-02-05 06:00:00.000000000 Z
+    google_id: 01dhr8o2sf2b4henjjf1nd9hro
+    created_at: 2014-01-21 23:25:42.936068000 Z
+    updated_at: 2014-01-21 23:25:42.936068000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 102
+    name: ! '[FR] Dinner w/ Professor Schultz'
+    description: 
+    start_time: 2010-02-05 02:30:00.000000000 Z
+    end_time: 2010-02-05 04:30:00.000000000 Z
+    google_id: 1qir2r5pmj5v2229f2gtgi9evg
+    created_at: 2014-01-21 23:25:42.939470000 Z
+    updated_at: 2014-01-21 23:25:42.939470000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 103
+    name: CM Initiation Banquet
+    description: 
+    start_time: 2010-02-07 02:30:00.000000000 Z
+    end_time: 2010-02-07 05:00:00.000000000 Z
+    google_id: f8pu2srcmejmkltrkvcv1rjfc0
+    created_at: 2014-01-21 23:25:42.942054000 Z
+    updated_at: 2014-01-21 23:25:42.942054000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 104
+    name: ! 'Officers'' Meeting #2'
+    description: 
+    start_time: 2010-02-09 03:00:00.000000000 Z
+    end_time: 2010-02-09 04:00:00.000000000 Z
+    google_id: 11uehp9t6kv1jdq1mn5q5crfm8
+    created_at: 2014-01-21 23:25:42.944940000 Z
+    updated_at: 2014-01-21 23:25:42.944940000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 105
+    name: ! '[Fin] Concessions'
+    description: 
+    start_time: 2010-02-12 00:30:00.000000000 Z
+    end_time: 2010-02-12 06:00:00.000000000 Z
+    google_id: qmpvctrmkai8l8fbpp9mucrfp4
+    created_at: 2014-01-21 23:25:42.947646000 Z
+    updated_at: 2014-01-21 23:25:42.947646000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 106
+    name: ! '[BizTech] Resume Formatting Workshop'
+    description: 
+    start_time: 2010-02-12 03:00:00.000000000 Z
+    end_time: 2010-02-12 04:00:00.000000000 Z
+    google_id: ebk4cmhe5ns8gn9n3tm382ur8s
+    created_at: 2014-01-21 23:25:42.949710000 Z
+    updated_at: 2014-01-21 23:25:42.949710000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 107
+    name: ! '[IN] Workout at RSF'
+    description: 
+    start_time: 2010-02-12 18:00:00.000000000 Z
+    end_time: 2010-02-12 23:00:00.000000000 Z
+    google_id: rbgf6jggs7qv3lffjbccubi7c4
+    created_at: 2014-01-21 23:25:42.952714000 Z
+    updated_at: 2014-01-21 23:25:42.952714000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 108
+    name: ! '[CS] Greater Richmond Interfaith Program (GRIP)'
+    description: 
+    start_time: 2010-02-13 18:00:00.000000000 Z
+    end_time: 2010-02-13 22:00:00.000000000 Z
+    google_id: 82q0if2i2vtfk747fq62bb11mc
+    created_at: 2014-01-21 23:25:42.956716000 Z
+    updated_at: 2014-01-21 23:25:42.956716000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 109
+    name: SCHOOL HOLIDAY
+    description: 
+    start_time: 2010-02-15 00:00:00.000000000 Z
+    end_time: 2010-02-16 00:00:00.000000000 Z
+    google_id: t9lfcavut06q7e6bphkveu45mk
+    created_at: 2014-01-21 23:25:42.959495000 Z
+    updated_at: 2014-01-21 23:25:42.959495000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 110
+    name: ! '[Fin] Concessions'
+    description: 
+    start_time: 2010-02-19 00:00:00.000000000 Z
+    end_time: 2010-02-19 06:00:00.000000000 Z
+    google_id: 1drb3d921qckhp7upl40hc3l4c
+    created_at: 2014-01-21 23:25:42.962152000 Z
+    updated_at: 2014-01-21 23:25:42.962152000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 111
+    name: ! '[PD] Resume Critique'
+    description: 
+    start_time: 2010-02-19 03:15:00.000000000 Z
+    end_time: 2010-02-19 04:15:00.000000000 Z
+    google_id: rt35cc5lg4bo2vgtren5uoii7g
+    created_at: 2014-01-21 23:25:42.982525000 Z
+    updated_at: 2014-01-21 23:25:42.982525000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 112
+    name: ! '[Soc] Boomers!'
+    description: 
+    start_time: 2010-02-20 02:00:00.000000000 Z
+    end_time: 2010-02-20 06:00:00.000000000 Z
+    google_id: 6h166urlnt99ke34v04nfe21tg
+    created_at: 2014-01-21 23:25:42.985527000 Z
+    updated_at: 2014-01-21 23:25:42.985527000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 113
+    name: ! '[IN] Shutter Island'
+    description: 
+    start_time: 2010-02-21 02:45:00.000000000 Z
+    end_time: 2010-02-21 04:45:00.000000000 Z
+    google_id: 1gmrg1s2psldrf364hjepfbrts
+    created_at: 2014-01-21 23:25:42.990423000 Z
+    updated_at: 2014-01-21 23:25:42.990423000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 114
+    name: ! '[IN] Lunch at Bongo Burger on Dwight Way'
+    description: 
+    start_time: 2010-02-22 20:15:00.000000000 Z
+    end_time: 2010-02-22 21:15:00.000000000 Z
+    google_id: bo78ol91tao60ci9fp8djtv7sk
+    created_at: 2014-01-21 23:25:42.992443000 Z
+    updated_at: 2014-01-21 23:25:42.992443000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 115
+    name: Second General Meeting
+    description: 
+    start_time: 2010-02-23 03:00:00.000000000 Z
+    end_time: 2010-02-23 05:00:00.000000000 Z
+    google_id: g32d5onhroi3rlkfg0m8d48ppg
+    created_at: 2014-01-21 23:25:42.995585000 Z
+    updated_at: 2014-01-21 23:25:42.995585000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 116
+    name: ! '[IN] Large: Improv Workshop'
+    description: 
+    start_time: 2010-02-25 02:00:00.000000000 Z
+    end_time: 2010-02-25 04:00:00.000000000 Z
+    google_id: sh9l9o8dcrlnrvm2c9n37h2vqk
+    created_at: 2014-01-21 23:25:42.998341000 Z
+    updated_at: 2014-01-21 23:25:42.998341000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 117
+    name: ! '[Fin] Concessions'
+    description: 
+    start_time: 2010-02-26 00:30:00.000000000 Z
+    end_time: 2010-02-26 06:00:00.000000000 Z
+    google_id: snqncacm2gvea5ioero0nc2g9c
+    created_at: 2014-01-21 23:25:43.000380000 Z
+    updated_at: 2014-01-21 23:25:43.000380000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 118
+    name: ! '[FR] Dinner with Professor Banks'
+    description: 
+    start_time: 2010-02-26 02:00:00.000000000 Z
+    end_time: 2010-02-26 05:00:00.000000000 Z
+    google_id: _8opkac1m88qk8b9l6cs3ab9k8l234b9p6h14aba56p238cpk8kq3edi18g
+    created_at: 2014-01-21 23:25:43.004384000 Z
+    updated_at: 2014-01-21 23:25:43.004384000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 119
+    name: ! '[Mkt] Point and Click: A Beginner''s Guide to Photoshop'
+    description: 
+    start_time: 2010-02-26 03:00:00.000000000 Z
+    end_time: 2010-02-26 04:00:00.000000000 Z
+    google_id: 3s93qjg6vk3hb1adbmoa9dujho
+    created_at: 2014-01-21 23:25:43.008538000 Z
+    updated_at: 2014-01-21 23:25:43.008538000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 120
+    name: ! '[CS/State] iNetwork: Bay Section Conference'
+    description: 
+    start_time: 2010-02-27 16:00:00.000000000 Z
+    end_time: 2010-02-27 20:00:00.000000000 Z
+    google_id: fs6gce9scgk4e7tr4cabclsud0
+    created_at: 2014-01-21 23:25:43.011540000 Z
+    updated_at: 2014-01-21 23:25:43.011540000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 121
+    name: Study Room!
+    description: 
+    start_time: 2010-03-02 03:00:00.000000000 Z
+    end_time: 2010-03-02 06:30:00.000000000 Z
+    google_id: n6qldkaj7fprp4b449v2inkd9s
+    created_at: 2014-01-21 23:25:43.014033000 Z
+    updated_at: 2014-01-21 23:25:43.014033000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 122
+    name: ! 'Officers'' Meeting #3'
+    description: 
+    start_time: 2010-03-02 03:00:00.000000000 Z
+    end_time: 2010-03-02 04:05:00.000000000 Z
+    google_id: 090hql79i44gkpsq7rgm0u4boc
+    created_at: 2014-01-21 23:25:43.016037000 Z
+    updated_at: 2014-01-21 23:25:43.016037000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 123
+    name: ! '[PD] Business Etiquette Workshop'
+    description: 
+    start_time: 2010-03-03 03:00:00.000000000 Z
+    end_time: 2010-03-03 04:00:00.000000000 Z
+    google_id: ggi1fdqomuuq46qttir7rjqovg
+    created_at: 2014-01-21 23:25:43.019039000 Z
+    updated_at: 2014-01-21 23:25:43.019039000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 124
+    name: ! '[IN] Toust Lunch'
+    description: 
+    start_time: 2010-03-03 21:15:00.000000000 Z
+    end_time: 2010-03-03 22:15:00.000000000 Z
+    google_id: q0rk84ho27assd0j462t65vhfg
+    created_at: 2014-01-21 23:25:43.022041000 Z
+    updated_at: 2014-01-21 23:25:43.022041000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 125
+    name: Members' Retreat
+    description: 
+    start_time: 2010-03-05 00:00:00.000000000 Z
+    end_time: 2010-03-08 00:00:00.000000000 Z
+    google_id: tvj66d4ge2ulhn82md6lhdb69s
+    created_at: 2014-01-21 23:25:43.025938000 Z
+    updated_at: 2014-01-21 23:25:43.025938000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 126
+    name: ! '[Fin] Finance Seminar'
+    description: 
+    start_time: 2010-03-05 03:00:00.000000000 Z
+    end_time: 2010-03-05 04:00:00.000000000 Z
+    google_id: 885q17819jg25un98l71mc761o
+    created_at: 2014-01-21 23:25:43.027944000 Z
+    updated_at: 2014-01-21 23:25:43.027944000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 127
+    name: ! '[FR] Game Night w/ Professor Robinson, Walske & Fish'
+    description: 
+    start_time: 2010-03-10 03:00:00.000000000 Z
+    end_time: 2010-03-10 04:30:00.000000000 Z
+    google_id: soqonpjdncu7n5kslsd2uk3k2g
+    created_at: 2014-01-21 23:25:43.030358000 Z
+    updated_at: 2014-01-21 23:25:43.030358000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 128
+    name: ! '[IN] CU Sushi Dinner'
+    description: 
+    start_time: 2010-03-11 02:45:00.000000000 Z
+    end_time: 2010-03-11 03:45:00.000000000 Z
+    google_id: mp6qailif4aarhctb31ierfqd0
+    created_at: 2014-01-21 23:25:43.033361000 Z
+    updated_at: 2014-01-21 23:25:43.033361000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 129
+    name: ! '[BizTech] Case Competition + Stock Market Game Info Session'
+    description: 
+    start_time: 2010-03-12 03:00:00.000000000 Z
+    end_time: 2010-03-12 05:00:00.000000000 Z
+    google_id: nqtmo6j46fh544gg3nvd236tmc
+    created_at: 2014-01-21 23:25:43.036364000 Z
+    updated_at: 2014-01-21 23:25:43.036364000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 130
+    name: ! '[Fin] Poker Tournament'
+    description: 
+    start_time: 2010-03-13 01:00:00.000000000 Z
+    end_time: 2010-03-13 06:00:00.000000000 Z
+    google_id: 196i7c7j7v4im8aq9dvm9ejb28
+    created_at: 2014-01-21 23:25:43.039366000 Z
+    updated_at: 2014-01-21 23:25:43.039366000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 131
+    name: ! '[CS] Renew the Zoo'
+    description: 
+    start_time: 2010-03-13 15:00:00.000000000 Z
+    end_time: 2010-03-13 19:00:00.000000000 Z
+    google_id: tn2rq9gfv9bq845g82pqas53m4
+    created_at: 2014-01-21 23:25:43.043061000 Z
+    updated_at: 2014-01-21 23:25:43.043061000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 132
+    name: ! '[IN] Theatre Rice'
+    description: 
+    start_time: 2010-03-14 04:00:00.000000000 Z
+    end_time: 2010-03-14 07:00:00.000000000 Z
+    google_id: 383visug20pe9jvbn9gmshmlb0
+    created_at: 2014-01-21 23:25:43.046245000 Z
+    updated_at: 2014-01-21 23:25:43.046245000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 133
+    name: ! '[CS] Pi Day at the Exploratorium'
+    description: 
+    start_time: 2010-03-14 16:00:00.000000000 Z
+    end_time: 2010-03-14 23:30:00.000000000 Z
+    google_id: 0qsuhf3r2f7b9aao9iga0f9hj8
+    created_at: 2014-01-21 23:25:43.049250000 Z
+    updated_at: 2014-01-21 23:25:43.049250000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 134
+    name: ! '[State] SBLC Preliminary Testing Day'
+    description: 
+    start_time: 2010-03-15 00:40:00.000000000 Z
+    end_time: 2010-03-15 02:00:00.000000000 Z
+    google_id: eo37v73tk7bvpi6j0v315ikv9c
+    created_at: 2014-01-21 23:25:43.052252000 Z
+    updated_at: 2014-01-21 23:25:43.052252000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 135
+    name: ! 'Officers'' Meeting #4'
+    description: 
+    start_time: 2010-03-16 02:00:00.000000000 Z
+    end_time: 2010-03-16 03:00:00.000000000 Z
+    google_id: 03v4qjabqokmm3h87di5evf3u0
+    created_at: 2014-01-21 23:25:43.056254000 Z
+    updated_at: 2014-01-21 23:25:43.056254000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 136
+    name: ! '[IN] Large: Bowling Night'
+    description: 
+    start_time: 2010-03-17 03:00:00.000000000 Z
+    end_time: 2010-03-17 04:30:00.000000000 Z
+    google_id: 342a4bkq2m69d39trllvrcv4s0
+    created_at: 2014-01-21 23:25:43.059256000 Z
+    updated_at: 2014-01-21 23:25:43.059256000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 137
+    name: ! '[Soc] Salsa Bailando'
+    description: 
+    start_time: 2010-03-19 02:00:00.000000000 Z
+    end_time: 2010-03-19 04:00:00.000000000 Z
+    google_id: c3gaglnafnnhk4atagijt9kiak
+    created_at: 2014-01-21 23:25:43.063259000 Z
+    updated_at: 2014-01-21 23:25:43.063259000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 138
+    name: SPRING RECESS
+    description: 
+    start_time: 2010-03-22 00:00:00.000000000 Z
+    end_time: 2010-03-27 00:00:00.000000000 Z
+    google_id: shsvnpms1tjreih61qvj0j9188
+    created_at: 2014-01-21 23:25:43.104438000 Z
+    updated_at: 2014-01-21 23:25:43.104438000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 139
+    name: ! '[State] CA State Business Leadership Conference (SBLC)'
+    description: 
+    start_time: 2010-03-26 00:00:00.000000000 Z
+    end_time: 2010-03-29 00:00:00.000000000 Z
+    google_id: 9404i8gaqvmlpssg8k2ujhshe4
+    created_at: 2014-01-21 23:25:43.108370000 Z
+    updated_at: 2014-01-21 23:25:43.108370000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 140
+    name: ! '[PD] Corporate Competition: Taking the Lead'
+    description: 
+    start_time: 2010-04-02 02:00:00.000000000 Z
+    end_time: 2010-04-02 04:00:00.000000000 Z
+    google_id: _70r3gh1g70q44b9h8co30b9k64s34ba16gs4cba460r30h268co36gq460
+    created_at: 2014-01-21 23:25:43.111375000 Z
+    updated_at: 2014-01-21 23:25:43.111375000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 141
+    name: ! 'Mr. Business Pageant '
+    description: 
+    start_time: 2010-04-03 01:30:00.000000000 Z
+    end_time: 2010-04-03 05:00:00.000000000 Z
+    google_id: 6vo9c9qh60vvdlbjfm192vovkc
+    created_at: 2014-01-21 23:25:43.113375000 Z
+    updated_at: 2014-01-21 23:25:43.113375000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 142
+    name: ! 'Officers'' Meeting #5'
+    description: 
+    start_time: 2010-04-06 02:00:00.000000000 Z
+    end_time: 2010-04-06 03:00:00.000000000 Z
+    google_id: pvovumgi0arfv0npb4fac7csm4
+    created_at: 2014-01-21 23:25:43.116885000 Z
+    updated_at: 2014-01-21 23:25:43.116885000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 143
+    name: ! '[IN] Wedding Dress Dance'
+    description: 
+    start_time: 2010-04-08 01:00:00.000000000 Z
+    end_time: 2010-04-08 03:00:00.000000000 Z
+    google_id: 8i1a4o4d3ffei2hf1ls7p8t5m8
+    created_at: 2014-01-21 23:25:43.119442000 Z
+    updated_at: 2014-01-21 23:25:43.119442000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 144
+    name: ! '[FR] Business Course Display: Meet Your Future Professors'
+    description: 
+    start_time: 2010-04-09 02:00:00.000000000 Z
+    end_time: 2010-04-09 03:30:00.000000000 Z
+    google_id: c7tn5ftblef5kuvp52khenlbm8
+    created_at: 2014-01-21 23:25:43.123588000 Z
+    updated_at: 2014-01-21 23:25:43.123588000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 145
+    name: ! '[Fin] Spam Musubi on Sproul'
+    description: 
+    start_time: 2010-04-09 18:00:00.000000000 Z
+    end_time: 2010-04-09 22:00:00.000000000 Z
+    google_id: 83vtr7vcsnf3fjgvr7qpdsd01s
+    created_at: 2014-01-21 23:25:43.125591000 Z
+    updated_at: 2014-01-21 23:25:43.125591000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 146
+    name: ! '[IN] Fun with Balls'
+    description: 
+    start_time: 2010-04-10 21:00:00.000000000 Z
+    end_time: 2010-04-10 23:30:00.000000000 Z
+    google_id: ldje86t1fu69ei5vdftcj4c358
+    created_at: 2014-01-21 23:25:43.129356000 Z
+    updated_at: 2014-01-21 23:25:43.129356000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 147
+    name: ! '"Take Me Out to the Ballgame" with Alumni'
+    description: 
+    start_time: 2010-04-11 17:40:00.000000000 Z
+    end_time: 2010-04-11 22:40:00.000000000 Z
+    google_id: _891kacpg8oojaba688sk6b9k6gs30b9o64rjgb9m8kqjiha38923ie9k68
+    created_at: 2014-01-21 23:25:43.132360000 Z
+    updated_at: 2014-01-21 23:25:43.132360000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 148
+    name: Third General Meeting
+    description: 
+    start_time: 2010-04-13 02:00:00.000000000 Z
+    end_time: 2010-04-13 03:30:00.000000000 Z
+    google_id: i2i8vvmdb2dpcpld6o90khcemg
+    created_at: 2014-01-21 23:25:43.135383000 Z
+    updated_at: 2014-01-21 23:25:43.135383000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 149
+    name: ! '[IN] Cheeseboard!'
+    description: 
+    start_time: 2010-04-15 01:20:00.000000000 Z
+    end_time: 2010-04-15 02:50:00.000000000 Z
+    google_id: 3jjsntshpgrakrh40is5fu3tj8
+    created_at: 2014-01-21 23:25:43.138387000 Z
+    updated_at: 2014-01-21 23:25:43.138387000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 150
+    name: ! '[CS] Social Media for Sustainable Business'
+    description: 
+    start_time: 2010-04-16 02:00:00.000000000 Z
+    end_time: 2010-04-16 04:00:00.000000000 Z
+    google_id: labdd9vtag1a018tpbbp11vfis
+    created_at: 2014-01-21 23:25:43.143316000 Z
+    updated_at: 2014-01-21 23:25:43.143316000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 151
+    name: ! '[Soc] Committee Royale'
+    description: 
+    start_time: 2010-04-17 02:00:00.000000000 Z
+    end_time: 2010-04-17 04:00:00.000000000 Z
+    google_id: t15n0irhv4p33c05locelrs228
+    created_at: 2014-01-21 23:25:43.145909000 Z
+    updated_at: 2014-01-21 23:25:43.145909000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 152
+    name: ! '[FR] Lunch w/ Schroth'
+    description: 
+    start_time: 2010-04-20 19:30:00.000000000 Z
+    end_time: 2010-04-20 21:00:00.000000000 Z
+    google_id: _750kacho8h238ba575246b9k6cokcba1611kaba26934achi70rk4d9h6k
+    created_at: 2014-01-21 23:25:43.148915000 Z
+    updated_at: 2014-01-21 23:25:43.148915000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 153
+    name: Fourth General Meeting (Elections)
+    description: 
+    start_time: 2010-04-21 02:00:00.000000000 Z
+    end_time: 2010-04-21 03:30:00.000000000 Z
+    google_id: 4sdm7mptsc0l1if2fvpjjbjgl4
+    created_at: 2014-01-21 23:25:43.150915000 Z
+    updated_at: 2014-01-21 23:25:43.150915000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 154
+    name: ! '[IN] Large: Board Game/Video Game Night'
+    description: 
+    start_time: 2010-04-23 03:00:00.000000000 Z
+    end_time: 2010-04-23 05:00:00.000000000 Z
+    google_id: 132olmjg38a0qoq7i3nthrhj2c
+    created_at: 2014-01-21 23:25:43.153919000 Z
+    updated_at: 2014-01-21 23:25:43.153919000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 155
+    name: ! '[BizTech] Facebook Tour'
+    description: 
+    start_time: 2010-04-23 18:30:00.000000000 Z
+    end_time: 2010-04-24 00:30:00.000000000 Z
+    google_id: 4ob8fq0jmg1lue36mloau5hhh8
+    created_at: 2014-01-21 23:25:43.157921000 Z
+    updated_at: 2014-01-21 23:25:43.157921000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 156
+    name: ! '[IN] Fenton''s'
+    description: 
+    start_time: 2010-04-25 02:30:00.000000000 Z
+    end_time: 2010-04-25 04:30:00.000000000 Z
+    google_id: s947rajd08ge4paqutse8fp8r8
+    created_at: 2014-01-21 23:25:43.160922000 Z
+    updated_at: 2014-01-21 23:25:43.160922000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 157
+    name: ! 'Officers'' Meeting #6'
+    description: 
+    start_time: 2010-04-27 02:00:00.000000000 Z
+    end_time: 2010-04-27 04:00:00.000000000 Z
+    google_id: 8hav6dagnn6benlu6stqtl9v34
+    created_at: 2014-01-21 23:25:43.163925000 Z
+    updated_at: 2014-01-21 23:25:43.163925000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 158
+    name: ! '[FR] Dinner with Prof. Steven Fish'
+    description: 
+    start_time: 2010-04-28 01:45:00.000000000 Z
+    end_time: 2010-04-28 03:00:00.000000000 Z
+    google_id: iu1b9bdln531n219pk7t32vgbg
+    created_at: 2014-01-21 23:25:43.166723000 Z
+    updated_at: 2014-01-21 23:25:43.166723000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 159
+    name: FORMAL CLASSES END
+    description: 
+    start_time: 2010-04-30 00:00:00.000000000 Z
+    end_time: 2010-05-01 00:00:00.000000000 Z
+    google_id: de0vvf7p0c7uh7kmcbjs0prr1g
+    created_at: 2014-01-21 23:25:43.169726000 Z
+    updated_at: 2014-01-21 23:25:43.169726000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 160
+    name: ! '[Fin] Poker Tournament'
+    description: 
+    start_time: 2010-05-01 00:30:00.000000000 Z
+    end_time: 2010-05-01 05:00:00.000000000 Z
+    google_id: 9proiffs1m4usica2h76hkgjn4
+    created_at: 2014-01-21 23:25:43.172729000 Z
+    updated_at: 2014-01-21 23:25:43.172729000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 161
+    name: ! '[Soc] Banquet'
+    description: 
+    start_time: 2010-05-02 02:00:00.000000000 Z
+    end_time: 2010-05-02 05:30:00.000000000 Z
+    google_id: efrokhgqfflqb0ac4l11vit0jk
+    created_at: 2014-01-21 23:25:43.175731000 Z
+    updated_at: 2014-01-21 23:25:43.175731000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 162
+    name: Executive Transition
+    description: 
+    start_time: 2010-05-03 19:00:00.000000000 Z
+    end_time: 2010-05-03 20:00:00.000000000 Z
+    google_id: v0knqr6oou1ghe0fblc934av1c
+    created_at: 2014-01-21 23:25:43.178848000 Z
+    updated_at: 2014-01-21 23:25:43.178848000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 163
+    name: Officer Transition
+    description: 
+    start_time: 2010-05-04 19:00:00.000000000 Z
+    end_time: 2010-05-04 20:30:00.000000000 Z
+    google_id: cuqhkrnovi0noemd4g31npq9dk
+    created_at: 2014-01-21 23:25:43.181853000 Z
+    updated_at: 2014-01-21 23:25:43.181853000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 164
+    name: LAST DAY OF INSTRUCTION
+    description: 
+    start_time: 2010-05-07 00:00:00.000000000 Z
+    end_time: 2010-05-08 00:00:00.000000000 Z
+    google_id: 60ebo8pfphpujdiunavchu839c
+    created_at: 2014-01-21 23:25:43.185856000 Z
+    updated_at: 2014-01-21 23:25:43.185856000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 165
+    name: FINAL EXAMS
+    description: 
+    start_time: 2010-05-10 00:00:00.000000000 Z
+    end_time: 2010-05-15 00:00:00.000000000 Z
+    google_id: 0u0ct418k43ar2hss5hnbbtkgg
+    created_at: 2014-01-21 23:25:43.188857000 Z
+    updated_at: 2014-01-21 23:25:43.188857000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 166
+    name: SPRING SEMESTER ENDS
+    description: 
+    start_time: 2010-05-14 00:00:00.000000000 Z
+    end_time: 2010-05-15 00:00:00.000000000 Z
+    google_id: mm4ebfpv12g648kches8b24uk8
+    created_at: 2014-01-21 23:25:43.192364000 Z
+    updated_at: 2014-01-21 23:25:43.192364000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 167
+    name: Officers' Retreat
+    description: 
+    start_time: 2010-08-20 00:00:00.000000000 Z
+    end_time: 2010-08-23 00:00:00.000000000 Z
+    google_id: o71tu6ii3i5lbq12bsrn1hbkl0
+    created_at: 2014-01-21 23:25:43.219886000 Z
+    updated_at: 2014-01-21 23:25:43.219886000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 168
+    name: ! '[HT] Photoshoot'
+    description: 
+    start_time: 2010-08-24 02:00:00.000000000 Z
+    end_time: 2010-08-24 03:30:00.000000000 Z
+    google_id: ibacg44ts6tl3nberj1i1p9apg
+    created_at: 2014-01-21 23:25:43.226772000 Z
+    updated_at: 2014-01-21 23:25:43.226772000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 169
+    name: Cal Student Store Discount Night
+    description: 
+    start_time: 2010-08-25 03:30:00.000000000 Z
+    end_time: 2010-08-25 05:00:00.000000000 Z
+    google_id: f0utcuicdt3of5emhl7gcg72jg
+    created_at: 2014-01-21 23:25:43.230110000 Z
+    updated_at: 2014-01-21 23:25:43.230110000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 170
+    name: ! 'Officers'' Meeting #1'
+    description: 
+    start_time: 2010-08-31 02:00:00.000000000 Z
+    end_time: 2010-08-31 03:30:00.000000000 Z
+    google_id: mpcreb253esrp5v6fv3b6ficl8
+    created_at: 2014-01-21 23:25:43.233113000 Z
+    updated_at: 2014-01-21 23:25:43.233113000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 171
+    name: First General Meeting
+    description: 
+    start_time: 2010-09-02 02:00:00.000000000 Z
+    end_time: 2010-09-02 04:30:00.000000000 Z
+    google_id: 4ot0221tqt7psc17c1qfl9mfn8
+    created_at: 2014-01-21 23:25:43.236120000 Z
+    updated_at: 2014-01-21 23:25:43.236120000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 172
+    name: ! '[PD] Meet the Alumni'
+    description: 
+    start_time: 2010-09-03 02:00:00.000000000 Z
+    end_time: 2010-09-03 03:30:00.000000000 Z
+    google_id: 6puu3keihb0u5hcfc14gojkeb8
+    created_at: 2014-01-21 23:25:43.240119000 Z
+    updated_at: 2014-01-21 23:25:43.240119000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 173
+    name: CM Interviews
+    description: 
+    start_time: 2010-09-04 00:00:00.000000000 Z
+    end_time: 2010-09-06 00:00:00.000000000 Z
+    google_id: buc5l0h6f74b5er2g6ueikid2g
+    created_at: 2014-01-21 23:25:43.243041000 Z
+    updated_at: 2014-01-21 23:25:43.243041000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 174
+    name: ! '[Soc] Mixer'
+    description: 
+    start_time: 2010-09-04 02:00:00.000000000 Z
+    end_time: 2010-09-04 05:00:00.000000000 Z
+    google_id: k7o944smlhd6a2sk9q37sf9auk
+    created_at: 2014-01-21 23:25:43.245718000 Z
+    updated_at: 2014-01-21 23:25:43.245718000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 175
+    name: CONCESSIONS (UC Davis)
+    description: 
+    start_time: 2010-09-04 16:00:00.000000000 Z
+    end_time: 2010-09-05 00:00:00.000000000 Z
+    google_id: s3bhksb4h0a6m528c79cblru58
+    created_at: 2014-01-21 23:25:43.248396000 Z
+    updated_at: 2014-01-21 23:25:43.248396000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 176
+    name: ! '[IN] Kickoff'
+    description: 
+    start_time: 2010-09-08 01:00:00.000000000 Z
+    end_time: 2010-09-08 03:00:00.000000000 Z
+    google_id: jt344c6012dogkrj57s5r0sqms
+    created_at: 2014-01-21 23:25:43.251012000 Z
+    updated_at: 2014-01-21 23:25:43.251012000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 177
+    name: ! '[CS] Save the Bay'
+    description: 
+    start_time: 2010-09-11 14:45:00.000000000 Z
+    end_time: 2010-09-11 19:00:00.000000000 Z
+    google_id: sfdacioh91rp8igj2ggutntlok
+    created_at: 2014-01-21 23:25:43.254014000 Z
+    updated_at: 2014-01-21 23:25:43.254014000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 178
+    name: CM Initiation
+    description: 
+    start_time: 2010-09-12 18:00:00.000000000 Z
+    end_time: 2010-09-12 21:00:00.000000000 Z
+    google_id: ucembgg12ffbb3t02u0a0jgn0s
+    created_at: 2014-01-21 23:25:43.257017000 Z
+    updated_at: 2014-01-21 23:25:43.257017000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 179
+    name: ! 'Officers'' Meeting  #2'
+    description: 
+    start_time: 2010-09-14 02:00:00.000000000 Z
+    end_time: 2010-09-14 03:30:00.000000000 Z
+    google_id: ht86ijrid80scmgt9hj0n2qbmo
+    created_at: 2014-01-21 23:25:43.259835000 Z
+    updated_at: 2014-01-21 23:25:43.259835000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 180
+    name: ! '[FR] Faculty Dinner'
+    description: 
+    start_time: 2010-09-16 02:00:00.000000000 Z
+    end_time: 2010-09-16 03:30:00.000000000 Z
+    google_id: rc0euv1q3865qum8vml7orf1eg
+    created_at: 2014-01-21 23:25:43.262866000 Z
+    updated_at: 2014-01-21 23:25:43.262866000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 181
+    name: ! '[PD] Resume Critique'
+    description: 
+    start_time: 2010-09-17 02:00:00.000000000 Z
+    end_time: 2010-09-17 03:30:00.000000000 Z
+    google_id: k5pholovvn48uemkhfi237uha4
+    created_at: 2014-01-21 23:25:43.265868000 Z
+    updated_at: 2014-01-21 23:25:43.265868000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 182
+    name: ! '[CS] Rebuilding Together'
+    description: 
+    start_time: 2010-09-18 19:00:00.000000000 Z
+    end_time: 2010-09-19 00:00:00.000000000 Z
+    google_id: jhnhvl5u1ksgmnsce5gmbjc1fg
+    created_at: 2014-01-21 23:25:43.267930000 Z
+    updated_at: 2014-01-21 23:25:43.267930000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 183
+    name: ! '[IN] Game Night with Dawn!'
+    description: 
+    start_time: 2010-09-21 02:00:00.000000000 Z
+    end_time: 2010-09-21 03:30:00.000000000 Z
+    google_id: 5sppod6d2sv2bq21ndrgu7rqdo
+    created_at: 2014-01-21 23:25:43.271934000 Z
+    updated_at: 2014-01-21 23:25:43.271934000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 184
+    name: ! '[IN] Cheeseboard with Chelsea!'
+    description: 
+    start_time: 2010-09-22 00:45:00.000000000 Z
+    end_time: 2010-09-22 02:45:00.000000000 Z
+    google_id: i25lb73r6shlp74hunh9lr4qso
+    created_at: 2014-01-21 23:25:43.274934000 Z
+    updated_at: 2014-01-21 23:25:43.274934000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 185
+    name: Members' Retreat
+    description: 
+    start_time: 2010-09-24 00:00:00.000000000 Z
+    end_time: 2010-09-27 00:00:00.000000000 Z
+    google_id: 920so6d18hnj26om70uspfvas0
+    created_at: 2014-01-21 23:25:43.277936000 Z
+    updated_at: 2014-01-21 23:25:43.277936000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 186
+    name: ! '[IN] Capture the Flag with Chris!'
+    description: 
+    start_time: 2010-09-24 02:00:00.000000000 Z
+    end_time: 2010-09-24 03:30:00.000000000 Z
+    google_id: h5cj0sr8oh6gbei192rfnud5t0
+    created_at: 2014-01-21 23:25:43.279937000 Z
+    updated_at: 2014-01-21 23:25:43.279937000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 187
+    name: ! '[IN] Study Break'
+    description: 
+    start_time: 2010-09-29 01:00:00.000000000 Z
+    end_time: 2010-09-29 03:30:00.000000000 Z
+    google_id: rhhb6itrvj5prei6c7nbfo0u2g
+    created_at: 2014-01-21 23:25:43.282939000 Z
+    updated_at: 2014-01-21 23:25:43.282939000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 188
+    name: ! '[Mkt] Marketing Mentality'
+    description: 
+    start_time: 2010-10-01 02:00:00.000000000 Z
+    end_time: 2010-10-01 04:00:00.000000000 Z
+    google_id: t32m0sqt7bl7m591c6k17p2fas
+    created_at: 2014-01-21 23:25:43.285942000 Z
+    updated_at: 2014-01-21 23:25:43.285942000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 189
+    name: ! '[CS] Build Day'
+    description: 
+    start_time: 2010-10-02 14:00:00.000000000 Z
+    end_time: 2010-10-02 20:00:00.000000000 Z
+    google_id: 6nfcnst976bi9iot5udlbdeok0
+    created_at: 2014-01-21 23:25:43.288944000 Z
+    updated_at: 2014-01-21 23:25:43.288944000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 190
+    name: ! 'Officers'' Meeting #3'
+    description: 
+    start_time: 2010-10-05 02:00:00.000000000 Z
+    end_time: 2010-10-05 03:30:00.000000000 Z
+    google_id: 3r41j7nholguph22mv4cc463fk
+    created_at: 2014-01-21 23:25:43.291857000 Z
+    updated_at: 2014-01-21 23:25:43.291857000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 191
+    name: ! '[EX] Mastering the Interview'
+    description: 
+    start_time: 2010-10-07 02:00:00.000000000 Z
+    end_time: 2010-10-07 03:30:00.000000000 Z
+    google_id: q0bmgb1i5r14o2475hcc5fa61c
+    created_at: 2014-01-21 23:25:43.295197000 Z
+    updated_at: 2014-01-21 23:25:43.295197000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 192
+    name: Interchapter Social with DVC
+    description: 
+    start_time: 2010-10-08 01:30:00.000000000 Z
+    end_time: 2010-10-08 03:30:00.000000000 Z
+    google_id: bkqeh9el1t3u0u0emcugmudekg
+    created_at: 2014-01-21 23:25:43.297818000 Z
+    updated_at: 2014-01-21 23:25:43.297818000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 193
+    name: Second General Meeting
+    description: 
+    start_time: 2010-10-13 02:00:00.000000000 Z
+    end_time: 2010-10-13 04:00:00.000000000 Z
+    google_id: q749v60sl01905ofaab6k9q51o
+    created_at: 2014-01-21 23:25:43.315958000 Z
+    updated_at: 2014-01-21 23:25:43.315958000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 194
+    name: ! '[PD] Entrepreneurship: Mastering the Start-Up'
+    description: 
+    start_time: 2010-10-15 02:00:00.000000000 Z
+    end_time: 2010-10-15 04:00:00.000000000 Z
+    google_id: r2n25a999g1i0vmftbptp9868c
+    created_at: 2014-01-21 23:25:43.318961000 Z
+    updated_at: 2014-01-21 23:25:43.318961000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 195
+    name: ! '[CA PBL] iNetwork: North LDI'
+    description: 
+    start_time: 2010-10-16 00:00:00.000000000 Z
+    end_time: 2010-10-17 00:00:00.000000000 Z
+    google_id: dik4ojun651so3huo163q2g1f4
+    created_at: 2014-01-21 23:25:43.322964000 Z
+    updated_at: 2014-01-21 23:25:43.322964000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 196
+    name: ! 'Officers'' Meeting #4'
+    description: 
+    start_time: 2010-10-19 02:00:00.000000000 Z
+    end_time: 2010-10-19 03:30:00.000000000 Z
+    google_id: cappd0kvhsm6jg0j6nsobno57g
+    created_at: 2014-01-21 23:25:43.325908000 Z
+    updated_at: 2014-01-21 23:25:43.325908000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 197
+    name: ! '[FR] Faculty Dinner w/ Alan Ross'
+    description: 
+    start_time: 2010-10-21 02:00:00.000000000 Z
+    end_time: 2010-10-21 03:30:00.000000000 Z
+    google_id: if52rcv3nbg45vg8fvvemtuukg
+    created_at: 2014-01-21 23:25:43.327911000 Z
+    updated_at: 2014-01-21 23:25:43.327911000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 198
+    name: ! ' [FI] Personal Finance 101'
+    description: 
+    start_time: 2010-10-22 02:00:00.000000000 Z
+    end_time: 2010-10-22 03:30:00.000000000 Z
+    google_id: ddo0femj808njr1c7jib2au4cg
+    created_at: 2014-01-21 23:25:43.330432000 Z
+    updated_at: 2014-01-21 23:25:43.330432000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 199
+    name: CONCESSIONS (Arizona State)
+    description: 
+    start_time: 2010-10-23 00:00:00.000000000 Z
+    end_time: 2010-10-24 00:00:00.000000000 Z
+    google_id: de7e6omebt9oqo4h6v0r1nqtro
+    created_at: 2014-01-21 23:25:43.333150000 Z
+    updated_at: 2014-01-21 23:25:43.333150000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 200
+    name: ! '[IN] Ajisen Ramen & Shopping in San Francisco'
+    description: 
+    start_time: 2010-10-24 18:15:00.000000000 Z
+    end_time: 2010-10-24 23:15:00.000000000 Z
+    google_id: eac38nosthipjpfgcm7qjnlmvk
+    created_at: 2014-01-21 23:25:43.336154000 Z
+    updated_at: 2014-01-21 23:25:43.336154000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 201
+    name: ! '[IN] Tease Aerobics'
+    description: 
+    start_time: 2010-10-26 02:15:00.000000000 Z
+    end_time: 2010-10-26 03:30:00.000000000 Z
+    google_id: 0fvo3188lk946juqhe8ekldctg
+    created_at: 2014-01-21 23:25:43.341587000 Z
+    updated_at: 2014-01-21 23:25:43.341587000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 202
+    name: ! '[FR] Presentation - Professor Robinson'
+    description: 
+    start_time: 2010-10-29 02:00:00.000000000 Z
+    end_time: 2010-10-29 04:00:00.000000000 Z
+    google_id: budrk1bj4balvdde16bq189o70
+    created_at: 2014-01-21 23:25:43.344412000 Z
+    updated_at: 2014-01-21 23:25:43.344412000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 203
+    name: ! '[IN] Warriors vs. Clippers'
+    description: 
+    start_time: 2010-10-30 01:00:00.000000000 Z
+    end_time: 2010-10-30 06:00:00.000000000 Z
+    google_id: dhogggggd5ndnun4ki7u21lirs
+    created_at: 2014-01-21 23:25:43.347065000 Z
+    updated_at: 2014-01-21 23:25:43.347065000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 204
+    name: ! '[IN] Costume Halloween'
+    description: 
+    start_time: 2010-11-01 01:00:00.000000000 Z
+    end_time: 2010-11-01 04:00:00.000000000 Z
+    google_id: bdjpm3amkpt57g68rvj2uffa1o
+    created_at: 2014-01-21 23:25:43.349039000 Z
+    updated_at: 2014-01-21 23:25:43.349039000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 205
+    name: ! 'Officers'' Meeting #5'
+    description: 
+    start_time: 2010-11-02 02:00:00.000000000 Z
+    end_time: 2010-11-02 03:30:00.000000000 Z
+    google_id: hnre8n0ln3kbvr06i04rrajhfo
+    created_at: 2014-01-21 23:25:43.352161000 Z
+    updated_at: 2014-01-21 23:25:43.352161000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 206
+    name: ! '[FR] Basics of Business'
+    description: 
+    start_time: 2010-11-03 03:00:00.000000000 Z
+    end_time: 2010-11-03 04:30:00.000000000 Z
+    google_id: nldrfnnqcd7ms2ug4p2pgo5ims
+    created_at: 2014-01-21 23:25:43.355166000 Z
+    updated_at: 2014-01-21 23:25:43.355166000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 207
+    name: Third General Meeting
+    description: 
+    start_time: 2010-11-05 02:00:00.000000000 Z
+    end_time: 2010-11-05 03:30:00.000000000 Z
+    google_id: 0ke747ibu9n32dqns3u8d7l42c
+    created_at: 2014-01-21 23:25:43.359037000 Z
+    updated_at: 2014-01-21 23:25:43.359037000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 208
+    name: SFBLC
+    description: 
+    start_time: 2010-11-06 00:00:00.000000000 Z
+    end_time: 2010-11-07 00:00:00.000000000 Z
+    google_id: pb2b3nutkgt2l2tbs3g8cpdi64
+    created_at: 2014-01-21 23:25:43.361039000 Z
+    updated_at: 2014-01-21 23:25:43.361039000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 209
+    name: ! '[CS] New Times, New Tech: Transforming the Future'
+    description: 
+    start_time: 2010-11-11 03:00:00.000000000 Z
+    end_time: 2010-11-11 05:00:00.000000000 Z
+    google_id: leuio1ve6717uq293nq4jho7l8
+    created_at: 2014-01-21 23:25:43.364043000 Z
+    updated_at: 2014-01-21 23:25:43.364043000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 210
+    name: CONCESSIONS (Oregon)
+    description: 
+    start_time: 2010-11-13 00:00:00.000000000 Z
+    end_time: 2010-11-14 00:00:00.000000000 Z
+    google_id: 2r77osi74gp7076ugih8s6oqa4
+    created_at: 2014-01-21 23:25:43.367176000 Z
+    updated_at: 2014-01-21 23:25:43.367176000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 211
+    name: CONCESSIONS
+    description: 
+    start_time: 2010-11-13 00:00:00.000000000 Z
+    end_time: 2010-11-14 00:00:00.000000000 Z
+    google_id: qdnvkv6alkbv4me3fmub1op5cg
+    created_at: 2014-01-21 23:25:43.370182000 Z
+    updated_at: 2014-01-21 23:25:43.370182000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 212
+    name: ! '[Fin] Poker Tournament'
+    description: 
+    start_time: 2010-11-13 01:30:00.000000000 Z
+    end_time: 2010-11-13 06:00:00.000000000 Z
+    google_id: u6osgf5irk1498d4a967i80lo0
+    created_at: 2014-01-21 23:25:43.373966000 Z
+    updated_at: 2014-01-21 23:25:43.373966000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 213
+    name: ! '[IN] Theater Rice with Chelsea!'
+    description: 
+    start_time: 2010-11-13 03:00:00.000000000 Z
+    end_time: 2010-11-13 06:00:00.000000000 Z
+    google_id: rvekb286vgidsbqn5k1mh0kqd4
+    created_at: 2014-01-21 23:25:43.376952000 Z
+    updated_at: 2014-01-21 23:25:43.376952000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 214
+    name: Alumni Social
+    description: 
+    start_time: 2010-11-14 20:00:00.000000000 Z
+    end_time: 2010-11-14 23:00:00.000000000 Z
+    google_id: e8r92046ai21cs4n3jrkjmsb78
+    created_at: 2014-01-21 23:25:43.378661000 Z
+    updated_at: 2014-01-21 23:25:43.378661000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 215
+    name: ! 'Officers'' Meeting #6'
+    description: 
+    start_time: 2010-11-16 03:00:00.000000000 Z
+    end_time: 2010-11-16 04:30:00.000000000 Z
+    google_id: ks4n8u481tpingga2ki8m4l3l4
+    created_at: 2014-01-21 23:25:43.381665000 Z
+    updated_at: 2014-01-21 23:25:43.381665000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 216
+    name: ! '[PD] Internal Case Competition'
+    description: 
+    start_time: 2010-11-19 03:00:00.000000000 Z
+    end_time: 2010-11-19 04:30:00.000000000 Z
+    google_id: sshvptqjgk9aub87rkaj409lqo
+    created_at: 2014-01-21 23:25:43.385137000 Z
+    updated_at: 2014-01-21 23:25:43.385137000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 217
+    name: CONCESSIONS (Stanford)
+    description: 
+    start_time: 2010-11-20 00:00:00.000000000 Z
+    end_time: 2010-11-21 00:00:00.000000000 Z
+    google_id: mcjaq7du4get90r48e4a2ane28
+    created_at: 2014-01-21 23:25:43.388139000 Z
+    updated_at: 2014-01-21 23:25:43.388139000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 218
+    name: ! '[Soc] PBL Bachelor and Bachelorette'
+    description: 
+    start_time: 2010-11-20 03:00:00.000000000 Z
+    end_time: 2010-11-20 05:00:00.000000000 Z
+    google_id: 0ldpib2ibplanr1r22slbbtq24
+    created_at: 2014-01-21 23:25:43.391141000 Z
+    updated_at: 2014-01-21 23:25:43.391141000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 219
+    name: ! '[CS] Uhuru Pies'
+    description: 
+    start_time: 2010-11-21 19:00:00.000000000 Z
+    end_time: 2010-11-21 23:00:00.000000000 Z
+    google_id: mt6a52blr307kupi0j4gok1dh8
+    created_at: 2014-01-21 23:25:43.394732000 Z
+    updated_at: 2014-01-21 23:25:43.394732000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 220
+    name: Fourth General Meeting
+    description: 
+    start_time: 2010-11-23 03:00:00.000000000 Z
+    end_time: 2010-11-23 05:00:00.000000000 Z
+    google_id: 6sih1vh5drjq5ok1bgveqd7mlo
+    created_at: 2014-01-21 23:25:43.397141000 Z
+    updated_at: 2014-01-21 23:25:43.397141000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 221
+    name: Spring 2011 Chair Application Released
+    description: 
+    start_time: 2010-11-28 00:00:00.000000000 Z
+    end_time: 2010-11-29 00:00:00.000000000 Z
+    google_id: 3jlrp8qkhegthgiirk60n32f1k
+    created_at: 2014-01-21 23:25:43.399764000 Z
+    updated_at: 2014-01-21 23:25:43.399764000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 222
+    name: ! 'Officers'' Meeting #7'
+    description: 
+    start_time: 2010-11-30 03:00:00.000000000 Z
+    end_time: 2010-11-30 04:30:00.000000000 Z
+    google_id: j2nskp8sfkhaat1q4cclhk9fjs
+    created_at: 2014-01-21 23:25:43.402768000 Z
+    updated_at: 2014-01-21 23:25:43.402768000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 223
+    name: Spring 2011 Consulting Division Member Application Due
+    description: 
+    start_time: 2010-11-30 07:59:00.000000000 Z
+    end_time: 2010-11-30 07:59:00.000000000 Z
+    google_id: pm9qlsb3fsu7kt4666q48k018s
+    created_at: 2014-01-21 23:25:43.405769000 Z
+    updated_at: 2014-01-21 23:25:43.405769000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 224
+    name: ! '[IN] Party Like It''s 2000 with Chris'
+    description: 
+    start_time: 2010-12-03 03:00:00.000000000 Z
+    end_time: 2010-12-03 06:30:00.000000000 Z
+    google_id: 1gu1uc603sj6pu4csrgkjok13k
+    created_at: 2014-01-21 23:25:43.409642000 Z
+    updated_at: 2014-01-21 23:25:43.409642000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 225
+    name: Spring 2011 Committee Chair Application Due
+    description: 
+    start_time: 2010-12-03 07:59:00.000000000 Z
+    end_time: 2010-12-03 07:59:00.000000000 Z
+    google_id: ohldk7s6s8djvk06sb4uavj2q0
+    created_at: 2014-01-21 23:25:43.411984000 Z
+    updated_at: 2014-01-21 23:25:43.411984000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 226
+    name: ! '[Soc] End-of-Semester Banquet'
+    description: 
+    start_time: 2010-12-05 02:00:00.000000000 Z
+    end_time: 2010-12-05 06:00:00.000000000 Z
+    google_id: q7qek0n1mh6lvfib2ffr606udc
+    created_at: 2014-01-21 23:25:43.414988000 Z
+    updated_at: 2014-01-21 23:25:43.414988000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 227
+    name: FINAL EXAMINATIONS
+    description: 
+    start_time: 2010-12-13 00:00:00.000000000 Z
+    end_time: 2010-12-18 00:00:00.000000000 Z
+    google_id: j7n31g96u6d6c8qbb4n8dbe0ac
+    created_at: 2014-01-21 23:25:43.417774000 Z
+    updated_at: 2014-01-21 23:25:43.417774000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 228
+    name: Spring Semester Begins
+    description: 
+    start_time: 2011-01-11 00:00:00.000000000 Z
+    end_time: 2011-01-12 00:00:00.000000000 Z
+    google_id: kv5d74q2ebtr3rephbmcceg3p4
+    created_at: 2014-01-21 23:25:43.420775000 Z
+    updated_at: 2014-01-21 23:25:43.420775000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 229
+    name: Officers' Retreat
+    description: 
+    start_time: 2011-01-15 00:00:00.000000000 Z
+    end_time: 2011-01-18 00:00:00.000000000 Z
+    google_id: 2ovv34uicakqcbuba6264t3or8
+    created_at: 2014-01-21 23:25:43.423804000 Z
+    updated_at: 2014-01-21 23:25:43.423804000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 230
+    name: ! '[HT] Officer Photoshoot'
+    description: 
+    start_time: 2011-01-17 00:00:00.000000000 Z
+    end_time: 2011-01-18 00:00:00.000000000 Z
+    google_id: m11r050h0quq1te255qkltiq8c
+    created_at: 2014-01-21 23:25:43.426923000 Z
+    updated_at: 2014-01-21 23:25:43.426923000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 231
+    name: Instruction Begins
+    description: 
+    start_time: 2011-01-18 00:00:00.000000000 Z
+    end_time: 2011-01-19 00:00:00.000000000 Z
+    google_id: tl0m69ctr8cj89sul34vdra6ig
+    created_at: 2014-01-21 23:25:43.428926000 Z
+    updated_at: 2014-01-21 23:25:43.428926000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 232
+    name: Officer Meeting
+    description: 
+    start_time: 2011-01-25 03:00:00.000000000 Z
+    end_time: 2011-01-25 04:30:00.000000000 Z
+    google_id: 2o9fporhr9knmn0i9620r18e04
+    created_at: 2014-01-21 23:25:43.431584000 Z
+    updated_at: 2014-01-21 23:25:43.431584000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 233
+    name: ! 'Officer Meeting #1'
+    description: 
+    start_time: 2011-01-25 03:00:00.000000000 Z
+    end_time: 2011-01-25 04:30:00.000000000 Z
+    google_id: 2o9fporhr9knmn0i9620r18e04_20110125T030000Z
+    created_at: 2014-01-21 23:25:43.434371000 Z
+    updated_at: 2014-01-21 23:25:43.434371000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 234
+    name: First General Meeting
+    description: 
+    start_time: 2011-01-27 03:00:00.000000000 Z
+    end_time: 2011-01-27 05:00:00.000000000 Z
+    google_id: mp885bb4lre6c7cgniofiugp7o
+    created_at: 2014-01-21 23:25:43.438376000 Z
+    updated_at: 2014-01-21 23:25:43.438376000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 235
+    name: ! '[PD] Professional Forum'
+    description: 
+    start_time: 2011-01-28 03:00:00.000000000 Z
+    end_time: 2011-01-28 04:00:00.000000000 Z
+    google_id: 2siagdne68ghs2dr95n0bhl4e8
+    created_at: 2014-01-21 23:25:43.441376000 Z
+    updated_at: 2014-01-21 23:25:43.441376000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 236
+    name: CM Interviews
+    description: 
+    start_time: 2011-01-29 00:00:00.000000000 Z
+    end_time: 2011-01-31 00:00:00.000000000 Z
+    google_id: fpbd2bc25g50lr21v2nsrr2mj0
+    created_at: 2014-01-21 23:25:43.444395000 Z
+    updated_at: 2014-01-21 23:25:43.444395000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 237
+    name: Blakes Mixer
+    description: 
+    start_time: 2011-01-29 03:00:00.000000000 Z
+    end_time: 2011-01-29 06:00:00.000000000 Z
+    google_id: lhdkkm0sp3icng83ipcn7420c0
+    created_at: 2014-01-21 23:25:43.447187000 Z
+    updated_at: 2014-01-21 23:25:43.447187000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 238
+    name: ! '[IN] Internal Networking Kickoff'
+    description: 
+    start_time: 2011-02-02 02:00:00.000000000 Z
+    end_time: 2011-02-02 04:00:00.000000000 Z
+    google_id: 0lnfnoclnhackgt7bgdn2rcako
+    created_at: 2014-01-21 23:25:43.449376000 Z
+    updated_at: 2014-01-21 23:25:43.449376000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 239
+    name: ! '[FI] [Concessions] vs. Arizona State (Men''s)'
+    description: 
+    start_time: 2011-02-04 03:00:00.000000000 Z
+    end_time: 2011-02-04 07:00:00.000000000 Z
+    google_id: 1de5qt48nrems26o7nmc3s6j98
+    created_at: 2014-01-21 23:25:43.452381000 Z
+    updated_at: 2014-01-21 23:25:43.452381000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 240
+    name: ! '[CS] SF Food Bank w/ Disadvantaged Youth'
+    description: 
+    start_time: 2011-02-05 16:00:00.000000000 Z
+    end_time: 2011-02-05 20:00:00.000000000 Z
+    google_id: ofmpr6mqkr4uqhcn970tqsp7q8
+    created_at: 2014-01-21 23:25:43.455381000 Z
+    updated_at: 2014-01-21 23:25:43.455381000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 241
+    name: CM Initiation
+    description: 
+    start_time: 2011-02-06 03:00:00.000000000 Z
+    end_time: 2011-02-06 05:00:00.000000000 Z
+    google_id: u7dorme4hvug0hcef81l5kujic
+    created_at: 2014-01-21 23:25:43.459396000 Z
+    updated_at: 2014-01-21 23:25:43.459396000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 242
+    name: ! 'Officer Meeting #2'
+    description: 
+    start_time: 2011-02-08 03:00:00.000000000 Z
+    end_time: 2011-02-08 04:30:00.000000000 Z
+    google_id: 2o9fporhr9knmn0i9620r18e04_20110208T030000Z
+    created_at: 2014-01-21 23:25:43.461398000 Z
+    updated_at: 2014-01-21 23:25:43.461398000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 243
+    name: ! '[FR] Faculty Dinner w/Prof. Wilton'
+    description: 
+    start_time: 2011-02-10 03:30:00.000000000 Z
+    end_time: 2011-02-10 05:00:00.000000000 Z
+    google_id: 4v11snnl86cdt4951n2vfmogt4
+    created_at: 2014-01-21 23:25:43.464865000 Z
+    updated_at: 2014-01-21 23:25:43.464865000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 244
+    name: ! '[IN] Cheeseboard'
+    description: 
+    start_time: 2011-02-16 02:00:00.000000000 Z
+    end_time: 2011-02-16 03:00:00.000000000 Z
+    google_id: tquvh5otqcorjvck5bo0v3gef4
+    created_at: 2014-01-21 23:25:43.466867000 Z
+    updated_at: 2014-01-21 23:25:43.466867000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 245
+    name: ! '[PD] Resume Critique'
+    description: 
+    start_time: 2011-02-18 03:00:00.000000000 Z
+    end_time: 2011-02-18 05:00:00.000000000 Z
+    google_id: noa0lt1lo6ggctlkbtgh4b14j0
+    created_at: 2014-01-21 23:25:43.469873000 Z
+    updated_at: 2014-01-21 23:25:43.469873000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 246
+    name: ! '[FI] Poker Tournament'
+    description: 
+    start_time: 2011-02-19 01:30:00.000000000 Z
+    end_time: 2011-02-19 06:00:00.000000000 Z
+    google_id: 7uipqnq3aiikci05536p0tctms
+    created_at: 2014-01-21 23:25:43.473873000 Z
+    updated_at: 2014-01-21 23:25:43.473873000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 247
+    name: ! '[Soc] Broomball'
+    description: 
+    start_time: 2011-02-20 03:00:00.000000000 Z
+    end_time: 2011-02-20 06:30:00.000000000 Z
+    google_id: eard68k32djdqhslhl33itj9l0
+    created_at: 2014-01-21 23:25:43.476985000 Z
+    updated_at: 2014-01-21 23:25:43.476985000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 248
+    name: ! '[IN] Pasta Bene Lunch'
+    description: 
+    start_time: 2011-02-22 19:30:00.000000000 Z
+    end_time: 2011-02-22 21:30:00.000000000 Z
+    google_id: 32a3d3s50rf56ir3k6b2d5pgv0
+    created_at: 2014-01-21 23:25:43.505904000 Z
+    updated_at: 2014-01-21 23:25:43.505904000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 249
+    name: MGMAT Info Session
+    description: 
+    start_time: 2011-02-24 01:00:00.000000000 Z
+    end_time: 2011-02-24 02:30:00.000000000 Z
+    google_id: aadfrjmppbq1oi9u81cs5jgku8
+    created_at: 2014-01-21 23:25:43.515913000 Z
+    updated_at: 2014-01-21 23:25:43.515913000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 250
+    name: Second General Meeting
+    description: 
+    start_time: 2011-02-24 03:00:00.000000000 Z
+    end_time: 2011-02-24 05:00:00.000000000 Z
+    google_id: 6268g9ungdh6tpq5mapjvbnr58
+    created_at: 2014-01-21 23:25:43.519914000 Z
+    updated_at: 2014-01-21 23:25:43.519914000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 251
+    name: ! '[FI] [Concessions] vs Oregon (Women''s Basketball)'
+    description: 
+    start_time: 2011-02-25 02:00:00.000000000 Z
+    end_time: 2011-02-25 07:00:00.000000000 Z
+    google_id: ugrmpdlq0uc464h2meq3tsoab8
+    created_at: 2014-01-21 23:25:43.524917000 Z
+    updated_at: 2014-01-21 23:25:43.524917000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 252
+    name: ! '[IN] Fun w/ Balls'
+    description: 
+    start_time: 2011-02-27 23:00:00.000000000 Z
+    end_time: 2011-02-28 01:00:00.000000000 Z
+    google_id: 8t261mrebbd8ncp3tnjo686j14
+    created_at: 2014-01-21 23:25:43.528919000 Z
+    updated_at: 2014-01-21 23:25:43.528919000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 253
+    name: ! 'Officer Meeting #3'
+    description: 
+    start_time: 2011-03-01 03:00:00.000000000 Z
+    end_time: 2011-03-01 04:30:00.000000000 Z
+    google_id: 2o9fporhr9knmn0i9620r18e04_20110301T030000Z
+    created_at: 2014-01-21 23:25:43.532845000 Z
+    updated_at: 2014-01-21 23:25:43.532845000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 254
+    name: Members Retreat
+    description: 
+    start_time: 2011-03-04 00:00:00.000000000 Z
+    end_time: 2011-03-07 00:00:00.000000000 Z
+    google_id: 8rdagdhm4clp7q4pu11l7ln36s
+    created_at: 2014-01-21 23:25:43.537851000 Z
+    updated_at: 2014-01-21 23:25:43.537851000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 255
+    name: ! '[PD] From Interview to Job Offer: Bridging the Final Gap'
+    description: 
+    start_time: 2011-03-08 03:00:00.000000000 Z
+    end_time: 2011-03-08 05:00:00.000000000 Z
+    google_id: qn5uss78rb3oo7ohljsvs18e44
+    created_at: 2014-01-21 23:25:43.542853000 Z
+    updated_at: 2014-01-21 23:25:43.542853000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 256
+    name: ! '[MKT] External Large Scale'
+    description: 
+    start_time: 2011-03-12 03:00:00.000000000 Z
+    end_time: 2011-03-12 05:00:00.000000000 Z
+    google_id: 7oe27ldf7aulr02q5qs6dk91i0
+    created_at: 2014-01-21 23:25:43.545855000 Z
+    updated_at: 2014-01-21 23:25:43.545855000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 257
+    name: ! '[IN] Big C Hike!'
+    description: 
+    start_time: 2011-03-13 00:45:00.000000000 Z
+    end_time: 2011-03-13 03:00:00.000000000 Z
+    google_id: 2glg2uttafarjurbcv5v91vadk
+    created_at: 2014-01-21 23:25:43.548861000 Z
+    updated_at: 2014-01-21 23:25:43.548861000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 258
+    name: ! 'Officer Meeting #4'
+    description: 
+    start_time: 2011-03-15 02:00:00.000000000 Z
+    end_time: 2011-03-15 03:30:00.000000000 Z
+    google_id: 2o9fporhr9knmn0i9620r18e04_20110315T020000Z
+    created_at: 2014-01-21 23:25:43.550863000 Z
+    updated_at: 2014-01-21 23:25:43.550863000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 259
+    name: ! '[IN] RSF Trip'
+    description: 
+    start_time: 2011-03-16 03:00:00.000000000 Z
+    end_time: 2011-03-16 05:00:00.000000000 Z
+    google_id: o0n9jhk9b7o8f6vg3ris4u6ivs
+    created_at: 2014-01-21 23:25:43.555866000 Z
+    updated_at: 2014-01-21 23:25:43.555866000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 260
+    name: ! '[FI] Investment 101'
+    description: 
+    start_time: 2011-03-18 02:00:00.000000000 Z
+    end_time: 2011-03-18 04:00:00.000000000 Z
+    google_id: 01so900gp0bm01odaa1ej4b3bo
+    created_at: 2014-01-21 23:25:43.559870000 Z
+    updated_at: 2014-01-21 23:25:43.559870000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 261
+    name: Spring Recess
+    description: 
+    start_time: 2011-03-21 00:00:00.000000000 Z
+    end_time: 2011-03-26 00:00:00.000000000 Z
+    google_id: hfqudp6uc2sple69n4mvr92hdk
+    created_at: 2014-01-21 23:25:43.562871000 Z
+    updated_at: 2014-01-21 23:25:43.562871000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 262
+    name: ! '[State] CA State Business Leadership Conference (SBLC)'
+    description: 
+    start_time: 2011-03-25 00:00:00.000000000 Z
+    end_time: 2011-03-28 00:00:00.000000000 Z
+    google_id: rc27bqqc4prfjucbejgp8v0qns
+    created_at: 2014-01-21 23:25:43.565872000 Z
+    updated_at: 2014-01-21 23:25:43.565872000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 263
+    name: ! 'Officer Meeting #5'
+    description: 
+    start_time: 2011-03-29 02:00:00.000000000 Z
+    end_time: 2011-03-29 03:30:00.000000000 Z
+    google_id: 2o9fporhr9knmn0i9620r18e04_20110329T020000Z
+    created_at: 2014-01-21 23:25:43.567874000 Z
+    updated_at: 2014-01-21 23:25:43.567874000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 264
+    name: ! '[IN] Sumo Grub'
+    description: 
+    start_time: 2011-03-31 02:00:00.000000000 Z
+    end_time: 2011-03-31 04:00:00.000000000 Z
+    google_id: htl7cv6iv0e84ipdnfb9ha78j8
+    created_at: 2014-01-21 23:25:43.571877000 Z
+    updated_at: 2014-01-21 23:25:43.571877000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 265
+    name: ! '[CS] Corporate Social Responsibility Panel'
+    description: 
+    start_time: 2011-04-01 02:00:00.000000000 Z
+    end_time: 2011-04-01 04:00:00.000000000 Z
+    google_id: 1bpt1ti1ga728klm9behdm8tq8
+    created_at: 2014-01-21 23:25:43.575881000 Z
+    updated_at: 2014-01-21 23:25:43.575881000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 266
+    name: ! '[IN] Matthew Sean-Carmelotes Bowen Poster Making'
+    description: 
+    start_time: 2011-04-01 22:00:00.000000000 Z
+    end_time: 2011-04-02 02:00:00.000000000 Z
+    google_id: 5ag26jcvhqskuli4qk417dqb84
+    created_at: 2014-01-21 23:25:43.578881000 Z
+    updated_at: 2014-01-21 23:25:43.578881000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 267
+    name: Mr. Business
+    description: 
+    start_time: 2011-04-02 02:00:00.000000000 Z
+    end_time: 2011-04-02 05:00:00.000000000 Z
+    google_id: 5m77llrt40tea6mmcustmr65nc
+    created_at: 2014-01-21 23:25:43.581883000 Z
+    updated_at: 2014-01-21 23:25:43.581883000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 268
+    name: Third General Meeting
+    description: 
+    start_time: 2011-04-05 02:00:00.000000000 Z
+    end_time: 2011-04-05 04:00:00.000000000 Z
+    google_id: 49gmqt10d5a2ug2knc1lrpk7ic
+    created_at: 2014-01-21 23:25:43.585887000 Z
+    updated_at: 2014-01-21 23:25:43.585887000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 269
+    name: ! '[FR] Faculty Dinner w/ Professor Banks'
+    description: 
+    start_time: 2011-04-07 02:00:00.000000000 Z
+    end_time: 2011-04-07 04:00:00.000000000 Z
+    google_id: im8ls8neg3olbtnr40jeju0hqk
+    created_at: 2014-01-21 23:25:43.591890000 Z
+    updated_at: 2014-01-21 23:25:43.591890000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 270
+    name: ! 'PD: Real World Consulting'
+    description: 
+    start_time: 2011-04-08 02:00:00.000000000 Z
+    end_time: 2011-04-08 04:00:00.000000000 Z
+    google_id: vgkl68oqv9gpusss5k3sj7qkkg
+    created_at: 2014-01-21 23:25:43.595453000 Z
+    updated_at: 2014-01-21 23:25:43.595453000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 271
+    name: ! '[IN] Ultimate Frisbee'
+    description: 
+    start_time: 2011-04-10 21:00:00.000000000 Z
+    end_time: 2011-04-11 00:00:00.000000000 Z
+    google_id: jc2c92dl0uc20h2ibtq1587bek
+    created_at: 2014-01-21 23:25:43.597843000 Z
+    updated_at: 2014-01-21 23:25:43.597843000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 272
+    name: ! 'Officer Meeting #6'
+    description: 
+    start_time: 2011-04-12 02:00:00.000000000 Z
+    end_time: 2011-04-12 03:30:00.000000000 Z
+    google_id: 2o9fporhr9knmn0i9620r18e04_20110412T020000Z
+    created_at: 2014-01-21 23:25:43.600873000 Z
+    updated_at: 2014-01-21 23:25:43.600873000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 273
+    name: ! '[FR] Faculty Dinner w/ Prof Evans'
+    description: 
+    start_time: 2011-04-14 02:00:00.000000000 Z
+    end_time: 2011-04-14 04:00:00.000000000 Z
+    google_id: 8gvr76sct6rs7n9b9gql8pudg4
+    created_at: 2014-01-21 23:25:43.603879000 Z
+    updated_at: 2014-01-21 23:25:43.603879000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 274
+    name: ! '[FR] The Dynamics of the Business Arena'
+    description: 
+    start_time: 2011-04-15 02:00:00.000000000 Z
+    end_time: 2011-04-15 04:00:00.000000000 Z
+    google_id: gb3oulru8fm7vvpqtgkvm5k3l4
+    created_at: 2014-01-21 23:25:43.607586000 Z
+    updated_at: 2014-01-21 23:25:43.607586000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 275
+    name: Cal Day
+    description: 
+    start_time: 2011-04-16 00:00:00.000000000 Z
+    end_time: 2011-04-17 00:00:00.000000000 Z
+    google_id: a3sghn489e7tof99a3o853pbv4
+    created_at: 2014-01-21 23:25:43.610634000 Z
+    updated_at: 2014-01-21 23:25:43.610634000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 276
+    name: ! '[Soc] Wheel of Feuding'
+    description: 
+    start_time: 2011-04-16 02:00:00.000000000 Z
+    end_time: 2011-04-16 05:00:00.000000000 Z
+    google_id: 1ja3fi43qdeobekci3ama0hg74
+    created_at: 2014-01-21 23:25:43.613636000 Z
+    updated_at: 2014-01-21 23:25:43.613636000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 277
+    name: ! '[IN] Theatre Rice: Don''t Touch That!'
+    description: 
+    start_time: 2011-04-17 02:30:00.000000000 Z
+    end_time: 2011-04-17 05:00:00.000000000 Z
+    google_id: 0h2plupgdt91i0ulavinb1jan4
+    created_at: 2014-01-21 23:25:43.616806000 Z
+    updated_at: 2014-01-21 23:25:43.616806000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 278
+    name: ! '[CS] Easterland Festival'
+    description: 
+    start_time: 2011-04-17 17:30:00.000000000 Z
+    end_time: 2011-04-17 22:00:00.000000000 Z
+    google_id: ktjhdk9sk51ac3djvciuqj8jtg
+    created_at: 2014-01-21 23:25:43.619809000 Z
+    updated_at: 2014-01-21 23:25:43.619809000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 279
+    name: Fourth General Meeting
+    description: 
+    start_time: 2011-04-19 02:00:00.000000000 Z
+    end_time: 2011-04-19 04:00:00.000000000 Z
+    google_id: knr5q2jtsfasd9hj6a3djoh82s
+    created_at: 2014-01-21 23:25:43.622811000 Z
+    updated_at: 2014-01-21 23:25:43.622811000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 280
+    name: ! '[FI] Pork Bun Sale'
+    description: 
+    start_time: 2011-04-20 00:00:00.000000000 Z
+    end_time: 2011-04-21 00:00:00.000000000 Z
+    google_id: 50ltloe40afg2pa9nftfdvcmpg
+    created_at: 2014-01-21 23:25:43.626816000 Z
+    updated_at: 2014-01-21 23:25:43.626816000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 281
+    name: ! '[IN] Karaoke!'
+    description: 
+    start_time: 2011-04-23 01:00:00.000000000 Z
+    end_time: 2011-04-23 03:00:00.000000000 Z
+    google_id: ms54bbnfo40vtje1cil9g6tklg
+    created_at: 2014-01-21 23:25:43.629853000 Z
+    updated_at: 2014-01-21 23:25:43.629853000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 282
+    name: ! '[IN] Davis Sushi!'
+    description: 
+    start_time: 2011-04-23 17:00:00.000000000 Z
+    end_time: 2011-04-23 23:00:00.000000000 Z
+    google_id: tk2ittnpcltu2qv06c4uqebngc
+    created_at: 2014-01-21 23:25:43.632690000 Z
+    updated_at: 2014-01-21 23:25:43.632690000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 283
+    name: ! '[EX] Alumni Luncheon'
+    description: 
+    start_time: 2011-04-24 19:00:00.000000000 Z
+    end_time: 2011-04-24 22:00:00.000000000 Z
+    google_id: u3ui4dabkdr600eafvc97em374
+    created_at: 2014-01-21 23:25:43.635693000 Z
+    updated_at: 2014-01-21 23:25:43.635693000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 284
+    name: ! 'Officer Meeting #7'
+    description: 
+    start_time: 2011-04-26 02:00:00.000000000 Z
+    end_time: 2011-04-26 03:30:00.000000000 Z
+    google_id: 2o9fporhr9knmn0i9620r18e04_20110426T020000Z
+    created_at: 2014-01-21 23:25:43.639696000 Z
+    updated_at: 2014-01-21 23:25:43.639696000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 285
+    name: Officer Sign Up Deadline
+    description: 
+    start_time: 2011-04-27 06:59:00.000000000 Z
+    end_time: 2011-04-27 07:59:00.000000000 Z
+    google_id: ctoueneqjg5iad6o0hpq5upmcg
+    created_at: 2014-01-21 23:25:43.642700000 Z
+    updated_at: 2014-01-21 23:25:43.642700000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 286
+    name: Last Day of Classes
+    description: 
+    start_time: 2011-04-29 00:00:00.000000000 Z
+    end_time: 2011-04-30 00:00:00.000000000 Z
+    google_id: b0ct3npe6fqbt278ffm2ss0cec
+    created_at: 2014-01-21 23:25:43.646703000 Z
+    updated_at: 2014-01-21 23:25:43.646703000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 287
+    name: ! '[MK] Leggo My Eggo'
+    description: 
+    start_time: 2011-04-29 02:00:00.000000000 Z
+    end_time: 2011-04-29 04:00:00.000000000 Z
+    google_id: _6ooj6cq36p1j0b9g6osk4b9k75344ba26kr4aba66ko44cph8gpj8e9j6o
+    created_at: 2014-01-21 23:25:43.649704000 Z
+    updated_at: 2014-01-21 23:25:43.649704000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 288
+    name: Officer Applications Due
+    description: 
+    start_time: 2011-04-29 06:59:00.000000000 Z
+    end_time: 2011-04-29 07:59:00.000000000 Z
+    google_id: ker4ktvsg21mqafj8r2254q3fk
+    created_at: 2014-01-21 23:25:43.654708000 Z
+    updated_at: 2014-01-21 23:25:43.654708000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 289
+    name: Chair Interviews
+    description: 
+    start_time: 2011-04-30 00:00:00.000000000 Z
+    end_time: 2011-05-02 00:00:00.000000000 Z
+    google_id: 59nt4spmtb9pki8jtdm527nfsg
+    created_at: 2014-01-21 23:25:43.657708000 Z
+    updated_at: 2014-01-21 23:25:43.657708000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 290
+    name: ! '[Soc] Banquet'
+    description: 
+    start_time: 2011-05-01 02:00:00.000000000 Z
+    end_time: 2011-05-01 05:00:00.000000000 Z
+    google_id: vsflbg4m6s9vdog60q1gqbv4qo
+    created_at: 2014-01-21 23:25:43.660710000 Z
+    updated_at: 2014-01-21 23:25:43.660710000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 291
+    name: RRR week
+    description: 
+    start_time: 2011-05-02 00:00:00.000000000 Z
+    end_time: 2011-05-07 00:00:00.000000000 Z
+    google_id: 06oq6kcg7ng7ig6vf5th76r0ic
+    created_at: 2014-01-21 23:25:43.663758000 Z
+    updated_at: 2014-01-21 23:25:43.663758000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 292
+    name: Video Viewing and Yearbook Signing
+    description: 
+    start_time: 2011-05-05 00:00:00.000000000 Z
+    end_time: 2011-05-05 02:00:00.000000000 Z
+    google_id: n70boubft5715gujn1tu75n9j0
+    created_at: 2014-01-21 23:25:43.666762000 Z
+    updated_at: 2014-01-21 23:25:43.666762000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 293
+    name: Spring Semester Ends
+    description: 
+    start_time: 2011-05-13 00:00:00.000000000 Z
+    end_time: 2011-05-14 00:00:00.000000000 Z
+    google_id: a9rs0vveds3bqt8c88rida177k
+    created_at: 2014-01-21 23:25:43.669764000 Z
+    updated_at: 2014-01-21 23:25:43.669764000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 294
+    name: FALL SEMESTER BEGINS
+    description: 
+    start_time: 2011-08-18 00:00:00.000000000 Z
+    end_time: 2011-08-19 00:00:00.000000000 Z
+    google_id: _84q30e1o8cpj8b9l8cskcb9k6gojeba16sqk6ba288p4ad9h64rjch2374
+    created_at: 2014-01-21 23:25:43.705391000 Z
+    updated_at: 2014-01-21 23:25:43.705391000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 295
+    name: Officers' Retreat
+    description: 
+    start_time: 2011-08-18 00:00:00.000000000 Z
+    end_time: 2011-08-22 00:00:00.000000000 Z
+    google_id: _70ojicho85138ba269248b9k8l13aba16d144b9h84r4adhp6go4acq66s
+    created_at: 2014-01-21 23:25:43.708915000 Z
+    updated_at: 2014-01-21 23:25:43.708915000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 296
+    name: PBL Cal Student Store Discount Night
+    description: 
+    start_time: 2011-08-24 01:00:00.000000000 Z
+    end_time: 2011-08-24 03:00:00.000000000 Z
+    google_id: 7bh2v4ng0is9k9iq81367dce68
+    created_at: 2014-01-21 23:25:43.711188000 Z
+    updated_at: 2014-01-21 23:25:43.711188000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 297
+    name: Instruction Begins
+    description: 
+    start_time: 2011-08-25 00:00:00.000000000 Z
+    end_time: 2011-08-26 00:00:00.000000000 Z
+    google_id: _8gokah226t1k2ba28l242b9k64o38b9p7133cb9p6h14ac9o6cok4c1m88
+    created_at: 2014-01-21 23:25:43.714674000 Z
+    updated_at: 2014-01-21 23:25:43.714674000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 298
+    name: ! 'Officers Meeting #1'
+    description: 
+    start_time: 2011-08-27 02:00:00.000000000 Z
+    end_time: 2011-08-27 04:00:00.000000000 Z
+    google_id: t69b74enmmp0js52uaodsbvc5s
+    created_at: 2014-01-21 23:25:43.716679000 Z
+    updated_at: 2014-01-21 23:25:43.716679000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 299
+    name: First General Meeting
+    description: 
+    start_time: 2011-08-31 02:00:00.000000000 Z
+    end_time: 2011-08-31 04:00:00.000000000 Z
+    google_id: _6d134c1i8h1j0ba66cr38b9k8913iba164pk2b9p8opj4ha38cr3icpn64
+    created_at: 2014-01-21 23:25:43.721683000 Z
+    updated_at: 2014-01-21 23:25:43.721683000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 300
+    name: ! '[PD] Haas Panel'
+    description: 
+    start_time: 2011-09-02 02:00:00.000000000 Z
+    end_time: 2011-09-02 04:00:00.000000000 Z
+    google_id: _6cq3gh9n7123cb9h6gp38b9k68sk6b9p8d1j0ba360rjidhp69342e2270
+    created_at: 2014-01-21 23:25:43.725525000 Z
+    updated_at: 2014-01-21 23:25:43.725525000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 301
+    name: Committee Member Interviews
+    description: 
+    start_time: 2011-09-03 00:00:00.000000000 Z
+    end_time: 2011-09-05 00:00:00.000000000 Z
+    google_id: _8ookacpm68s3gba16l332b9k8d2k8b9p8kr38b9h8d130d9p8cp44h236o
+    created_at: 2014-01-21 23:25:43.728512000 Z
+    updated_at: 2014-01-21 23:25:43.728512000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 302
+    name: ! '[SO] Kip''s Mixer'
+    description: 
+    start_time: 2011-09-03 02:00:00.000000000 Z
+    end_time: 2011-09-03 04:00:00.000000000 Z
+    google_id: _6h0j8hhh8crjgb9m6d1jab9k6cr4cb9o74pj8ba18d23ad1l84q3cdi188
+    created_at: 2014-01-21 23:25:43.730613000 Z
+    updated_at: 2014-01-21 23:25:43.730613000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 303
+    name: Labor Day [No School]
+    description: 
+    start_time: 2011-09-05 00:00:00.000000000 Z
+    end_time: 2011-09-06 00:00:00.000000000 Z
+    google_id: n2etrhteqhv0j0m4iuav39qh54
+    created_at: 2014-01-21 23:25:43.734323000 Z
+    updated_at: 2014-01-21 23:25:43.734323000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 304
+    name: ! '[IN] Kickoff'
+    description: 
+    start_time: 2011-09-07 01:00:00.000000000 Z
+    end_time: 2011-09-07 03:00:00.000000000 Z
+    google_id: _8h332di46sr38b9k6so34b9k6t332b9p8go4ab9k6sqk6ha68l1jacq388
+    created_at: 2014-01-21 23:25:43.737327000 Z
+    updated_at: 2014-01-21 23:25:43.737327000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 305
+    name: Committee Member Initiation BBQ
+    description: 
+    start_time: 2011-09-10 18:00:00.000000000 Z
+    end_time: 2011-09-10 21:00:00.000000000 Z
+    google_id: _60pjee9g8p0jeb9l60s3cb9k89334b9p8l0j8b9o8osjag9g8l33cc1n6s
+    created_at: 2014-01-21 23:25:43.740329000 Z
+    updated_at: 2014-01-21 23:25:43.740329000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 306
+    name: ! '[CS] Sports with KEEN'
+    description: 
+    start_time: 2011-09-11 20:00:00.000000000 Z
+    end_time: 2011-09-11 23:30:00.000000000 Z
+    google_id: 67muj7l5mepfcnh8bkiojler3o
+    created_at: 2014-01-21 23:25:43.743832000 Z
+    updated_at: 2014-01-21 23:25:43.743832000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 307
+    name: ! '[IN] Cheeseboard!'
+    description: 
+    start_time: 2011-09-14 01:30:00.000000000 Z
+    end_time: 2011-09-14 03:30:00.000000000 Z
+    google_id: 9d49idfp263n1485agvatsl9r4
+    created_at: 2014-01-21 23:25:43.746327000 Z
+    updated_at: 2014-01-21 23:25:43.746327000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 308
+    name: ! '[FR] Dinner w/ Prof. Clayton Critcher'
+    description: 
+    start_time: 2011-09-15 01:40:00.000000000 Z
+    end_time: 2011-09-15 03:30:00.000000000 Z
+    google_id: ujjver3l0k7risln4t9pquvrvk
+    created_at: 2014-01-21 23:25:43.749333000 Z
+    updated_at: 2014-01-21 23:25:43.749333000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 309
+    name: ! '[FI] Krispy Kreme Doughnut Sale'
+    description: 
+    start_time: 2011-09-20 17:00:00.000000000 Z
+    end_time: 2011-09-20 22:00:00.000000000 Z
+    google_id: 2vi9nc4toms4hji6viqcc01oa8
+    created_at: 2014-01-21 23:25:43.751288000 Z
+    updated_at: 2014-01-21 23:25:43.751288000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 310
+    name: ! 'Officers Meeting #2'
+    description: 
+    start_time: 2011-09-22 02:30:00.000000000 Z
+    end_time: 2011-09-22 04:30:00.000000000 Z
+    google_id: _8l242ca474pkcba1611k2b9k6crjcba26sr38b9p6kpj8dpg6kr32c2260
+    created_at: 2014-01-21 23:25:43.754292000 Z
+    updated_at: 2014-01-21 23:25:43.754292000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 311
+    name: ! '[PD] Resume Critique'
+    description: 
+    start_time: 2011-09-23 02:00:00.000000000 Z
+    end_time: 2011-09-23 04:00:00.000000000 Z
+    google_id: 6d3gtl8m3emoeruut03bt5qgk0
+    created_at: 2014-01-21 23:25:43.758129000 Z
+    updated_at: 2014-01-21 23:25:43.758129000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 312
+    name: ! '[SO] Bridges: Rock Climbing'
+    description: 
+    start_time: 2011-09-24 01:15:00.000000000 Z
+    end_time: 2011-09-24 07:00:00.000000000 Z
+    google_id: ce9fggj4sndp3oo8ln9q1q8rv4
+    created_at: 2014-01-21 23:25:43.761037000 Z
+    updated_at: 2014-01-21 23:25:43.761037000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 313
+    name: ! '[IN] Football '
+    description: 
+    start_time: 2011-09-25 21:00:00.000000000 Z
+    end_time: 2011-09-26 00:00:00.000000000 Z
+    google_id: fhfru80jnktdeh6pp881n8ch5c
+    created_at: 2014-01-21 23:25:43.764042000 Z
+    updated_at: 2014-01-21 23:25:43.764042000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 314
+    name: ! '[FR] Dinner w/ Prof. Rada Brooks'
+    description: 
+    start_time: 2011-09-27 00:45:00.000000000 Z
+    end_time: 2011-09-27 02:30:00.000000000 Z
+    google_id: 4fko2h2ui7j33a0nt43le8p32k
+    created_at: 2014-01-21 23:25:43.766965000 Z
+    updated_at: 2014-01-21 23:25:43.766965000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 315
+    name: ! '[IN] Cardio Kickboxing'
+    description: 
+    start_time: 2011-09-30 01:15:00.000000000 Z
+    end_time: 2011-09-30 03:00:00.000000000 Z
+    google_id: hts1s5c483n8m1lg1ed9rrf598
+    created_at: 2014-01-21 23:25:43.768968000 Z
+    updated_at: 2014-01-21 23:25:43.768968000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 316
+    name: ! '[FI] Poker Tournament'
+    description: 
+    start_time: 2011-10-01 00:30:00.000000000 Z
+    end_time: 2011-10-01 05:00:00.000000000 Z
+    google_id: 9et80sm422gdpkhgsa0me9nsq4
+    created_at: 2014-01-21 23:25:43.772972000 Z
+    updated_at: 2014-01-21 23:25:43.772972000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 317
+    name: ! '[CS] Beach Clean Up'
+    description: 
+    start_time: 2011-10-01 16:00:00.000000000 Z
+    end_time: 2011-10-01 20:00:00.000000000 Z
+    google_id: f723oka247acd0e897gs9vremg
+    created_at: 2014-01-21 23:25:43.776183000 Z
+    updated_at: 2014-01-21 23:25:43.776183000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 318
+    name: ! '[IN] Big C Hike'
+    description: 
+    start_time: 2011-10-03 00:00:00.000000000 Z
+    end_time: 2011-10-03 02:00:00.000000000 Z
+    google_id: cngt9dipn63d64mcuo65uvfj24
+    created_at: 2014-01-21 23:25:43.778872000 Z
+    updated_at: 2014-01-21 23:25:43.778872000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 319
+    name: ! '[EX] Dinner with Scott Belshaw'
+    description: 
+    start_time: 2011-10-04 01:45:00.000000000 Z
+    end_time: 2011-10-04 03:30:00.000000000 Z
+    google_id: h1gbdkudhd2pecloheev3mqct4
+    created_at: 2014-01-21 23:25:43.781881000 Z
+    updated_at: 2014-01-21 23:25:43.781881000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 320
+    name: ! '[EX] Cover Letter Workshop'
+    description: 
+    start_time: 2011-10-05 02:00:00.000000000 Z
+    end_time: 2011-10-05 03:30:00.000000000 Z
+    google_id: j1sf58j3n1oeagvldv6gj5aqns
+    created_at: 2014-01-21 23:25:43.783882000 Z
+    updated_at: 2014-01-21 23:25:43.783882000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 321
+    name: ! 'Officers Meeting #3'
+    description: 
+    start_time: 2011-10-06 02:30:00.000000000 Z
+    end_time: 2011-10-06 04:30:00.000000000 Z
+    google_id: 511r33ns5i6ucabsbv39tpfbkk
+    created_at: 2014-01-21 23:25:43.787885000 Z
+    updated_at: 2014-01-21 23:25:43.787885000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 322
+    name: ! '[SO] Members Retreat'
+    description: 
+    start_time: 2011-10-07 00:00:00.000000000 Z
+    end_time: 2011-10-10 00:00:00.000000000 Z
+    google_id: btvdngh1vkmlrvm2bkokbpuags
+    created_at: 2014-01-21 23:25:43.790887000 Z
+    updated_at: 2014-01-21 23:25:43.790887000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 323
+    name: ! '[FR] B-Harmony: Faculty Networking'
+    description: 
+    start_time: 2011-10-07 02:00:00.000000000 Z
+    end_time: 2011-10-07 03:30:00.000000000 Z
+    google_id: 154h9v4dcg9e4738hvj39ehbn0
+    created_at: 2014-01-21 23:25:43.793895000 Z
+    updated_at: 2014-01-21 23:25:43.793895000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 324
+    name: ! '[CS] Berkeley Project'
+    description: 
+    start_time: 2011-10-15 15:00:00.000000000 Z
+    end_time: 2011-10-15 23:00:00.000000000 Z
+    google_id: b6hu0baa4iecgfv9jkrf68e03k
+    created_at: 2014-01-21 23:25:43.796975000 Z
+    updated_at: 2014-01-21 23:25:43.796975000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 325
+    name: ! 'Officers Meeting #4'
+    description: 
+    start_time: 2011-10-20 02:30:00.000000000 Z
+    end_time: 2011-10-20 04:30:00.000000000 Z
+    google_id: hvtja1npd6lsg4it2s724tl61k
+    created_at: 2014-01-21 23:25:43.799995000 Z
+    updated_at: 2014-01-21 23:25:43.799995000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 326
+    name: Veteran's Day [No School]
+    description: 
+    start_time: 2011-11-11 00:00:00.000000000 Z
+    end_time: 2011-11-12 00:00:00.000000000 Z
+    google_id: e5r6l3igt9sp7c5e7e39ue2tus
+    created_at: 2014-01-21 23:25:43.802885000 Z
+    updated_at: 2014-01-21 23:25:43.802885000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 327
+    name: Thanksgiving Break [No School]
+    description: 
+    start_time: 2011-11-24 00:00:00.000000000 Z
+    end_time: 2011-11-28 00:00:00.000000000 Z
+    google_id: uh5s2nt8c2s02mrlqtn59ds9vk
+    created_at: 2014-01-21 23:25:43.805888000 Z
+    updated_at: 2014-01-21 23:25:43.805888000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 328
+    name: ! 'Officers Meeting #7'
+    description: 
+    start_time: 2011-12-01 03:30:00.000000000 Z
+    end_time: 2011-12-01 05:30:00.000000000 Z
+    google_id: ffueq2mqi9q28caa77ek4lt768
+    created_at: 2014-01-21 23:25:43.809430000 Z
+    updated_at: 2014-01-21 23:25:43.809430000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 329
+    name: Chair Interviews
+    description: 
+    start_time: 2011-12-03 00:00:00.000000000 Z
+    end_time: 2011-12-04 00:00:00.000000000 Z
+    google_id: nlku7gdnqoftv11h7mdsfue33s
+    created_at: 2014-01-21 23:25:43.812161000 Z
+    updated_at: 2014-01-21 23:25:43.812161000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 330
+    name: Last Day of Classes
+    description: 
+    start_time: 2011-12-03 07:00:00.000000000 Z
+    end_time: 2011-12-03 08:00:00.000000000 Z
+    google_id: _8h338gq18l14cb9i8ks34b9k6p2j6b9p6t132b9l60qjec9i64skce1m6c
+    created_at: 2014-01-21 23:25:43.814815000 Z
+    updated_at: 2014-01-21 23:25:43.814815000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 331
+    name: Chair Interviews
+    description: 
+    start_time: 2011-12-04 00:00:00.000000000 Z
+    end_time: 2011-12-05 00:00:00.000000000 Z
+    google_id: v2t8lmojfk9ot2qlr4ec6a1hr8
+    created_at: 2014-01-21 23:25:43.816887000 Z
+    updated_at: 2014-01-21 23:25:43.816887000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 332
+    name: RRR Week
+    description: 
+    start_time: 2011-12-05 00:00:00.000000000 Z
+    end_time: 2011-12-10 00:00:00.000000000 Z
+    google_id: t092417a0jjimb4ed2t8km7b44
+    created_at: 2014-01-21 23:25:43.820890000 Z
+    updated_at: 2014-01-21 23:25:43.820890000 Z
+    semester_id: 
+- !ruby/object:Event
+  attributes:
+    id: 333
+    name: Fall 2011 Semester Ends
+    description: 
+    start_time: 2011-12-17 07:00:00.000000000 Z
+    end_time: 2011-12-17 08:00:00.000000000 Z
+    google_id: _6sq3gdhk6kpkaba484s3ab9k8p234ba289230ba5851kchhh6sqjae9l6k
+    created_at: 2014-01-21 23:25:43.824350000 Z
+    updated_at: 2014-01-21 23:25:43.824350000 Z
+    semester_id: 

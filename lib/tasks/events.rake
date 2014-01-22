@@ -1,4 +1,27 @@
-
+task :get_events => :environment do
+	require "yaml"
+	events = Array.new
+	Event.all.each do |e|
+		events << e
+	end
+	serialized_list = YAML::dump(events)
+	File.open(Rails.root.join('events_dump.yaml'), "w") do |file|
+	    file.puts YAML::dump(events)
+	end
+	puts "saved all your events"
+end
+task :import_events => :environment do
+	require "yaml"
+	events = Array.new
+	File.open(Rails.root.join('events_dump.yaml'), "r").each do |object|
+	  events << YAML::load(object)
+	end
+	puts events
+	puts "saving the result"
+	events.each do |event|
+		event.save
+	end
+end
 task :google_sync => :environment do
 	 def google_datetime_fix(datetime)
 	    time_string = datetime.date_time ? datetime.date_time.to_s : datetime.date.to_s
