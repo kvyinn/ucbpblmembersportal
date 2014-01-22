@@ -1,0 +1,4 @@
+module ApplicantRankingsHelper
+
+
+end

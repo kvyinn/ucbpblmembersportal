@@ -1,0 +1,107 @@
+
+<%= javascript_include_tag "deliberations/deliberations_forms.js" %>
+<script type = "text/javascript">
+$(document).ready(function(){
+	$("#submit_all").on("click", function(){
+		var did = '<%= @deliberation_id %>';
+  		var cid = '<%= @committee.id %>';
+		submitForms(did, cid);
+	});
+	// $(".add_image").hover(function(){
+	// 		$(this).parent().css("overflow": "visible");
+	// 		}
+	// 	,
+	// 	function(){
+	// 		$(this).parent().css("overflow": "visible");
+	// });
+});
+</script>
+<style type = "text/css">
+.form{
+	padding:5px;
+	border:1px solid rgba(0,0,0,0.1);
+	box-shadow:1px 1px 5px rgba(0,0,0,0.3);
+	margin: 5px;
+	overflow:hidden;
+}
+.add_image{
+	float:right;
+	height: 35px;
+	z-index: 100;
+}
+.profile_img{
+	height: 50px;
+	opacity: 0.5;
+}
+.profile_img:hover{
+	height: 100px;
+	cursor:pointer;
+}
+.add_image:hover{
+	cursor:pointer;
+	height: 100px;
+}
+
+</style>
+<h1>this is your ranking form for <%= @committee.name %></h1>
+<a id = "add_images" href = "/auth/facebook">add profile images for applicants</a><br>
+<div id = "picture_area">
+<% @pictures.each do |pic| %>
+<img class = "profile_img" src = '<%= pic %>'></img>
+<% end %>
+</div>
+<% @applicants.each do |applicant| %>
+<% if ApplicantRanking.where(applicant: applicant.id).where( committee: @committee.id).where(deliberation_id: @deliberation_id).first %>
+
+	<%= form_for ApplicantRanking.where(applicant: applicant.id).where( committee: @committee.id).where(deliberation_id: @deliberation_id).first do |f| %>
+	<div class = "form">
+		<div class = "image_container">
+	  <% if applicant.image %>
+	  		<img class = "add_image" id = '<%= applicant.id %>' src = '<%= applicant.image %>'></img>
+	  	<% else %>
+	  		<span class = "add_image" id = '<%= applicant.id %>'>add image</span>
+	  <% end %>
+	  </div>
+	  <%= f.text_field :committee , :style => "display:none", :value=> @committee.id %>
+	  <%= f.text_field :deliberation_id, :class => "delib_id", :style => "display:none", :value => @deliberation_id %>
+	  deliberation: <%= Deliberation.find(@deliberation_id).name %><br>
+
+	  <%= applicant.name %>
+	  <%= f.text_field :applicant, :style => "display:none", :value=> applicant.id , :class => "applicant_id" %>,
+	  <%= f.label :value %>:
+	  <%= f.text_field :value, :class=> "rank" %>
+
+	  <!-- end of image container -->
+	  <%= f.submit :style =>" display:none" %>
+	  </div>
+	<% end %>
+
+
+<% else %>
+<!-- this part should never happen -->
+	<%= form_for ApplicantRanking.new do |f| %>
+	<div class = "form" style = "display:none">
+	  <%= f.text_field :committee , :style => "display:none", :value=> @committee.id %>
+	  <%= f.text_field :deliberation_id, :style => "display:none", :value => @deliberation_id %>
+	  deliberation: <%= Deliberation.find(@deliberation_id).name %><br>
+
+	  <%= f.label :value %>:
+	  <%= f.text_field :value, :class=> "rank" %><br>
+
+	  <%= f.label :notes %>:
+	  <%= f.text_field :notes %><br>
+
+	   <%= f.label :applicant %>:
+	  <%= applicant.name %>
+	  <%= f.text_field :applicant, :style => "display:none", :class => "applicant_id", :value=>applicant.id %><br>
+
+	  <%= f.submit %>
+	  </div>
+	<% end %>
+
+
+<% end %>
+<% end %>
+<div class = "form">
+<input type = "submit" value = "submit all" id = "submit_all"/>
+</div>

@@ -1,0 +1,230 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<%= javascript_include_tag "deliberations/deliberations.js.erb" %>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<style type = "text/css">
+input[type="text"]{
+	width: 100px;
+}
+.searched_node{
+	opacity: 1;
+	font-size: 20px;
+}
+.node_text{
+	fill: rgb(98, 100, 75);
+	color: yellow;
+	opacity: 1;
+}
+.committee_node .node_text {
+	fill: rgb(214, 214, 7);
+}
+.node.fixed {
+  opacity: 1;
+}
+.node {
+  opacity: 0.5;
+  /*stroke: #fff;*/
+  font-size:12px;
+  stroke-width: 1.5px;
+  -webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+.applicant_circle {
+	fill: black;
+}
+.committee_circle {
+	fill: #3B5998;
+}
+.link{
+	cursor:pointer;
+	stroke-width: 1px;
+	stroke-opacity: .5;
+	/*stroke: yellow;*/
+	stroke: gray;
+}
+.link:hover{
+	cursor:pointer;
+	stroke-width: 5px;
+}
+.chair_link{
+	stroke: blue;
+}
+.assigned_link{
+	stroke: green;
+	stroke-width: 3px;
+}
+#hide{
+	display:none;
+}
+#d3_area{
+	margin-left: 10px;
+	/*border:1px solid rgba(0,0,0,0.1);*/
+	/*box-shadow: 1px 1px 5px rgba(0,0,0,0.3);*/
+	padding:15px;
+	float: left;
+	cursor: default;
+}
+#filtering{
+	float: left;
+	margin-left: 10px;
+
+	/*border:1px solid rgba(0,0,0,0.1);*/
+	/*box-shadow: 3px 3px 5px rgba(0,0,0,0.3);*/
+	/*padding:15px;*/
+	background-color: rgb(247, 247, 247);
+
+}
+.panel-default .panel-heading {
+	background-color:maroon;
+	color:white;
+	text-align:center;
+}
+input[type="checkbox"] {
+	display:inline;
+}
+.textinput {
+	/*display:inline;*/
+	/*align:right;*/
+	/*position:absolute;
+	right: 1px;*/
+	text-align: right;
+}
+.filter_div{
+	float: left;
+/*	margin-left: 10px;
+	border:1px solid rgba(0,0,0,0.1);
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.3);*/
+	padding:15px;
+}
+#assignment_area{
+	display: none;
+}
+#filter_header {
+	background-color: maroon;
+	color: rgb(255, 221, 221);
+	padding: 7px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+/*styles for the assignment squares*/
+.assignments_lists
+{
+	margin-left: 25px;
+}
+.committee_list {
+	float: left;
+	padding-bottom: 15px;
+	padding-top: 0px;
+	width: 300px;
+	/*height: 175px;*/
+	border: 1px solid rgb(214, 214, 214);
+	/*margin-right: -1px;*/
+	/*margin-bottom: -1px;*/
+	margin:3px;
+	background-color: white;
+}
+.clist_header{
+	padding: 5px;
+	background-color: maroon;
+	color: white;
+	margin-bottom: 5px;
+	text-align: center;
+}
+.applicant {
+	margin-left: 15px;
+}
+.applicant:hover {
+	color: red;
+	cursor: pointer;
+}
+.add_input_div {
+	margin-left: 10px;
+}
+.invalid {
+	color: red;
+}
+#delib_title.label {
+	font-size:3em;
+	background-color:maroon;
+	text-align:center;
+	margin-bottom: 10px;
+}
+.form-control{
+	display: inline;
+}
+#applicant_search.form-control {
+	width: 200px;
+}
+</style>
+<div style = "height:35px"></div>
+<div style = "text-align:center"><div id = "delib_title" class="label label-default"><%= @deliberation.name %></div></div>
+<div id = "holder" title = '<%= @deliberation.id %>'></div>
+<div id = "filtering" class = "panel panel-default">
+	<div id = "filter_header1" class = "panel-heading">Controls</div>
+	<div class = "panel-body">
+	<div id = "other_options_div" class= "filter_div">
+		<div class = "textinput"><input class = "form-control" placeholder = "search applicants" type="text" id = "applicant_search"/></div>
+		<input class = "link_preference" id = "applicant" type = "radio" name = "link_preference" value = "show by applicant preference"/> show by applicant preference<br>
+		<input class = "link_preference" id = "chair" type = "radio" name = "link_preference" value = "show by chair preference"/> show by chair preference<br>
+		<input type = "checkbox" id= "hide_applicants"/> hide removed applicants<br>
+		<input type = "checkbox" id = "hide_images"/> hide images<br>
+		<input type = "checkbox" id = "run_algorithm" value = "apply deliberations" /> apply deliberations results<br>
+		<div class = "textinput">link distance <input class = "form-control" type="text" id = "link_distance_input"></input></div>
+		<div class = "textinput">link charge <input class = "form-control" type="text" id = "link_charge_input"></input></div>
+		<br>
+		<a href = '/deliberations/deliberate/<%= @deliberation.id %>'> view full results </a>
+	</div>
+	<!-- end of other options -->
+	<br>
+	<div id = "committee_filter_div" class = "filter_div">
+		check which committees to show<br>
+		<% Committee.find([3,4,5,6,7,9,10,11]).each do |committee| %>
+		<input class = "commitee_checkbox" type = "checkbox" id = '<%= committee.name %>'/> <%= committee.name %></input>
+		<br>
+		<% end %>
+	</div><!-- end of hiding filters -->
+	</div><!-- end of panel body -->
+</div>
+<!-- end of filtering div -->
+<div id = "d3_container"></div>
+<div style = "height:100px; clear: both;"></div>
+
+<!-- <h1>assignments</h1> -->
+<div style = "text-align:center"><div id = "delib_title" class="label label-default">Committee Assignments</div></div>
+<div style = "height:50px"></div>
+<div class = "assignments_lists">
+<% Committee.find([3,4,5,6,7,9,10,11]).each do |c| %>
+<div class = "committee_list panel panel-default" id = '<%= c.id %>'>
+	<div class = "clist_header panel-heading"><%= c.name %></div>
+	<div class = "panel-body">
+	<div class = "add_input_div" style = "text-align:center"><input class = "applicant_search form-control" placeholder = "add a cm" type = "text" id = '<%= c.id %>'></div>
+	<% @assignments[c].each do |a| %>
+	<div class = "applicant" id = '<%= a.id %>'><%= a.name %></div>
+	<% end %>
+	</div>
+</div>
+<!-- end of committee list -->
+<% end %>
+</div>
+<!-- end of assignments list -->
+
+<script type = "text/javascript">
+// for input autocomplete functionality
+var applicant_names = [];
+var applicant_hash = [];
+<% @deliberation.applicants.each do |applicant| %>
+applicant_names.push('<%= applicant.name %>');
+applicant_hash['<%= applicant.name %>'] = '<%= applicant.id %>';
+<% end %>
+var deliberation
+</script>
+
+<br>
+<br>

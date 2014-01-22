@@ -1,0 +1,63 @@
+function submitForms(did, cid){
+  var submit_string = "";
+
+  $(".ranking_row").each(function(){
+  	var aid = $(this).find(".applicant").attr("id");
+  	var rank = $(this).find(".rank").val();
+  	if(rank){
+  		submit_string = aid+","+rank+" "+submit_string
+  		// console.log(aid+" "+rank);
+  	}
+  });
+  // console.log(submit_string);
+  $.ajax({
+      url:'/rankings/submitall/',
+      type: "GET",
+      data: {"committee_id":cid, "deliberation_id": did, "submit_string": submit_string},
+      success:function(d){
+      	// alert(d);
+      },
+      complete:function(){
+      	// alert("finished");
+        location.reload();
+      },
+      error:function (xhr, textStatus, thrownError){}
+  });
+}//end submit form
+
+function addApplicantImage(id, image){
+  $.ajax({
+      url:'/deliberations/add_applicant_image/',
+      type: "GET",
+      data: {"applicant_id": id, "image":image},
+      success:function(d){
+        console.log(d)
+      },
+      complete:function(){
+      },
+      error:function (xhr, textStatus, thrownError){}
+  });
+}
+
+var selected_image = "";
+var selected_image_tag = "";
+
+var selected = "";
+$(document).ready(function(){
+  $(".pic").click(function(){
+    $(".selected").each(function(){
+      $(this).removeClass("selected");
+    });
+    $(this).addClass("selected");
+    selected = $(this).attr("src");
+    console.log(selected);
+  });
+
+  $(".image").click(function(){
+    if(selected == ""){
+      return;
+    }
+    $(this).find(".app_image").attr("src", selected);
+    addApplicantImage($(this).attr("id"), selected);
+  });
+});

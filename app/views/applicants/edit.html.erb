@@ -1,0 +1,10 @@
+<h1>edit applicant here</h1>
+
+Here is a key for the committee preferences
+<br>
+<% @committees.each do |c| %>
+<%= c.id %>: <%= c.name %>
+<br>
+<% end %>
+<br>
+<%= render "form" %>

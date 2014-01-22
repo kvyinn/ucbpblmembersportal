@@ -1,0 +1,76 @@
+function submitForms(did, cid){
+  var submit_string = "";
+
+  $(".form").each(function(){
+  	var aid = $(this).find(".applicant_id").val();
+  	var rank = $(this).find(".rank").val();
+  	if(rank != "5000"){
+  		submit_string = aid+","+rank+" "+submit_string
+  		console.log(aid+" "+rank);
+  	}
+
+  });
+  console.log(submit_string);
+  $.ajax({
+      url:'/rankings/submitall/',
+      type: "GET",
+      data: {"committee_id":cid, "deliberation_id": did, "submit_string": submit_string},
+      success:function(d){
+      	// alert(d);
+      },
+      complete:function(){
+      	// alert("finished");
+        location.reload();
+      },
+      error:function (xhr, textStatus, thrownError){}
+  });
+}//end submit form
+
+function addApplicantImage(id, image){
+  $.ajax({
+      url:'/deliberations/add_applicant_image/',
+      type: "GET",
+      data: {"applicant_id": id, "image":image},
+      success:function(d){
+        console.log(d)
+      },
+      complete:function(){
+      },
+      error:function (xhr, textStatus, thrownError){}
+  });
+}
+
+var selected_image = "";
+var selected_image_tag = "";
+$(document).ready(function(){
+  $(".profile_img").click(function(){
+    $(".profile_img").each(function(){
+      $(this).css("opacity", .5);
+    });
+    // $(this).css("border","3px solid green");
+    $(this).css("opacity",1);
+    selected_image = $(this).attr("src");
+    selected_image_tag = $(this);
+
+    console.log(selected_image);
+  });
+  $(".add_image").click(function(){
+    //ajax add this image to the applicant
+    var id = $(this).attr("id");
+    if (selected_image_tag != "")
+    {
+      addApplicantImage(id, selected_image);
+      $(this).text("");
+      $(selected_image_tag).addClass("add_image");
+      $(selected_image_tag).removeClass("profile_img");
+      // $(selected_image_tag).css("border","");
+      var children =  $(this).parent().children();
+      $(this).parent().append(selected_image_tag);
+      for (var i=0;i<children.length;i++){
+        children[i].remove();
+      }
+      selected_image_tag = "";
+      selected_image = "";
+    }
+  });
+});

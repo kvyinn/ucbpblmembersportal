@@ -14,6 +14,19 @@ Ucbpblmembersportal::Application.routes.draw do
   # ad hoc route for events
   match "/new_events", to: "events#new_index"
   match "/new_events/:id", to: "events#new_show"
+  # ad hoc deliberations routs
+  # TODO clean this up this is a mess
+  match "/rankings/:committee/:delib_id", to: "applicant_rankings#new_committee"
+  match "/rankings/submitall", to: "applicant_rankings#submitall"
+  match "/deliberations/deliberate/:delib_id", to: "deliberations#run_deliberations"
+  match "/deliberate/links/:delib_id", to: "deliberations#get_delib_links"
+  match '/deliberations/add_applicant_image/', to: "applicants#add_image"
+  match "/deliberations/data", to: "deliberations#deliberations_data"
+  match "/deliberations/assign", to: "deliberations#make_assignment"
+  match "newtable/:committee/:delib_id", to: "applicant_rankings#new_table"
+  resources :applicant_rankings
+  resources :applicants
+  resources :deliberations
 
   resources :calendars, only: [ :index, :show ] do
     member do

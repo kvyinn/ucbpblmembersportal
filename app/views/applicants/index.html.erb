@@ -1,0 +1,10 @@
+<h1>manage applicants</h1>
+
+<% @applicants.each do |a| %>
+<% if a.deliberation_id %>
+  <%= a.name %> (<%= Deliberation.find(a.deliberation_id).name %>)
+  (<%= link_to "edit", edit_applicant_path(a) %> ,
+  <%= link_to "delete", applicant_path(a), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>)
+  <br>
+<% end %>
+<% end %>

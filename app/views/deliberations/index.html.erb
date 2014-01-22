@@ -1,0 +1,46 @@
+<style type = "text/css">
+#deliberations_table, th, td {
+	border-collapse: collapse;
+	border: 1px solid rgb(199, 199, 199);
+	padding: 3px;
+	text-align: center;
+	margin: 10px 45px;
+}
+th {
+	background-color: maroon;
+	color: rgb(255, 240, 240);
+	width: 10%;
+	font-weight: normal;
+}
+th a {
+	color: rgb(255, 240, 240);
+}
+td {
+	background-color: white;
+}
+</style>
+<h1>Deliberations</h1>
+
+<table id = "deliberations_table">
+	<thead>
+		<th>Name</th>
+		<th>Applicants</th>
+		<th>Options</th>
+	</thead>
+
+	<tbody>
+	<% @deliberations.each do |deliberation| %>
+		<tr>
+			<td><%= deliberation.name %></td>
+			<td><%= deliberation.applicants.length %> (<%= deliberation.rankings.length %>)</td>
+			<td>
+				<a href = '/deliberations/<%= deliberation.id %>'>deliberation graph</a><br>
+				<a href = '/deliberations/deliberate/<%= deliberation.id %>'>deliberation algorithm results</a><br>
+				<!-- <a href = '/applicant_rankings'>edit chair preferences</a><br> -->
+				<%= link_to "edit chair preferences", {:controller => "applicant_rankings", :action => "new_table", :delib_id => deliberation.id, :committee => current_member.primary_committee.id}%><br>
+				<%= link_to "add a new applicant", new_applicant_path(:delib_id => deliberation.id) %>
+			</td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

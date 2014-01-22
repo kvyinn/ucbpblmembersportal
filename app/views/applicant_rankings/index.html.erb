@@ -1,0 +1,10 @@
+<h1>Which Committee Chair Are You?</h1>
+<% @deliberations.each do |d| %>
+<b> name: <%= d.name %></b><br>
+	<% @committees.each do |c| %>
+	<a href = '/rankings/<%= c.id %>/<%= d.id %>'><%= c.name %></a>
+	<br>
+	<% end %>
+<br>
+<br>
+<% end %>

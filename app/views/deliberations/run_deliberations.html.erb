@@ -1,0 +1,189 @@
+<script type = "text/javascript">
+$(document).ready(function(){
+	$(".applicant").click(function(){
+		//first unhighlight everything
+		$(".applicant").each(function(){
+			if($(this).hasClass('viewing')){
+				$(this).removeClass("viewing");
+			}
+		});
+		//highlight all other same applicants
+		var id = $(this).attr("id");
+		$(".applicant").each(function(){
+			if($(this).attr("id") == id){
+				$(this).addClass("viewing");
+			}
+		});
+		$(this).addClass("viewing");
+	});
+	$(".expandable").click(function(){
+		var parent = $(this).parent();
+		if($(parent).hasClass("full")){
+			$(parent).removeClass("full");
+		}
+		else{
+			$(parent).addClass("full");
+		}
+	});
+});
+
+</script>
+
+<style type = "text/css">
+
+.conflict{
+	color:red;
+}
+.preferences{
+	font-size: 10px;
+	color: gray;
+	opacity:0.7;
+	display: none;
+}
+.applicant {
+	margin-left: 10px;
+}
+.applicant:hover {
+	cursor: pointer;
+}
+.applicant:hover .preferences {
+	display: inline;
+}
+.expandable:hover {
+	cursor: pointer;
+}
+.committee_list {
+	float: left;
+	padding-bottom: 15px;
+	padding-top: 0px;
+	width: 300px;
+	height: 175px;
+	border: 1px solid rgb(214, 214, 214);
+	margin-right: -1px;
+	margin-bottom: -1px;
+	background-color: white;
+	overflow: hidden;
+}
+.full {
+	height: auto;
+}
+.assignments_lists
+{
+	margin-left: 25px;
+}
+.clist_header{
+	padding: 5px;
+	background-color: maroon;
+	color: white;
+	margin-bottom: 5px;
+	text-align: center;
+}
+.accepted {
+	/*background-color: green;*/
+	color: green;
+}
+.unsure {
+	/*background-color: yellow;*/
+	color: orange;
+}
+.not_accepted {
+	color: red;
+}
+.viewing {
+	background-color: yellow;
+}
+</style>
+<h1>results for <%= @deliberation.name %></h1>
+<%= link_to "back to deliberations", deliberations_path, :class =>"btn" %>
+<%= link_to "edit chair preferences", {:controller => "applicant_rankings", :action => "new_table", :delib_id => @deliberation.id, :committee => current_member.primary_committee.id}, :class => "btn" %>
+
+<%= link_to "see deliberation graph", @deliberation, :class => "btn" %>
+<a href = "#" class = "btn">make assignments</a>
+<div style = "clear:both; height:20px"></div>
+<div>click on headers to expand list. click on applicant to see which other committees want this dude[tte]</div>
+<div>***starred applicants were in equal tiers and placed based on applicant preference</div>
+<div>key:
+	<br>green => you can have them<br>
+	orange => deliberate over them<br>
+	red => you cant have or dont want them<br>
+</div>
+<br>
+<div class = "assignments_lists" style = "display: none">
+<% @assignments.keys.each do |key| %>
+
+<div class = "committee_list"> <div class = "clist_header"><%= key.name %></div>
+	<% @assignments[key].each do |r| %>
+		<div class = "applicant">
+		<% if @shaky.keys.include? r %>
+		***
+		<% end %>
+		<%= r.name %> (<%= ApplicantRanking.where(deliberation_id:@delib_id).where(applicant: r.id).where(committee: key.id).first.value %>)
+			<span class = "preferences">(1 <%= Committee.find(r.preference1).name %>, 2 <%= Committee.find(r.preference2).name %>,
+			3 <%= Committee.find(r.preference3).name %>)</span>
+
+			<% if @conflicts.keys.include? r %>
+				<% @conflicts[r].each do |c| %>
+				<%= c.name %>,
+				<% end %>
+			<% end %>
+		</div>
+		<!-- end of assignment div -->
+	<% end %>
+</div>
+<!-- end of commtitee list -->
+<% end %>
+</div>
+<!-- end of assignments lists -->
+<!-- <div style = "height: 50px; clear:both;"></div> -->
+
+<div class = "assignments_lists">
+<% Committee.find([3,4,5,6,7,9,10,11]).each do |c| %>
+<div class = "committee_list"> <div class = "clist_header expandable"><%= c.name %></div>
+<% @deliberation.applicant_ranks_by_committee(c).order(:value).each do |rank| %>
+
+	<% if @assignments[c].include? rank.applicant %>
+		<div class = "accepted applicant" id = '<%= rank.applicant.id %>'>
+		<% if @shaky.keys.include? rank.applicant %>
+		***
+		<% end %>
+		<%= rank.applicant.name %> (<%= rank.value %>)</div>
+	<% elsif @shaky.keys.include? rank.applicant and @shaky[rank.applicant].include? c %>
+		<div class = "unsure applicant" id = '<%= rank.applicant.id %>'><%= rank.applicant.name %> (<%= rank.value %>)</div>
+	<% else %>
+		<div class = "not_accepted applicant" id = '<%= rank.applicant.id %>'><%= rank.applicant.name %> (<%= rank.value %>)</div>
+	<% end %>
+<% end %>
+</div>
+<!-- end of committee list -->
+<% end %>
+</div>
+<!-- end of assignments list -->
+
+<div style = "height:25px;clear:both"></div>
+<!-- <div style = "clear:both; height:50px"></div> -->
+<h1>shaky</h1>
+<% @shaky.each do |key, value| %>
+<%= key.name %>:
+(<% value.each do |c| %>
+<%= c.name %>,
+<% end %>)
+<br>
+<% end %>
+<h1>bad</h1>
+<% @bad.keys.each do |p| %>
+<%= p.name %> <%= @bad[p].name %><br>
+<% end %>
+<h1>conflicts</h1>
+<% @conflicts.keys.each do |applicant| %>
+	<b><%= applicant.name %></b>
+	<% @conflicts[applicant].each do |c| %>
+	<%= c.name %>,
+	<% end %>
+	<br>
+<% end %>
+<h1>unassigned</h1>
+<% @unassigned.each do |applicant| %>
+<%= applicant.name %>
+<span class = "preferences">(1 <%= Committee.find(applicant.preference1).name if applicant.preference1 %>, 2 <%= Committee.find(applicant.preference2).name if applicant.preference2 %>,
+			3 <%= Committee.find(applicant.preference3).name if applicant.preference3 %>)</span><br>
+<% end %>

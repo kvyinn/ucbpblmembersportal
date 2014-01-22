@@ -1,0 +1,11 @@
+<h1>Deliberations</h1>
+
+<% @deliberations.each do |deliberation| %>
+<%= deliberation.name %><br>
+<a href = '/deliberations/<%= deliberation.id %>'>link to deliberation graph</a><br>
+<a href = '/deliberations/deliberate/<%= deliberation.id %>'>view deliberation algorithm results</a><br>
+<a href = '/applicant_rankings'>edit chair preferences</a><br>
+<%= link_to "add a new applicant", new_applicant_path(:delib_id => deliberation.id) %>
+<br>
+<br>
+<% end %>

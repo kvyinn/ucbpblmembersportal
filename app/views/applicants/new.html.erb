@@ -1,0 +1,8 @@
+<h1>create new applicant here</h1>
+<%= render "form" , :applicants => Applicant.all %>
+Here is a key for committee preferences
+<br>
+<% @committees.each do |c| %>
+<div>&#09;<%= c.id %>: <%= c.name %></div>
+<% end %>
+<br>

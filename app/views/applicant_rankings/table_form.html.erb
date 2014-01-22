@@ -1,0 +1,110 @@
+
+<%= javascript_include_tag "deliberations/deliberations_form2.js" %>
+<script type = "text/javascript">
+$(document).ready(function(){
+	$("#submit_all").click(function(){
+		submitForms('<%= @deliberation.id %>', '<%= @committee.id %>');
+	});
+});
+</script>
+<style type = "text/css">
+.form{
+	padding:5px;
+	border:1px solid rgba(0,0,0,0.1);
+	box-shadow:1px 1px 5px rgba(0,0,0,0.3);
+	margin: 5px;
+	overflow:hidden;
+}
+.add_image{
+	float:right;
+	height: 35px;
+	z-index: 100;
+}
+.profile_img{
+	height: 50px;
+	opacity: 0.5;
+}
+.profile_img:hover{
+	height: 100px;
+	cursor:pointer;
+}
+.add_image:hover{
+	cursor:pointer;
+	height: 100px;
+}
+#ranking_table, th, td {
+	border-collapse: collapse;
+	border: 1px solid black;
+	padding: 1px;
+	text-align: center;
+	margin: 10px 25px;
+	box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+}
+th {
+	background-color: maroon;
+	color: rgb(255, 240, 240);
+	width: 10%;
+	font-weight: normal;
+}
+th a {
+	color: rgb(255, 240, 240);
+}
+td {
+	background-color: white;
+}
+input[type = "text"] {
+	width: 50px;
+	padding:5px;
+}
+.pic {
+	height: 100px;
+	opacity: 0.5;
+}
+.pic:hover {
+	cursor: pointer;
+	opacity: 1;
+}
+.app_image:hover {
+	height: 150px;
+}
+.selected {
+	/*border: 3px solid green;*/
+	opacity: 1;
+}
+</style>
+<h1>this is your ranking form for <%= @committee.name %></h1>
+<a id = "submit_all" href = "#" class = "btn">update all rankings</a>
+<a href = "/auth/facebook" class = "btn">get facebook images</a>
+<%= link_to "back to deliberations", deliberations_path, :class =>"btn" %>
+<%= link_to "see deliberation graph", @deliberation, :class => "btn" %>
+
+
+<div style = "height:25px"></div>
+<div id = "image_area">
+	<% if session[:pictures] %>
+	<% session[:pictures].each do |pic| %>
+	<img src = '<%= pic %>' class = "pic"></img>
+	<% end %>
+	<% end %>
+</div>
+<!-- end of image area -->
+<table id = "ranking_table">
+	<thead>
+		<th>applicant</th>
+		<th>ranking</th>
+		<th>images</th>
+	</thead>
+	<tbody>
+	<% @rankings.each do |ranking| %>
+		<tr class = "ranking_row" id = '<%= ranking.id %>'>
+			<td class = "applicant" id = '<%= ranking.get_applicant.id %>'><%= ranking.get_applicant.name %></td>
+			<td class = "value"><input class = "rank" type = "text" id = '<%= ranking.id %>' value = '<%= ranking.value %>'/></td>
+			<td class = "image" id = '<%= ranking.get_applicant.id %>'><img src = '<%= ranking.get_applicant.image %>' height = "50" class = "app_image"></img></td>
+		</tr>
+	<% end %>
+
+	</tbody>
+</table>
+
+
+
