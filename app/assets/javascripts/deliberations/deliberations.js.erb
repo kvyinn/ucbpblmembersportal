@@ -45,8 +45,8 @@ function toggleChargeDistance(charge, distance){
 function toggleApplicants(hide){
 	if(hide){
 		//remove links that are yellow
-		// links = current_data["links"];
-		var links = jQuery.extend(true, {}, current_data["links"]);
+		links = current_data["links"];
+		// var links = jQuery.extend(true, {}, current_data["links"]);
 		for (var i=0;i<links.length;i++){
 			if(links[i]["color"]=="yellow"){
 				links.splice(i,1);
