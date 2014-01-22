@@ -409,32 +409,32 @@ task :fall_delib => :environment do
 		puts "saved"
 		puts a.name
 	end
-
-	aps = Applicant.where(deliberation_id: d.id)
-	for ap in aps
-		ranking = ApplicantRanking.new
-		ranking.value = 50
-		ranking.applicant = ap
-		ranking.deliberation_id = d.id
-		ranking.committee = ap.preference3
-		ranking.save
-	end
-	for ap in aps
-		ranking = ApplicantRanking.new
-		ranking.value = 50
-		ranking.applicant = ap
-		ranking.deliberation_id = d.id
-		ranking.committee = ap.preference1
-		ranking.save
-	end
-	for ap in aps
-		ranking = ApplicantRanking.new
-		ranking.value = 50
-		ranking.applicant = ap
-		ranking.deliberation_id = d.id
-		ranking.committee = ap.preference2
-		ranking.save
-	end
+	d.generate_default_rankings
+	# aps = Applicant.where(deliberation_id: d.id)
+	# for ap in aps
+	# 	ranking = ApplicantRanking.new
+	# 	ranking.value = 50
+	# 	ranking.applicant = ap
+	# 	ranking.deliberation_id = d.id
+	# 	ranking.committee = ap.preference3
+	# 	ranking.save
+	# end
+	# for ap in aps
+	# 	ranking = ApplicantRanking.new
+	# 	ranking.value = 50
+	# 	ranking.applicant = ap
+	# 	ranking.deliberation_id = d.id
+	# 	ranking.committee = ap.preference1
+	# 	ranking.save
+	# end
+	# for ap in aps
+	# 	ranking = ApplicantRanking.new
+	# 	ranking.value = 50
+	# 	ranking.applicant = ap
+	# 	ranking.deliberation_id = d.id
+	# 	ranking.committee = ap.preference2
+	# 	ranking.save
+	# end
 end
 
 # task :fall_delib2 => :environment do
