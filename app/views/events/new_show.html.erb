@@ -4,8 +4,6 @@
 	text-align: center;
 	float: left;
 	margin: 15px;
-	background-color: white;
-	box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 	/*border: 1px solid rgba(0,0,0,0.1);*/
 }
 #left_col {
@@ -21,40 +19,34 @@
 .cm {
 	font-weight: bold;
 }
-.box_header {
-  background-color: maroon;
-  color: rgb(255, 213, 213);
-  padding: 7px;
-  margin-bottom: 10px;
-  font-size: 1.3em;
-}
 </style>
 
 <h1><%= @event.name %></h1>
  <% if current_member.officer? %>
     <%= render "event_members/form", event: @event %>
-  <% else %>
-    <%= render "events/members", members: @attendees %>
   <% end %>
 
-<div id = "attendees_div">
-<div class = "box_header">Attendees(<%= @attendees.length %>)</div>
+<div id = "attendees_div" class = "panel panel-primary">
+<div class = "panel-heading">Attendees(<%= @attendees.length %>)</div>
+<div class = "panel-body">
 <div id = "left_col" class = "col">
-<% @attendees.slice(0, @attendees.length/2).each do |attendee| %>
-<% if current_member.cms.to_a.include? attendee %>
-<div class = "cm"><%= attendee.name %></div>
-<% else %>
-<div><%= attendee.name %></div>
-<% end %>
-<% end %>
+	<% @attendees.slice(0, @attendees.length/2).each do |attendee| %>
+		<% if current_member.cms.to_a.include? attendee %>
+		<div class = "cm"><%= attendee.name %></div>
+		<% else %>
+		<div><%= attendee.name %></div>
+		<% end %>
+	<% end %>
 </div>
 <div id = "right_col" class = "col">
-<% @attendees.slice(@attendees.length/2, @attendees.length).each do |attendee| %>
-<% if current_member.cms.to_a.include? attendee %>
-<div class = "cm"><%= attendee.name %></div>
-<% else %>
-<div><%= attendee.name %></div>
-<% end %>
-<% end %>
+	<% @attendees.slice(@attendees.length/2, @attendees.length).each do |attendee| %>
+	<% if current_member.cms.to_a.include? attendee %>
+	<div class = "cm"><%= attendee.name %></div>
+	<% else %>
+	<div><%= attendee.name %></div>
+	<% end %>
+	<% end %>
 </div>
+</div>
+<!-- end of panel body -->
 </div>

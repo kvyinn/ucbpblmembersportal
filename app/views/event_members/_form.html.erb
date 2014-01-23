@@ -2,7 +2,7 @@
 .attendance_form {
   float: left;
   /*border: 1px solid rgba(0,0,0,0.1);*/
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  /*box-shadow: 1px 1px 3px rgba(0,0,0,0.2);*/
   width: 270px;
   background-color: white;
   text-align: center;
@@ -13,8 +13,8 @@
   cursor: pointer;
 }
 </style>
-<div class = "attendance_form">
-  <div class = "box_header">CM Attendance Form</div>
+<div class = "panel panel-primary attendance_form">
+  <div class = "panel-heading">CM Attendance Form</div>
 <%= form_for current_member.event_members.build(event_id: event.id), html: { class: "form-inline" } do |f| %>
   <%= f.hidden_field :event_id, :value => event.id %>
 
@@ -26,9 +26,10 @@
       </div>
     <% end %>
     <br>
-  <%= f.submit "Submit", :class=> "btn" %>
+  <%= f.submit "Submit", :class=> "btn btn-primary" %>
 <% end %>
 </div>
+<!-- end of attendance form -->
 <script>
   $(".check").click(function() {
     var checkbox;

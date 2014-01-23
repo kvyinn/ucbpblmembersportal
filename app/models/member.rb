@@ -145,7 +145,7 @@ class Member < ActiveRecord::Base
   def cms(semester = Semester.current_semester)
     cms = Array.new
     self.committees.each do |committee|
-      committee.members.each do |member|
+      committee.cms.each do |member|
         if self.committees.where(member_id: member.id).where(semester_id: semester.id).length != 0
           cms << self.committees.where(member_id: member.id).where(semester_id: semester.id).first
         end
