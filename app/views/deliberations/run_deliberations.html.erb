@@ -62,10 +62,9 @@ body {
 	width: 300px;
 	height: 175px;
 	border: 1px solid rgb(214, 214, 214);
-	margin-right: -1px;
-	margin-bottom: -1px;
+	margin:3px;
 	background-color: white;
-	overflow: hidden;
+	overflow:hidden;
 }
 .full {
 	height: auto;
@@ -74,11 +73,10 @@ body {
 {
 	margin-left: 25px;
 }
-.clist_header{
+.committee_list .clist_header.panel-heading{
 	padding: 5px;
 	background-color: maroon;
 	color: white;
-	margin-bottom: 5px;
 	text-align: center;
 }
 .accepted {
@@ -95,13 +93,31 @@ body {
 .viewing {
 	background-color: yellow;
 }
+.btn-group a {
+  color: black;
+}
+.btn-group .btn {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+}
+.btn-group .btn:hover {
+  background-color: maroon;
+  color: white;
+}
+.btn-group .btn:hover a {
+  color: white;
+}
 </style>
-<h1>results for <%= @deliberation.name %></h1>
-<%= link_to "back to deliberations", deliberations_path, :class =>"btn" %>
-<%= link_to "edit chair preferences", {:controller => "applicant_rankings", :action => "new_table", :delib_id => @deliberation.id, :committee => current_member.primary_committee.id}, :class => "btn" %>
+<div class = "btn-group">
+<div type="button" class = "btn btn-primary"><%= link_to "back to deliberations", deliberations_path %></div>
+<div type="button" class = "btn btn-primary"><%= link_to "edit chair preferences", {:controller => "applicant_rankings", :action => "new_table", :delib_id => @deliberation.id, :committee => current_member.primary_committee.id} %></div>
 
-<%= link_to "see deliberation graph", @deliberation, :class => "btn" %>
-<a href = "#" class = "btn">make assignments</a>
+<div type="button" class = "btn btn-primary"><%= link_to "see deliberation graph", @deliberation %></div>
+<div type="button" class = "btn btn-primary"><a href = "#" >make assignments</a></div>
+</div>
+<h1>results for <%= @deliberation.name %></h1>
+
+
 <div style = "clear:both; height:20px"></div>
 <div>click on headers to expand list. click on applicant to see which other committees want this dude[tte]</div>
 <div>***starred applicants were in equal tiers and placed based on applicant preference</div>
@@ -111,38 +127,13 @@ body {
 	red => you cant have or dont want them<br>
 </div>
 <br>
-<div class = "assignments_lists" style = "display: none">
-<% @assignments.keys.each do |key| %>
-
-<div class = "committee_list"> <div class = "clist_header"><%= key.name %></div>
-	<% @assignments[key].each do |r| %>
-		<div class = "applicant">
-		<% if @shaky.keys.include? r %>
-		***
-		<% end %>
-		<%= r.name %> (<%= ApplicantRanking.where(deliberation_id:@delib_id).where(applicant: r.id).where(committee: key.id).first.value %>)
-			<span class = "preferences">(1 <%= Committee.find(r.preference1).name %>, 2 <%= Committee.find(r.preference2).name %>,
-			3 <%= Committee.find(r.preference3).name %>)</span>
-
-			<% if @conflicts.keys.include? r %>
-				<% @conflicts[r].each do |c| %>
-				<%= c.name %>,
-				<% end %>
-			<% end %>
-		</div>
-		<!-- end of assignment div -->
-	<% end %>
-</div>
-<!-- end of commtitee list -->
-<% end %>
-</div>
-<!-- end of assignments lists -->
-<!-- <div style = "height: 50px; clear:both;"></div> -->
 
 <div class = "assignments_lists">
-<% Committee.all.each do |c| %>
-<% if c.name != "Executives" and c.name != "General Members" %>
-<div class = "committee_list"> <div class = "clist_header expandable"><%= c.name %></div>
+<% Committee.all.each do |c|  %>
+<% if @valid_committees.include? c %>
+<div class = "committee_list panel panel-default">
+	<div class = "clist_header expandable panel-heading"><%= c.name %></div>
+	<div class = "panel-body">
 <% @deliberation.applicant_ranks_by_committee(c).order(:value).each do |rank| %>
 
 	<% if @assignments[c].include? rank.applicant %>
@@ -157,6 +148,8 @@ body {
 		<div class = "not_accepted applicant" id = '<%= rank.applicant.id %>'><%= rank.applicant.name %> (<%= rank.value %>)</div>
 	<% end %>
 <% end %>
+</div>
+<!-- end of pabel body -->
 </div>
 <!-- end of committee list -->
 <% end %>
