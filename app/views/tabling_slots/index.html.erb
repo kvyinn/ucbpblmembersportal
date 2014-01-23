@@ -1,25 +1,27 @@
 <%= javascript_include_tag "tabling_slots.js" %>
 
-  <% if @tabling_days.nil? %>
-    <h1>No tabling slots yet!</h1>
-  <% else %>
-    <h1>Tabling for the week of <%= @earliest_time.strftime("%D") %></h1>
 
+<div style = "height: 25px; clear:both"></div>
     <div class="btn-group">
-      <div type="button" class="btn btn-default"><%= link_to "Previous week", tabling_slots_url(prev: @prev - 1) %></div>
+      <div type="button" class="btn btn-primary"><%= link_to "Previous week", tabling_slots_url(prev: @prev - 1) %></div>
       <% if @prev < 0 %>
-        <div type="button" class="btn btn-default"><%= link_to "Next week", tabling_slots_url(prev: @prev + 1) %></div>
+        <div type="button" class="btn btn-primary"><%= link_to "Next week", tabling_slots_url(prev: @prev + 1) %></div>
       <% end %>
 
     <% if current_member.admin? %>
-       <div type="button" class="btn btn-default"><a href = "/tabling_slots/tabling_options">Generate New Slots</a></div>
+       <div type="button" class="btn btn-primary"><a href = "/tabling_slots/tabling_options">Generate New Slots</a></div>
     <% end %>
-   <div type="button" class="btn btn-default"> <a href = "#" onclick = "alert('doesnt work yet, but what did the cannibal do to his girlfriend?...he dumped her!');">Request New Slot</a></div>
-   <div type="button" class="btn btn-default"><%= link_to "Print view", print_tabling_slots_url %></div>
+   <div type="button" class="btn btn-primary"> <a href = "#" onclick = "alert('doesnt work yet, but what did the cannibal do to his girlfriend?...he dumped her!');">Request New Slot</a></div>
+   <div type="button" class="btn btn-primary"><%= link_to "Print view", print_tabling_slots_url %></div>
     </div>
     <!-- end of button group -->
 
-    <div style = "height: 25px; clear:both"></div>
+
+
+<% if @tabling_days.nil? %>
+    <h1>No tabling slots yet!</h1>
+  <% else %>
+    <h1>Tabling for the week of <%= @earliest_time.strftime("%D") %></h1>
 
     <% @tabling_days.each do |day, slots| %>
 
@@ -44,6 +46,17 @@ li{
   list-style-type: none;
 }
 .btn-group a {
-  color: maroon;
+  color: black;
+}
+.btn-group .btn {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+}
+.btn-group .btn:hover {
+  background-color: maroon;
+  color: white;
+}
+.btn-group .btn:hover a {
+  color: white;
 }
 </style>
