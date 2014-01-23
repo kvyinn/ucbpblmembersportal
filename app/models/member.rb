@@ -143,9 +143,18 @@ class Member < ActiveRecord::Base
 
   # The other Members that are part of this member's committees
   def cms(semester = Semester.current_semester)
-    self.committees.map do |committee|
-      committee.members.where(semester: semester)
-    end.flatten
+    cms = Array.new
+    self.committees.each do |committee|
+      committee.members.each do |member|
+        if self.committees.where(member_id: member.id).where(semester_id: semester.id).length != 0
+          cms << self.committees.where(member_id: member.id).where(semester_id: semester.id).first
+        end
+      end
+    end
+    return cms
+    # self.committees.map do |committee|
+    #   committee.members
+    # end.flatten
   end
 
   # Create a new session token.
