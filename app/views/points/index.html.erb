@@ -6,9 +6,27 @@ ul{
   list-style-type: none;
 }
 </style>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <!-- <section> -->
+<div style = "height:25px"></div>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">Points For <%= Semester.current_semester.name %></button>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <% Semester.order(:start_date).each do |semester| %>
+    <li><a href='<%= points_path(:semester => semester.id) %>'>Points For <%= semester.name %></a></li>
+    <% end %>
+    <li class="divider"></li>
+    <li><a href="#">Total Points</a></li>
+  </ul>
+</div>
+
+<!-- Single button -->
   <div class="panel panel-default">
-  <div class="panel-heading"><h1>You have earned <%= pluralize(current_member.total_points, "point") %>!</h1></div>
+  <div class="panel-heading"><h1>You have earned <%= pluralize(current_member.total_points(@semester), "point") %>!</h1></div>
   <div class="panel-body">
   <ul>
     <% @recently_earned.each do |item| %>
@@ -20,13 +38,13 @@ ul{
 <!-- </section> -->
 
 <div class="panel panel-default">
-  <% if current_member.primary_committee %>
-  <div class="panel-heading"><h2>Your committee's rating: <%= current_member.primary_committee.rating %></h2></div>
+  <% if current_member.current_committee(@semester) %>
+  <div class="panel-heading"><h2>Your committee's rating: <%= current_member.current_committee(@semester).rating(@semester) %></h2></div>
   <div class="panel-body">
   <p>Your committee's rating is a normalized value based on each of the committee member's points. This is the value used in committee rankings</p>
   <ul>
-    <% current_member.primary_committee.cms.each do |cm| %>
-      <li><%= "#{cm.member.name}: #{pluralize(cm.member.total_points, "point")}" %></li>
+    <% current_member.current_committee(@semester).cms(@semester).each do |cm| %>
+      <li><%= "#{cm.member.name}: #{pluralize(cm.member.total_points(@semester), "point")}" %></li>
     <% end %>
   </ul>
 </div>

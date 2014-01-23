@@ -68,6 +68,16 @@ class Member < ActiveRecord::Base
     self.committees.first
   end
 
+  def current_committee(semester = Semester.current_semester)
+    committee = self.committees.first
+    cm = CommitteeMember.where(member_id: self.id).where(semester_id: semester.id)
+    if cm.length > 0
+      if Committee.where(id: cm.first.committee.id).length > 0
+        committee= Committee.where(id: cm.first.committee.id).first
+      end
+    end
+  end
+
   # Position of the member.
   # If no committee is given, returns the position for its #primary_committee.
   # Returns nil if the member does not belong to the committee, or it does not have a committee.
@@ -132,9 +142,9 @@ class Member < ActiveRecord::Base
   end
 
   # The other Members that are part of this member's committees
-  def cms
+  def cms(semester = Semester.current_semester)
     self.committees.map do |committee|
-      committee.members
+      committee.members.where(semester: semester)
     end.flatten
   end
 

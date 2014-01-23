@@ -8,11 +8,18 @@ class PointsController < ApplicationController
   # - recently_earned: a list of occurences that earned the member points, sorted in reverse
   # chronological order.
   def index
+    @semester = Semester.current_semester
+    if params[:semester]
+      s = Semester.find(params[:semester])
+      if s
+        @semester = s
+      end
+    end
     @recently_earned = []
 
     # Add events
     current_member.event_members.each do |event_member|
-      event_points = EventPoints.where(event_id: event_member.event_id).first if event_member.semester == Semester.current_semester
+      event_points = EventPoints.where(event_id: event_member.event_id).first if event_member.semester == @semester
 
       if event_points
         @recently_earned << { title: Event.find(event_points.event_id).name , points: event_points.value }

@@ -37,35 +37,34 @@ class Committee < ActiveRecord::Base
   has_many :members, through: :committee_members
 
   # Show the committee's rating.
-  def rating
-    if self.cms.count > 0
+  def rating(semester = Semester.current_semester)
+    if self.cms(semester).count > 0
       sum = 0.0
 
-      self.cms.each do |committee_member|
-        sum += committee_member.member.total_points
+      self.cms(semester).each do |committee_member|
+        sum += committee_member.member.total_points(semester)
       end
 
-      rating = (sum / self.cms.count).round(2)
+      rating = (sum / self.cms(semester).count).round(2)
     else
       rating = 0.0
     end
-
     return rating
   end
 
   # Only the chairs and CMs of the committee
-  def cms
+  def cms(semester = Semester.current_semester)
     if self.committee_type == CommitteeType.general
       self.committee_members.where(committee_member_type_id: CommitteeMemberType.where(
         "lower(name) = 'general member' or lower(name) = 'gm'"
-      ))
+      )).where(semester_id: semester.id)
     else
       if self.name == "Executive"
         self.committee_members
       else
         self.committee_members.where(committee_member_type_id: CommitteeMemberType.where(
           "lower(name) = 'cm' or lower(name) = 'chair'"
-        ))
+        )).where(semester_id: semester.id)
       end
     end
   end
