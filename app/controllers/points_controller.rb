@@ -35,6 +35,8 @@ class PointsController < ApplicationController
     end
   end
 
+  def d3_points
+  end
   # Show rankings of committees
   #
   # == Variables
