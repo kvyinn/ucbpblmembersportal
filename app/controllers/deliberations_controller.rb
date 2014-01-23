@@ -65,7 +65,7 @@ class DeliberationsController < ApplicationController
 	# runs deliberations algorithm
 	def run_deliberations
 		# clean_ranks
-
+		@valid_committees = valid_committees
 		@delib_id = params[:delib_id]
 		# @result = ApplicantRanking.where(deliberation_id: @delib_id)
 		@deliberation = Deliberation.find(params[:delib_id])

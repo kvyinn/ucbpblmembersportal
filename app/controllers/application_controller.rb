@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   include MembersHelper
   include TablingSlotsHelper
   include CommitmentsHelper
-
+  include DeliberationsHelper
   before_filter :signed_on_to_google
 
   # Filters
