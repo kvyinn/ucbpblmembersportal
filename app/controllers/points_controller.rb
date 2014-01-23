@@ -36,6 +36,24 @@ class PointsController < ApplicationController
   end
 
   def d3_points
+    @committees = Committee.all
+  end
+  def get_d3_data
+    @members = Member.all
+    @member_points = Array.new
+    @members = @members.sort_by { |m|  m.total_points("all")}
+    for mem in @members
+      object = Hash.new
+      object["name"] = mem.name
+      object["points"] = mem.total_points("all")
+      if mem.primary_committee
+        object["committee"] = mem.primary_committee.name
+      else
+        object["committee"] = "none"
+      end
+      @member_points<<object
+    end
+    render json: @member_points
   end
   # Show rankings of committees
   #

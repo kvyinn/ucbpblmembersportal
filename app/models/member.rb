@@ -282,6 +282,9 @@ class Member < ActiveRecord::Base
       end
     end
 
+    if semester == "all"
+      event_mems = self.event_members
+    end
     # Calculate points from events
     event_mems.each do |event_member|
       sum += event_member.event_points.value if event_member.event_points

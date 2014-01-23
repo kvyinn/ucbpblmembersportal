@@ -88,6 +88,7 @@ Ucbpblmembersportal::Application.routes.draw do
   resources :points, only: [ :index ] do
     collection do
       get :d3_points
+      get :get_d3_data
     end
   end
   resources :event_points, only: [ :index ] do
