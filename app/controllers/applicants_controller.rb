@@ -12,6 +12,9 @@ class ApplicantsController < ApplicationController
 		@applicants = Applicant.all
 	end
 	def new
+		if params[:error_message]
+			@error_message = params[:error_message]
+		end
 		if params[:delib_id]
 			@deliberation = Deliberation.find(params[:delib_id])
 		else
@@ -22,6 +25,9 @@ class ApplicantsController < ApplicationController
 			@names << a.name
 		end
 		@applicant = Applicant.new
+		if params[:applicant]
+			@applicant = Applicant.new(params[:applicant])
+		end
 		@committees = Committee.all
 	end
 	def destroy
@@ -37,22 +43,12 @@ class ApplicantsController < ApplicationController
 	# TODO: display error messages
 	def create
 		@applicant = Applicant.new(params[:applicant])
-		@applicant.save
-		# also create a default ranking for the applicant for each of his preferences
-		committee1 = Committee.find(@applicant.preference1)
-		committee2 = Committee.find(@applicant.preference2)
-		committee3 = Committee.find(@applicant.preference3)
-		committees = [committee1, committee2, committee3]
-		for c in committees
-			rank = ApplicantRanking.new
-			rank.committee = c.id
-			rank.applicant = @applicant
-			rank.deliberation_id = @applicant.deliberation_id
-			rank.value = 50
-			rank.save
+		# validate the applicant
+		if @applicant.save
+			render "success"
+		else
+			redirect_to new_applicant_path(:error_message => "fix stuff plz", :applicant=>params[:applicant])
 		end
-		# clean rankings
-		redirect_to(:back)
 	end
 
 	def edit

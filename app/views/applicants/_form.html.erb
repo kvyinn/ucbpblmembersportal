@@ -1,51 +1,60 @@
 <style type = "text/css">
-.form_container {
+/*.form_container {
   margin-left: 35px;
-  border:1px solid maroon;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+  border:1px solid #eee;
   width: 300px;
   text-align: center;
   background-color: white;
   float: left;
   margin-right: 100px;
-}
-.form_header {
+}*/
+/*.form_header {
   text-align: center;
   background-color: maroon;
   color: white;
   padding: 10px;
   margin-bottom:15px;
-}
+}*/
 .committee_input {
   width: 25px;
 }
 .inputs {
   padding: 15px;
 }
+.panel {
+  float: left;
+}
+.panel-heading {
+  background-color: #eee;
+  text-align:center;
+}
+.panel-body {
+  padding: 25px;
+}
 </style>
 
-<div class = "form_container">
-  <div class = "form_header">new applicant form</div>
-<%= form_for @applicant do |f| %>
-<% if @deliberation %>
-  <b><%= @deliberation.name %></b>
-  <%= f.text_field :deliberation_id, :value=>@deliberation.id, :style=>"display:none;" %><br />
-<% end %>
-<div class = "inputs">
-  <%= f.label :name %>:
-  <%= f.text_field :name , :class => "name_input text_input" %><br />
+<div class = "panel panel-default">
+  <%= form_for @applicant do |f| %>
+  <div class = "panel-heading">
+    <% if @deliberation %>
+      <%= @deliberation.name %>
+      <%= f.text_field :deliberation_id, :value=>@deliberation.id, :style=>"display:none;" %><br />
+    <% else %>
+      No Deliberation Specified :O
+    <% end %>
+  </div>
 
-  <%= f.label "email" %>:
-  <%= f.text_field :email, :class => "email_input text_input"  %><br />
 
-  <%= f.label "first choice" %>:
-  <%= f.text_field :preference1, :class => "committee_input text_input" %><br />
+<div class = "panel-body">
+  <%= f.text_field :name , :class => "name_input text_input form-control", :placeholder => "full name" %><br />
 
-  <%= f.label "second choice" %>:
-  <%= f.text_field :preference2, :class => "committee_input text_input"  %><br />
+  <%= f.text_field :email, :class => "email_input text_input form-control", :placeholder => "email address"  %><br />
 
-  <%= f.label "third choice" %>:
-  <%= f.text_field :preference3, :class => "committee_input text_input"  %><br />
+ <%= f.collection_select(:preference1, Committee.all, :id, :name, {prompt: "Select First Choice"}, {:class => "form-control"}) %> <br>
+
+ <%= f.collection_select(:preference2, Committee.all, :id, :name, {prompt: "Select Second Choice"}, {:class => "form-control"}) %> <br>
+
+<%= f.collection_select(:preference3, Committee.all, :id, :name, {prompt: "Select Second Choice"}, {:class => "form-control"}) %> <br>
 
 <br>
 

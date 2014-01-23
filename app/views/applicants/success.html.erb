@@ -1,0 +1,20 @@
+<style type = "text/css">
+#center_div.hero-unit {
+	background-color: #eee;
+	padding:50px;
+	margin: 150px;
+	margin-top:50px;
+	text-align: center;
+}
+</style>
+<div id = "center_div" class="hero-unit">
+    <h1><%= @applicant.name %> Successfully Saved!</h1>
+
+    <p>Q: Why did the monkey cross the road?
+
+A: So he could get spanked.</p>
+
+    <!-- <a href="#" class="btn btn-large btn-success"> -->
+    	<%= link_to "Create Another Applicant", new_applicant_path(:delib_id => @applicant.deliberation_id), :class => "btn btn-large btn-success" %>
+    	<!-- Create Another Applicant</a> -->
+ </div>

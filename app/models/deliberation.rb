@@ -153,7 +153,7 @@ def deliberate
 	# initialize ranks list
 	for c in Committee.all
 		# c = Committee.find(cid)
-		if not c.name == "Executives" or c.name = "General Members"
+		if not (c.name.include? "Exec" or c.name.include? "General")
 			rank_lists[c] = Array.new
 			unsure[c] = Array.new
 			assignments[c] = Array.new

@@ -1,8 +1,22 @@
-<h1>create new applicant here</h1>
+<style type = "text/css">
+#error_message.label.label-danger {
+	/*background-color: maroon;*/
+}
+</style>
+<% if @error_message %>
+
+<h1><div id = "error_message" class = "label label-danger">You Have Some Errores: <%= @error_message %></div></h1>
+
+<% else %>
+<h1><div class = "label label-primary">Create New Applicant Here</div></h1>
+<% end %>
+<div style = "height:25px"></div>
 <%= render "form" , :applicants => Applicant.all %>
+<div style = "display:none">
 Here is a key for committee preferences
 <br>
 <% @committees.each do |c| %>
 <div>&#09;<%= c.id %>: <%= c.name %></div>
 <% end %>
 <br>
+</div>
