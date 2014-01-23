@@ -7643,101 +7643,85 @@ td.visible-print {
     display: none !important;
   }
 }
-/* line 1, ../../app/assets/stylesheets/david.css.scss */
 body {
+
+  padding:15px;
   padding-top: 50px;
 }
-
-/* line 4, ../../app/assets/stylesheets/david.css.scss */
 #navlist {
-  padding: 10px;
+	padding: 10px;
+}
+#navlist a{
+	color: black;
+}
+#navlist .logo a{
+	color: white;
+}
+#navlist .active a{
+	background-color: maroon;
+	color: white;
 }
 
-/* line 7, ../../app/assets/stylesheets/david.css.scss */
-#navlist a {
-  color: black;
-}
-
-/* line 10, ../../app/assets/stylesheets/david.css.scss */
-#navlist .logo a {
-  color: white;
-}
-
-/* line 13, ../../app/assets/stylesheets/david.css.scss */
-#navlist .active a {
-  background-color: maroon;
-  color: white;
-}
-
-/* line 18, ../../app/assets/stylesheets/david.css.scss */
-a:hover {
+a:hover{
   text-decoration: none;
 }
 
 /* Drag and drop lists */
-/* line 24, ../../app/assets/stylesheets/david.css.scss */
+
 li.delete {
   border-left: 2px solid #F55;
   color: #DDD;
   display: none;
 }
 
-/* line 30, ../../app/assets/stylesheets/david.css.scss */
 li.add {
   border-left: 2px solid #2A2;
   color: #DDD;
   display: none;
 }
 
+
 /* tabling stuff */
-/* line 38, ../../app/assets/stylesheets/david.css.scss */
-.dayheading {
+.dayheading{
   padding: 5px;
-  font-size: 1.1em;
+  font-size:1.1em;
   margin-bottom: 15px;
   background-color: #428bca;
 }
 
 /* Content-specific styling */
-/* line 47, ../../app/assets/stylesheets/david.css.scss */
+
 .current_member {
-  color: #f506eb;
+  color: rgb(245, 6, 235);
 }
 
-/* line 51, ../../app/assets/stylesheets/david.css.scss */
 .signin {
   text-align: center;
 }
 
-/* line 55, ../../app/assets/stylesheets/david.css.scss */
 .signin h1 {
   font-size: 72px;
 }
 
-/* line 59, ../../app/assets/stylesheets/david.css.scss */
 .ui-menu-item {
   border: none;
 }
 
-/* line 63, ../../app/assets/stylesheets/david.css.scss */
 .flash {
   padding: 5px;
   width: 100%;
   margin: 0;
 }
 
-/* line 69, ../../app/assets/stylesheets/david.css.scss */
 .flash ul {
   margin: 0;
   padding: 0;
 }
 
-/* line 74, ../../app/assets/stylesheets/david.css.scss */
 .flash li {
   border: 0;
 }
 
-/* line 78, ../../app/assets/stylesheets/david.css.scss */
 .flash li:hover {
   background-color: auto;
 }
@@ -7748,35 +7732,33 @@ li.add {
   display: inline-block;
   vertical-align: top;
 }*/
-/* line 89, ../../app/assets/stylesheets/david.css.scss */
+
 .tsm-status {
   font-size: 0.8em;
   color: #DDD;
   margin-left: 0.5em;
 }
 
-/* line 95, ../../app/assets/stylesheets/david.css.scss */
 .right-align {
   display: block;
   float: right;
   text-align: right;
 }
 
-/* line 101, ../../app/assets/stylesheets/david.css.scss */
 .tsm-status-set:hover {
   text-decoration: underline;
 }
 
-/* line 105, ../../app/assets/stylesheets/david.css.scss */
 section {
   margin: 20px;
   padding: 20px;
+
   clear: both;
+
   background-color: white;
+
   /*border-bottom: 2px solid #AAA;*/
 }
-
-/* line 115, ../../app/assets/stylesheets/david.css.scss */
 ul {
   list-style-type: none;
 }
