@@ -143,15 +143,16 @@ class Member < ActiveRecord::Base
 
   # The other Members that are part of this member's committees
   def cms(semester = Semester.current_semester)
-    cms = Array.new
-    self.committees.each do |committee|
-      if committee.cms(semester).include? self
-        committee.cms(semester).each do |member|
-          cms << member
-        end
-      end
-    end
-    return cms
+    return self.current_committee(semester).cms
+    # cms = Array.new
+    # self.committees.each do |committee|
+    #   if committee.cms(semester).include? self
+    #     committee.cms(semester).each do |member|
+    #       cms << member
+    #     end
+    #   end
+    # end
+    # return cms
     # self.committees.map do |committee|
     #   committee.members
     # end.flatten
