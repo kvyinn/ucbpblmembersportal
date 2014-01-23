@@ -265,10 +265,6 @@ GEM
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
-PLATFORMS
-  ruby
-  x86-mingw32
-
 DEPENDENCIES
   activeadmin
   annotate
