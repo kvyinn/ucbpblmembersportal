@@ -110,4 +110,30 @@ class DeliberationsController < ApplicationController
 		end
 		render json: [json_assignments, json_unsure]
 	end
+
+	def facebook
+		omniauth = request.env["omniauth.auth"]
+		facebook_user_token = omniauth['credentials']['token']
+		@graph = Koala::Facebook::API.new(facebook_user_token)
+		@profile = @graph.get_object("me")
+		@photos = @graph.get_connections("me", "photos")
+		@albums = @graph.get_connections("me","albums")
+		@the_album = nil
+		for album in @albums
+			if album["name"] == "deliberations"
+				@the_album = album["id"]
+			end
+		end
+		@album_photos = @graph.get_connections(@the_album, "photos")
+		@pictures = Array.new
+		for p in @album_photos
+			@pictures << p["source"]
+		end
+		session[:pictures] = @pictures
+		if request.env['omniauth.origin']
+			redirect_to request.env['omniauth.origin']
+		else
+			redirect_to ""
+		end
+	end
 end

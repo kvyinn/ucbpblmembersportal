@@ -34,20 +34,20 @@ $(document).ready(function(){
 }
 #ranking_table, th, td {
 	border-collapse: collapse;
-	border: 1px solid black;
+	border: 1px solid #ddd;
 	padding: 1px;
 	text-align: center;
 	margin: 10px 25px;
-	box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
 }
 th {
 	background-color: maroon;
-	color: rgb(255, 240, 240);
+	color: white;
 	width: 10%;
 	font-weight: normal;
+	padding: 5px;
 }
 th a {
-	color: rgb(255, 240, 240);
+	color: white;
 }
 td {
 	background-color: white;
@@ -71,14 +71,36 @@ input[type = "text"] {
 	/*border: 3px solid green;*/
 	opacity: 1;
 }
+
+/* button group at top styles*/
+.btn-group a {
+  color: black;
+}
+.btn-group .btn {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+}
+.btn-group .btn:hover {
+  background-color: maroon;
+  color: white;
+}
+.btn-group .btn:hover a {
+  color: white;
+}
 </style>
-<h1>this is your ranking form for <%= @committee.name %></h1>
-<a id = "submit_all" href = "#" class = "btn">update all rankings</a>
-<a href = "/auth/facebook" class = "btn">get facebook images</a>
-<%= link_to "back to deliberations", deliberations_path, :class =>"btn" %>
-<%= link_to "see deliberation graph", @deliberation, :class => "btn" %>
 
+<div style = "height: 25px; clear:both"></div>
+    <div class="btn-group">
+      <div type="button" class="btn btn-primary"><a id = "submit_all" href = "#" >update all rankings</a></div>
 
+        <div type="button" class="btn btn-primary"><a href = "/auth/facebook">get facebook images</a></div>
+
+       <div type="button" class="btn btn-primary"><%= link_to "see deliberation graph", @deliberation %></div>
+    </div>
+    <!-- end of button group -->
+</div>
+
+<h1>Rank Applicants For <%= @committee.name %></h1>
 <div style = "height:25px"></div>
 <div id = "image_area">
 	<% if session[:pictures] %>

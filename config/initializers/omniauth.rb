@@ -14,4 +14,8 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     # redirect_uri: 'http://localhost:3000/auth/google_oauth2/callback'
     redirect_uri: 'http://portal.berkeleypbl.com/auth/google_oauth2/callback'
   }
+
+  facebook_app_id = "1410926255812679"
+  facebook_app_secret = "1a36c738ce859b0218bfd74e18747f1d"
+  provider :facebook, facebook_app_id, facebook_app_secret, :scope => 'user_photos', :display => 'popup'
 end

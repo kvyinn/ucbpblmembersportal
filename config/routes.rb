@@ -3,7 +3,7 @@ Ucbpblmembersportal::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   root to: "home#home"
-
+  match "/auth/facebook/callback", to: "deliberations#facebook"
   get "/auth/google_oauth2", as: :google_signin
   match "/auth/google_oauth2/callback", to: "sessions#create", as: :signin
   match "/signout", to: "sessions#destroy", :as => :signout
