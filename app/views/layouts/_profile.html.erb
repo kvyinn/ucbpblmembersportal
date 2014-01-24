@@ -11,7 +11,7 @@
   <div class="panel panel-default homepanel">
     <div class="panel-heading"><h1><%= current_member.name %></h1></div>
     <div class = "panel-body">
-      <div>this site is for development!</div>
+      <div>Welcome to Members Portal!</div>
     <div><%= Semester.current_semester.name if Semester.current_semester %></div>
     <% if current_member.primary_committee %>
     <p><%= "#{current_member.primary_committee.name}, #{current_member.position}" %></p>
