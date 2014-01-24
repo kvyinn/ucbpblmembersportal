@@ -129,8 +129,8 @@ body {
 <br>
 
 <div class = "assignments_lists">
-<% Committee.all.each do |c|  %>
-<% if @valid_committees.include? c %>
+<% @valid_committees.each do |c|  %>
+
 <div class = "committee_list panel panel-default">
 	<div class = "clist_header expandable panel-heading"><%= c.name %></div>
 	<div class = "panel-body">
@@ -153,7 +153,7 @@ body {
 </div>
 <!-- end of committee list -->
 <% end %>
-<% end %>
+
 </div>
 <!-- end of assignments list -->
 

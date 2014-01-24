@@ -1,10 +1,11 @@
 class DeliberationsController < ApplicationController
 	def index
-		@deliberations = Deliberation.all
+		@deliberations = Deliberation.all.reverse
 	end
 
 	# show the graph view
 	def show
+		@valid_committees = valid_committees
 		@deliberation = Deliberation.find(params[:id])
 		@deliberation.clean_assignments
 		assigns = DeliberationAssignment.where(deliberation_id: @deliberation.id)

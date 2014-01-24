@@ -4,6 +4,14 @@ class HomeController < ApplicationController
     @tabling_slots = current_member.tabling_slots.where(
       "start_time >= :start", start: tabling_start
     )
+    # days of this week
+    @days = Hash.new
+    today = Chronic.parse("today")
+    @events = Event.all(:conditions => ["start_time BETWEEN ? AND ?", Time.now.beginning_of_day, Time.now.end_of_day+1.week])
+    # @days[today] = events
+    puts @events
+    p 'that was days'
+    render "homepage"
   end
 
   def coolmethod

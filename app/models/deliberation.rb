@@ -63,8 +63,17 @@ class Deliberation < ActiveRecord::Base
 		end
 	end
   end
-
+ def valid_committees
+	valid = Array.new
+	for c in Committee.all
+		if not (c.name.include? "Exec" or c.name.include? "General" or c.name.include? "Internal")
+			valid << c
+		end
+	end
+	return valid
+end
  def nodes_and_links
+ 	valid_committees = self.valid_committees
 		nodes = Array.new
 		for applicant in self.applicants
 			node = Hash.new
@@ -80,23 +89,21 @@ class Deliberation < ActiveRecord::Base
 			end
 			nodes << node
 		end
-		for committee in Committee.all
-			if not (committee.id == 1 or committee.id == 2) # dont want to include execs and gms
-				node = Hash.new
-				node["type"] = "committee"
-				node["value"] = committee.name
-				node["value2"] = committee.name
-				node["abbr"] = committee.abbr
-				node["size"] = 10
-				node["color"] = "red"
-				nodes << node
-			end
+		for committee in valid_committees
+			node = Hash.new
+			node["type"] = "committee"
+			node["value"] = committee.name
+			node["value2"] = committee.name
+			node["abbr"] = committee.abbr
+			node["size"] = 10
+			node["color"] = "red"
+			nodes << node
 		end
 		links = Array.new
 		for ranking in self.rankings
 			c = Committee.find(ranking.committee)
 			committee = c.name
-			if not (c.id == 1 or c.id == 2 )# dont want to include execs and gms
+			if valid_committees.include? c# dont want to include execs and gms
 				applicant = self.applicants.find(ranking.applicant)
 				anode = nodes.find { |l| l["value"] == applicant }
 				anode_index = nodes.index(anode)
@@ -151,17 +158,15 @@ def deliberate
 	unsure = Hash.new
 	conflicts = Hash.new
 	# initialize ranks list
-	for c in Committee.all
+	for c in self.valid_committees
 		# c = Committee.find(cid)
-		if not (c.name.include? "Exec" or c.name.include? "General")
-			rank_lists[c] = Array.new
-			unsure[c] = Array.new
-			assignments[c] = Array.new
-			ranks = self.applicant_ranks_by_committee(c).order(:value)
-			for r in ranks
-				if Applicant.find(r.applicant)
-					rank_lists[c] << Applicant.find(r.applicant)
-				end
+		rank_lists[c] = Array.new
+		unsure[c] = Array.new
+		assignments[c] = Array.new
+		ranks = self.applicant_ranks_by_committee(c).order(:value)
+		for r in ranks
+			if Applicant.find(r.applicant)
+				rank_lists[c] << Applicant.find(r.applicant)
 			end
 		end
 	end

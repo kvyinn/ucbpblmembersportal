@@ -1,6 +1,78 @@
-<div class = "upcoming_events">
-	<div>Upcoming Events</div>
-	<% @upcoming_events.each do |event| %>
-	<div><%= event.name %></div>
-	<% end %>
+<style type = "text/css">
+body{
+	padding-top:75px;
+}
+.right-notifs {
+	float: right;
+	max-width: 300px;
+	margin: 3px;
+	clear; left;
+}
+.hero-unit {
+	background-color: whitesmoke;
+	float:left;
+	border: 1px solid #dddddd;
+	margin: 75px;
+	margin-top: 25px;
+	padding: 20px 70px;
+	border-radius: 15px;
+}
+</style>
+
+
+
+<div class = "right-notifs">
+<div class = "right-notif panel panel-default">
+	<div class = "panel-heading notif-heading">Events This Week</div>
+	<div class = "panel-body">
+		<% if @events.length == 0 %>
+		<div>There are no events today :(</div>
+		<% end %>
+		<% @events.each do |event| %>
+		<div><%= link_to event.name, events_path %>
+			<%= event.start_time.strftime("%A, %D - %l:%M%p") %></div>
+		<% end %>
+	</div>
 </div>
+
+<div class = "right-notif panel panel-default">
+	<div class = "panel-heading notif-heading">Tabling Slots</div>
+	<div class = "panel-body" style = "text-align:center">
+
+		<% if @tabling_slots and not @tabling_slots.empty? %>
+		      <% @tabling_slots.each do |slot| %>
+		          	<div class = "label label-primary"><%= slot.start_time.strftime("%A, %D - %l:%M%p") %></div>
+
+			          <% slot.members.each do |member| %>
+			            <div><%= member.name %></div>
+			          <% end %>
+
+		      	<!-- end of container div -->
+		      <% end %>
+	  <% else %>
+	  <div class = "label label-primary">You Have no Tabling Slots :(</div>
+	  <% end %>
+	</div>
+</div>
+<!-- end of tabling sltos panel -->
+</div>
+<!-- end of right notif -->
+
+<div class="hero-unit">
+    <h1><%= current_member.name %></h1>
+    <p>
+    <%= Semester.current_semester.name if Semester.current_semester %>
+	</p>
+
+    <% if current_member.primary_committee %>
+    <p><%= "#{current_member.primary_committee.name}, #{current_member.position}" %></p>
+    <% else %>
+    <p>no committee this semester</p>
+    <% end %>
+
+    <div>Your Committee Points: <%= current_member.total_points %></div>
+      <p>Committee rating: <%= current_member.primary_committee.rating if current_member.primary_committee %></p>
+      <p><%= link_to "View details", points_url %></p>
+
+    </p>
+ </div>

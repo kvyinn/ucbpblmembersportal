@@ -54,7 +54,7 @@
 
  <%= f.collection_select(:preference2, Committee.all, :id, :name, {prompt: "Select Second Choice"}, {:class => "form-control"}) %> <br>
 
-<%= f.collection_select(:preference3, Committee.all, :id, :name, {prompt: "Select Second Choice"}, {:class => "form-control"}) %> <br>
+<%= f.collection_select(:preference3, Committee.all, :id, :name, {prompt: "Select Third Choice"}, {:class => "form-control"}) %> <br>
 
 <br>
 
@@ -81,18 +81,6 @@ $(document).ready(function(){
   $(".name_input").keyup(function(){
     var input = $(this).val();
     if(names.indexOf(input.toLowerCase()) != -1){
-      $(this).addClass("error");
-    }
-    else{
-      if($(this).hasClass("error")){
-        $(this).removeClass("error");
-      }
-    }
-  });
-  var valid_committees = ["1","3","4","5","6","7","9","10","11"];
-  $(".committee_input").keyup(function(){
-    var input = $(this).val();
-    if(valid_committees.indexOf(input) == -1){
       $(this).addClass("error");
     }
     else{
