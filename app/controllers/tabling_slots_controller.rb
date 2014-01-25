@@ -147,14 +147,20 @@ class TablingSlotsController < ApplicationController
         end
       end
     end
-    members = Member.all
+    members = Array.new
+    Member.all.each do |mem|
+      if not mem.current_committee.name.include? "General"
+        members << mem
+      end
+    end
+    # members = Member.all
 
     if params[:type] == "chairs"
       # for chairs only
       chairs = Array.new
       Member.all.each do |member|
         # if chair or exec
-        if member.position == "chair" or (member.primary_committee and member.primary_committee.id == 2)
+        if member.position == "chair" or (member.current_committee and member.current_committee.id == 2)
           chairs << member
         end
       end
