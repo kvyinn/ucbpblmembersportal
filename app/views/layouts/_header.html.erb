@@ -1,3 +1,4 @@
+
 <style type = "text/css">
 #navlist {
   padding: 10px;
@@ -27,6 +28,18 @@
         <li><%= link_to "Reimbursements", reimbursements_url %></li>
         <li><a href = "/commitments/availability">Commitments</a></li>
         <li><a href = "/deliberations">Deliberations</a></li>
+        <li><%= link_to "Blog", posts_url %></li>
+ <!--         <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Tools <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href = "/deliberations">Deliberations</a></li>
+            </ul>
+          </li> -->
+
+
+
       <% end %>
       <% if current_member %>
         <li class="pull-right"><%= link_to current_member.name, "#" %></li>

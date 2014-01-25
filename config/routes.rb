@@ -28,6 +28,8 @@ Ucbpblmembersportal::Application.routes.draw do
   resources :applicants
   resources :deliberations
 
+  resource :posts
+
   resources :calendars, only: [ :index, :show ] do
     member do
       get :clear
