@@ -395,13 +395,13 @@ task :fall_delib => :environment do
 		puts "first worked"
 		s = second_choices[index]
 		if s == ""
-			s = "Executives"
+			s = "Executive"
 		end
 		a.preference2 = Committee.where(name: s).first.id
 		puts "second worked"
 		t = third_choices[index]
 		if t == ""
-			t = "Executives"
+			t = "Executive"
 		end
 		a.preference3 = Committee.where(name: t).first.id
 		puts "third worked"
