@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140118192146) do
+ActiveRecord::Schema.define(:version => 20140125013116) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(:version => 20140118192146) do
 
   add_index "committee_members", ["committee_id"], :name => "index_committee_members_on_committee_id"
   add_index "committee_members", ["committee_member_type_id"], :name => "cm_type_id"
-  add_index "committee_members", ["member_id", "committee_id"], :name => "cm_uniq", :unique => true
+  add_index "committee_members", ["member_id", "semester_id", "committee_id"], :name => "cm_uniq", :unique => true
   add_index "committee_members", ["member_id"], :name => "index_committee_members_on_member_id"
 
   create_table "committee_semester_members", :force => true do |t|
