@@ -126,44 +126,48 @@ class EventsController < ApplicationController
   # end
 
   def sync_events_with_google
-    # @calendar_id = revert_google_calendar_id(pbl_events_calendar_id)
+    @calendar_id = revert_google_calendar_id(pbl_events_calendar_id)
     # puts "these are time min and maxes"
     # puts beginning_of_fall_semester
     # puts (DateTime.now + 6.month)
     # puts "end of those two"
     # cookies[:sync_with_google] = "please"
     # redirect_to google_signin_url
-    # all_events = google_api_request(
-    #   'calendar', 'v3', 'events', 'list',
-    #   {
-    #     calendarId: @calendar_id,
-    #     # timeMin: beginning_of_fall_semester,
-    #     # timeMax: (DateTime.now + 6.month),
-    #   }
-    # )
-    all_events = google_api_events("")
-    redirect_to(:back)
+    all_events = google_api_request(
+      'calendar', 'v3', 'events', 'list',
+      {
+        calendarId: @calendar_id,
+        timeMin: beginning_of_fall_semester,
+        timeMax: (DateTime.now + 6.month),
+      }
+    ).data.items
+    # all_events = google_api_events("")
+    # redirect_to(:back)
     # # .data.items
     # puts all_events
     # puts "that was all events"
     # @all_events = all_events
     # render "syncview"
     # add these events to event model
-    # all_events = process_google_events(all_events)
-    # all_events.each do |e|
-    #   event = Event.new
-    #   if Event.where(google_id: e[:id]).length != 0
-    #     event = Event.where(google_id: e[:id]).first
-    #   end
-    #   if e[:start_time] and e[:end_time]
-    #     event.google_id = e[:id]
-    #     event.start_time = e[:start_time]
-    #     event.end_time = e[:end_time]
-    #     event.name = e[:summary]
-    #     event.save
-    #   end
-    # end
-    # redirect_to(:back)
+    all_events = process_google_events(all_events)
+    all_events.each do |e|
+      event = Event.new
+      if Event.where(google_id: e[:id]).length != 0
+        event = Event.where(google_id: e[:id]).first
+        # Event.where(google_id: e[:id]).each do |ev|
+          # ev.destroy
+        # end
+      else
+        puts "event is ging to be created"
+      end
+      event.google_id = e[:id]
+      event.start_time = e[:start_time]
+      event.end_time = e[:end_time]
+      event.name = e[:summary]
+      event.save
+
+    end
+    redirect_to(:back)
   end
 
 

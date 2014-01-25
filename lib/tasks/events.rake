@@ -1,3 +1,9 @@
+task :see_events => :environment do
+	EventPoints.all.each do |point|
+		puts "point google id was "
+		puts point.event_id
+	end
+end
 task :dump_events => :environment do
 	require "yaml"
 	events = Array.new

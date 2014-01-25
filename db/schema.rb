@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116193502) do
+ActiveRecord::Schema.define(:version => 20140118192146) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -68,72 +68,10 @@ ActiveRecord::Schema.define(:version => 20140116193502) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "deliberation_id"
+    t.string   "email"
   end
 
   add_index "applicants", ["deliberation_id"], :name => "index_applicants_on_deliberation_id"
-
-  create_table "blog_comments", :force => true do |t|
-    t.integer  "blogpost_id"
-    t.integer  "comment_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "blog_events", :force => true do |t|
-    t.integer  "blogpost_id"
-    t.string   "event_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "blog_images", :force => true do |t|
-    t.integer  "blogpost_id"
-    t.integer  "image_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "blog_tags", :force => true do |t|
-    t.integer  "blogpost_id"
-    t.integer  "member_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "blogposts", :force => true do |t|
-    t.text     "content"
-    t.string   "title"
-    t.integer  "member_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.string   "category"
-    t.integer  "edit_tier"
-    t.integer  "view_tier"
-  end
-
-  create_table "collection_images", :force => true do |t|
-    t.integer  "collection_id"
-    t.integer  "image_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "collections", :force => true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.integer  "member_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "comments", :force => true do |t|
-    t.text     "content"
-    t.integer  "member_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "commitment_calendars", :force => true do |t|
     t.integer  "member_id"
@@ -210,22 +148,6 @@ ActiveRecord::Schema.define(:version => 20140116193502) do
   add_index "committees", ["abbr"], :name => "index_committees_on_abbr"
   add_index "committees", ["committee_type_id"], :name => "index_committees_on_committee_type_id"
 
-  create_table "delayed_jobs", :force => true do |t|
-    t.integer  "priority",   :default => 0, :null => false
-    t.integer  "attempts",   :default => 0, :null => false
-    t.text     "handler",                   :null => false
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
-
   create_table "deliberation_assignments", :force => true do |t|
     t.integer  "deliberation_id"
     t.integer  "applicant"
@@ -278,42 +200,6 @@ ActiveRecord::Schema.define(:version => 20140116193502) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "semester_id"
-  end
-
-  create_table "form_fields", :force => true do |t|
-    t.integer  "form_id"
-    t.string   "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "form_results", :force => true do |t|
-    t.integer  "form_id"
-    t.text     "fields_data"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "forms", :force => true do |t|
-    t.integer  "creator_id"
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "image_tags", :force => true do |t|
-    t.integer  "image_id"
-    t.integer  "member_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "images", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "imageurl"
-    t.text     "description"
   end
 
   create_table "members", :force => true do |t|

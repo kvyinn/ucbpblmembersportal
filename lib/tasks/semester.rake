@@ -3,42 +3,60 @@
 # each (old) event has old semester id (sync afterwards -- sync adds new semester to new events)
 # event_points have correct event_id
 # event_members have correct event_id
-task :add_semester_ids => :environment do
-	CommitteeMember.all.each do |cm|
-		cm.semester_id = 1
-	end
-	Event.all.each do |event|
-		if event.start_time < DateTime.now
-			event.semester_id = 1
+task :update_event_semesters => :environment do
+	Event.all.each do |e|
+		spring = Semester.where(name: "Spring 2014").first
+		fall = Semester.where(name: "Fall 2013").first
+		previous = Semester.where(name: "Previous Semesters").first
+		if e.start_time > spring.start_date
+			spring.events << e
+		elsif e.start_time > fall.start_date
+			fall.events << e
 		else
-			event.semster_id = 2
+			previous.events << e
+		end
+		if e.save
+			puts "saved an event"
+		else
+			puts "save failed"
 		end
 	end
 end
+task :add_semester_ids => :environment do
+	CommitteeMember.all.each do |cm|
+		cm.semester_id = 1 #Semester.current_semester.id
+		cm.save
+	end
+	puts "converted cms"
+end
 
 task :correct_event_ids => :environment do
-	EventPoints.each do |ep|
+	EventPoints.all.each do |ep|
 		google_id = ep.event_id
+		puts google_id
 		events = Event.where(google_id: google_id)
 		if events.length != 0
+			puts "found a match"
 			ep.event_id = events.first.id
 			ep.google_id = google_id
-			em.save
-		else
-			ep.destroy
+			ep.save
+		end
+		if Event.where(id: ep.event_id).length > 0
+			puts "it was already converted"
 		end
 	end
-	EventMember.each do |em|
+	puts "converted ep"
+	EventMember.all.each do |em|
 		google_id = em.event_id
+		puts google_id
 		events = Event.where(google_id: google_id)
 		if events.length != 0
-			em.event_id = events.first.id
+			events.first.event_members << em
 			em.google_id = google_id
-		else
-			em.destroy
 			em.save
 		end
 	end
+	puts "converted em"
 end
 
 # task :change_semester_points => :environment do
