@@ -140,7 +140,7 @@ function addMembers(type){
 		<% end %>
 	}
 	else if (type == "all") {
-		<% Member.all.each do |chair| %>
+		<% @cms.each do |chair| %>
 		var t_member = document.createElement("li");
 		$(t_member).addClass("tabling-member");
 		$(t_member).attr("id", '<%= chair.id %>');
