@@ -86,6 +86,17 @@ class TablingSlotsController < ApplicationController
   end
 
   def tabling_options
+    @chairs = Array.new
+    @cms = Array.new
+    Member.all.each do |member|
+        # if chair or exec
+        if member.position == "chair" or (member.current_committee and member.current_committee.id == 2)
+            @chairs << member
+        end
+        if member.current_committee and not member.current_committee.name.include? "General"
+          @cms << member
+        end
+    end
     # @all_slots = TablingSlot.all
     @this_week_slots = Array.new
     days = (0..7).to_a
@@ -148,24 +159,28 @@ class TablingSlotsController < ApplicationController
       end
     end
     members = Array.new
-    Member.all.each do |mem|
-      if mem.current_committee and not mem.current_committee.name.include? "General"
-        members << mem
-      end
+    # Member.all.each do |mem|
+    #   if mem.current_committee and not mem.current_committee.name.include? "General"
+    #     members << mem
+    #   end
+    # end
+    for id in params[:member_ids]
+      cm = Member.find(id)
+      members << cm
     end
     # members = Member.all
 
-    if params[:type] == "chairs"
-      # for chairs only
-      chairs = Array.new
-      Member.all.each do |member|
-        # if chair or exec
-        if member.position == "chair" or (member.current_committee and member.current_committee.id == 2)
-          chairs << member
-        end
-      end
-      members = chairs
-    end
+    # if params[:type] == "chairs"
+    #   # for chairs only
+    #   chairs = Array.new
+    #   Member.all.each do |member|
+    #     # if chair or exec
+    #     if member.position == "chair" or (member.current_committee and member.current_committee.id == 2)
+    #       chairs << member
+    #     end
+    #   end
+    #   members = chairs
+    # end
     generate_tabling_schedule(@slots, members)
     render json: "your thing worked and i added tabling slots for you homie"
   end

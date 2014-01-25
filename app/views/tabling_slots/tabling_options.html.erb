@@ -1,4 +1,16 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script type = "text/javascript">
+var member_hash = {};
+var reverse_member_hash = {};
+var member_names = [];
+<% Member.all.each do |m| %>
+member_hash['<%= m.name %>'] = '<%= m.id %>';
+reverse_member_hash['<%= m.id %>'] = '<%= m.name %>';
+member_names.push('<%= m.name %>');
+<% end %>
+
 var clicking = false;
 var slots = {};
 slots["0"] = [];
@@ -83,12 +95,30 @@ function clickingActions(){
 		clicking = false;
 	});
 }
+function startAutocomplete(){
+	$("#member-search").autocomplete({
+		source: member_names,
+		select: function(event, ui){
+			var div = document.createElement("li");
+			$(div).addClass("tabling-member");
+			$(div).attr("id", member_hash[ui.item.value]);
+			$(div).text(ui.item.value);
+			$("#tabling-members-list").prepend(div);
+			tablingMemberActions();
+		}
+	});
+}
 function generateTabling(type){
-	alert("generating tabling for "+type+" ...hold onto your potatoess");
+	alert("generating tabling...hold onto your potatoess");
+	var members = [];
+	$(".tabling-member").each(function(){
+		members.push($(this).attr("id"));
+	});
+	console.log(members);
 	$.ajax({
       url:'/tabling_slots/generate_tabling/',
       type: "GET",
-      data: {"slots": slots, "type": type},
+      data: {"slots": slots, "member_ids": members},
       success:function(data){
       },
       complete:function(){
@@ -96,6 +126,34 @@ function generateTabling(type){
       },
       error:function (xhr, textStatus, thrownError){}
   });
+}
+function addMembers(type){
+	if (type == "chairs")
+	{
+		<% @chairs.each do |chair| %>
+		var t_member = document.createElement("li");
+		$(t_member).addClass("tabling-member");
+		$(t_member).attr("id", '<%= chair.id %>');
+		$(t_member).text('<%= chair.name %>')
+		$("#tabling-members-list").prepend(t_member);
+		console.log(t_member);
+		<% end %>
+	}
+	else if (type == "all") {
+		<% Member.all.each do |chair| %>
+		var t_member = document.createElement("li");
+		$(t_member).addClass("tabling-member");
+		$(t_member).attr("id", '<%= chair.id %>');
+		$(t_member).text('<%= chair.name %>')
+		$("#tabling-members-list").prepend(t_member);
+		console.log(t_member);
+		<% end %>
+	}
+	else
+	{
+		alert('a different options');
+	}
+	tablingMemberActions();
 }
 function clearSlots(){
 	var r = confirm("the tabling slots you generated for this week will be cleared. continue?");
@@ -113,19 +171,36 @@ function clearSlots(){
 		  });
 	}
 }
+function tablingMemberActions(){
+	$(".tabling-member").click(function(){
+		$(this).remove();
+	});
+}
+function startButtonActions(){
+	$("#clear-button").click(function(){
+		$("#tabling-members-list").html("");
+	});
+	$("#generate-button").click(function(){
+		generateTabling("");
+	});
+}
 $(document).ready(function(){
 	drawDays();
 	hourActions();
 	clickingActions();
 	$("#generate").click(function(){
-		generateTabling("all");
+		addMembers("all");
 	});
 	$("#generate_chairs").click(function(){
-		generateTabling("chairs");
+		// generateTabling("chairs");
+		addMembers("chairs");
 	});
 	$("#delete_slots").click(function(){
 		clearSlots();
 	});
+	tablingMemberActions();
+	startAutocomplete();
+	startButtonActions();
 });
 </script>
 
@@ -179,16 +254,36 @@ $(document).ready(function(){
 li{
   list-style-type: none;
 }
-
+.tabling-list {
+	margin-top: -100px;
+	float: right;
+}
+.tabling-member:hover {
+	color: red;
+	cursor: pointer;
+}
 </style>
+
 
 <h1>Tabling Options</h1>
 <input type = "submit" class = "btn" id = "delete_slots" value = "Clear Slots"/>
-<input type = "submit" class = "btn" id = "generate" value = "Generate Tabling Schedule"/>
-<input type = "submit" class = "btn" id = "generate_chairs" value = "Generate Tabling for Chairs Only"/>
+<input type = "submit" class = "btn" id = "generate" value = "Add All CMS"/>
+<input type = "submit" class = "btn" id = "generate_chairs" value = "Add All Chairs"/>
 <div style = "clear:both; height: 25px"></div>
 <div id = "times"></div>
+
+<div class = "panel panel-default tabling-list" id = "tabling-list">
+	<div class = "panel-heading">Tabling Will be Generated for These Members</div>
+	<div class = "panel-body">
+		<input id = "member-search" class = "form-control" type = "text" placeholder = "Add Another Member"/>
+		<div style = "padding: 10px"><button id = "generate-button" style = "margin-right: 10px" class = "btn btn-success" type = "button">Generate Slots</button><button id = "clear-button" class = "btn btn-danger" type = "button">Clear List</button></div>
+		<ul id = "tabling-members-list">
+		</ul>
+	</div>
+</div>
 <div style = "clear:both; height: 50px"></div>
+
+
 <% if @tabling_days %>
 <% @tabling_days.each do |day, slots| %>
     <ul class="tabling">
