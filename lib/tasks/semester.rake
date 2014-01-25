@@ -8,7 +8,8 @@ task :update_all_members => :environment do
 		begin
 			mem.update_from_old_member
 		rescue
-			p "error with"
+			# p "error with"
+			puts "Error #{$!}"
 			p mem.name
 		end
 	end
