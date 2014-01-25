@@ -149,7 +149,7 @@ class TablingSlotsController < ApplicationController
     end
     members = Array.new
     Member.all.each do |mem|
-      if not mem.current_committee.name.include? "General"
+      if mem.current_committee and not mem.current_committee.name.include? "General"
         members << mem
       end
     end
