@@ -3,6 +3,11 @@
 # each (old) event has old semester id (sync afterwards -- sync adds new semester to new events)
 # event_points have correct event_id
 # event_members have correct event_id
+task :update_all_members => :environment do
+	Member.all.each do |mem|
+		mem.update_from_old_member
+	end
+end
 task :update_event_semesters => :environment do
 	Event.all.each do |e|
 		spring = Semester.where(name: "Spring 2014").first
