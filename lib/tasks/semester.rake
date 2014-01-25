@@ -5,7 +5,12 @@
 # event_members have correct event_id
 task :update_all_members => :environment do
 	Member.all.each do |mem|
-		mem.update_from_old_member
+		begin
+			mem.update_from_old_member
+		rescue
+			p "error with"
+			p mem.name
+		end
 	end
 end
 task :update_event_semesters => :environment do
