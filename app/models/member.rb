@@ -84,7 +84,7 @@ class Member < ActiveRecord::Base
   #
   # === Parameters
   # - committee: the Committee to look up the position under; defaults to #primary_committee
-  def position(semester = Semester.current_semester, committee=self.primary_committee)
+  def position(semester = Semester.current_semester, committee=self.current_committee)
     if committee
       committee_member = self.committee_members.where(
         committee_id: committee.id).where(
