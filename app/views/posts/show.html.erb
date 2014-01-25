@@ -1,5 +1,25 @@
 <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"> -->
 <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script> -->
+<script type = "text/javascript">
+function dbclickActions(){
+	$(".post-content").dblclick(function(){
+		$(this).attr("data-mercury",'markdown');
+		var r = confirm("Would you like to edit this post?");
+		if(r) {
+			var id = $(this).attr("id");
+			window.location.href = "/editor/posts/" + id;
+		}
+	});
+}
+$(document).ready(function(){
+	jQuery(parent).trigger('initialize:frame');
+	dbclickActions();
+
+});
+jQuery(window).on('mercury:ready', function() {
+  Mercury.saveUrl = '/posts/mercury';
+});
+</script>
 <style type = "text/css">
 body{
 	padding-top: 75px;
@@ -19,9 +39,13 @@ body{
 .label:hover {
 	cursor: pointer;
 }
-.post-div {
-	max-height: 300px;
+.post-div:hover {
+	max-height: 700px;
 	overflow: hidden;
+	cursor: pointer;
+}
+.post-content.post-editing:hover{
+	cursor:default;
 }
 </style>
 <div class="row-fluid">
@@ -34,10 +58,27 @@ body{
   	<div class = "label label-default">Recent Posts</div>
   </div>
   <div class="col-md-6 col-sm-6">
+  	<div class = "post-div well well-sm">
+  		<div><b>Create New Post Here</b></div>
+  		<div class = "post-content" id = 'new-post' data-mercury = "full">
+  			This is a sample post. double click here to create a new post
+  		</div>
+  	</div>
+
   	<% @posts.each do |post| %>
   	<div class = "post-div well well-sm">
+  		<div style = "float: right;"><b>Creator: <%= post.created_by.name if post.created_by %></b></div>
   		<div><b><%= post.title %></b></div>
-  		<div><%= post.content %></div>
+  		<% if post == @post %>
+  		<div class = "post-content post-editing" id = '<%= post.id %>' data-mercury = "full">
+  			<%= raw post.content %>
+  		</div>
+  		<% else %>
+  		<div class = "post-content" id = '<%= post.id %>' >
+  			<%= raw post.content %>
+  		</div>
+  		<% end %>
+
   	</div>
   	<% end %>
   </div>

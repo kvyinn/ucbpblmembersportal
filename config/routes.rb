@@ -1,4 +1,6 @@
 Ucbpblmembersportal::Application.routes.draw do
+  mount Mercury::Engine => '/'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -24,11 +26,14 @@ Ucbpblmembersportal::Application.routes.draw do
   match "/deliberations/data", to: "deliberations#deliberations_data"
   match "/deliberations/assign", to: "deliberations#make_assignment"
   match "newtable/:committee/:delib_id", to: "applicant_rankings#new_table"
+  match "posts/mercury", to: "posts#mercury_update"
   resources :applicant_rankings
   resources :applicants
   resources :deliberations
 
-  resource :posts
+  resources :posts do
+    # member {post :mercury_update}
+  end
 
   resources :calendars, only: [ :index, :show ] do
     member do

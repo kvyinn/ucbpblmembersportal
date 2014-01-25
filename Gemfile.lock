@@ -60,6 +60,7 @@ GEM
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
     bcrypt-ruby (3.1.2)
+    bcrypt-ruby (3.1.2-x86-mingw32)
     bootstrap-sass (2.3.2.1)
       sass (~> 3.2)
     bourbon (3.1.8)
@@ -109,6 +110,7 @@ GEM
       rack-oauth2 (>= 0.14.4)
       tzinfo
     ffi (1.9.0)
+    ffi (1.9.0-x86-mingw32)
     formtastic (2.2.1)
       actionpack (>= 3.0)
     google-api-client (0.6.4)
@@ -152,6 +154,9 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mercury-rails (0.9.0)
+      coffee-rails
+      railties (~> 3.2)
     meta_search (1.1.3)
       actionpack (~> 3.1)
       activerecord (~> 3.1)
@@ -164,6 +169,8 @@ GEM
     mysql2 (0.3.13)
     nifty-generators (0.4.6)
     nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
+    nokogiri (1.6.0-x86-mingw32)
       mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -181,6 +188,7 @@ GEM
       omniauth (~> 1.0)
     orm_adapter (0.5.0)
     pg (0.16.0)
+    pg (0.16.0-x86-mingw32)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -259,6 +267,7 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
+    sqlite3 (1.3.7-x86-mingw32)
     thor (0.18.1)
     thread_safe (0.1.3)
       atomic
@@ -277,6 +286,9 @@ GEM
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
+PLATFORMS
+  x86-mingw32
+
 DEPENDENCIES
   activeadmin (= 0.6.2)
   annotate
@@ -292,6 +304,7 @@ DEPENDENCIES
   google-api-client
   jquery-rails (~> 2.3.0)
   koala (~> 1.8.0rc1)
+  mercury-rails
   mysql2
   nifty-generators (= 0.4.6)
   omniauth (= 1.1.0)

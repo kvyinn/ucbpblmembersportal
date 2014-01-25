@@ -10,6 +10,7 @@ gem 'pg', '0.16.0' #version
 # david added these
 gem "activeadmin", '0.6.2' #version
 
+gem 'mercury-rails'
 gem 'fb_graph'
 gem "koala", "~> 1.8.0rc1"
 gem 'omniauth-facebook'
