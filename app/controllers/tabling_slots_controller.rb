@@ -307,6 +307,8 @@ class TablingSlotsController < ApplicationController
           c.start_time = start
           c.end_time = endt
           c.save
+        else
+          c.destroy
         end
       end
     end
