@@ -1,20 +1,12 @@
 <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"> -->
 <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script> -->
+<%= javascript_include_tag "posts/posts.js" %>
 <script type = "text/javascript">
-function dbclickActions(){
-	$(".post-content").dblclick(function(){
-		$(this).attr("data-mercury",'markdown');
-		var r = confirm("Would you like to edit this post?");
-		if(r) {
-			var id = $(this).attr("id");
-			window.location.href = "/editor/posts/" + id;
-		}
-	});
-}
 $(document).ready(function(){
 	jQuery(parent).trigger('initialize:frame');
 	dbclickActions();
-
+  scrollActions();
+  searchActions();
 });
 jQuery(window).on('mercury:ready', function() {
   Mercury.saveUrl = '/posts/mercury';
@@ -50,37 +42,25 @@ body{
 </style>
 <div class="row-fluid">
   <div class="col-md-3 col-sm-3" id = "left-sidebar">
-  	<input type = "text" class = "form-control" placeholder = "Search Posts"/><br>
-  	<div class = "label label-primary"><a href = "#">Popular Posts</a></div>
-  	<div class = "label label-default">Event Announcements</div>
-  	<div class = "label label-default">Event Recaps</div>
-  	<div class = "label label-default">Administrative</div>
-  	<div class = "label label-default">Recent Posts</div>
+  	<input id = "posts-search" type = "text" class = "form-control" placeholder = "Search Posts"/><br>
+  	<div class = "label label-primary category-label" id = "">Recent Post</div>
+  	<div class = "label label-default category-label" id = "announcement">Event Announcements</div>
+  	<div class = "label label-default category-label">Event Recaps</div>
+  	<div class = "label label-default category-label">Administrative</div>
+  	<div class = "label label-default category-label">Publications</div>
+    <div class = "label label-default category-label">Historian</div>
+    <div class = "label label-default category-label">Finance</div>
+    <div class = "label label-default category-label">Marketing</div>
+    <div class = "label label-default category-label">Consulting</div>
+    <div class = "label label-default category-label">Community Service</div>
+    <div class = "label label-default category-label">Professional Development</div>
+    <div class = "label label-default category-label">Social</div>
+    <div class = "label label-default category-label">Internal Networking</div>
+    <div class = "label label-default category-label">Executives</div>
   </div>
-  <div class="col-md-6 col-sm-6">
-  	<div class = "post-div well well-sm">
-  		<div><b>Create New Post Here</b></div>
-  		<div class = "post-content" id = 'new-post' data-mercury = "full">
-  			This is a sample post. double click here to create a new post
-  		</div>
-  	</div>
-
-  	<% @posts.each do |post| %>
-  	<div class = "post-div well well-sm">
-  		<div style = "float: right;"><b>Creator: <%= post.created_by.name if post.created_by %></b></div>
-  		<div><b><%= post.title %></b></div>
-  		<% if post == @post %>
-  		<div class = "post-content post-editing" id = '<%= post.id %>' data-mercury = "full">
-  			<%= raw post.content %>
-  		</div>
-  		<% else %>
-  		<div class = "post-content" id = '<%= post.id %>' >
-  			<%= raw post.content %>
-  		</div>
-  		<% end %>
-
-  	</div>
-  	<% end %>
+  <div class="col-md-6 col-sm-6" id = "all-posts-container">
+    <%= render "posts", posts: @posts %>
   </div>
-  <div class="col-md-2 col-sm-3">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</div>
+  <div class="col-md-2 col-sm-3">
+  </div>
 </div>

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 			@post = Post.find(params[:post_id])
 		end
 		@posts = Post.all
-		render "show"
+		# render "show"
 	end
 
 	def show
@@ -15,7 +15,13 @@ class PostsController < ApplicationController
 		end
 		@posts = Post.all
 		@editing = true
-		render "show"
+		# render "show"
+	end
+
+	def search_posts
+		term = params[:term]
+		@posts = Post.search(term)
+		render :partial => "posts", :locals => { :posts => @posts }
 	end
 
 	def mercury_update

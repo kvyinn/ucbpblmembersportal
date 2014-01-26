@@ -33,6 +33,9 @@ Ucbpblmembersportal::Application.routes.draw do
 
   resources :posts do
     # member {post :mercury_update}
+    collection do
+      get :search_posts
+    end
   end
 
   resources :calendars, only: [ :index, :show ] do
