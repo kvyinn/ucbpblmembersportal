@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140125220047) do
+ActiveRecord::Schema.define(:version => 20140126185519) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -216,6 +216,11 @@ ActiveRecord::Schema.define(:version => 20140125220047) do
   add_index "members", ["provider", "uid"], :name => "index_members_on_provider_and_uid"
   add_index "members", ["remember_token"], :name => "index_members_on_remember_token"
 
+  create_table "old_posts", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "points", :force => true do |t|
     t.integer  "member_id",   :null => false
     t.integer  "value",       :null => false
@@ -233,9 +238,11 @@ ActiveRecord::Schema.define(:version => 20140125220047) do
     t.integer  "member_id"
     t.integer  "edit_tier"
     t.integer  "view_tier"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "category"
+    t.integer  "old_post_id"
+    t.datetime "date"
   end
 
   create_table "reimbursements", :force => true do |t|

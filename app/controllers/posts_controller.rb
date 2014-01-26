@@ -1,10 +1,16 @@
 class PostsController < ApplicationController
-
+	require 'will_paginate/array'
 	def index
+		# @posts = Post.all.order(:date).reverse
+		@posts = Post.order(:date).reverse.paginate(:page => params[:page], :per_page => 30)
+		if params[:term]
+			term = params[:term]
+			@posts = Post.search(term).paginate(:page => params[:page], :per_page => 30)
+		end
 		if params[:post_id]
 			@post = Post.find(params[:post_id])
 		end
-		@posts = Post.all
+
 		# render "show"
 	end
 

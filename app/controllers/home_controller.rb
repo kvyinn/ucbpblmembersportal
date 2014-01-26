@@ -9,9 +9,11 @@ class HomeController < ApplicationController
     today = Chronic.parse("today")
     @events = Event.all(:conditions => ["start_time BETWEEN ? AND ?", Time.now.beginning_of_day, Time.now.end_of_day+1.week])
     # @days[today] = events
-    puts @events
-    p 'that was days'
-    render "homepage"
+    # puts @events
+    # p 'that was days'
+    # render "homepage"
+    # Post.sync_with_old_posts
+    # render "test"
   end
 
   def coolmethod

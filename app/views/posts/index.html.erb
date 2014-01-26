@@ -3,9 +3,11 @@
 <%= javascript_include_tag "posts/posts.js" %>
 <script type = "text/javascript">
 $(document).ready(function(){
-	dbclickActions();
+	// dbclickActions();
   scrollActions();
   searchActions();
+  categoryActions();
+  showPostActions();
 });
 
 </script>
@@ -28,35 +30,70 @@ body{
 .label:hover {
 	cursor: pointer;
 }
+.post-div {
+  max-height: 200px;
+  overflow: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 .post-div:hover {
-	max-height: 700px;
 	overflow: hidden;
 	cursor: pointer;
 }
 .post-content.post-editing:hover{
 	cursor:default;
 }
+#posts-search {
+  /*display: inline;*/
+  float: left;
+  width: 75%;
+}
+#go-button {
+  float: right;
+  width: 20%;
+ /* background-color: maroon;
+  border: none;*/
+}
+#create-button {
+  margin-top: 15px;
+}
+#search-bar {
+  margin-bottom: 15px;
+}
 </style>
 <div class="row-fluid">
   <div class="col-md-3 col-sm-3" id = "left-sidebar">
-  	<input id = "posts-search" type = "text" class = "form-control" placeholder = "Search Posts"/><br>
-  	<div class = "label label-primary category-label" id = "">Recent Post</div>
-  	<div class = "label label-default category-label" id = "announcement">Event Announcements</div>
-  	<div class = "label label-default category-label">Event Recaps</div>
-  	<div class = "label label-default category-label">Administrative</div>
-  	<div class = "label label-default category-label">Publications</div>
-    <div class = "label label-default category-label">Historian</div>
-    <div class = "label label-default category-label">Finance</div>
-    <div class = "label label-default category-label">Marketing</div>
-    <div class = "label label-default category-label">Consulting</div>
-    <div class = "label label-default category-label">Community Service</div>
-    <div class = "label label-default category-label">Professional Development</div>
-    <div class = "label label-default category-label">Social</div>
-    <div class = "label label-default category-label">Internal Networking</div>
-    <div class = "label label-default category-label">Executives</div>
+  	<div id = "search-bar"><button id = "go-button" class = "btn btn-success" type = "button">Go</button><input id = "posts-search" type = "text" class = "form-control" placeholder = "Search Posts"/>
+    <button id = "create-button" class = "btn btn-danger form-control" type = "button">Compose</button></div>
+    <br>
+    <div id = "categories-container">
+      <div class = "label label-primary category-label" id = "">All Posts</div>
+    	<div class = "label label-default category-label" id = "">Recent Posts</div>
+    	<div class = "label label-default category-label" id = "announcement">Event Announcements</div>
+    	<div class = "label label-default category-label">Event Recaps</div>
+    	<div class = "label label-default category-label">Administrative</div>
+    	<div class = "label label-default category-label">Publications</div>
+      <div class = "label label-default category-label">Historian</div>
+      <div class = "label label-default category-label">Finance</div>
+      <div class = "label label-default category-label">Marketing</div>
+      <div class = "label label-default category-label">Consulting</div>
+      <div class = "label label-default category-label">Community Service</div>
+      <div class = "label label-default category-label">Professional Development</div>
+      <div class = "label label-default category-label">Social</div>
+      <div class = "label label-default category-label">Internal Networking</div>
+      <div class = "label label-default category-label">Executives</div>
+    </div><!-- end of categories container -->
+    <div id = "other-option-container">
+
+    </div>
   </div>
-  <div class="col-md-6 col-sm-6" id = "all-posts-container">
+  <div class="col-md-7 col-sm-7" id = "all-posts-container">
     <%= render "posts", posts: @posts %>
+    <%= will_paginate @posts %>
   </div>
   <div class="col-md-2 col-sm-3">
   </div>

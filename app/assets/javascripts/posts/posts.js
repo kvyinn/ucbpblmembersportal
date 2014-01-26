@@ -31,37 +31,71 @@ function dbclickActions(){
 }
 
 function searchActions(){
-    $("#posts-search").keyup(function(event){
-        if(event.keyCode == 13){
+  $("#go-button").click(function(){
+     var term = $("#posts-search").val();
+    console.log(term);
+    search_term = term;
+    search(search_term, category);
+  });
 
-            var term = $(this).val();
-            console.log(term);
-            search_term = term;
-            search(search_term, category);
-        }
-    });
-    $(".category-label").click(function(){
+
+    // $("#posts-search").keyup(function(event){
+    //     if(event.keyCode == 13){
+
+    //         var term = $(this).val();
+    //         console.log(term);
+    //         search_term = term;
+    //         search(search_term, category);
+    //     }
+    // });
+    // var term = $(this).val();
+    //         console.log(term);
+    //         search_term = term;
+    //         search(search_term, category);
+
+}
+function categoryActions(){
+  $(".category-label").click(function(){
         $(".category-label").each(function(){
             $(this).attr("class", "label label-default category-label");
         })
         $(this).attr("class", "label label-primary category-label");
-        search (search_term, category);
     })
 }
+function showPostActions(){
+  $('.post-div').click(function(){
+     if($(this).css("max-height") != "20000px")
+     {
+      $(this).css("max-height", "20000px");
+     }
 
-function search(term, category){
-    $("#all-posts-container").html("");
-    $.ajax({
-      url:'/posts/search_posts/',
-      type: "GET",
-      data: {"term": term, "category": category},
-      success:function(d){
-
-        $("#all-posts-container").html(d);
-        Mercury.trigger('reinitialize');
-      },
-      complete:function(){
-      },
-      error:function (xhr, textStatus, thrownError){}
   });
+  $(".post-div").dblclick(function(){
+    if($(this).css("max-height") == "20000px")
+    {
+          $(this).css('max-height', "200px");
+   }
+  });
+}
+function search(term, category){
+  window.location = '/posts?term=' + term;
+  //   $("#all-posts-container").html("");
+
+  //   $.ajax({
+  //     url:'/posts/search_posts/',
+  //     type: "GET",
+  //     data: {"term": term, "category": category},
+  //     success:function(d){
+
+  //       $("#all-posts-container").html(d);
+  //       Mercury.trigger('reinitialize');
+  //       dbclickActions();
+  //       scrollActions();
+  //       searchActions();
+  //       showPostActions();
+  //     },
+  //     complete:function(){
+  //     },
+  //     error:function (xhr, textStatus, thrownError){}
+  // });
 }
