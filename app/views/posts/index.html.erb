@@ -9,6 +9,7 @@ $(document).ready(function(){
   categoryActions();
   showPostActions();
   calendarActions();
+  composeActions();
 });
 
 </script>
@@ -32,7 +33,8 @@ body{
 	cursor: pointer;
 }
 .post-div {
-  max-height: 200px;
+  max-height: 150px;
+  margin-bottom:3px;
   overflow: hidden;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -63,6 +65,9 @@ body{
   margin-top: 15px;
   /*display:none;*/
 }
+#compose-button:hover{
+  cursor: pointer;
+}
 #search-bar {
   margin-bottom: 15px;
 }
@@ -77,11 +82,22 @@ margin-bottom: 25px;
 <div class="row-fluid">
   <div class="col-md-3 col-sm-3" id = "left-sidebar">
   	<div id = "search-bar"><button id = "go-button" class = "btn btn-success" type = "button">Go</button><input id = "posts-search" type = "text" class = "form-control" placeholder = "Search Posts"/>
-    <button id = "create-button" class = "btn btn-danger form-control" type = "button">Compose</button></div>
+    </div>
     <br>
+    <div style = "height:7px"></div>
+    <div id = "other-option-container">
+      <!-- <img id = "calendar-button" src = "/calendar.png" style = "width: 35%"></img> -->
+      <!-- <img id = "compose-button" src = "/pencil.jpg" style = " width: 28%; margin-top: 5px;"></img> -->
+      <button class = "form-control btn btn-danger" type = "button" id = "calendar-button" style = "width:33%;">Calendar</button>
+      <button class = "form-control btn btn-danger" type = "button" id = "compose-button" style = "width: 33%;">Compose</button>
+    </div>
+    <div style = "height:15px"></div>
     <div id = "categories-container">
-      <div class = "label label-primary category-label" id = "">All Posts</div>
-    	<div class = "label label-default category-label" id = "">Recent Posts</div>
+      <div class = "label label-primary category-label" id = "">All Posts (42)</div>
+      <% PostCategory.all.each do |category| %>
+      <div class = "label label-default category-label" id = "<%= category.id %>"><%= category.name %></div>
+      <% end %>
+    	<!-- <div class = "label label-default category-label" id = "">Recent Posts</div>
     	<div class = "label label-default category-label" id = "announcement">Event Announcements</div>
     	<div class = "label label-default category-label">Event Recaps</div>
     	<div class = "label label-default category-label">Administrative</div>
@@ -94,20 +110,17 @@ margin-bottom: 25px;
       <div class = "label label-default category-label">Professional Development</div>
       <div class = "label label-default category-label">Social</div>
       <div class = "label label-default category-label">Internal Networking</div>
-      <div class = "label label-default category-label">Executives</div>
+      <div class = "label label-default category-label">Executives</div> -->
     </div><!-- end of categories container -->
     <br>
-    <div id = "other-option-container">
-      <img id = "calendar-button" src = "/calendar.png" style = "width: 35%"></img>
-      <img id = "compose-button" src = "/compose.png" style = "display:none; width: 28%; margin-top: 5px;"></img>
-    </div>
+
   </div>
   <div class="col-md-7 col-sm-7" id = "all-posts-container">
     <div id = 'calendar-container'>
       <%= render "calendar" %>
       </div>
     <%= render "posts", posts: @posts %>
-    <%= will_paginate @posts %>
+    <%= paginate @posts %>
   </div>
   <div class="col-md-2 col-sm-3">
   </div>

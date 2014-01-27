@@ -36,7 +36,11 @@ function dbclickActions(){
 		}
 	});
 }
-
+function composeActions(){
+  $("#compose-button").click(function(){
+    window.location.href = "/posts/new";
+  });
+}
 function searchActions(){
   $("#go-button").click(function(){
      var term = $("#posts-search").val();
@@ -75,14 +79,15 @@ function showPostActions(){
      {
       $(this).css("max-height", "20000px");
      }
-
-  });
-  $(".post-div").dblclick(function(){
-    if($(this).css("max-height") == "20000px")
+     else if($(this).css("max-height") == "20000px")
     {
           $(this).css('max-height', "200px");
    }
+
   });
+  // $(".post-div").click(function(){
+
+  // });
 }
 function search(term, category){
   window.location = '/posts?term=' + term;

@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
-  attr_accessible :title, :edit_tier, :view_tier, :member_id, :content, :old_post_id
-
+  attr_accessible :title, :edit_tier, :view_tier, :member_id, :content, :old_post_id, :category_id
+  belongs_to :member
+  belongs_to :post_category, foreign_key: :id, primary_key: :category_id
   def self.sync_with_old_posts
     OldPost.all.each do |oldpost|
       post = Post.new
@@ -17,6 +18,22 @@ class Post < ActiveRecord::Base
       post.save
     end
   end
+
+  def self.permissions
+    permissions =
+    [
+      [ "Only I",               0],
+      [ "Executives and I",     5],
+      [ "Officers and I",       4],
+      [ "Officers, CMs, and I", 3],
+      [ "Anyone",               2]
+    ]
+    Committee.all.each do |committee|
+      permissions << ["Only "+committee.name, 100+committee.id]
+    end
+    return permissions
+  end
+
   def self.search(term)
   	result = Array.new
     term = term.downcase

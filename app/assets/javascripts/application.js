@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap/bootstrap
 //= require david
+//= require ckeditor/init
 
