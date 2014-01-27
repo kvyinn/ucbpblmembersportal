@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/watu/table_builder.git
+  revision: 56d962a533bc41f376201d49185bf4f63e2a6431
+  specs:
+    watu_table_builder (0.3.0)
+
+GIT
   remote: https://github.com/zquestz/omniauth-google-oauth2.git
   revision: 1b9651974a805264c1c2145ed8d603d917ce8630
   specs:
@@ -319,4 +325,5 @@ DEPENDENCIES
   shoulda-matchers
   sqlite3
   uglifier (= 2.1.2)
+  watu_table_builder!
   will_paginate (~> 3.0)

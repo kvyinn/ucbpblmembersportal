@@ -8,6 +8,7 @@ $(document).ready(function(){
   searchActions();
   categoryActions();
   showPostActions();
+  calendarActions();
 });
 
 </script>
@@ -60,9 +61,17 @@ body{
 }
 #create-button {
   margin-top: 15px;
+  /*display:none;*/
 }
 #search-bar {
   margin-bottom: 15px;
+}
+#calendar-container {
+display: none;
+margin-bottom: 25px;
+}
+#calendar-button:hover {
+  cursor: pointer;
 }
 </style>
 <div class="row-fluid">
@@ -87,14 +96,20 @@ body{
       <div class = "label label-default category-label">Internal Networking</div>
       <div class = "label label-default category-label">Executives</div>
     </div><!-- end of categories container -->
+    <br>
     <div id = "other-option-container">
-
+      <img id = "calendar-button" src = "/calendar.png" style = "width: 35%"></img>
+      <img id = "compose-button" src = "/compose.png" style = "display:none; width: 28%; margin-top: 5px;"></img>
     </div>
   </div>
   <div class="col-md-7 col-sm-7" id = "all-posts-container">
+    <div id = 'calendar-container'>
+      <%= render "calendar" %>
+      </div>
     <%= render "posts", posts: @posts %>
     <%= will_paginate @posts %>
   </div>
   <div class="col-md-2 col-sm-3">
   </div>
 </div>
+

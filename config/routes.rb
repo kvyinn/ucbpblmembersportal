@@ -35,6 +35,7 @@ Ucbpblmembersportal::Application.routes.draw do
     # member {post :mercury_update}
     collection do
       get :search_posts
+      get :calendar
     end
   end
 

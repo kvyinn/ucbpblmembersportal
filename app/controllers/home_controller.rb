@@ -13,7 +13,7 @@ class HomeController < ApplicationController
     # p 'that was days'
     # render "homepage"
     # Post.sync_with_old_posts
-    # render "test"
+    render "test"
   end
 
   def coolmethod

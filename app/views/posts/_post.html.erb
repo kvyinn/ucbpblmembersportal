@@ -1,0 +1,8 @@
+<div class = "post-div well well-sm">
+	<div style = "float: right;">Creator: <%= post.created_by.name if post.created_by %></div>
+	<div><%= link_to post.title, post %></div>
+	<br>
+	<div class = "post-content post-editing" id = '<%= post.id %>' data-mercury = "full">
+		<%= raw post.content %>
+	</div>
+</div>

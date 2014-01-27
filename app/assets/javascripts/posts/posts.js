@@ -1,5 +1,12 @@
 var search_term = "";
 var category = "";
+
+function calendarActions(){
+  $("#calendar-button").click(function(){
+    jQuery('html,body').animate({scrollTop:0},0);
+    $("#calendar-container").toggle();
+  });
+}
 function scrollActions(){
   //scroll sidebar with the page
      var $sidebar   = $("#left-sidebar"),

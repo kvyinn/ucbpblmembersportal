@@ -11,6 +11,7 @@ gem 'pg', '0.16.0' #version
 gem "activeadmin", '0.6.2' #version
 
 gem 'will_paginate', '~> 3.0'
+gem "watu_table_builder", :require => "table_builder", :git => "git://github.com/watu/table_builder.git"
 gem 'mercury-rails'
 gem 'fb_graph'
 gem "koala", "~> 1.8.0rc1"

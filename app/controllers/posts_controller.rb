@@ -11,17 +11,36 @@ class PostsController < ApplicationController
 			@post = Post.find(params[:post_id])
 		end
 
+		# calendar stuff
+		@calendar_posts = Array.new
+		for p in Post.all
+			if p.date
+				@calendar_posts << p
+			end
+		end
+		@date = params[:month] ? Date.parse(params[:month]) : Date.today
+		# end of calendar stuff
+
+		# render "c_test"
 		# render "show"
 	end
-
-	def show
-		begin
-			@post = Post.find(params[:id])
-		rescue
+	def calendar
+		@calendar_posts = Array.new
+		for p in Post.all
+			if p.date
+				@calendar_posts << p
+			end
 		end
-		@posts = Post.all
-		@editing = true
-		# render "show"
+		@date = params[:month] ? Date.parse(params[:month]) : Date.today
+		render "_calendar", :layout => false
+	end
+	def show
+		@post = Post.find(params[:id])
+	end
+
+	def new
+		@post = Post.new
+		render :layout => nil
 	end
 
 	def search_posts

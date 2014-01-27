@@ -1,16 +1,3 @@
-<div class = "post-div well well-sm">
-	<div><b>Create New Post Here</b></div>
-	<div class = "post-content" id = 'new-post' data-mercury = "full">
-		This is a sample post. double click here to create a new post
-	</div>
-</div>
-
 <% posts.each do |post| %>
-	<div class = "post-div well well-sm">
-		<div style = "float: right;"><b>Creator: <%= post.created_by.name if post.created_by %></b></div>
-		<div><b><%= post.title %></b></div>
-		<div class = "post-content post-editing" id = '<%= post.id %>' data-mercury = "full">
-			<%= raw post.content %>
-		</div>
-	</div>
+	<%= render "post", post: post %>
 <% end %>
