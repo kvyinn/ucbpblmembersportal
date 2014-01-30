@@ -30,6 +30,16 @@ class DeliberationsController < ApplicationController
 		redirect_to(:back)
 	end
 
+	def toggle_open
+		deliberation = Deliberation.find(params[:delib_id])
+		if deliberation.open != "all"
+			deliberation.open = "all"
+		else
+			deliberation.open = ""
+		end
+		deliberation.save
+		redirect_to deliberations_path
+	end
 	# makes an assignment for a deliberation. applicant assigned to committee
 	def make_assignment
 		a_id = params[:a_id]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140125013116) do
+ActiveRecord::Schema.define(:version => 20140130041805) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20140125013116) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "open"
   end
 
   create_table "event_members", :force => true do |t|
@@ -216,6 +217,11 @@ ActiveRecord::Schema.define(:version => 20140125013116) do
   add_index "members", ["provider", "uid"], :name => "index_members_on_provider_and_uid"
   add_index "members", ["remember_token"], :name => "index_members_on_remember_token"
 
+  create_table "old_posts", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "points", :force => true do |t|
     t.integer  "member_id",   :null => false
     t.integer  "value",       :null => false
@@ -226,6 +232,27 @@ ActiveRecord::Schema.define(:version => 20140125013116) do
   end
 
   add_index "points", ["member_id"], :name => "index_points_on_member_id"
+
+  create_table "post_categories", :force => true do |t|
+    t.string   "name"
+    t.string   "category_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.text     "content"
+    t.string   "title"
+    t.integer  "member_id"
+    t.integer  "edit_tier"
+    t.integer  "view_tier"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "category"
+    t.integer  "old_post_id"
+    t.datetime "date"
+    t.integer  "category_id"
+  end
 
   create_table "reimbursements", :force => true do |t|
     t.integer  "member_id"

@@ -44,14 +44,30 @@ td {
 	<tbody>
 	<% @deliberations.each do |deliberation| %>
 		<tr>
-			<td><%= deliberation.name %></td>
+			<td><%= deliberation.name %>
+				<br>
+				<% if current_member.admin? %>
+					<% if deliberation.open != "all" %>
+						<button type = 'button' class = 'btn btn-success'><%= link_to "Open Deliberations", "/toggle_open_deliberations/"+deliberation.id.to_s , :style=>"color:white" %></button>
+					<% else %>
+					<button type = 'button' class = 'btn btn-danger'><%= link_to "Close Deliberations", "/toggle_open_deliberations/"+deliberation.id.to_s , :style=>"color:white" %></button>
+					<% end %>
+				<% end %>
+			</td>
 			<td><%= deliberation.applicants.length %> (<%= deliberation.rankings.length %>)</td>
 			<td>
+				<% if (deliberation.open and deliberation.open == "all") or current_member.admin? %>
 				<a href = '/deliberations/<%= deliberation.id %>'>deliberation graph</a><br>
 				<a href = '/deliberations/deliberate/<%= deliberation.id %>'>deliberation algorithm results</a><br>
+				<% end %>
 				<!-- <a href = '/applicant_rankings'>edit chair preferences</a><br> -->
+				<% if deliberation.open and deliberation.open != "locked" %>
 				<%= link_to "edit chair preferences", {:controller => "applicant_rankings", :action => "new_table", :delib_id => deliberation.id, :committee => current_member.primary_committee.id}%><br>
 				<%= link_to "add a new applicant", new_applicant_path(:delib_id => deliberation.id) %>
+				<% else %>
+				locked
+				<% end %>
+
 			</td>
 		</tr>
 	<% end %>
