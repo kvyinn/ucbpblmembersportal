@@ -32,10 +32,10 @@ class DeliberationsController < ApplicationController
 
 	def toggle_open
 		deliberation = Deliberation.find(params[:delib_id])
-		if deliberation.open != "all"
-			deliberation.open = "all"
+		if deliberation.can_view_graph != "all"
+			deliberation.can_view_graph = "all"
 		else
-			deliberation.open = ""
+			deliberation.can_view_graph = ""
 		end
 		deliberation.save
 		redirect_to deliberations_path
