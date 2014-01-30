@@ -1,5 +1,5 @@
 class Deliberation < ActiveRecord::Base
-  attr_accessible :name, :open
+  attr_accessible :name, :can_view_graph
   has_many :applicants, dependent: :destroy
   has_many :applicant_rankings, dependent: :destroy
   has_many :deliberation_assignments, dependent: :destroy
