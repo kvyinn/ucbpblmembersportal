@@ -1,3 +1,6 @@
+
+<%= javascript_include_tag "events/index.js" %>
+
 <style type = "text/css">
 
 body {
@@ -9,6 +12,14 @@ body {
 	padding: 3px;
 	text-align: center;
 	margin: 10px 25px;
+
+	-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+	cursor: default;
 }
 th {
 	background-color: maroon;
@@ -29,14 +40,23 @@ input[type="checkbox"] {
 	background-color: rgb(246, 218, 218);
 }
 </style>
-
 <% if current_member.admin? %>
 <!-- <div class="btn-group"> -->
 	 <!-- <button type="button" class="btn btn-default"><a href = "/events/sync_events_with_google" class = "btn">sync with google calendars</a></button> -->
-	 <button type="button" class="btn"><a href = "/event_points" class = "btn">edit event points</a></button>
+	 <button type="button" class="btn btn-danger"><a href = "/event_points" style = "color:white">edit event points</a></button>
 <!-- </div> -->
-<div style = "height:25px"></div>
 <% end %>
+<button type="button" class="btn btn-success" id = "calendar-view-button"><a href = "#" style = "color:white" onclick = "return: false;">Hide Calendar View</a></button>
+<button type="button" class="btn btn-primary" id = "list-view-button"><a href = "#" style = "color:white" onclick = "return: false;">List View</a></button>
+<div style = "height:25px"></div>
+
+
+<div class = "row-fluid">
+
+<div class = "col-md-8">
+<div id = 'calendar-container'>
+  <%= render "calendar" %>
+  </div>
 <h1>Upcoming Events</h1>
 
 <table class = "events_table" id = "upcoming_events_table">
@@ -51,7 +71,7 @@ input[type="checkbox"] {
 	</thead>
 	<tbody>
 	<% @upcoming_events.each do |ue| %>
-		<tr>
+		<tr class = "event-row" id = '<%= ue.id %>'>
 			<td><%= ue.start_time.strftime("%D") %></td>
 
 			<td><%= link_to ue.name, ue %></td>
@@ -84,12 +104,13 @@ input[type="checkbox"] {
 	<tbody>
 	<% @past_events.reverse.each do |pe| %>
 		<% if @attended_events.include? pe %>
-		<tr class = "highlight">
+		<tr class = "highlight event-row" id = '<%= pe.id %>'>
 		<% else %>
-		<tr>
+		<tr class = "event-row" id = '<%= pe.id %>'>
 		<% end %>
 			<td><%= pe.start_time.strftime("%D") %></td>
-			<td><%= link_to pe.name, pe %></td>
+			<td><% if pe.posts.length > 0 %>
+				***<% end %><%= link_to pe.name, pe %></td>
 			<td><%= pe.start_time.strftime("%r") %></td>
 			<td>location</td>
 
@@ -101,4 +122,12 @@ input[type="checkbox"] {
 
 	</tbody>
 </table>
-
+</div>
+	<!-- end of md 8 col -->
+	<div class = "col-md-4">
+		<div id = "posts-container">
+			click on a starred event to see blogposts
+		</div>
+	</div>
+</div>
+<!-- end of fluid row -->

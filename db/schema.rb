@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140127052130) do
+ActiveRecord::Schema.define(:version => 20140201172046) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -72,6 +72,21 @@ ActiveRecord::Schema.define(:version => 20140127052130) do
   end
 
   add_index "applicants", ["deliberation_id"], :name => "index_applicants_on_deliberation_id"
+
+  create_table "blog_events", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "post_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "commitment_calendars", :force => true do |t|
     t.integer  "member_id"
@@ -158,8 +173,9 @@ ActiveRecord::Schema.define(:version => 20140127052130) do
 
   create_table "deliberations", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "can_view_graph"
   end
 
   create_table "event_members", :force => true do |t|

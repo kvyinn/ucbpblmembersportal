@@ -27,12 +27,14 @@ Ucbpblmembersportal::Application.routes.draw do
   match "/deliberations/assign", to: "deliberations#make_assignment"
   match "newtable/:committee/:delib_id", to: "applicant_rankings#new_table"
   match "posts/mercury", to: "posts#mercury_update"
+  match "events/get_posts/:id", to: "events#get_posts"
   resources :applicant_rankings
   resources :applicants
   resources :deliberations
 
   resources :posts do
     # member {post :mercury_update}
+    resources :comments
     collection do
       get :search_posts
       get :calendar
@@ -56,6 +58,7 @@ Ucbpblmembersportal::Application.routes.draw do
     end
     collection do
       get :sync_events_with_google
+      get :calendar
     end
   end
 

@@ -2,14 +2,14 @@ class PostsController < ApplicationController
 	# require 'will_paginate/array'
 	def index
 		# @posts = Post.all.order(:date).reverse
-		@posts = Kaminari.paginate_array(Post.order(:date).reverse).page(params[:page]).per(50)
+		@posts = Kaminari.paginate_array(Post.order(:date).reverse).page(params[:page]).per(35)
 		# @posts = .page(params[:page]).per(30)
 		# paginate(:page => params[:page], :per_page => 30)
 
 		if params[:term]
 			term = params[:term]
-			# @posts = Post.search(term).paginate(:page => params[:page], :per_page => 30)
-			@posts = Kaminari.paginate_array(Post.search(term)).page(params[:page]).per(50)
+			cat = params[:category]
+			@posts = Kaminari.paginate_array(Post.search(term, cat)).page(params[:page]).per(35)
 		end
 		if params[:post_id]
 			@post = Post.find(params[:post_id])
@@ -42,23 +42,52 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 	end
 
+	def edit
+		@post = Post.find(params[:id])
+		render "new"
+	end
+
 	def new
 		@post = Post.new
 		# render :layout => nil
 	end
 
+	def update
+		@post = save_post(params[:post], params[:id])
+		puts params
+		if params[:event][:event_id] and params[:event][:event_id] != ""
+			@post.events = Array.new
+			event = Event.find(params[:event][:event_id])
+			@post.events << event
+		end
+		# @post = Post.find(params[:post][:id])
+		redirect_to @post
+	end
 	def create
-		puts "hello you careated a blogpsot"
-		@post = Post.new(params[:post])
+		@post = save_post(params[:post], params[:id])
+		if params[:event][:event_id] and params[:event][:event_id] != ""
+			@post.events = Array.new
+			event = Event.find(params[:event][:event_id])
+			@post.events << event
+		end
+		# @post = Post.find(params[:post][:id])
+		redirect_to @post
+	end
+
+	def save_post(params, id)
+		puts "hello you are creating or editing a blogpost"
+		@post = Post.new(params)
+		puts params
+		if Post.find(id)
+			@post = Post.find(id)
+			@post.update_attributes(params)
+		end
 		@post.member_id = current_member.id
 		@post.date = DateTime.now
-		if @post.save
-			redirect_to posts_path
-		else
-			render "new"
-		end
-		# redirect_to posts_path
+		@post.save
+		return @post
 	end
+
 	def search_posts
 		term = params[:term]
 		@posts = Post.search(term)

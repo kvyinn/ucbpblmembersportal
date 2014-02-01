@@ -20,11 +20,13 @@ body{
 .col {
 	border: 1px solid #eee;
 }
-.label {
+.nav-label.label {
 	display:inline-block;
-	margin: 2px;
-	padding: 7px;
 
+	padding: 7px;
+}
+.label {
+  margin: 2px;
 }
 .label a{
 	color: white;
@@ -93,9 +95,9 @@ margin-bottom: 25px;
     </div>
     <div style = "height:15px"></div>
     <div id = "categories-container">
-      <div class = "label label-primary category-label" id = "">All Posts (42)</div>
+      <div class = "nav-label label label-primary category-label" id = "">All Posts (42)</div>
       <% PostCategory.all.each do |category| %>
-      <div class = "label label-default category-label" id = "<%= category.id %>"><%= category.name %></div>
+      <div class = "nav-label label label-default category-label" id = "<%= category.id %>"><%= category.name %></div>
       <% end %>
     	<!-- <div class = "label label-default category-label" id = "">Recent Posts</div>
     	<div class = "label label-default category-label" id = "announcement">Event Announcements</div>
@@ -115,14 +117,12 @@ margin-bottom: 25px;
     <br>
 
   </div>
-  <div class="col-md-7 col-sm-7" id = "all-posts-container">
+  <div class="col-md-9 col-sm-9" id = "all-posts-container">
     <div id = 'calendar-container'>
       <%= render "calendar" %>
       </div>
     <%= render "posts", posts: @posts %>
     <%= paginate @posts %>
-  </div>
-  <div class="col-md-2 col-sm-3">
   </div>
 </div>
 

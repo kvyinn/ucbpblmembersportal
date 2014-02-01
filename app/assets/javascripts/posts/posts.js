@@ -1,6 +1,5 @@
 var search_term = "";
 var category = "";
-
 function calendarActions(){
   $("#calendar-button").click(function(){
     jQuery('html,body').animate({scrollTop:0},0);
@@ -68,20 +67,24 @@ function searchActions(){
 function categoryActions(){
   $(".category-label").click(function(){
         $(".category-label").each(function(){
-            $(this).attr("class", "label label-default category-label");
+            $(this).attr("class", "nav-label label label-default category-label");
         })
-        $(this).attr("class", "label label-primary category-label");
+        $(this).attr("class", "nav-label label label-primary category-label");
+        category = $(this).attr("id");
     })
 }
 function showPostActions(){
-  $('.post-div').click(function(){
-     if($(this).css("max-height") != "20000px")
+  $('.show-more-link').click(function(){
+      var parent_div = $(this).parent().parent();
+     if($(parent_div).css("max-height") != "20000px")
      {
-      $(this).css("max-height", "20000px");
+      $(parent_div).css("max-height", "20000px");
+      $(this).text("show less");
      }
-     else if($(this).css("max-height") == "20000px")
+     else if($(parent_div).css("max-height") == "20000px")
     {
-          $(this).css('max-height', "200px");
+          $(parent_div).css('max-height', "150px");
+          $(this).text("show more");
    }
 
   });
@@ -90,7 +93,7 @@ function showPostActions(){
   // });
 }
 function search(term, category){
-  window.location = '/posts?term=' + term;
+  window.location = '/posts?term=' + term+"&category="+category;
   //   $("#all-posts-container").html("");
 
   //   $.ajax({

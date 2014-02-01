@@ -2,6 +2,14 @@ class Post < ActiveRecord::Base
   attr_accessible :title, :edit_tier, :view_tier, :member_id, :content, :old_post_id, :category_id
   belongs_to :member
   belongs_to :post_category, foreign_key: :id, primary_key: :category_id
+  has_many :blog_events
+  has_many :events, :through => :blog_events
+  def event_id
+    if self.events.first
+      return self.events.first.id
+    end
+    return ""
+  end
   def self.sync_with_old_posts
     OldPost.all.each do |oldpost|
       post = Post.new
@@ -18,7 +26,13 @@ class Post < ActiveRecord::Base
       post.save
     end
   end
-
+  def category
+    if category_id
+      return PostCategory.find(category_id)
+    else
+      return nil
+    end
+  end
   def self.permissions
     permissions =
     [
@@ -34,12 +48,18 @@ class Post < ActiveRecord::Base
     return permissions
   end
 
-  def self.search(term)
+  def self.search(term, category)
   	result = Array.new
     term = term.downcase
   	Post.order(:date).all.reverse.each do |post|
   		if (post.title and post.title.downcase.include? term) or (post.content and post.content.downcase.include? term)
-  			result << post
+  			if category and category != ""
+          if post.category and post.category.id.to_s == category
+            result << post
+          end
+        else
+          result << post
+        end
   		end
   	end
   	return result
