@@ -48,6 +48,9 @@ class Post < ActiveRecord::Base
     return permissions
   end
 
+  def can_view(member)
+    return true
+  end
   def self.search(term, category)
   	result = Array.new
     term = term.downcase
