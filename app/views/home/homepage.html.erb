@@ -2,6 +2,34 @@
 body{
 	padding-top:75px;
 }
+table, th, td {
+	border-collapse: collapse;
+	border: 1px solid rgb(173, 173, 173);
+	padding: 3px;
+	text-align: center;
+	margin: 10px 2px;
+	width: 100%;
+
+	-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+	cursor: default;
+}
+th {
+	background-color: maroon;
+	color: rgb(255, 240, 240);
+	font-weight: normal;
+	width: 13%;
+}
+th a {
+	color: rgb(255, 240, 240);
+}
+td {
+	background-color: white;
+}
 .well.well-sm {
 	background-color: white;
 	border-left: none;
@@ -9,8 +37,8 @@ body{
 	border-radius: 0px;
 }
 .hero-unit {
-	background-color: whitesmoke;
-	border: 1px solid #dddddd;
+	/*background-color: whitesmoke;*/
+	/*border: 1px solid #dddddd;*/
 
 
 	padding: 15px;
@@ -23,6 +51,7 @@ body{
 	<div class="col-md-3 col-sm-3">
 		<div class="hero-unit">
 		    <h1><%= current_member.name %></h1>
+		    <img src = "/blank.png" height = "100px"></img>
 		    <p>
 		    <%= Semester.current_semester.name if Semester.current_semester %>
 			</p>
@@ -42,10 +71,26 @@ body{
 	</div>
 	<!-- end of left column -->
 	<div class="col-md-5 col-sm-5" id = "middle-column">
-		<div class = "well well-sm" style = "text-align:center; background-color: #428bca; color:white;"><h1>Recent Posts</h1></div>
+
+		<!-- table of events happening this week including blogposts -->
+		<table id = "this-week-table">
+			<thead>
+				<th>Sunday</th>
+				<th>Monday</th>
+				<th>Tuesday</th>
+				<th>Wednesday</th>
+				<th>Thursday</th>
+				<th>Friday</th>
+				<th>Saturday</th>
+			</thead>
+			<tbody></tbody>
+		</table>
+		<div class = "well well-sm" style = "display: none; text-align:center; background-color: #428bca; color:white;"><h1>Recent Posts</h1></div>
+		<div style = "display:none">
 		<% @recent_posts.each do |post| %>
 			<%= render "posts/post", post: post %>
 		<% end %>
+		</div>
 
 	</div>
 	<!-- end of MIDDLE COLUMN -->

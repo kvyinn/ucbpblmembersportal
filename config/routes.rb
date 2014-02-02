@@ -38,6 +38,7 @@ Ucbpblmembersportal::Application.routes.draw do
     collection do
       get :search_posts
       get :calendar
+      get :email
     end
   end
 

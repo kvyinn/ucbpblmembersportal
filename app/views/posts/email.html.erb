@@ -1,0 +1,16 @@
+
+<div class = "row-fluid">
+	<div class = "col-md-6">
+		<% if @post %>
+		<h2><%= @post.title %></h2>
+		<%= raw @post.content %>
+		<% else %>
+				<h1>no post selected you made a booboo</h1>
+		<% end %>
+	</div>
+	<div class = "col-md-6">
+		<div style = "height: 50px"></div>
+		<button type = "button" class = "btn btn-primary">Send Emails</button>
+		<h2>these people will receive emails</h2>
+	</div>
+</div>

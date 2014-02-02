@@ -73,7 +73,11 @@ class PostsController < ApplicationController
 		# @post = Post.find(params[:post][:id])
 		redirect_to @post
 	end
-
+	def email
+		if params[:post_id]
+			@post = Post.find(params[:post_id])
+		end
+	end
 	def save_post(params, id)
 		puts "hello you are creating or editing a blogpost"
 		@post = Post.new(params)

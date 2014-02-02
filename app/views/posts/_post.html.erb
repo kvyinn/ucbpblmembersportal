@@ -23,8 +23,20 @@
 .content-div{
   float: left;
 }
+.like-container {
+  float: right;
+  font-weight: 3em;
+  font-weight: bold;
+}
+.like-container div:hover {
+  color: white;
+}
 </style>
 <div class = "post-div well well-sm">
+  <div class = "like-container">
+      <div>+</div>
+      <div>-</div>
+    </div>
   <div class = "profile-div"><img src = "/blank.png" height = "75px"></img></div>
 <!--   <div class = "content-div"> -->
   	<div class = "post-link-div"><%= link_to post.title, post %> (<a class = "show-more-link" href = "." onclick = "return false;">show more</a>)</div>
@@ -34,6 +46,9 @@
   	<div class = "post-content post-editing comment more" id = '<%= post.id %>'>
   		<%= raw post.content %>
   	</div>
-    <%= link_to "Edit This Post", edit_post_path(post) %>
+
+    <div><%= link_to "Email Notify PBL", {:controller => "posts", :action => "email", :post_id => post }%></div>
+    <div><%= link_to "Edit This Post", edit_post_path(post) %></div>
+
   <!-- </div> -->
 </div>
