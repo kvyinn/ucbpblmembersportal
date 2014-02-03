@@ -13,11 +13,15 @@ class HomeController < ApplicationController
     start_day = tabling_start
     end_day = tabling_end
 
-     @week_posts = Post.where("posts.date IS NOT NULL").where(
-      "date >= :tabling_start and date <= :tabling_end",
-      tabling_start: start_day,
-      tabling_end: end_day,
-    ).order(:date)
+     @week_posts = Post.where(['date > ?', tabling_start]
+      ).where(['date <= ?', tabling_end]
+     ).order(:date)
+
+ # @week_posts = Post.where("posts.date IS NOT NULL").where(
+ #      "date >= :tabling_start and date <= :tabling_end",
+ #      tabling_start: start_day,
+ #      tabling_end: end_day,
+ #    ).order(:date)
 
      @week_events = Event.where(['start_time > ?', tabling_start]
       ).where(['start_time <= ?', tabling_end]
