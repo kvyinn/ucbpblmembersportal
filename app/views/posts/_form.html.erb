@@ -33,6 +33,8 @@
 		<%= f.collection_select(:category_id, PostCategory.all, :id, :name, {prompt: "Select Post Category"}, {:class => "form-control"}) %>
 		<%= f.select(:view_tier, Post.permissions, {prompt: "Select Who Can View"}, {:class => "form-control"}) %>
 		<%= f.select(:edit_tier, Post.permissions, {prompt: "Select Who Can Edit"}, {:class => "form-control"}) %>
+		optional date: <%= f.date_select(:date, :order => [:month, :day, :year]) %>
+		<div style = "height:10px"></div>
 		<%= f.submit "Save Blogpost", :class => "btn btn-success form-control" %>
 	</div>
 

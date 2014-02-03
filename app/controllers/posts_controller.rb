@@ -40,6 +40,7 @@ class PostsController < ApplicationController
 	end
 	def show
 		@post = Post.find(params[:id])
+		@comments = @post.comments
 	end
 
 	def edit
@@ -74,24 +75,69 @@ class PostsController < ApplicationController
 		redirect_to @post
 	end
 	def email
+		@all_members = Member.all
+
+		@member_hash = Hash.new
+		@member_names = Array.new
+		@current_cm_names =  Array.new
+		@inv_member_hash = Hash.new
+		Member.all.each do |m|
+			@member_hash[m.name] = m.id
+			@inv_member_hash[m.id] = m.name
+			@member_names << m.name
+			if m.current_committee and not m.current_committee.name.include? "General"
+				@current_cm_names << m.name
+			end
+		end
+
+		# @member_hash = @member_hash.to_json
 		if params[:post_id]
 			@post = Post.find(params[:post_id])
 		end
+		# send an email to me
+		# UserMailer.blog_email(current_member, @post).deliver
+	end
+	def email_success
+	end
+	def send_emails
+		member_ids = params[:member_ids]
+		@post = Post.find(params[:post_id])
+		UserMailer.blog_email(current_member, @post).deliver
+		render json: "hello there yung fellow"
 	end
 	def save_post(params, id)
 		puts "hello you are creating or editing a blogpost"
 		@post = Post.new(params)
 		puts params
-		if Post.find(id)
+		if id and Post.find(id)
 			@post = Post.find(id)
 			@post.update_attributes(params)
 		end
 		@post.member_id = current_member.id
-		@post.date = DateTime.now
+		if not @post.date
+			@post.date = DateTime.now
+		end
 		@post.save
 		return @post
 	end
 
+	def add_comment
+		p 'adding a comment'
+		c = Comment.new
+		c.member_id = current_member.id
+		c.post_id = params[:post_id]
+		c.content = params[:content]
+		c.save
+		post = Post.find(params[:post_id])
+		@comments = post.comments
+		render "comments"
+
+	end
+	def delete_comment
+		c = Comment.find(params[:comment_id])
+		c.destroy
+		redirect_to(:back)
+	end
 	def search_posts
 		term = params[:term]
 		@posts = Post.search(term)

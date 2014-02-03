@@ -1,16 +1,55 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<%= javascript_include_tag "posts/email.js" %>
+<style type = "text/css">
+.panel-heading.email-heading{
+	background-color: maroon;
+	color:white;
+	text-align: center;
+}
+.member-email-li:hover {
+	color: red;
+}
+</style>
+<script type = "text/javascript">
+	var post_id = '<%= @post.id %>';
+	var member_hash = JSON.parse('<%= raw @member_hash.to_json %>');
+	var inv_member_hash = JSON.parse('<%= raw @inv_member_hash.to_json %>');
+	var member_names = JSON.parse('<%= raw @member_names.to_json %>');
+	var current_cm_names = JSON.parse('<%= raw @current_cm_names.to_json %>');
+
+</script>
 
 <div class = "row-fluid">
 	<div class = "col-md-6">
 		<% if @post %>
+		<div style = "height: 30px"></div>
+		<button type = "button" class = "btn btn-success">Post To Facebook Group</button>
 		<h2><%= @post.title %></h2>
 		<%= raw @post.content %>
 		<% else %>
 				<h1>no post selected you made a booboo</h1>
 		<% end %>
 	</div>
-	<div class = "col-md-6">
+	<div class = "col-md-5">
 		<div style = "height: 50px"></div>
-		<button type = "button" class = "btn btn-primary">Send Emails</button>
-		<h2>these people will receive emails</h2>
+
+		<div class = "panel panel-default">
+			<div class = "panel-heading email-heading">These People Will Receive Emails</div>
+			<div class = "panel-body">
+				<input id = 'member-search' type = "text" class = "form-control" placeholder = "search members"/>
+				<div style = "height: 10px"></div>
+				<button id = 'send-button' type = "button" class = "btn btn-success">Send Emails</button>
+				<button id = "add-current-cms" type = "button" class = "btn btn-primary">Add Current CMS</button>
+				<button id = "add-all" type = "button" class = "btn btn-primary">Add All</button>
+				<button id = "clear-button" type = "button" class = "btn btn-danger">Clear</button>
+				<div style = "height: 15px"></div>
+				<ul id = "email-list">
+					<li class = 'member-email-li'>no members selected</li>
+				</ul>
+			</div>
+		</div>
+
 	</div>
 </div>

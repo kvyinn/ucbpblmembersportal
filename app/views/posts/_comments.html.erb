@@ -1,0 +1,10 @@
+<% if @comments.length > 0 %>
+<% @comments.reverse.each do |com| %>
+<b><%= Member.find(com.member_id).name %></b>: <%= com.content %>
+<% if com.member_id == current_member.id %>
+(<%= link_to "Delete", :controller => :posts, :action => :delete_comment, :comment_id => com.id %>)
+<% end %><br>
+<% end %>
+<% else %>
+This post has no comments
+<% end %>

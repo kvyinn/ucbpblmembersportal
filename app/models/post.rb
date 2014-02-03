@@ -1,9 +1,11 @@
 class Post < ActiveRecord::Base
-  attr_accessible :title, :edit_tier, :view_tier, :member_id, :content, :old_post_id, :category_id
+  attr_accessible :title, :edit_tier, :view_tier, :member_id, :content, :old_post_id, :category_id, :date
   belongs_to :member
   belongs_to :post_category, foreign_key: :id, primary_key: :category_id
   has_many :blog_events
   has_many :events, :through => :blog_events
+  has_many :comments
+  has_many :likes
   def event_id
     if self.events.first
       return self.events.first.id

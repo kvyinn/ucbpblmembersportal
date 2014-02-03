@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140201172046) do
+ActiveRecord::Schema.define(:version => 20140203004620) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -218,6 +218,14 @@ ActiveRecord::Schema.define(:version => 20140201172046) do
     t.integer  "semester_id"
   end
 
+  create_table "likes", :force => true do |t|
+    t.string   "like_type"
+    t.integer  "member_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "members", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -226,6 +234,7 @@ ActiveRecord::Schema.define(:version => 20140201172046) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "old_member_id"
+    t.string   "profile"
   end
 
   add_index "members", ["name"], :name => "index_members_on_name"

@@ -39,6 +39,10 @@ Ucbpblmembersportal::Application.routes.draw do
       get :search_posts
       get :calendar
       get :email
+      get :send_emails
+      get :add_comment
+      get :delete_comment
+      get :email_success
     end
   end
 

@@ -37,7 +37,13 @@
       <div>+</div>
       <div>-</div>
     </div>
-  <div class = "profile-div"><img src = "/blank.png" height = "75px"></img></div>
+  <div class = "profile-div">
+    <% if post.created_by %>
+    <img src = "<%= post.created_by.profile_url %>" height = "75px"></img>
+    <% else %>
+    <img src = "/blank.png" height = "75px"></img>
+    <% end %>
+  </div>
 <!--   <div class = "content-div"> -->
   	<div class = "post-link-div"><%= link_to post.title, post %> (<a class = "show-more-link" href = "." onclick = "return false;">show more</a>)</div>
     <div class = "label label-primary"><% if post.category %><%= post.category.name %>

@@ -5,13 +5,31 @@ class HomeController < ApplicationController
       "start_time >= :start", start: tabling_start
     )
     # days of this week
-    @days = Hash.new
-    today = Chronic.parse("today")
+    # @days = Hash.new
+    # today = Chronic.parse("today")
     @events = Event.all(:conditions => ["start_time BETWEEN ? AND ?", Time.now.beginning_of_day, Time.now.end_of_day+1.week])
-    @recent_posts = Post.all.sample(10)
+
+    start_day = tabling_start
+    end_day = tabling_end
+
+     @week_posts = Post.where("posts.date IS NOT NULL").where(
+      "date >= :tabling_start and date <= :tabling_end",
+      tabling_start: start_day,
+      tabling_end: end_day,
+    ).order(:date)
+
+    # if !@week_posts.empty?
+
+    #   @days = Hash.new
+    #   @week_posts.each do |post|
+    #     @days[post.day.wday] ||= Array.new
+    #     day = @days[post.date.wday]
+    #     @days << day
+    #   end
+    # end
+    # keys are days and value is a list of tuples. tuple is name of event and type of event?
+    notifs = Hash.new
     render "homepage"
-    # Post.sync_with_old_posts
-    # render "test"
   end
 
   def coolmethod

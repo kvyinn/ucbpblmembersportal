@@ -37,7 +37,7 @@
 # - EventMember
 # - Reimbursement
 class Member < ActiveRecord::Base
-  attr_accessible :name, :provider, :uid
+  attr_accessible :name, :provider, :uid, :profile, :old_member_id, :remember_token
 
   validates :provider, :uid, :name, presence: true
 
@@ -58,6 +58,8 @@ class Member < ActiveRecord::Base
   has_many :commitments, dependent: :destroy
 
   has_many :points, dependent: :destroy
+
+  has_many :likes
 
   belongs_to :old_member
 
@@ -122,6 +124,14 @@ class Member < ActiveRecord::Base
   def officer?
     self.admin? or
     self.position == "chair"
+  end
+
+  # returns url of profile image. if none return path to blank.png
+  def profile_url
+    if self.profile and self.profile != ""
+      return self.profile
+    end
+    return "/blank.png"
   end
 
   # Returns the relationships between itself and a given TablingSlot.

@@ -1,5 +1,8 @@
 
-
+<%= javascript_include_tag "posts/show.js" %>
+<script type = "text/javascript">
+var post_id = '<%= @post.id %>';
+</script>
 <div class = "row">
 <div class="col-md-8 col-sm-8">
   <%= render "post", post: @post %>
@@ -7,10 +10,11 @@
 <div class="col-md-3 col-sm-3">
   <div class = "label label-success" style = "font-size: 1.3em">Comments</div>
   <div style = "height: 20px"></div>
-  <textarea rows = "2" class = "form-control" placeholder = "write a comment here"></textarea>
-  <button type = "button" class = "btn btn-primary form-control" style = "margin-top:5px">Submit Comment</button>
+  <textarea id = "comment-textarea" rows = "2" class = "form-control" placeholder = "write a comment here"></textarea>
+  <button id = "add-comment-button" type = "button" class = "btn btn-primary form-control" style = "margin-top:5px">Add Comment</button>
   <div style = "height: 20px"></div>
-  here are some comments
+  <div id = 'comments-container'>
+  	<%= render "posts/comments" %></div>
 </div>
 </div>
 

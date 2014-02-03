@@ -2,7 +2,7 @@
 body{
 	padding-top:75px;
 }
-table, th, td {
+/*table, th, td {
 	border-collapse: collapse;
 	border: 1px solid rgb(173, 173, 173);
 	padding: 3px;
@@ -29,7 +29,7 @@ th a {
 }
 td {
 	background-color: white;
-}
+}*/
 .well.well-sm {
 	background-color: white;
 	border-left: none;
@@ -42,16 +42,16 @@ td {
 
 
 	padding: 15px;
-	border-radius: 10px;
+	/*border-radius: 10px;*/
 }
 
 </style>
 
 <div class = "row">
-	<div class="col-md-3 col-sm-3">
+	<div class="col-md-2 col-sm-2">
 		<div class="hero-unit">
 		    <h1><%= current_member.name %></h1>
-		    <img src = "/blank.png" height = "100px"></img>
+		    <img src = '<%= current_member.profile_url %>' height = "100px"></img>
 		    <p>
 		    <%= Semester.current_semester.name if Semester.current_semester %>
 			</p>
@@ -70,20 +70,30 @@ td {
 		 </div>
 	</div>
 	<!-- end of left column -->
-	<div class="col-md-5 col-sm-5" id = "middle-column">
+	<div class="col-md-6 col-sm-6" id = "middle-column">
 
+		<%= @week_posts %>
 		<!-- table of events happening this week including blogposts -->
 		<table id = "this-week-table">
 			<thead>
-				<th>Sunday</th>
-				<th>Monday</th>
-				<th>Tuesday</th>
-				<th>Wednesday</th>
-				<th>Thursday</th>
-				<th>Friday</th>
-				<th>Saturday</th>
+				<th><div class = "label label-success">Sunday</div></th>
+				<th><div class = "label label-success">Monday</div></th>
+				<th><div class = "label label-success">Tuesday</div></th>
+				<th><div class = "label label-success">Wednesday</div></th>
+				<th><div class = "label label-success">Thursday</div></th>
+				<th><div class = "label label-success">Friday</div></th>
+				<th><div class = "label label-success">Saturday</div></th>
 			</thead>
-			<tbody></tbody>
+			<tbody>
+				<tr>
+					<td>sunday events</td>
+					<td>monday events</td>
+					<td>tuesday events</td>
+					<td>wednesday events</td>
+					<td>thursday events</td>
+					<td>friday events</td>
+					<td>saturday events</td>
+				</tr></tbody>
 		</table>
 		<div class = "well well-sm" style = "display: none; text-align:center; background-color: #428bca; color:white;"><h1>Recent Posts</h1></div>
 		<div style = "display:none">

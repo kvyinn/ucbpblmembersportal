@@ -4,7 +4,7 @@
 <script type = "text/javascript">
 $(document).ready(function(){
 	// dbclickActions();
-  scrollActions();
+  // scrollActions();
   searchActions();
   categoryActions();
   showPostActions();
@@ -80,9 +80,15 @@ margin-bottom: 25px;
 #calendar-button:hover {
   cursor: pointer;
 }
+#left-col-wrapper {
+  position: fixed;
+  width: inherit;
+  padding-right: 25px;
+}
 </style>
 <div class="row-fluid">
-  <div class="col-md-3 col-sm-3" id = "left-sidebar">
+  <div class="col-md-3 col-sm-3" id = "left-sidebar"  >
+    <div id = "left-col-wrapper">
   	<div id = "search-bar"><button id = "go-button" class = "btn btn-success" type = "button">Go</button><input id = "posts-search" type = "text" class = "form-control" placeholder = "Search Posts"/>
     </div>
     <br>
@@ -99,24 +105,14 @@ margin-bottom: 25px;
       <% PostCategory.all.each do |category| %>
       <div class = "nav-label label label-default category-label" id = "<%= category.id %>"><%= category.name %></div>
       <% end %>
-    	<!-- <div class = "label label-default category-label" id = "">Recent Posts</div>
-    	<div class = "label label-default category-label" id = "announcement">Event Announcements</div>
-    	<div class = "label label-default category-label">Event Recaps</div>
-    	<div class = "label label-default category-label">Administrative</div>
-    	<div class = "label label-default category-label">Publications</div>
-      <div class = "label label-default category-label">Historian</div>
-      <div class = "label label-default category-label">Finance</div>
-      <div class = "label label-default category-label">Marketing</div>
-      <div class = "label label-default category-label">Consulting</div>
-      <div class = "label label-default category-label">Community Service</div>
-      <div class = "label label-default category-label">Professional Development</div>
-      <div class = "label label-default category-label">Social</div>
-      <div class = "label label-default category-label">Internal Networking</div>
-      <div class = "label label-default category-label">Executives</div> -->
+
     </div><!-- end of categories container -->
     <br>
 
   </div>
+  <!-- end of left col wrapper -->
+  </div>
+  <!-- end of whole left col -->
   <div class="col-md-9 col-sm-9" id = "all-posts-container">
     <div id = 'calendar-container'>
       <%= render "calendar" %>
