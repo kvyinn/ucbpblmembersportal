@@ -36,13 +36,14 @@ class Post < ActiveRecord::Base
     end
   end
   def self.permissions
+    # chair 2 exec 3 cm 1 anyone 0
     permissions =
     [
-      [ "Only I",               0],
-      [ "Executives and I",     5],
-      [ "Officers and I",       4],
-      [ "Officers, CMs, and I", 3],
-      [ "Anyone",               2]
+      [ "Only I",               10],
+      [ "Executives and I",     3],
+      [ "Officers and I",       2],
+      [ "Officers, CMs, and I", 1],
+      [ "Anyone",               0]
     ]
     Committee.all.each do |committee|
       permissions << ["Only "+committee.name, 100+committee.id]
@@ -51,7 +52,18 @@ class Post < ActiveRecord::Base
   end
 
   def can_view(member)
-    return true
+    if not self.view_tier
+      return true
+    end
+    if self.view_tier < 99
+      return self.view_tier <= member.tier
+    else
+      if not member.current_committee
+        return false
+      end
+      return member.current_committee.id == self.view_tier-100
+    end
+    return false
   end
   def self.search(term, category)
   	result = Array.new

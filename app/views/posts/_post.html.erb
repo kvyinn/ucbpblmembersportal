@@ -52,7 +52,12 @@
   	<div class = "post-content post-editing comment more" id = '<%= post.id %>'>
   		<%= raw post.content %>
   	</div>
-
+    <% if post and post.can_view(current_member) %>
+    <div>i can view this post</div>
+    <% else %>
+    <div>i CANNOT view this post</div>
+    <% end %>
+    post tier: <%= post.view_tier %> my tier: <%= current_member.tier %>
     <div><%= link_to "Email Notify PBL", {:controller => "posts", :action => "email", :post_id => post }%></div>
     <div><%= link_to "Edit This Post", edit_post_path(post) %></div>
 

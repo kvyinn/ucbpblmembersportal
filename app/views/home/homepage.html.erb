@@ -2,6 +2,11 @@
 body{
 	padding-top:75px;
 }
+td {
+	width: 200px;
+	overflow: hidden;
+	font-size: .7em;
+}
 /*table, th, td {
 	border-collapse: collapse;
 	border: 1px solid rgb(173, 173, 173);
@@ -70,41 +75,44 @@ td {
 		 </div>
 	</div>
 	<!-- end of left column -->
-	<div class="col-md-6 col-sm-6" id = "middle-column">
+	<div class="col-md-7 col-sm-7" id = "middle-column">
 
-		<%= @week_posts %>
+		<div style = "text-align:center"><div class = "label label-primary" style = "background-color: maroon; font-size: 1.3em">This Week</div></div>
+		<br>
 		<!-- table of events happening this week including blogposts -->
 		<table id = "this-week-table">
 			<thead>
-				<th><div class = "label label-success">Sunday</div></th>
+				<% @days.keys.each do |day| %>
+				<th><div class = "label label-success"><%= day %></div></th>
+				<% end %>
+				<!-- <th><div class = "label label-success">Sunday</div></th>
 				<th><div class = "label label-success">Monday</div></th>
 				<th><div class = "label label-success">Tuesday</div></th>
 				<th><div class = "label label-success">Wednesday</div></th>
 				<th><div class = "label label-success">Thursday</div></th>
 				<th><div class = "label label-success">Friday</div></th>
-				<th><div class = "label label-success">Saturday</div></th>
+				<th><div class = "label label-success">Saturday</div></th> -->
 			</thead>
 			<tbody>
 				<tr>
-					<td>sunday events</td>
-					<td>monday events</td>
-					<td>tuesday events</td>
-					<td>wednesday events</td>
-					<td>thursday events</td>
-					<td>friday events</td>
-					<td>saturday events</td>
-				</tr></tbody>
+					<% @days.keys.each do |day| %>
+					<td>
+						<% @days[day].each do |post| %>
+						<div>Post: <%= link_to post.title, post %> (<%= post.date.strftime("%l") %>)</a></div>
+						<% end %>
+						<% @event_days[day].each do |event| %>
+						<div>Event: <%= link_to event.name, events_path %> (<%= event.start_time.strftime("%l") %>)</a></div>
+						<% end %>
+					</td>
+					<% end %>
+				</tr>
+			</tbody>
 		</table>
 		<div class = "well well-sm" style = "display: none; text-align:center; background-color: #428bca; color:white;"><h1>Recent Posts</h1></div>
-		<div style = "display:none">
-		<% @recent_posts.each do |post| %>
-			<%= render "posts/post", post: post %>
-		<% end %>
-		</div>
 
 	</div>
 	<!-- end of MIDDLE COLUMN -->
-	<div class="col-md-4 col-sm-4">
+	<div class="col-md-3 col-sm-3">
 
 	<div class = "right-notif panel panel-default">
 	<div class = "panel-heading notif-heading">Events This Week</div>
