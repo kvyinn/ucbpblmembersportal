@@ -15,9 +15,9 @@ class DeliberationsController < ApplicationController
 				# its a committee
 				c = Committee.find(key.to_i)
 				begin
-					settings[c] = inputs[key]
+					settings[c.id] = inputs[key]
 				rescue
-					settings[c] = 6
+					settings[c.id] = 6
 				end
 			end
 		end

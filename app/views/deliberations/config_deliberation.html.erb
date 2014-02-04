@@ -38,7 +38,7 @@ $(document).ready(function(){
 <div class = "label label-primary" style = "background-color:maroon; font-size:1.3em">config settings for <%= @deliberation.name %></div><div style = "height: 25px"></div>
 <% Committee.all.each do |committee| %>
 	<% if valid_committees.include? committee %>
-	<div><%= committee.name %> <input type = "text" id = '<%= committee.id %>' class = "cm-capacity capacity-input form-control" value = '<% if @deliberation.deliberation_settings %><%= @deliberation.deliberation_settings[committee] %><% else %>7<% end %>' /></div>
+	<div><%= committee.name %> <input type = "text" id = '<%= committee.id %>' class = "cm-capacity capacity-input form-control" value = '<% if @deliberation.deliberation_settings %><%= @deliberation.deliberation_settings[committee.id] %><% else %>7<% end %>' /></div>
 	<% end %>
 <% end %>
 <br>

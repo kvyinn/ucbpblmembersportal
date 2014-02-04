@@ -7,7 +7,7 @@ class Deliberation < ActiveRecord::Base
 
   def capacity(committee)
   	if deliberation_settings and deliberation_settings[committee]
-  		return deliberation_settings[committee].to_i
+  		return deliberation_settings[committee.id].to_i
   	end
   	return 6
   end
