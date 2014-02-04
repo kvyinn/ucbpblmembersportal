@@ -12,8 +12,12 @@ class HomeController < ApplicationController
     puts @events
     p 'that was days'
     render "homepage"
+    # render "test"
   end
 
+  def test
+    render 'test'
+  end
   def coolmethod
   	CommitteeMember.all.each do |cm|
   		cm.semester = Semester.find(1)

@@ -9,6 +9,7 @@ Ucbpblmembersportal::Application.routes.draw do
   match "/signout", to: "sessions#destroy", :as => :signout
   match "/update/:old_member_id", to: "members#update", as: :update_from_old_member
 
+  match "/test", to: "home#test"
   get :rankings, to: "points#rankings", as: :rankings # TODO: move to "committees#rankings"
 
   # ad hoc route for events

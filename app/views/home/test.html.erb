@@ -1,1 +1,5 @@
 <h1> this is a test view</h1>
+
+<%= Member.all.each do |m| %>
+<%= m.name %> <%=  %>(<%= m.primary_committee.name if m.primary_committee %>)(<%= m.current_committee.name if m.current_committee %>)<br>
+<% end %>
