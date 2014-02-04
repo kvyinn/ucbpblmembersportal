@@ -65,6 +65,7 @@ class Member < ActiveRecord::Base
 
   # TODO: store in DB
   def primary_committee
+    # self.committees.first
     self.committees.first
   end
 
