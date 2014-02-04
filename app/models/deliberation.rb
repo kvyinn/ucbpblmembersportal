@@ -192,6 +192,7 @@ def deliberate
 	conflicts = find_conflicts(assignments)
 	while conflicts.length > 0
 		assignments = resolve_conflicts(assignments, conflicts)
+		p 'conflits resolved and now TRYING AGAIN'
 		fill_committees(rank_lists, assignments, 7)
 		conflicts = find_conflicts(assignments)
 		# this should be removed later. if takes more than 10 iterations, stop
@@ -268,10 +269,10 @@ def find_conflicts(assignments)
 			for k in assignments.keys
 				if assignments[k].include? applicant and key != k
 					if conflicts[applicant]
-						if ! conflicts[applicant].include? key
+						if not conflicts[applicant].include? key
 							conflicts[applicant] << key
 						end
-						if ! conflicts[applicant].include? k
+						if not conflicts[applicant].include? k
 							conflicts[applicant] << k
 						end
 					else
