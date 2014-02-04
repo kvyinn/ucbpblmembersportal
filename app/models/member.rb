@@ -260,6 +260,12 @@ class Member < ActiveRecord::Base
     committee.committee_type = committee_type
     committee.save!
 
+    # remove self from current committees (david)
+    self.committee_members.where(
+      committee_id: committee.id,
+      semester_id: semester.id,
+    ).destroy_all
+
     # Add member to committee if not already
     committee_member = self.committee_members.where(
       committee_id: committee.id,
