@@ -328,7 +328,13 @@ def resolve_conflicts(assignments, conflicts)
 				# this shouldn't happen but w/e
 				assignments = assign_and_remove(third_choice, applicant, assignments)
 			end
-			$shaky[applicant] = winning_committees
+			# $shaky[applicant] = winning_committees
+			winning_committees.each do |c|
+				if not $shaky[applicant]
+					$shaky[applicant] = Array.new
+				end
+				$shaky[applicant] << c
+			end
 		end
 	end
 	# end of loop over applicants in conflicts.keys
