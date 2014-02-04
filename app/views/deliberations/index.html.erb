@@ -62,7 +62,7 @@ td {
 				<% end %>
 				<!-- <a href = '/applicant_rankings'>edit chair preferences</a><br> -->
 				<% if deliberation.can_view_graph and deliberation.can_view_graph != "locked" %>
-				<%= link_to "edit chair preferences", {:controller => "applicant_rankings", :action => "new_table", :delib_id => deliberation.id, :committee => current_member.primary_committee.id}%><br>
+				<%= link_to "edit chair preferences", {:controller => "applicant_rankings", :action => "new_table", :delib_id => deliberation.id, :committee => current_member.current_committee.id}%><br>
 				<%= link_to "add a new applicant", new_applicant_path(:delib_id => deliberation.id) %>
 				<% else %>
 				locked
