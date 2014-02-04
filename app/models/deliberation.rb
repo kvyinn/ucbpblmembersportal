@@ -293,9 +293,9 @@ def resolve_conflicts(assignments, conflicts)
 		# if one ranks applicant in a higher tier, give it to that committee
 		best_rank = 100
 		winning_committees = Array.new
-		if applicant.name == "Rich Lin"
+		if applicant.name == "Kris Gao"
 			p conflicts[applicant]
-			p "THOSE WERE THE CONFLICTS FOR RICH"
+			p "THOSE WERE THE CONFLICTS FOR Kris"
 		end
 		for c in conflicts[applicant]
 			rank = self.applicant_ranks_by_committee(c).where(applicant: applicant.id).first
