@@ -1,8 +1,22 @@
 class Deliberation < ActiveRecord::Base
-  attr_accessible :name, :can_view_graph
+  attr_accessible :name, :can_view_graph, :deliberation_settings
+  serialize :deliberation_settings
   has_many :applicants, dependent: :destroy
   has_many :applicant_rankings, dependent: :destroy
   has_many :deliberation_assignments, dependent: :destroy
+
+  def capacity(committee)
+  	if deliberation_settings and deliberation_settings[committee]
+  		return deliberation_settings[committee].to_i
+  	end
+  	return 6
+  end
+  def width
+  	if deliberation_settings and deliberation_settings["width"]
+  		return deliberation_settings["width"].to_i
+  	end
+  	return 2
+  end
 
   def applicants
   	return Applicant.where(deliberation_id: self.id)
@@ -228,7 +242,7 @@ end
 # fill each committee to its capacity
 def fill_committees(rank_lists, assignments, capacity)
 	for c in assignments.keys
-		while (assignments[c].length < capacity)
+		while (assignments[c].length < self.capacity(c))
 			if rank_lists[c].length > 0
 				person = rank_lists[c][0]
 				rank_lists[c].delete_at(0)
@@ -280,12 +294,12 @@ def resolve_conflicts(assignments, conflicts)
 		winning_committees = Array.new
 		for c in conflicts[applicant]
 			rank = self.applicant_ranks_by_committee(c).where(applicant: applicant.id).first
-			if rank.value < best_rank and rank.value-best_rank < -2
+			if rank.value < best_rank and rank.value-best_rank < -1*self.width
 				# you're the new winning committee
 				winning_committees = Array.new
 				winning_committees << c
 				best_rank = rank.value
-			elsif best_rank < rank.value and best_rank-rank.value< -2
+			elsif best_rank < rank.value and best_rank-rank.value< -1*self.width
 				# youre too much worse than the best committee, do nothing
 				puts "i lose"
 			else

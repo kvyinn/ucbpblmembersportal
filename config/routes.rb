@@ -25,6 +25,8 @@ Ucbpblmembersportal::Application.routes.draw do
   match "/deliberations/data", to: "deliberations#deliberations_data"
   match "/deliberations/assign", to: "deliberations#make_assignment"
   match "/toggle_open_deliberations/:delib_id", to: "deliberations#toggle_open"
+  match "deliberations/config/:delib_id", to: "deliberations#config_deliberation"
+  match "deliberations/save_config/:delib_id", to: "deliberations#save_config_deliberation"
   match "newtable/:committee/:delib_id", to: "applicant_rankings#new_table"
   resources :applicant_rankings
   resources :applicants

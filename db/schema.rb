@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140130050332) do
+ActiveRecord::Schema.define(:version => 20140204153519) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -72,6 +72,21 @@ ActiveRecord::Schema.define(:version => 20140130050332) do
   end
 
   add_index "applicants", ["deliberation_id"], :name => "index_applicants_on_deliberation_id"
+
+  create_table "blog_events", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "post_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "commitment_calendars", :force => true do |t|
     t.integer  "member_id"
@@ -158,9 +173,10 @@ ActiveRecord::Schema.define(:version => 20140130050332) do
 
   create_table "deliberations", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "can_view_graph"
+    t.text     "deliberation_settings"
   end
 
   create_table "event_members", :force => true do |t|
@@ -203,6 +219,14 @@ ActiveRecord::Schema.define(:version => 20140130050332) do
     t.integer  "semester_id"
   end
 
+  create_table "likes", :force => true do |t|
+    t.string   "like_type"
+    t.integer  "member_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "members", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -211,6 +235,7 @@ ActiveRecord::Schema.define(:version => 20140130050332) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "old_member_id"
+    t.string   "profile"
   end
 
   add_index "members", ["name"], :name => "index_members_on_name"

@@ -1,4 +1,30 @@
 class DeliberationsController < ApplicationController
+	def config_deliberation
+		@deliberation = Deliberation.find(params[:delib_id])
+		@settings = @deliberation.deliberation_settings
+	end
+	def save_config_deliberation
+		deliberation = Deliberation.find(params[:delib_id])
+		inputs = params[:capacities]
+		p inputs
+		settings = Hash.new
+		for key in inputs.keys
+			if key == "width"
+				settings[key] = inputs[key]
+			else
+				# its a committee
+				c = Committee.find(key.to_i)
+				begin
+					settings[c] = inputs[key]
+				rescue
+					settings[c] = 6
+				end
+			end
+		end
+		deliberation.deliberation_settings = settings
+		deliberation.save
+		render json: "saved your configuration settings"
+	end
 	def index
 		@deliberations = Deliberation.all.reverse
 	end

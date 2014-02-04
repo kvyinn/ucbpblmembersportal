@@ -1,0 +1,63 @@
+<script type = "text/javascript">
+function submitActions(){
+	$("#submit-button").click(function(){
+		updateConfigurations();
+	});
+}
+function updateConfigurations(){
+	var capacities = {};
+	capacities["width"] = $("#tier-width-input").val();
+	$(".cm-capacity").each(function(){
+		capacities[$(this).attr("id")] = $(this).val();
+	});
+	console.log(capacities);
+	$.ajax({
+      url:'/deliberations/save_config/'+'<%= @deliberation.id %>',
+      type: "GET",
+      data: {"capacities": capacities},
+      success:function(d){
+      },
+      complete:function(){
+      	location.reload();
+      },
+      error:function (xhr, textStatus, thrownError){}
+  });
+}
+$(document).ready(function(){
+	submitActions();
+});
+</script>
+<style type = "text/css">
+.capacity-input {
+	width: 50px;
+	display: inline;
+}
+</style>
+<% if current_member.name == "Michael Xu" or current_member.name == "David Liu" %>
+<div style = "height: 25px"></div>
+<div class = "label label-primary" style = "background-color:maroon; font-size:1.3em">config settings for <%= @deliberation.name %></div><div style = "height: 25px"></div>
+<% Committee.all.each do |committee| %>
+	<% if valid_committees.include? committee %>
+	<div><%= committee.name %> <input type = "text" id = '<%= committee.id %>' class = "cm-capacity capacity-input form-control" value = '<% if @deliberation.deliberation_settings %><%= @deliberation.deliberation_settings[committee] %><% else %>7<% end %>' /></div>
+	<% end %>
+<% end %>
+<br>
+<div>how wide are the tiers?</div>
+<div style = "margin-left: 15px">wider = more conservative (more people in deliberations pool)</div>
+<div style = "margin-left: 15px">smaller = less conservative (more people assigned)</div>
+<input type = "text" id = 'tier-width-input' class = "capacity-input form-control" value = '<% if @deliberation.deliberation_settings %><%= @deliberation.deliberation_settings["width"] %><% else %>2<% end %>' /></div>
+<br>
+<div style = "height:25px"></div>
+<button type = "button" class = "btn btn-success" id = "submit-button">Save Settings</button>
+
+<% if current_member.admin? %>
+	<% if @deliberation.can_view_graph != "all" %>
+		<button type = 'button' class = 'btn btn-success'><%= link_to "Open Deliberations", "/toggle_open_deliberations/"+
+		@deliberation.id.to_s , :style=>"color:white" %></button>
+	<% else %>
+	<button type = 'button' class = 'btn btn-danger'><%= link_to "Close Deliberations", "/toggle_open_deliberations/"+ @deliberation.id.to_s , :style=>"color:white" %></button>
+	<% end %>
+<% end %>
+<% else %>
+<h1>You Arent Mike Xu</h1>
+<% end %>

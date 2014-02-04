@@ -46,13 +46,8 @@ td {
 		<tr>
 			<td><%= deliberation.name %>
 				<br>
-				<% if current_member.admin? %>
-					<% if deliberation.can_view_graph != "all" %>
-						<button type = 'button' class = 'btn btn-success'><%= link_to "Open Deliberations", "/toggle_open_deliberations/"+deliberation.id.to_s , :style=>"color:white" %></button>
-					<% else %>
-					<button type = 'button' class = 'btn btn-danger'><%= link_to "Close Deliberations", "/toggle_open_deliberations/"+deliberation.id.to_s , :style=>"color:white" %></button>
-					<% end %>
-				<% end %>
+				<%= link_to "Change Settings", "/deliberations/config/"+deliberation.id.to_s %>
+
 			</td>
 			<td><%= deliberation.applicants.length %> (<%= deliberation.rankings.length %>)</td>
 			<td>
