@@ -292,6 +292,10 @@ def resolve_conflicts(assignments, conflicts)
 		# if one ranks applicant in a higher tier, give it to that committee
 		best_rank = 100
 		winning_committees = Array.new
+		if applicant.name = "Rich Lin"
+			p conflicts[applicant]
+			p "THOSE WERE THE CONFLICTS FOR RICH"
+		end
 		for c in conflicts[applicant]
 			rank = self.applicant_ranks_by_committee(c).where(applicant: applicant.id).first
 			if rank.value < best_rank and rank.value-best_rank < -1*self.width
