@@ -141,12 +141,14 @@ body {
 		<% if @shaky.keys.include? rank.applicant %>
 		***
 		<% end %>
-		<%= rank.applicant.name %> (<%= rank.value %>)</div>
+		<%= rank.applicant.name %> (<%= rank.value %>)
 	<% elsif @shaky.keys.include? rank.applicant and @shaky[rank.applicant].include? c %>
-		<div class = "unsure applicant" id = '<%= rank.applicant.id %>'><%= rank.applicant.name %> (<%= rank.value %>)</div>
+		<div class = "unsure applicant" id = '<%= rank.applicant.id %>'><%= rank.applicant.name %> (<%= rank.value %>)
 	<% else %>
-		<div class = "not_accepted applicant" id = '<%= rank.applicant.id %>'><%= rank.applicant.name %> (<%= rank.value %>)</div>
+		<div class = "not_accepted applicant" id = '<%= rank.applicant.id %>'><%= rank.applicant.name %> (<%= rank.value %>)
 	<% end %>
+	<%= rank.applicant.preference1 %> <%= rank.applicant.preference2 %> <%= rank.applicant.preference3 %>
+	</div>
 <% end %>
 </div>
 <!-- end of pabel body -->
