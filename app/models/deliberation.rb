@@ -424,8 +424,8 @@ def resolve_conflicts_relative(assignments, conflicts, sizes)
 				# you're the new winning committee
 				winning_committees = Array.new
 				winning_committees << c
-				best_rank = rank.value
-			elsif best_rank < rank.value and best_rank-relative_rank< -1*self.width
+				best_rank = relative_rank
+			elsif best_rank < relative_rank and best_rank-relative_rank< -1*self.width
 				# youre too much worse than the best committee, do nothing
 				puts "i lose"
 			else
