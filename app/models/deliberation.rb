@@ -59,6 +59,11 @@ class Deliberation < ActiveRecord::Base
   	return deliberate
   end
 
+  def relative_algorithm_results
+  	clean_rankings
+  	return deliberate_relative
+  end
+
   def generate_default_rankings
   	ApplicantRanking.where(deliberation_id: self.id).destroy_all
   	for a in self.applicants
@@ -159,6 +164,71 @@ end
 		data["links"] = links
 		return data
 	end
+
+def deliberate_relative
+	$shaky = Hash.new
+	$bad = Hash.new
+	capacity = 7
+	applicants = self.applicants
+	rankings = self.rankings
+	rank_lists = Hash.new
+	assignments = Hash.new
+	unsure = Hash.new
+	conflicts = Hash.new
+	# initialize ranks list
+	sizes = Hash.new
+	for c in self.valid_committees
+		# c = Committee.find(cid)
+		rank_lists[c] = Array.new
+		unsure[c] = Array.new
+		assignments[c] = Array.new
+		ranks = self.applicant_ranks_by_committee(c).order(:value)
+		for r in ranks
+			if Applicant.find(r.applicant)
+				rank_lists[c] << Applicant.find(r.applicant)
+			end
+		end
+	end
+	for c in rank_lists.keys
+		sizes[c] = rank_lists[c].length
+	end
+	assignments_factored = factor_in_assignments(assignments, rank_lists)
+	assignments = assignments_factored[0]
+	rank_lists = assignments_factored[1]
+	assignments = fill_committees(rank_lists, assignments, 7)
+	count = 1
+	conflicts = find_conflicts(assignments)
+	while conflicts.length > 0
+		assignments = resolve_conflicts_relative(assignments, conflicts, sizes)
+		p 'conflits resolved and now TRYING AGAIN'
+		fill_committees(rank_lists, assignments, 7)
+		conflicts = find_conflicts(assignments)
+		# this should be removed later. if takes more than 10 iterations, stop
+		count = count + 1
+		if count > 10
+			break
+		end
+	end
+	for applicant in $shaky.keys
+		for c in $shaky[applicant]
+			unsure[c] << applicant
+		end
+	end
+	unassigned = Array.new
+	for a in self.applicants
+		unassigned << a
+	end
+	# self.applicants
+	assignments.keys.each do |k|
+		assignments[k].each do |a|
+			if unassigned.include? a
+				unassigned.delete(a)
+			end
+			# unassigned << a
+		end
+	end
+	return [assignments, conflicts, unsure, $shaky, $bad, unassigned, rank_lists]
+end
 $shaky = Hash.new
 $bad = Hash.new
 def deliberate
@@ -305,6 +375,57 @@ def resolve_conflicts(assignments, conflicts)
 				winning_committees << c
 				best_rank = rank.value
 			elsif best_rank < rank.value and best_rank-rank.value< -1*self.width
+				# youre too much worse than the best committee, do nothing
+				puts "i lose"
+			else
+				# another you're in the same tier as another committee
+				winning_committees << c
+			end
+		end
+
+		if winning_committees.length == 1
+			assignments = assign_and_remove(winning_committees[0], applicant, assignments)
+		else
+			# you need to go by applicant preference
+			first_choice = Committee.find(applicant.preference1)
+			second_choice = Committee.find(applicant.preference2)
+			third_choice = Committee.find(applicant.preference3)
+			if winning_committees.include? first_choice
+				assignments = assign_and_remove(first_choice, applicant, assignments)
+			elsif winning_committees.include? second_choice
+				assignments = assign_and_remove(second_choice, applicant, assignments)
+			else
+				# this shouldn't happen but w/e
+				assignments = assign_and_remove(third_choice, applicant, assignments)
+			end
+			# $shaky[applicant] = winning_committees
+			winning_committees.each do |c|
+				if not $shaky[applicant]
+					$shaky[applicant] = Array.new
+				end
+				$shaky[applicant] << c
+			end
+		end
+	end
+	# end of loop over applicants in conflicts.keys
+	return assignments
+end
+def resolve_conflicts_relative(assignments, conflicts, sizes)
+	for applicant in conflicts.keys
+		# decide which committee will get the applicant
+		# if both committees rank applicant in the same tier use applicant preference
+		# if one ranks applicant in a higher tier, give it to that committee
+		best_rank = 1000
+		winning_committees = Array.new
+		for c in conflicts[applicant]
+			rank = self.applicant_ranks_by_committee(c).where(applicant: applicant.id).first
+			relative_rank = rank.value/sizes[c]*100
+			if relative_rank < best_rank and relative_rank-best_rank < self.width*-1
+				# you're the new winning committee
+				winning_committees = Array.new
+				winning_committees << c
+				best_rank = rank.value
+			elsif best_rank < rank.value and best_rank-relative_rank< -1*self.width
 				# youre too much worse than the best committee, do nothing
 				puts "i lose"
 			else

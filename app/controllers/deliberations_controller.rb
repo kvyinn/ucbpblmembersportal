@@ -116,6 +116,23 @@ class DeliberationsController < ApplicationController
 		@remaining = delib[6]
 	end
 
+	def run_relative_deliberations
+		# clean_ranks
+		@valid_committees = valid_committees
+		@delib_id = params[:delib_id]
+		# @result = ApplicantRanking.where(deliberation_id: @delib_id)
+		@deliberation = Deliberation.find(params[:delib_id])
+		# @deliberation.generate_default_rankings
+		delib = @deliberation.relative_algorithm_results
+		@assignments = delib[0]
+		@conflicts = delib[1]
+		@shaky = delib[3]
+		@bad = delib[4]
+		@unassigned = delib[5]
+		@remaining = delib[6]
+		render "run_deliberations"
+	end
+
 	def get_delib_links
 		# delib = deliberate(params[:delib_id])
 		delib = Deliberation.find(params[:delib_id]).algorithm_results
