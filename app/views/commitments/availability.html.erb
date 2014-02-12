@@ -4,16 +4,16 @@
 <%= javascript_include_tag "commitments/availability.js" %>
 <style type = "text/css">
 .timetable {
-	margin-left: 25px;
 	overflow: hidden;
-	float: left;
+	border-left: 1px solid #C5C5C5;
+	border-radius: 10px 10px 0px 0px;
 	/*border-left: 1px solid black;*/
 }
 .day {
 	background-color: white;
 	/*border: 1px solid black;*/
 	float: left;
-	width: 100px;
+	width: 65px;
 	text-align: center;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -89,42 +89,56 @@ member_names.push('<%= m.name %>');
 <% end %>
 </script>
 
+<div style = "height:25px"></div>
+<p>*mark available slots</p>
+<div class = "row-fluid">
+	<div class = "col-md-5">
+		<h1>My availability</h1>
 
-<h1>Mark Unavailable Slots</h1>
-<button type = "button" id = "save_commitments" type = "submit" class = "btn" value = "Save Commitments"/>Save Commitments</button>
-<div style = "clear:both; height: 25px"></div>
-<div id = "times" class = "timetable"></div>
-<div style = "clear:both; height: 100px"></div>
-<h1>Compare Availability</h1>
+		<div id = "times" class = "timetable"></div>
+		<div style = "clear:both; height: 25px"></div>
+		<button type = "button" id = "save_commitments" type = "submit" class = "btn btn-success" value = "Save Commitments"/>Save Commitments</button>
 
-<div id = "cm_chart" class = "timetable"></div>
-<div id = "options_div"  class="panel panel-default">
-<div id = "tracked_header" class = "panel-heading">Tracked Members</div>
-<div class = "panel-body">
-	<input class="form-control" placeholder="search pbl members" type = "text" id = "member_search" />
-	<br>
-	<div id = "tracked_list">
-	<% @cms.each do |cm| %>
-		<div id = '<%= cm.member.id %>' class = "tracked_member"><%= cm.member.name %></div>
-	<% end %>
-	</div><!-- end of tracked list -->
+		<div style = "clear:both; height: 100px"></div>
+	</div>
+	<div class = "col-md-5">
+		<h1>PBL's availability</h1>
+		<div id = "cm_chart" class = "timetable"></div>
+	</div>
+	<div class = "col-md-2">
+	<div id = "options_div"  class="panel panel-default">
+	<div id = "tracked_header" class = "panel-heading">Tracked Members</div>
+	<div class = "panel-body">
+		<input class="form-control" placeholder="search pbl members" type = "text" id = "member_search" />
+		<div style = "height: 15px"></div>
+		<button id = "clear-button" type = "button" class = "btn btn-danger">Clear List</button>
+		<div style = "height:15px"></div>
+		<div id = "tracked_list">
+		<% @cms.each do |cm| %>
+			<div id = '<%= cm.member.id %>' class = "tracked_member"><%= cm.member.name %></div>
+		<% end %>
+		</div><!-- end of tracked list -->
+	</div>
+
+	</div>
+	<!-- end of options panel div -->
+	</div>
+	<!-- end of col md 4 -->
 </div>
-
-</div>
-<!-- end of options panel div -->
+<!-- end of row-fluid -->
 <div style = "clear: both; height: 150px;"></div>
 
 <style type = "text/css">
 #options_div {
 	/*border: 1px solid rgba(0,0,0,0.1);*/
 	/*box-shadow: 1px 1px 5px rgba(0,0,0,0.2);*/
-	width: 200px;
-	float: left;
-	margin-left: 15px;
+	/*width: 200px;*/
+	/*float: left;*/
+	/*margin-left: 15px;*/
 	/*background-color: rgb(245, 245, 245);*/
-	background-color: white;
+	/*background-color: white;*/
 	border: 1px solid #e7e7e7;
-	text-align:center;
+	/*text-align:center;*/
 	padding-bottom: 5px;
 	border-radius: 10px;
 

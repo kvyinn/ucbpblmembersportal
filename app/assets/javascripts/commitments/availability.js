@@ -7,7 +7,7 @@ slots["3"] = [];
 slots["4"] = [];
 slots["5"] = [];
 slots["6"] = [];
-var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 var hours = ["8", "9", "10", "11", "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
 function drawDays(){
 	for(var i=0;i<days.length;i++){
@@ -43,6 +43,15 @@ function markSlots(marked_slots){
 			toggleSelected(h);
 		}
 	}
+}
+function clearActions(){
+	$("#clear-button").click(function(){
+		$(".tracked_member").each(function(){
+			$(this).remove();
+			updateTrackedChart()
+		});
+	});
+	;
 }
 function toggleSelected(thiss){
 
@@ -133,6 +142,7 @@ $(document).ready(function(){
 	updateTrackedChart();
 	startAutocomplete();
 	startTrackedActions();
+	clearActions();
 	// makeDarker();
 	// markCMSlots(cm_slots);
 });
