@@ -2,77 +2,156 @@
 body{
 	padding-top:75px;
 }
-.right-notifs {
-	float: right;
-	max-width: 300px;
-	margin: 3px;
-	clear; left;
+td {
+	width: 200px;
+	overflow: hidden;
+	font-size: .7em;
+}
+/*table, th, td {
+	border-collapse: collapse;
+	border: 1px solid rgb(173, 173, 173);
+	padding: 3px;
+	text-align: center;
+	margin: 10px 2px;
+	width: 100%;
+
+	-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+	cursor: default;
+}
+th {
+	background-color: maroon;
+	color: rgb(255, 240, 240);
+	font-weight: normal;
+	width: 13%;
+}
+th a {
+	color: rgb(255, 240, 240);
+}
+td {
+	background-color: white;
+}*/
+.well.well-sm {
+	background-color: white;
+	border-left: none;
+	border-right:none;
+	border-radius: 0px;
 }
 .hero-unit {
-	background-color: whitesmoke;
-	float:left;
-	border: 1px solid #dddddd;
-	margin: 75px;
-	margin-top: 25px;
-	padding: 20px 70px;
-	border-radius: 15px;
+	/*background-color: whitesmoke;*/
+	/*border: 1px solid #dddddd;*/
+
+
+	padding: 15px;
+	/*border-radius: 10px;*/
 }
+
 </style>
 
+<div class = "row">
+	<div class="col-md-2 col-sm-2">
+		<div class="hero-unit">
+		    <h1><%= current_member.name %></h1>
+		    <img src = '<%= current_member.profile_url %>' height = "100px"></img>
+		    <p>
+		    <%= Semester.current_semester.name if Semester.current_semester %>
+			</p>
 
+		    <% if current_member.primary_committee %>
+		    <p><%= "#{current_member.primary_committee.name}, #{current_member.position}" %></p>
+		    <% else %>
+		    <p>no committee this semester</p>
+		    <% end %>
 
-<div class = "right-notifs">
-<div class = "right-notif panel panel-default">
-	<div class = "panel-heading notif-heading">Events This Week</div>
-	<div class = "panel-body">
-		<% if @events.length == 0 %>
-		<div>There are no events today :(</div>
-		<% end %>
-		<% @events.each do |event| %>
-		<div><%= link_to event.name, events_path %>
-			<%= event.start_time.strftime("%A, %D - %l:%M%p") %></div>
-		<% end %>
+		    <div>Your Committee Points: <%= current_member.total_points %></div>
+		      <p>Committee rating: <%= current_member.primary_committee.rating if current_member.primary_committee %></p>
+		      <p><%= link_to "View details", points_url %></p>
+
+		    </p>
+		 </div>
 	</div>
-</div>
+	<!-- end of left column -->
+	<div class="col-md-7 col-sm-7" id = "middle-column">
 
-<div class = "right-notif panel panel-default">
+		<div style = "text-align:center"><div class = "label label-primary" style = "background-color: maroon; font-size: 1.3em">This Week</div></div>
+		<br>
+		<!-- table of events happening this week including blogposts -->
+		<table id = "this-week-table">
+			<thead>
+				<% @days.keys.each do |day| %>
+				<th><div class = "label label-success"><%= day %></div></th>
+				<% end %>
+				<!-- <th><div class = "label label-success">Sunday</div></th>
+				<th><div class = "label label-success">Monday</div></th>
+				<th><div class = "label label-success">Tuesday</div></th>
+				<th><div class = "label label-success">Wednesday</div></th>
+				<th><div class = "label label-success">Thursday</div></th>
+				<th><div class = "label label-success">Friday</div></th>
+				<th><div class = "label label-success">Saturday</div></th> -->
+			</thead>
+			<tbody>
+				<tr>
+					<% @days.keys.each do |day| %>
+					<td>
+						<% @days[day].each do |post| %>
+						<div>Post: <%= link_to post.title, post %> (<%= post.date.strftime("%l") %>)</a></div>
+						<% end %>
+						<% @event_days[day].each do |event| %>
+						<div>Event: <%= link_to event.name, events_path %> (<%= event.start_time.strftime("%l") %>)</a></div>
+						<% end %>
+					</td>
+					<% end %>
+				</tr>
+			</tbody>
+		</table>
+		<div class = "well well-sm" style = "display: none; text-align:center; background-color: #428bca; color:white;"><h1>Recent Posts</h1></div>
+
+	</div>
+	<!-- end of MIDDLE COLUMN -->
+	<div class="col-md-3 col-sm-3">
+
+	<div class = "right-notif panel panel-default">
+	<div class = "panel-heading notif-heading">Events This Week</div>
+		<div class = "panel-body">
+			<% if @events.length == 0 %>
+			<div>There are no events today :(</div>
+			<% end %>
+			<% @events.each do |event| %>
+			<div><%= link_to event.name, events_path %>
+				<%= event.start_time.strftime("%A, %D - %l:%M%p") %></div>
+			<% end %>
+		</div>
+	</div>
+	<!-- end of first panel -->
+
+	<div class = "right-notif panel panel-default">
 	<div class = "panel-heading notif-heading">Tabling Slots</div>
 	<div class = "panel-body" style = "text-align:center">
 
 		<% if @tabling_slots and not @tabling_slots.empty? %>
-		      <% @tabling_slots.each do |slot| %>
-		          	<div class = "label label-primary"><%= slot.start_time.strftime("%A, %D - %l:%M%p") %></div>
+				      <% @tabling_slots.each do |slot| %>
+				          	<div class = "label label-primary"><%= slot.start_time.strftime("%A, %D - %l:%M%p") %></div>
 
-			          <% slot.members.each do |member| %>
-			            <div><%= member.name %></div>
-			          <% end %>
+					          <% slot.members.each do |member| %>
+					            <div><%= member.name %></div>
+					          <% end %>
 
-		      	<!-- end of container div -->
-		      <% end %>
-	  <% else %>
-	  <div class = "label label-primary">You Have no Tabling Slots :(</div>
-	  <% end %>
+				      	<!-- end of container div -->
+				      <% end %>
+			  <% else %>
+			  <div class = "label label-primary">You Have no Tabling Slots :(</div>
+			  <% end %>
+			</div>
+		</div>
+		<!-- end of tabling sltos panel -->
 	</div>
+	<!-- end of right column bootstrap -->
 </div>
-<!-- end of tabling sltos panel -->
-</div>
-<!-- end of right notif -->
 
-<div class="hero-unit">
-    <h1><%= current_member.name %></h1>
-    <p>
-    <%= Semester.current_semester.name if Semester.current_semester %>
-	</p>
 
-    <% if current_member.primary_committee %>
-    <p><%= "#{current_member.primary_committee.name}, #{current_member.position}" %></p>
-    <% else %>
-    <p>no committee this semester</p>
-    <% end %>
 
-    <div>Your Committee Points: <%= current_member.total_points %></div>
-      <p>Committee rating: <%= current_member.primary_committee.rating if current_member.primary_committee %></p>
-      <p><%= link_to "View details", points_url %></p>
 
-    </p>
- </div>

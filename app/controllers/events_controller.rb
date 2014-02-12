@@ -70,6 +70,15 @@ class EventsController < ApplicationController
     if params[:sort]
         @past_events = sort(@past_events, params[:sort], params[:direction])
     end
+
+    @calendar_events = Array.new
+    for p in Event.all
+      if p.start_time
+        @calendar_events << p
+      end
+    end
+
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
     render "new_index"
   end
 
@@ -79,6 +88,23 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @attendees = @event.attendees
     render "new_show"
+  end
+
+  def get_posts
+    event = Event.find(params[:id])
+    @posts = event.posts
+    render :layout => false
+  end
+
+  def calendar
+    @calendar_events = Array.new
+    for p in Event.all
+      if p.start_time
+        @calendar_events << p
+      end
+    end
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
+    render "_calendar", :layout => false
   end
   # def swap_ids
   #   EventPoints.all.each do |e|

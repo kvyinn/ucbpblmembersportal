@@ -1,0 +1,124 @@
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"> -->
+<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script> -->
+<%= javascript_include_tag "posts/posts.js" %>
+<script type = "text/javascript">
+$(document).ready(function(){
+	// dbclickActions();
+  // scrollActions();
+  searchActions();
+  categoryActions();
+  showPostActions();
+  calendarActions();
+  composeActions();
+});
+
+</script>
+<style type = "text/css">
+body{
+	padding-top: 75px;
+}
+.col {
+	border: 1px solid #eee;
+}
+.nav-label.label {
+	display:inline-block;
+
+	padding: 7px;
+}
+.label {
+  margin: 2px;
+}
+.label a{
+	color: white;
+}
+.label:hover {
+	cursor: pointer;
+}
+.post-div {
+  max-height: 150px;
+  margin-bottom:3px;
+  overflow: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.post-div:hover {
+	overflow: hidden;
+	cursor: pointer;
+}
+.post-content.post-editing:hover{
+	cursor:default;
+}
+#posts-search {
+  /*display: inline;*/
+  float: left;
+  width: 75%;
+}
+#go-button {
+  float: right;
+  width: 20%;
+ /* background-color: maroon;
+  border: none;*/
+}
+#create-button {
+  margin-top: 15px;
+  /*display:none;*/
+}
+#compose-button:hover{
+  cursor: pointer;
+}
+#search-bar {
+  margin-bottom: 15px;
+}
+#calendar-container {
+display: none;
+margin-bottom: 25px;
+}
+#calendar-button:hover {
+  cursor: pointer;
+}
+#left-col-wrapper {
+  position: fixed;
+  width: inherit;
+  padding-right: 25px;
+}
+</style>
+<div class="row-fluid">
+  <div class="col-md-3 col-sm-3" id = "left-sidebar"  >
+    <div id = "left-col-wrapper">
+  	<div id = "search-bar"><button id = "go-button" class = "btn btn-success" type = "button">Go</button><input id = "posts-search" type = "text" class = "form-control" placeholder = "Search Posts"/>
+    </div>
+    <br>
+    <div style = "height:7px"></div>
+    <div id = "other-option-container">
+      <!-- <img id = "calendar-button" src = "/calendar.png" style = "width: 35%"></img> -->
+      <!-- <img id = "compose-button" src = "/pencil.jpg" style = " width: 28%; margin-top: 5px;"></img> -->
+      <button class = "form-control btn btn-danger" type = "button" id = "calendar-button" style = "width:33%;">Calendar</button>
+      <button class = "form-control btn btn-danger" type = "button" id = "compose-button" style = "width: 33%;">Compose</button>
+    </div>
+    <div style = "height:15px"></div>
+    <div id = "categories-container">
+      <div class = "nav-label label label-primary category-label" id = "">All Posts (42)</div>
+      <% PostCategory.all.each do |category| %>
+      <div class = "nav-label label label-default category-label" id = "<%= category.id %>"><%= category.name %></div>
+      <% end %>
+
+    </div><!-- end of categories container -->
+    <br>
+
+  </div>
+  <!-- end of left col wrapper -->
+  </div>
+  <!-- end of whole left col -->
+  <div class="col-md-9 col-sm-9" id = "all-posts-container">
+    <div id = 'calendar-container'>
+      <%= render "calendar" %>
+      </div>
+    <%= render "posts", posts: @posts %>
+    <%= paginate @posts %>
+  </div>
+</div>
+

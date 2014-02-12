@@ -1,0 +1,28 @@
+
+<%= javascript_include_tag "posts/show.js" %>
+<script type = "text/javascript">
+var post_id = '<%= @post.id %>';
+</script>
+<div class = "row">
+<div class="col-md-8 col-sm-8">
+  <%= render "post", post: @post %>
+</div>
+<div class="col-md-3 col-sm-3">
+  <div class = "label label-success" style = "font-size: 1.3em">Comments</div>
+  <div style = "height: 20px"></div>
+  <textarea id = "comment-textarea" rows = "2" class = "form-control" placeholder = "write a comment here"></textarea>
+  <button id = "add-comment-button" type = "button" class = "btn btn-primary form-control" style = "margin-top:5px">Add Comment</button>
+  <div style = "height: 20px"></div>
+  <div id = 'comments-container'>
+  	<%= render "posts/comments" %></div>
+</div>
+</div>
+
+<style type = "text/css">
+body{
+  padding-top: 100px;
+}
+.post-div {
+  max-height: none;
+}
+</style>

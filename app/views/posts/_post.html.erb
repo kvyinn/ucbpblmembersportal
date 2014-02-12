@@ -1,0 +1,65 @@
+
+<style type = "text/css">
+
+.post-div {
+  /*max-height: 150px;*/
+  margin-bottom:7px;
+  overflow: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.post-link-div {
+  /*font-size: 1.3em;*/
+}
+.profile-div {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+.content-div{
+  float: left;
+}
+.like-container {
+  float: right;
+  font-weight: 3em;
+  font-weight: bold;
+}
+.like-container div:hover {
+  color: white;
+}
+</style>
+<div class = "post-div well well-sm">
+  <div class = "like-container" style = "display: none">
+      <div>+</div>
+      <div>-</div>
+    </div>
+  <div class = "profile-div">
+    <% if post.created_by %>
+    <img src = "<%= post.created_by.profile_url %>" height = "75px"></img>
+    <% else %>
+    <img src = "/blank.png" height = "75px"></img>
+    <% end %>
+  </div>
+<!--   <div class = "content-div"> -->
+  	<div class = "post-link-div"><%= link_to post.title, post %> (<a class = "show-more-link" href = "." onclick = "return false;">show more</a>)</div>
+    <div class = "label label-primary"><% if post.category %><%= post.category.name %>
+      <% else %> No Category <% end %></div>
+  	<br>
+  	<div class = "post-content post-editing comment more" id = '<%= post.id %>'>
+  		<%= raw post.content %>
+  	</div>
+    <% if post and post.can_view(current_member) %>
+    <div>i can view this post</div>
+    <% else %>
+    <div>i CANNOT view this post</div>
+    <% end %>
+    post tier: <%= post.view_tier %> my tier: <%= current_member.tier %>
+    <div><%= link_to "Email Notify PBL", {:controller => "posts", :action => "email", :post_id => post }%></div>
+    <div><%= link_to "Edit This Post", edit_post_path(post) %></div>
+
+  <!-- </div> -->
+</div>

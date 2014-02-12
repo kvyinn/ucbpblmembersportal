@@ -1,0 +1,7 @@
+here is a message for <%= @member.name %>,
+
+<%= @post.title %>
+
+<%= raw(@post.content.html_safe) %>
+
+<%= link_to "See All The Blogposts", posts_path(:host=> "localhost:3000") %>

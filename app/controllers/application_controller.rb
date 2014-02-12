@@ -16,15 +16,15 @@ class ApplicationController < ActionController::Base
   # App-wide filter for checking if a user is signed in via Google
   def signed_on_to_google
     if current_member
-      result = google_api_request( 'plus', 'v1', 'people', 'get', { userId: current_member.uid })
-      if result.status != 200
-        sign_out
-        session[:return_to] = request.url if request.get?
-        redirect_to google_signin_url, notice: "Your session has timed out"
-      else
-        current_member.name = result.data.display_name
-        current_member.save
-      end
+      # result = google_api_request( 'plus', 'v1', 'people', 'get', { userId: current_member.uid })
+      # if result.status != 200
+      #   sign_out
+      #   session[:return_to] = request.url if request.get?
+      #   redirect_to google_signin_url, notice: "Your session has timed out"
+      # else
+      #   current_member.name = result.data.display_name
+      #   current_member.save
+      # end
     else
       redirect_to google_signin_url
     end

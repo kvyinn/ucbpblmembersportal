@@ -3,7 +3,8 @@ class Event < ActiveRecord::Base
   belongs_to :semester, foreign_key: :semester_id
   has_one :event_points #, dependent: :destroy
   has_many :event_members #, dependent: :destroy
-
+  has_many :blog_events
+  has_many :posts, :through => :blog_events
   def points
   	points = EventPoints.where(event_id: self.id)
   	if points.length != 0

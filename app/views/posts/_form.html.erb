@@ -1,0 +1,45 @@
+
+<style type = "text/css">
+.form-control {
+	margin-bottom:10px;
+}
+.event-check:hover {
+	cursor: pointer;
+}
+.selected-event {
+	color: pink;
+}
+</style>
+<%= javascript_include_tag "ckeditor/init", "posts/form" %>
+<div style = "height: 25px"></div>
+<%= form_for post do |f| %>
+<div class = "row">
+	<div class = "col-md-6 col-sm-6">
+		<%= f.cktext_area :content, :value => post.content, :id => "sometext" %>
+		<div style = "height: 25px"></div>
+		<!-- <h2>Tag Post with Event</h2> -->
+		<%= collection_select(:event, :event_id, Event.find(:all), :id, :name,{prompt: "select an event to tag this post to", selected: post.event_id},{:class => "form-control"})  %>
+		<!-- <div id = 'events-list-container'>
+			<ul class = 'events-list'>
+			<% Event.all.each do |event| %>
+			<li class = "event-check"><%= event.name %></li>
+			<% end %>
+		    </ul>
+		</div> -->
+	</div>
+	<div class = "col-md-3 col-sm-3">
+
+		<%= f.text_field :title, :class => "form-control", :placeholder => "Enter Post Title" %>
+		<%= f.collection_select(:category_id, PostCategory.all, :id, :name, {prompt: "Select Post Category"}, {:class => "form-control"}) %>
+		<%= f.select(:view_tier, Post.permissions, {prompt: "Select Who Can View"}, {:class => "form-control"}) %>
+		<%= f.select(:edit_tier, Post.permissions, {prompt: "Select Who Can Edit"}, {:class => "form-control"}) %>
+		optional date: <%= f.date_select(:date, :order => [:month, :day, :year]) %>
+		<div style = "height:10px"></div>
+		<%= f.submit "Save Blogpost", :class => "btn btn-success form-control" %>
+	</div>
+
+</div>
+
+
+
+<% end %>

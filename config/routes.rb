@@ -1,4 +1,6 @@
 Ucbpblmembersportal::Application.routes.draw do
+  mount Mercury::Engine => '/'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -29,9 +31,27 @@ Ucbpblmembersportal::Application.routes.draw do
   match "deliberations/save_config/:delib_id", to: "deliberations#save_config_deliberation"
   match "newtable/:committee/:delib_id", to: "applicant_rankings#new_table"
   match "/deliberations/deliberate_relative/:delib_id", to: "deliberations#run_relative_deliberations"
+
+  match "posts/mercury", to: "posts#mercury_update"
+  match "events/get_posts/:id", to: "events#get_posts"
+
   resources :applicant_rankings
   resources :applicants
   resources :deliberations
+
+  resources :posts do
+    # member {post :mercury_update}
+    resources :comments
+    collection do
+      get :search_posts
+      get :calendar
+      get :email
+      get :send_emails
+      get :add_comment
+      get :delete_comment
+      get :email_success
+    end
+  end
 
   resources :calendars, only: [ :index, :show ] do
     member do
@@ -50,6 +70,7 @@ Ucbpblmembersportal::Application.routes.draw do
     end
     collection do
       get :sync_events_with_google
+      get :calendar
     end
   end
 

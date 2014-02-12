@@ -1,3 +1,4 @@
+
 <style type = "text/css">
 #navlist {
   padding: 10px;
@@ -28,6 +29,9 @@
         <li><a href = "/commitments/availability">Commitments</a></li>
         <li><a href = "http://alicesun94.wix.com/berkeleypblsblc">SBLC</a></li>
         <li><a href = "/deliberations">Deliberations</a></li>
+        <li><%= link_to "Blog", posts_url %></li>
+
+
       <% end %>
       <% if current_member %>
         <li class="pull-right"><%= link_to current_member.name, "#" %></li>
