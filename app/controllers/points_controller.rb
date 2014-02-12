@@ -28,10 +28,13 @@ class PointsController < ApplicationController
 
     # Add tabling
     current_member.attended_slots.each do |tabling_slot|
-      @recently_earned << {
-        title: "Tabling on #{tabling_slot.start_time.strftime("%A, %D %l:%M%p")}",
-        points: TablingSlot::POINTS
-      }
+      if tabling_slot.start_time >= Semester.current_semester.start_date
+
+          @recently_earned << {
+            title: "Tabling on #{tabling_slot.start_time.strftime("%A, %D %l:%M%p")}",
+            points: TablingSlot::POINTS
+          }
+      end
     end
   end
 

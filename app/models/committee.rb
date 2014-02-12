@@ -60,7 +60,7 @@ class Committee < ActiveRecord::Base
       )).where(semester_id: semester.id)
     else
       if self.name == "Executive"
-        self.committee_members
+        self.committee_members.where(semester_id: semester.id)
       else
         self.committee_members.where(committee_member_type_id: CommitteeMemberType.where(
           "lower(name) = 'cm' or lower(name) = 'chair'"

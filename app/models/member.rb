@@ -317,7 +317,10 @@ class Member < ActiveRecord::Base
     self.tabling_slot_members.where(
       status_id: Status.where(name: :attended).first
     ).each do |tsm|
-      sum += TablingSlot::POINTS
+      # only add points if it was from this semester
+      if TablingSlot.find(tsm.tabling_slot_id).start_time >= Semester.current_semester.start_date
+        sum += TablingSlot::POINTS
+      end
 
       # TODO: points for other statuses
     end
