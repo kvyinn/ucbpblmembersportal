@@ -26,6 +26,7 @@ class Post < ActiveRecord::Base
       #   post.member = Member.where(old_member_id: oldpost.member.id)
       # end
       post.save
+
     end
   end
   def category
