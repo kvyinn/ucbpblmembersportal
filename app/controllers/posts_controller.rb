@@ -44,17 +44,47 @@ class PostsController < ApplicationController
 	end
 
 	def edit
+		@all_members = Member.all
+		@member_hash = Hash.new
+		@member_names = Array.new
+		@current_cm_names =  Array.new
+		@inv_member_hash = Hash.new
+		Member.all.each do |m|
+			@member_hash[m.name] = m.id
+			@inv_member_hash[m.id] = m.name
+			@member_names << m.name
+			if m.current_committee and not m.current_committee.name.include? "General"
+				@current_cm_names << m.name
+			end
+		end
+		# end of stuff for searching people
 		@post = Post.find(params[:id])
 		render "new"
 	end
 
 	def new
 		@post = Post.new
+
+		# below is stuff for searching people
+		@all_members = Member.all
+		@member_hash = Hash.new
+		@member_names = Array.new
+		@current_cm_names =  Array.new
+		@inv_member_hash = Hash.new
+		Member.all.each do |m|
+			@member_hash[m.name] = m.id
+			@inv_member_hash[m.id] = m.name
+			@member_names << m.name
+			if m.current_committee and not m.current_committee.name.include? "General"
+				@current_cm_names << m.name
+			end
+		end
 		# render :layout => nil
 	end
 
 	def update
-		@post = save_post(params[:post], params[:id])
+
+		@post = save_post(params[:post], params[:id], params[:view_permissions])
 		puts params
 		if params[:event][:event_id] and params[:event][:event_id] != ""
 			@post.events = Array.new
@@ -65,7 +95,7 @@ class PostsController < ApplicationController
 		redirect_to @post
 	end
 	def create
-		@post = save_post(params[:post], params[:id])
+		@post = save_post(params[:post], params[:id], params[:view_permissions])
 		if params[:event][:event_id] and params[:event][:event_id] != ""
 			@post.events = Array.new
 			event = Event.find(params[:event][:event_id])
@@ -76,7 +106,6 @@ class PostsController < ApplicationController
 	end
 	def email
 		@all_members = Member.all
-
 		@member_hash = Hash.new
 		@member_names = Array.new
 		@current_cm_names =  Array.new
@@ -105,8 +134,8 @@ class PostsController < ApplicationController
 		UserMailer.blog_email(current_member, @post).deliver
 		render json: "hello there yung fellow"
 	end
-	def save_post(params, id)
-		puts "hello you are creating or editing a blogpost"
+	def save_post(params, id, view_permissions)
+
 		@post = Post.new(params)
 		puts params
 		if id and Post.find(id)
@@ -117,6 +146,10 @@ class PostsController < ApplicationController
 		if not @post.date
 			@post.date = DateTime.now
 		end
+		# handle view permissions
+		p 'these are the view permissions'
+		p view_permissions
+		@post.view_permissions = view_permissions
 		@post.save
 		return @post
 	end

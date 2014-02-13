@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
-  attr_accessible :title, :edit_tier, :view_tier, :member_id, :content, :old_post_id, :category_id, :date
+  attr_accessible :title, :edit_tier, :view_tier, :member_id, :content, :old_post_id, :category_id, :date, :view_permissions
+  serialize :view_permissions
   belongs_to :member
   belongs_to :post_category, foreign_key: :id, primary_key: :category_id
   has_many :blog_events
@@ -36,6 +37,7 @@ class Post < ActiveRecord::Base
       return nil
     end
   end
+
   def self.permissions
     # chair 2 exec 3 cm 1 anyone 0
     permissions =
@@ -53,19 +55,30 @@ class Post < ActiveRecord::Base
   end
 
   def can_view(member)
-    if not self.view_tier
+
+    permissions = self.view_permissions
+    if permissions == nil or permissions = ""
       return true
     end
-    if self.view_tier < 99
-      return self.view_tier <= member.tier
-    else
-      if not member.current_committee
-        return false
-      end
-      return member.current_committee.id == self.view_tier-100
+    if permissions.split.include? member.id.to_s
+      return true
     end
     return false
+
+    # if not self.view_tier
+    #   return true
+    # end
+    # if self.view_tier < 99
+    #   return self.view_tier <= member.tier
+    # else
+    #   if not member.current_committee
+    #     return false
+    #   end
+    #   return member.current_committee.id == self.view_tier-100
+    # end
+    # return false
   end
+
   def self.search(term, category)
   	result = Array.new
     term = term.downcase

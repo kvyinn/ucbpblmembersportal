@@ -48,7 +48,7 @@
   	<div class = "post-link-div"><%= link_to post.title, post %> (<a class = "show-more-link" href = "." onclick = "return false;">show more</a>)</div>
     <div class = "label label-primary"><% if post.category %><%= post.category.name %>
       <% else %> No Category <% end %></div>
-  	<br>
+  	<div style = "height: 10px"></div>
   	<div class = "post-content post-editing comment more" id = '<%= post.id %>'>
   		<%= raw post.content %>
   	</div>

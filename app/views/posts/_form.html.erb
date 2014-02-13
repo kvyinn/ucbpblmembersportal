@@ -1,4 +1,29 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type = "text/javascript">
+	var post_id = '<%= @post.id %>';
+	var member_hash = JSON.parse('<%= raw @member_hash.to_json %>');
+	var inv_member_hash = JSON.parse('<%= raw @inv_member_hash.to_json %>');
+	var member_names = JSON.parse('<%= raw @member_names.to_json %>');
+	var current_cm_names = JSON.parse('<%= raw @current_cm_names.to_json %>');
 
+$(document).ready(function(){
+	var initial_view_permissions = "";
+	$(".member-li").each(function(){
+			initial_view_permissions += $(this).attr("id")+" ";
+	});
+	$("#view-permissions").val(initial_view_permissions);
+	$("#clear-button").click(function(){
+		$(".member-li").each(function(){
+			$(this).remove();
+		});
+		$("#view-permissions").val("");
+	});
+});
+
+</script>
+<%= javascript_include_tag "posts/form.js" %>
 <style type = "text/css">
 .form-control {
 	margin-bottom:10px;
@@ -31,11 +56,27 @@
 
 		<%= f.text_field :title, :class => "form-control", :placeholder => "Enter Post Title" %>
 		<%= f.collection_select(:category_id, PostCategory.all, :id, :name, {prompt: "Select Post Category"}, {:class => "form-control"}) %>
-		<%= f.select(:view_tier, Post.permissions, {prompt: "Select Who Can View"}, {:class => "form-control"}) %>
+		<%= f.select(:view_tier, Post.permissions, {prompt: "Select Who Can View"}, {:class => "form-control", :style => "display:none"}) %>
 		<%= f.select(:edit_tier, Post.permissions, {prompt: "Select Who Can Edit"}, {:class => "form-control"}) %>
+
 		optional date: <%= f.date_select(:date, :order => [:month, :day, :year]) %>
+		<input id = "view-permissions" type = "text" name = "view_permissions" class = "form-control" style = "display:none"></input>
 		<div style = "height:10px"></div>
+
 		<%= f.submit "Save Blogpost", :class => "btn btn-success form-control" %>
+	</div>
+	<div class = "col-md-3">
+		<div class = "label label-primary" style = "background-color:maroon">These people can view this post</div>
+		<div id = "listoptions"><br>
+			<input id = "member-search" type = "text" placeholder = "search members" class = "form-control"></input>
+			<button id = "clear-button" type = "button" class = "btn btn-danger">Clear List</button>
+		</div>
+		<ul id = "member-list">
+			<li><br></li>
+			<% Member.all.each do |member| %>
+			<li class = 'member-li' id = '<%= member.id %>'><%= member.name %></li>
+			<% end %>
+		</ul>
 	</div>
 
 </div>

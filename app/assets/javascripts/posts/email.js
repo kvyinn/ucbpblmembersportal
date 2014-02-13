@@ -55,12 +55,6 @@ function startAutocomplete(){
 	$("#member-search").autocomplete({
 		source: member_names,
 		select: function(event, ui){
-			// alert(ui.item.value + " "+member_hash[ui.item.value]);
-			// var div = document.createElement("li");
-			// $(div).addClass("member-email-li");
-			// $(div).attr("id", member_hash[ui.item.value]);
-			// $(div).text(ui.item.value);
-			// $("#email-list").prepend(div);
 			addToList(ui.item.value);
 			removeActions();
 			$(this).val("");

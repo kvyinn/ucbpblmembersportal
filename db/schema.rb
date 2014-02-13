@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140204153519) do
-
+ActiveRecord::Schema.define(:version => 20140213022515) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -272,12 +271,13 @@ ActiveRecord::Schema.define(:version => 20140204153519) do
     t.integer  "member_id"
     t.integer  "edit_tier"
     t.integer  "view_tier"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "category"
     t.integer  "old_post_id"
     t.datetime "date"
     t.integer  "category_id"
+    t.text     "view_permissions"
   end
 
   create_table "reimbursements", :force => true do |t|
