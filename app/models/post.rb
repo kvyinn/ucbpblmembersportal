@@ -57,7 +57,7 @@ class Post < ActiveRecord::Base
   def can_view(member)
 
     permissions = self.view_permissions
-    if permissions == nil or permissions = ""
+    if permissions == nil or permissions == ""
       return true
     end
     if permissions.split.include? member.id.to_s

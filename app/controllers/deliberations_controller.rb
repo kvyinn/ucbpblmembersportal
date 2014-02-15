@@ -1,4 +1,7 @@
 class DeliberationsController < ApplicationController
+
+	before_filter :officer
+
 	def config_deliberation
 		@deliberation = Deliberation.find(params[:delib_id])
 		@settings = @deliberation.deliberation_settings
