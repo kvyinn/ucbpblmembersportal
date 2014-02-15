@@ -61,8 +61,8 @@ td {
 		    <%= Semester.current_semester.name if Semester.current_semester %>
 			</p>
 
-		    <% if current_member.primary_committee %>
-		    <p><%= "#{current_member.primary_committee.name}, #{current_member.position}" %></p>
+		    <% if current_member.current_committee %>
+		    <p><%= "#{current_member.current_committee.name}, #{current_member.position}" %></p>
 		    <% else %>
 		    <p>no committee this semester</p>
 		    <% end %>
