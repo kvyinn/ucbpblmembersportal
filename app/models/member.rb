@@ -272,7 +272,7 @@ class Member < ActiveRecord::Base
 
     # remove self from current committees (david)
     self.committee_members.where(
-      committee_id: committee.id,
+      # committee_id: committee.id,
       semester_id: semester.id,
     ).destroy_all
 
