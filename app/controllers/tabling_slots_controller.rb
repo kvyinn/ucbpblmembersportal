@@ -92,8 +92,7 @@ class TablingSlotsController < ApplicationController
         # if chair or exec
         if member.position == "chair" or (member.current_committee and member.current_committee.id == 2)
             @chairs << member
-        end
-        if member.current_committee and not member.current_committee.name.include? "General"
+        elsif member.current_committee and not member.current_committee.name.include? "General"
           @cms << member
         end
     end
