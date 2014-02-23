@@ -29,7 +29,10 @@
         <li><a href = "/commitments/availability">Commitments</a></li>
         <li><a href = "http://alicesun94.wix.com/berkeleypblsblc">SBLC</a></li>
         <li><a href = "/deliberations">Deliberations</a></li>
+        <%= if current_member.admin? or current_member.officer? %>
         <li><%= link_to "Blog", posts_url %></li>
+        <li><a href = "https://docs.google.com/forms/d/1ezJvHxyIV4E0rrsyAG21DzgkeRuLDEi587MwPHwxKnc/viewform">Event Feedback</a></li>
+        <% end %>
 
 
       <% end %>
