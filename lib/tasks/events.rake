@@ -4,6 +4,16 @@ task :see_events => :environment do
 		puts point.event_id
 	end
 end
+
+task :spring_events => :environment do
+	spring = Semester.where(name: "Spring 2014").first
+	Event.all.each do |e|
+		if e.start_time > spring.start_date
+			e.semester = spring
+			e.save
+		end
+	end
+end
 task :dump_events => :environment do
 	require "yaml"
 	events = Array.new
