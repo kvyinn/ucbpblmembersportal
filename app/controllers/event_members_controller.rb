@@ -13,12 +13,13 @@ class EventMembersController < ApplicationController
 
     EventMember.where(event_id: params[:event_member][:event_id]).each do |event_member|
       member = event_member.member
-      if current_member.primary_committee == member.primary_committee
+      # if current_member.primary_committee == member.primary_committee
+      if current_member.current_committee == member.current_committee
         event_member.destroy
       end
     end
     @members.each do |member|
-      if current_member.primary_committee == member.primary_committee
+      if current_member.current_committee == member.current_committee
         p params[:event_member]
         member.event_members.create!(params[:event_member])
       end
