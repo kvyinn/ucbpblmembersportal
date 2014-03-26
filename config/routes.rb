@@ -35,6 +35,8 @@ Ucbpblmembersportal::Application.routes.draw do
   match "posts/mercury", to: "posts#mercury_update"
   match "events/get_posts/:id", to: "events#get_posts"
 
+  # master points view
+
   resources :applicant_rankings
   resources :applicants
   resources :deliberations
@@ -115,6 +117,8 @@ Ucbpblmembersportal::Application.routes.draw do
     collection do
       get :d3_points
       get :get_d3_data
+      get :master
+      get :apprentice
     end
   end
   resources :event_points, only: [ :index ] do

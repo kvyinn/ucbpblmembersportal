@@ -1,0 +1,242 @@
+var global_data = {};
+// ajax get points data
+function getPointsData(){
+	$.ajax({
+      url:'/points/get_d3_data',
+      type: "GET",
+      data: {},
+      success:function(d){
+      	  console.log("i success get data");
+          console.log(d);
+          global_data["member_points"] = d;
+          visualizeBars(d);
+          visualizeCommitteeBars(d, "Publications")
+          visualizeCommitteeBars(d, "Consulting")
+          visualizeCommitteeBars(d, "Historian")
+          visualizeCommitteeBars(d, "Community")
+          visualizeCommitteeBars(d, "Finance")
+          visualizeCommitteeBars(d, "Professional")
+          visualizeCommitteeBars(d, "Social")
+          visualizeCommitteeBars(d, "Marketing")
+          visualizeCommitteeBars(d, "Executives")
+          $("#message").hide();
+      },
+      complete:function(){
+      },
+      error:function (xhr, textStatus, thrownError){}
+  });
+}
+function getMax(mem_points){
+	var max = -1;
+	for(var i;i<mem_points.length;i++){
+		var v = mem_points[i]["points"];
+		if (v>max){
+			max = v;
+		}
+	}
+	return max;
+}
+function visualizeBars(data){
+	var width = 800,
+	    barHeight = 20;
+	var max = 500;
+	var x = d3.scale.linear()
+	    .domain([0, max])
+	    .range([0, width]);
+
+	var chart = d3.select(".chart")
+	    .attr("width", width)
+	    .attr("height", barHeight * data.length);
+
+	var bar = chart.selectAll("g")
+	    .data(data)
+	  .enter().append("g")
+	    .attr("transform", function(d, i) { return "translate(5," + i * barHeight + ")"; });
+
+	bar.append("rect")
+		.attr("class", function(d){
+			return d["committee"];
+		})
+	    .attr("width", function(d){
+	    	return x(d["points"]);
+	    })
+	    .attr("height", barHeight - 1);
+	bar.append("text")
+		.attr("class", "bartext")
+	    .attr("x", function(d){
+	    	return x(d["points"])-3;
+	    })
+	    .attr("y", barHeight / 2)
+	    .attr("dy", ".35em")
+	    .text(function(d) { return d["points"] });
+	bar.append("text")
+	    .attr("class", "bartext2")
+	    .attr("y", barHeight / 2)
+	    .attr("dy", ".35em")
+	    .attr("x", function(d){
+	    	return x(d["points"])+10;
+	    })
+	    .text(function(d) { return d["name"] });
+}
+function visualizeCommitteeBars(data, committee){
+	// remove some things fromd data
+	new_data = []
+	for (var i=0;i<data.length;i++){
+		if(data[i]["committee"].indexOf(committee) != -1){
+			new_data.push(data[i]);
+		}
+	}
+	var width = 400,
+	    barHeight = 20;
+	var max = 500;
+	var x = d3.scale.linear()
+	    .domain([0, max])
+	    .range([0, width]);
+
+	var chart = d3.select("#"+committee)
+	    .attr("width", width)
+	    .attr("height", barHeight * new_data.length);
+
+	var bar = chart.selectAll("g")
+	    .data(new_data)
+	  .enter().append("g")
+	    .attr("transform", function(d, i) { return "translate(5," + i * barHeight + ")"; });
+
+	bar.append("rect")
+		.attr("class", function(d){
+			return d["committee"];
+		})
+	    .attr("width", function(d){
+	    	return x(d["points"]);
+	    })
+	    .attr("height", barHeight - 1);
+	bar.append("text")
+		.attr("class", "bartext")
+	    .attr("x", function(d){
+	    	return x(d["points"])-3;
+	    })
+	    .attr("y", barHeight / 2)
+	    .attr("dy", ".35em")
+	    .text(function(d) { return d["points"] });
+	bar.append("text")
+	    .attr("class", "bartext2")
+	    .attr("y", barHeight / 2)
+	    .attr("dy", ".35em")
+	    .attr("x", function(d){
+	    	return x(d["points"])+10;
+	    })
+	    .text(function(d) { return d["name"] });
+}
+
+// all dem current methods start he-uh
+
+//draws rectangles for all people all points but shades them different colors based on committee
+function visualizePointsList(pointsList){
+	pointsList.sort(compare).reverse();
+	var width = 400,
+	    barHeight = 20;
+	var max = 500;
+	var x = d3.scale.linear()
+	    .domain([0, max])
+	    .range([0, width]);
+
+	var chart = d3.select("#all-points-chart")
+	    .attr("width", width)
+	    .attr("height", barHeight * pointsList.length);
+
+	var bar = chart.selectAll("g")
+	    .data(pointsList)
+	  .enter().append("g")
+	    .attr("transform", function(d, i) { return "translate(5," + i * barHeight + ")"; });
+
+	bar.append("rect")
+		.attr("class", function(d){
+			return d["committee"];
+		})
+	    .attr("width", function(d){
+	    	return x(d["points"]);
+	    })
+	    .attr("height", barHeight - 1);
+	bar.append("text")
+		.attr("class", "bartext")
+	    .attr("x", function(d){
+	    	return x(d["points"])-3;
+	    })
+	    .attr("y", barHeight / 2)
+	    .attr("dy", ".35em")
+	    .text(function(d) { return d["points"] });
+	bar.append("text")
+	    .attr("class", "bartext2")
+	    .attr("y", barHeight / 2)
+	    .attr("dy", ".35em")
+	    .attr("x", function(d){
+	    	return x(d["points"])+10;
+	    })
+	    .text(function(d) { return d["name"] });
+}
+
+//draws rectangle only for one committee
+//tell me what committee, give me the list, tell me where you want it drawn fool
+function visualizeCommitteeBars(pointsList, committee, location){
+	pointsList = keepCurrentCommittees(pointsList, committee);
+	pointsList.sort(compare).reverse();
+
+	var width = 400,
+	    barHeight = 20;
+	var max = 500;
+	var x = d3.scale.linear()
+	    .domain([0, max])
+	    .range([0, width]);
+
+	var chart = d3.select(location)
+	    .attr("width", width)
+	    .attr("height", barHeight * pointsList.length);
+
+	var bar = chart.selectAll("g")
+	    .data(pointsList)
+	  .enter().append("g")
+	    .attr("transform", function(d, i) { return "translate(5," + i * barHeight + ")"; });
+
+	bar.append("rect")
+		.attr("class", function(d){
+			return d["committee"];
+		})
+	    .attr("width", function(d){
+	    	return x(d["points"]);
+	    })
+	    .attr("height", barHeight - 1);
+	bar.append("text")
+		.attr("class", "bartext")
+	    .attr("x", function(d){
+	    	return x(d["points"])-3;
+	    })
+	    .attr("y", barHeight / 2)
+	    .attr("dy", ".35em")
+	    .text(function(d) { return d["points"] });
+	bar.append("text")
+	    .attr("class", "bartext2")
+	    .attr("y", barHeight / 2)
+	    .attr("dy", ".35em")
+	    .attr("x", function(d){
+	    	return x(d["points"])+10;
+	    })
+	    .text(function(d) { return d["name"] });
+}
+function keepCurrentCommittees(data, committee){
+	for(var i=0;i<data.length;i++){
+		if(data[i]["committee"] != committee){
+			data.splice(i,1);
+			i--;
+		}
+	}
+	return data;
+}
+function compare(a,b) {
+  if (a["points"] < b["points"])
+     return -1;
+  if (a["points"] > b["points"])
+    return 1;
+  return 0;
+}
+$(document).ready(function(){
+});

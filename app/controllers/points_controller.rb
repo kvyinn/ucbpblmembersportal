@@ -19,10 +19,20 @@ class PointsController < ApplicationController
 
     # Add events
     current_member.event_members.each do |event_member|
-      event_points = EventPoints.where(event_id: event_member.event_id).first if event_member.semester == @semester
+      event_points = EventPoints.where(event_id: event_member.event_id).first
+       # if event_member.semester == @semester
 
       if event_points
-        @recently_earned << { title: Event.find(event_points.event_id).name , points: event_points.value }
+        begin
+          event = Event.find(event_points.event_id)
+          if event.semester == @semester
+            @recently_earned << { title: Event.find(event_points.event_id).name , points: event_points.value }
+          else
+            p event.semester
+          end
+        rescue
+          p 'there was an error with an event'
+        end
       end
     end
 
@@ -36,6 +46,37 @@ class PointsController < ApplicationController
           }
       end
     end
+  end
+
+  def master
+    @semester = Semester.current_semester
+    @recent_points = Hash.new
+    EventMember.where(member_id: current_member.id).each do |em|
+      begin
+        event = Event.find(em.event_id)
+        if event.semester == @semester
+          @recent_points[event] = event.points
+        end
+      rescue
+        p 'there was an error'
+      end
+    end
+
+    # get all current pbl members and their points in a hash
+    @member_points_list = Array.new
+    @current_members = Array.new
+    gm_committee = Committee.find(1)
+    Member.all.each do |member|
+      if member.name and member.current_committee and member.current_committee != gm_committee
+        @current_members << member
+        entry = Hash.new
+        entry["name"] = member.name
+        entry["committee"] = member.current_committee.name
+        entry["points"] = member.total_points
+        @member_points_list << entry
+      end
+    end
+    # @current_members.sort! { |b,a| a.total_points <=> b.total_points }
   end
 
   def d3_points

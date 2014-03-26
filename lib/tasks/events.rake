@@ -1,3 +1,24 @@
+task :see_wrong_semesters => :environment do
+	Event.all.each do |e|
+		if e.semester == nil
+			p e
+			p 'this event has a nil semester'
+			# e.semester == Semester.current_semester
+			# e.save
+		end
+	end
+end
+
+task :set_spring_semester => :environment do
+	Event.all.each do |e|
+		if e.semester == nil
+			p e
+			p 'this event has a nil semester'
+			e.semester = Semester.current_semester
+			e.save
+		end
+	end
+end
 task :see_events => :environment do
 	EventPoints.all.each do |point|
 		puts "point google id was "
