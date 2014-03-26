@@ -73,7 +73,7 @@ $(document).ready(function(){
 
 <div id = "committee-rankings-container" class = "points-section">
   <b>Committee Rankings</b><br>
-  <% Committee.all.sort_by { |committee| committee.rating }.reverse.each do |committee| %>
+  <% Committee.all.each do |committee| %>
       <div>
         <%= committee.name %>: <%= committee.rating %>
       </div>
