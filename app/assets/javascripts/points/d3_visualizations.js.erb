@@ -265,6 +265,16 @@ function writeTopCMs(pointsList, location)
 	}
 	$(location).append(ol);
 }
+function writeCommitteeRankings(committee_list, location){
+	committee_list.sort(compare).reverse();
+	var ol = document.createElement("ol");
+	for(var i=0;i<committee_list.length;i++){
+			var li = document.createElement("li");
+			$(li).text(committee_list[i]["name"]+": "+committee_list[i]["points"]+" points");
+			$(ol).append(li);
+	}
+	$(location).append(ol);
+}
 function compare(a,b) {
   if (a["points"] < b["points"])
      return -1;

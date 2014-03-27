@@ -28,8 +28,14 @@
 // points_hash = {};
 points_hash = <%= @member_points_list.to_json.html_safe %>;
 current_committee = '<%= current_member.current_committee.name %>';
+committee_points_list = [];
+<% Committee.all.each_with_index do |committee, index| %>
+committee_points_list.push({'name':'<%= committee.name %>', 'points': parseFloat('<%= committee.rating %>')});
+<% end %>
+console.log(committee_points_list);
 console.log(points_hash);
 $(document).ready(function(){
+  writeCommitteeRankings(committee_points_list, "#committee-rankings-container");
   writeTopCMs(points_hash, "#top-cm-container");
   visualizePointsList(points_hash);
   visualizeCommitteeBars(points_hash, '<%= current_member.current_committee.name %>', "#committee-chart");
@@ -45,13 +51,7 @@ $(document).ready(function(){
 <div class = "row">
   <div class = "col-md-4">
     <b>Committee Rankings</b><br>
-    <ol>
-      <% Committee.all.each_with_index do |committee, index| %>
-          <li>
-            <%= committee.name %>: <%= committee.rating %>
-          </li>
-      <% end %>
-    </ol>
+    <div id = "committee-rankings-container"></div>
   </div>
   <div class = "col-md-4">
     <b><%= current_member.current_committee.name %> Points</b><br>
