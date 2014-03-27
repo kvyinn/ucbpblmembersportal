@@ -13,32 +13,11 @@
   fill: black;
   font: 10px sans-serif;
 }
-.Historian{
-  fill: rgb(216, 33, 33);
+.blackbar{
+  fill:black;
 }
-.Publications{
-  fill: rgb(111, 199, 233);
-}
-.Professional{
-  fill: green;
-}
-.Social{
-  fill: rgb(11, 11, 185);
-}
-.Marketing{
-  fill: orange;
-}
-.Executives{
-  fill: gray;
-}
-.Consulting{
-  fill: rgb(221, 112, 131);
-}
-.Finance{
-  fill: purple;
-}
-.Community{
-  fill: rgb(224, 224, 78);
+.redbar{
+  fill:red;
 }
 .points-section{
   margin: 13px;
@@ -48,43 +27,55 @@
 // initialize array with name, committee, points -> this allows you to create bar graph of points + split by committee via d3
 // points_hash = {};
 points_hash = <%= @member_points_list.to_json.html_safe %>;
+current_committee = '<%= current_member.current_committee.name %>';
 console.log(points_hash);
 $(document).ready(function(){
+  writeTopCMs(points_hash, "#top-cm-container");
   visualizePointsList(points_hash);
-  visualizeCommitteeBars(points_hash, '<%= current_member.current_committee.name %>', "#committee-chart")
+  visualizeCommitteeBars(points_hash, '<%= current_member.current_committee.name %>', "#committee-chart");
+
 });
 </script>
 <!-- <section> -->
 
 <div style = "height:50px"></div>
-
-<div id = "recently-attended" class = "points-section">
-<b>Your Points</b><br>
-<% @recent_points.keys.each do |event| %>
-<%= event.name %>
-<%= @recent_points[event] %><br>
-<% end %>
-</div>
-
-<div id = "committee-stuff" class = "points-section">
-<b><%= current_member.current_committee.name %> Points</b><br>
-<svg id = "committee-chart"></svg>
-</div>
-
-<div id = "committee-rankings-container" class = "points-section">
-  <b>Committee Rankings</b><br>
-  <% Committee.all.each do |committee| %>
-      <div>
-        <%= committee.name %>: <%= committee.rating %>
-      </div>
+<!-- your own points -->
+<!-- here is the top layer of things, it will have the top cms and the top committees -->
+<!-- a bunch of other random shit at the bottom -->
+<div class = "row">
+  <div class = "col-md-4">
+    <b>Committee Rankings</b><br>
+    <ol>
+      <% Committee.all.sort_by { |committee| committee.rating }.reverse.each_with_index do |committee, index| %>
+          <li>
+            <%= committee.name %>: <%= committee.rating %>
+          </li>
+      <% end %>
+    </ol>
+  </div>
+  <div class = "col-md-4">
+    <b><%= current_member.current_committee.name %> Points</b><br>
+    <svg id = "committee-chart"></svg>
+  </div>
+  <div class = "col-md-4" id = "recently-attended">
+    <b>Your Points</b><br>
+    <% @recent_points.keys.each do |event| %>
+    <%= event.name %>
+    <%= @recent_points[event] %><br>
     <% end %>
+  </div>
+</div>
+<!-- end of first row -->
+<div class = "row">
+  <div class = "col-md-4">
+    <b>Top CMs</b>
+    <div id = "top-cm-container"></div>
+  </div>
+  <div class = "col-md-8">
+    <svg id="all-points-chart"></svg>
+  </div>
 </div>
 
-
-<div id = "all-points-container" class = "points-section">
-<b>Top CMs</b><br>
-<svg id="all-points-chart"></svg>
-<br>
 <%= image_tag "/top cms snsd.png", :width => "600px" %>
 <br>
 <span style = "font-size: 10px">

@@ -1,0 +1,93 @@
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script> -->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<%= javascript_include_tag "points/d3_visualizations.js" %>
+<style type = "text/css">
+.bartext {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+.bartext2{
+  fill: black;
+  font: 10px sans-serif;
+}
+.Historian{
+  fill: rgb(216, 33, 33);
+}
+.Publications{
+  fill: rgb(111, 199, 233);
+}
+.Professional{
+  fill: green;
+}
+.Social{
+  fill: rgb(11, 11, 185);
+}
+.Marketing{
+  fill: orange;
+}
+.Executives{
+  fill: gray;
+}
+.Consulting{
+  fill: rgb(221, 112, 131);
+}
+.Finance{
+  fill: purple;
+}
+.Community{
+  fill: rgb(224, 224, 78);
+}
+.points-section{
+  margin: 13px;
+}
+</style>
+<script type = "text/javascript">
+// initialize array with name, committee, points -> this allows you to create bar graph of points + split by committee via d3
+// points_hash = {};
+points_hash = <%= @member_points_list.to_json.html_safe %>;
+console.log(points_hash);
+$(document).ready(function(){
+  visualizePointsList(points_hash);
+  visualizeCommitteeBars(points_hash, '<%= current_member.current_committee.name %>', "#committee-chart")
+});
+</script>
+<!-- <section> -->
+
+<div style = "height:50px"></div>
+
+<div id = "recently-attended" class = "points-section">
+<b>Your Points</b><br>
+<% @recent_points.keys.each do |event| %>
+<%= event.name %>
+<%= @recent_points[event] %><br>
+<% end %>
+</div>
+
+<div id = "committee-stuff" class = "points-section">
+<b><%= current_member.current_committee.name %> Points</b><br>
+<svg id = "committee-chart"></svg>
+</div>
+
+<div id = "committee-rankings-container" class = "points-section">
+  <b>Committee Rankings</b><br>
+  <% Committee.all.each do |committee| %>
+      <div>
+        <%= committee.name %>: <%= committee.rating %>
+      </div>
+    <% end %>
+</div>
+
+
+<div id = "all-points-container" class = "points-section">
+<b>Top CMs</b><br>
+<svg id="all-points-chart"></svg>
+<br>
+<%= image_tag "/top cms snsd.png", :width => "600px" %>
+<br>
+<span style = "font-size: 10px">
+  Top CMs (left to right): Joey Choi, William Cheung, Logan Moy, Kevin Lee, Patrick Chang, Farrah Steven, Stephanie Cheng, David Cheung, Alice Chan
+</span>
+</div>

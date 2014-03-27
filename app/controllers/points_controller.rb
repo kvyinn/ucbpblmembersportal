@@ -71,6 +71,7 @@ class PointsController < ApplicationController
         entry["name"] = member.name
         entry["committee"] = member.current_committee.name
         entry["points"] = member.total_points
+        entry["position"] = member.position
         @member_points_list << entry
       end
     end
@@ -88,6 +89,7 @@ class PointsController < ApplicationController
       object = Hash.new
       object["name"] = mem.name
       object["points"] = mem.total_points("all")
+      object["position"] = mem.position
       if mem.primary_committee
         object["committee"] = mem.primary_committee.name
       else

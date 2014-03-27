@@ -133,46 +133,59 @@ function visualizeCommitteeBars(data, committee){
 //draws rectangles for all people all points but shades them different colors based on committee
 function visualizePointsList(pointsList){
 	pointsList.sort(compare).reverse();
-	var width = 400,
-	    barHeight = 20;
+	var width = 300,
+	    barHeight = 7;
 	var max = 500;
 	var x = d3.scale.linear()
 	    .domain([0, max])
 	    .range([0, width]);
 
 	var chart = d3.select("#all-points-chart")
-	    .attr("width", width)
-	    .attr("height", barHeight * pointsList.length);
+	    .attr("height", width)
+	    .attr("width", barHeight * pointsList.length);
 
+	// var bar = chart.selectAll("g")
+	//     .data(pointsList)
+	//   .enter().append("g")
+	//     .attr("transform", function(d, i) { return "translate(5," + i * barHeight + ")"; });
+
+	// horizontal
 	var bar = chart.selectAll("g")
 	    .data(pointsList)
 	  .enter().append("g")
-	    .attr("transform", function(d, i) { return "translate(5," + i * barHeight + ")"; });
+	    .attr("transform", function(d, i) { return "translate(" + i * barHeight + "," + (200 - x(d["points"]))+")"; });
 
 	bar.append("rect")
 		.attr("class", function(d){
-			return d["committee"];
+			if( d["committee"] == current_committee){
+				return 'redbar';
+			}
+			return 'blackbar';
 		})
-	    .attr("width", function(d){
+	    .attr("height", function(d){
 	    	return x(d["points"]);
 	    })
-	    .attr("height", barHeight - 1);
-	bar.append("text")
-		.attr("class", "bartext")
-	    .attr("x", function(d){
-	    	return x(d["points"])-3;
-	    })
-	    .attr("y", barHeight / 2)
-	    .attr("dy", ".35em")
-	    .text(function(d) { return d["points"] });
-	bar.append("text")
-	    .attr("class", "bartext2")
-	    .attr("y", barHeight / 2)
-	    .attr("dy", ".35em")
-	    .attr("x", function(d){
-	    	return x(d["points"])+10;
-	    })
-	    .text(function(d) { return d["name"] });
+	    .attr("width", barHeight - 1);
+	// append text only to your committee bars
+	// bar.append("text")
+	//     .attr("class", "bartext2")
+	//     .attr("x", barHeight / 2)
+	//     .attr("dy", ".35em")
+	//     .attr("y", function(d){
+	//     	return 0-x(d["points"])+10;
+	//     })
+	//     .text(function(d) {
+	//     	if(d["committee"] == current_committee){
+	//     		return d["name"];
+	//     	}
+	//     })
+	//     .attr("transform","rotate(90)");
+
+	// now flip the svg so that its upright
+	// $("#all-points-chart").attr("transform", "translate(0, 400); scale(1, -1);");
+	// <g transform="translate(0,400)">
+	// <g transform="scale(1,-1)">
+
 }
 
 //draws rectangle only for one committee
@@ -199,7 +212,7 @@ function visualizeCommitteeBars(pointsList, committee, location){
 
 	bar.append("rect")
 		.attr("class", function(d){
-			return d["committee"];
+			return 'redbar'
 		})
 	    .attr("width", function(d){
 	    	return x(d["points"]);
@@ -230,6 +243,27 @@ function keepCurrentCommittees(data, committee){
 		}
 	}
 	return data;
+}
+function writeTopCMs(pointsList, location)
+{
+	var count = 0;
+	var ol = document.createElement("ol");
+	pointsList.sort(compare).reverse();
+	for(var i=0;i<pointsList.length;i++){
+		if(pointsList[i]["committee"] != "Executives" && pointsList[i]["position"]=="cm"){
+			var li = document.createElement("li");
+			$(li).text(pointsList[i]["name"]+": "+pointsList[i]["points"]+" points");
+			$(ol).append(li);
+			count = count + 1;
+		}
+		else{
+			console.log(pointsList[i]["position"]);
+		}
+		if(count>=10){
+			break;
+		}
+	}
+	$(location).append(ol);
 }
 function compare(a,b) {
   if (a["points"] < b["points"])
