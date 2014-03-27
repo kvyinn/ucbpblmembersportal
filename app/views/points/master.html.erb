@@ -46,7 +46,7 @@ $(document).ready(function(){
   <div class = "col-md-4">
     <b>Committee Rankings</b><br>
     <ol>
-      <% Committee.all.sort_by { |committee| committee.rating }.reverse.each_with_index do |committee, index| %>
+      <% Committee.all.each_with_index do |committee, index| %>
           <li>
             <%= committee.name %>: <%= committee.rating %>
           </li>
