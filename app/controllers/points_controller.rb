@@ -64,11 +64,9 @@ class PointsController < ApplicationController
 
     # get all current pbl members and their points in a hash
     @member_points_list = Array.new
-    @current_members = Array.new
     gm_committee = Committee.find(1)
     Member.all.each do |member|
       if member.name and member.current_committee and member.current_committee != gm_committee
-        @current_members << member
         entry = Hash.new
         entry["name"] = member.name
         entry["committee"] = member.current_committee.name
