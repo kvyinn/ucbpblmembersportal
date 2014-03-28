@@ -48,6 +48,9 @@ class PointsController < ApplicationController
     end
   end
 
+  def apprentice
+  end
+
   def master
     @semester = Semester.current_semester
     @recent_points = Hash.new
