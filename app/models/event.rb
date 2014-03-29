@@ -22,4 +22,15 @@ class Event < ActiveRecord::Base
   	return attendees
   end
 
+  def attendance_rate(committee)
+    attendees = self.attendees
+    total_cms = committee.cms.length
+    count = 0
+    for a in attendees
+      if a.current_committee == committee
+        count = count + 1
+      end
+    end
+    return [count, total_cms, (count.to_f/total_cms)]
+  end
 end

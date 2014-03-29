@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140213022515) do
+ActiveRecord::Schema.define(:version => 20140328170536) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -72,6 +72,16 @@ ActiveRecord::Schema.define(:version => 20140213022515) do
   end
 
   add_index "applicants", ["deliberation_id"], :name => "index_applicants_on_deliberation_id"
+
+  create_table "apprentice_challenges", :force => true do |t|
+    t.string   "name"
+    t.integer  "event_id"
+    t.integer  "first_place"
+    t.integer  "second_place"
+    t.integer  "third_place"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "blog_events", :force => true do |t|
     t.integer  "event_id"
