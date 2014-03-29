@@ -90,6 +90,7 @@ Ucbpblmembersportal::Application.routes.draw do
       get :print
       get :generate
       get :delete_slots
+      get :update_attendance
     end
   end
 

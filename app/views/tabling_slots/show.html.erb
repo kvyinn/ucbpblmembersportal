@@ -1,31 +1,108 @@
-<!-- <section> -->
-<div class="panel panel-default">
-  <div class="panel-heading"><h1>Tabling Slot <%= "#{@tabling_slot.start_time.strftime("%A, %D")}" %></h1>
-  <h2><%= "#{@tabling_slot.start_time.strftime("%l:%M%p")} to #{@tabling_slot.end_time.strftime("%l:%M%p")}" %></h2>
-</div>
-<div class="panel-body">
-  <ul>
-    <%= render @tabling_slot.tabling_slot_members %>
-    <% if current_member.admin? %>
-      <li class="delete" ondrop="deleteMember(event)" ondragover="allowDrop(event)">Drop here to delete</li>
-    <% end %>
-  </ul>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type = "text/javascript">
+var member_hash = {};
+var reverse_member_hash = {};
+var member_names = [];
+<% Member.all.each do |m| %>
+member_hash['<%= m.name %>'] = '<%= m.id %>';
+reverse_member_hash['<%= m.id %>'] = '<%= m.name %>';
+member_names.push('<%= m.name %>');
+<% end %>
+function startAutocomplete(){
+  $("#member_search").autocomplete({
+    source: member_names,
+    select: function(event, ui){
+      // alert(ui.item.value + " "+member_hash[ui.item.value]);
+      var div = document.createElement("div");
+      var label = document.createElement("label");
+      var input = document.createElement("input");
+      input.type = 'checkbox';
+      input.value = ui.item.value;
+      input.id = member_hash[ui.item.value];
 
-  <h2>Add a member to this slot</h2>
-  <%= form_for @tabling_slot.tabling_slot_members.build, html: { class: "form-inline" } do |f| %>
-    <%= render "layouts/member_autocomp_form" %>
-    <%= f.hidden_field :tabling_slot_id %>
+      $(div).addClass("checkbox");
+      $(input).addClass("checkbox");
+      $(input).addClass("attendance-checkbox");
 
-    <%= f.submit "Add", class: "btn btn-primary" %>
-  <% end %>
-</div>
-</div>
-<!-- </section> -->
-<style type = "text/css">
-.panel {
-  margin: 50px;
+      $(label).append(input);
+      $(label).append(ui.item.value);
+      $(div).append(label);
+      $("#attendance-container").append(div);
+      $(this).val("");
+    }
+  })
 }
-ul {
-  list-style-type: none;
+
+function submitAttendance(){
+  var attended = [];
+  var unattended = [];
+  $(".attendance-checkbox").each(function(){
+    if($(this).is(':checked')){
+      attended.push($(this).attr("id"));
+    }
+    else{
+      unattended.push($(this).attr("id"));
+    }
+  });
+  // ajax request submit attendance
+  alert("submitting attendance...hold onto your potatoes");
+  $.ajax({
+      url:'/tabling_slots/update_attendance',
+      type: "GET",
+      data: {"attended": attended, "unattended":unattended, "slot_id":'<%= @tabling_slot.id %>'},
+      success:function(data){
+      },
+      complete:function(){
+        location.reload();
+      },
+      error:function (xhr, textStatus, thrownError){}
+  });
+}
+$(document).ready(function(){
+  // console.log(member_hash);
+  startAutocomplete();
+  $('#submit-button').click(function(){
+    submitAttendance();
+  });
+});
+</script>
+<style type = "text/css">
+body{
+  padding-top:100px;
+}
+@media (max-width: 900px) {
+body{
+  padding-top:200px;
+}
+}
+.slot-label{
+  font-size: 15px;
+}
+.member-search{
+  width: 400px;
 }
 </style>
+
+<div id = "attendance-container">
+  <span class = "slot-label label label-primary">Tabling Slot <%= "#{@tabling_slot.start_time.strftime("%A, %D")}" %>
+  <%= "#{@tabling_slot.start_time.strftime("%l:%M%p")} to #{@tabling_slot.end_time.strftime("%l:%M%p")}" %></span>
+  <% @tabling_slot.tabling_slot_members.each do |tsm| %>
+  <div class = "checkbox">
+    <label>
+    <% if tsm.status %>
+    <input id = '<%= tsm.member.id %>' class = "checkbox attendance-checkbox" type = "checkbox" checked/><%= tsm.member.name %>
+    <% else %>
+    <input id = '<%= tsm.member.id %>' class = "checkbox attendance-checkbox" type = "checkbox"/><%= tsm.member.name %>
+    <% end %>
+    </label>
+    </div>
+  <% end %>
+
+</div>
+<!-- end of attendance container -->
+<input id = 'member_search' type = "text" class = "member-search form-control" placeholder = "search members"></input><br>
+<button id = 'submit-button' type = "button" class = "btn btn-primary">Update Attendance</button>
+
+

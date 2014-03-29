@@ -27,6 +27,35 @@ class TablingSlotsController < ApplicationController
     @members_calendar_id = "pjnj2vfdlcui8n9244teaekvds@group.calendar.google.com"
   end
 
+  def update_attendance
+    slot = TablingSlot.find(params["slot_id"])
+    attended = params["attended"]
+    unattended = params["unattended"]
+    slot_members = slot.tabling_slot_members
+    slot_members.each do |sm|
+      if attended and attended.include? sm.member.id.to_s
+        sm.status_id = Status.where(name: :attended).first.id
+        attended.delete(sm.member.id.to_s)
+      else
+        sm.status_id = nil
+      end
+      sm.save
+    end
+    if attended and attended.length > 0
+      attended.each do |attended_id|
+        tsm = TablingSlotMember.new
+        tsm.member_id = attended_id.to_i
+        tsm.tabling_slot_id = slot.id
+        tsm.status_id = Status.where(name: :attended).first.id
+        tsm.save
+      end
+      p 'added some new people to tsm'
+    end
+    p 'this is your slot'
+    p slot.tabling_slot_members
+    render json:slot
+  end
+
   def print
     @tabling_slots = TablingSlot.where(
       "start_time >= :tabling_start and start_time <= :tabling_end",
