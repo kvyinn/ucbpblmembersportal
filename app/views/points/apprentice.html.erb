@@ -6,7 +6,7 @@ $(document).ready(function(){
     var scores = $(this).find('.score');
     for(var i=0;i<scores.length;i++){
       var value = $(scores[i]).attr("value");
-      var multiplier = 1;
+      var multiplier = 0;
       if($(scores[i]).hasClass("primary")){
         multiplier = 30;
       }
@@ -16,7 +16,7 @@ $(document).ready(function(){
       if($(scores[i]).hasClass("danger")){
         multiplier = 10;
       }
-      total += value*multiplier;
+      total += value*multiplier + value*5;
     }
     $(this).find('.final-score').text(total);
   });
