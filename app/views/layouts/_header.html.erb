@@ -25,17 +25,13 @@
         <li><%= link_to "Tabling", tabling_slots_url %></li>
         <li><%= link_to "Events", events_url %></li>
         <li><%= link_to "Points", points_url %></li>
-        <li><a href = "https://docs.google.com/spreadsheet/viewform?usp=drive_web&formkey=dGxYRzMwYlBkYjlTd1NUSzYzWHk0UXc6MQ#gid=0">Reimbursements</a></li>
+        <li><a href = "/points/master">Rankings</a></li>
+        <li><a href = "/points/apprentice">Apprentice</a></li>
         <li><a href = "/commitments/availability">Commitments</a></li>
         <li><a href = "http://alicesun94.wix.com/berkeleypblsblc">SBLC</a></li>
-        <li><a href = "/deliberations">Deliberations</a></li>
-        <% if current_member.admin? or current_member.officer? %>
-        <li><%= link_to "Blog", posts_url %></li>
-        <li><a href = "https://docs.google.com/forms/d/1ezJvHxyIV4E0rrsyAG21DzgkeRuLDEi587MwPHwxKnc/viewform">Event Feedback</a></li>
-        <li><a href = "https://docs.google.com/spreadsheet/ccc?key=0Aq4mvWynvj_ddFNHMTFnc0oxSUZqUjJvZU5RcHhtYVE&usp=drive_web#gid=0">Scorecard</a></li>
 
-        <% end %>
 
+        <li><a href = "/officertools">Officer Tools</a>
 
       <% end %>
       <% if current_member %>

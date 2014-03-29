@@ -12,6 +12,7 @@ Ucbpblmembersportal::Application.routes.draw do
   match "/update/:old_member_id", to: "members#update", as: :update_from_old_member
 
   match "/test", to: "home#test"
+  match "/officertools", to: "home#officertools"
   get :rankings, to: "points#rankings", as: :rankings # TODO: move to "committees#rankings"
 
   # ad hoc route for events

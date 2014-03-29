@@ -52,6 +52,9 @@ class HomeController < ApplicationController
     # render "test"
   end
 
+  def officertools
+  end
+
   def test
     render 'test'
   end
